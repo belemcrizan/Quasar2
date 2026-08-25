@@ -1,0 +1,61 @@
+{
+  "seed": 42,
+  "mode": "catalog",
+  "paths": {
+    "domains": "configs/domains.yaml",
+    "intents": "data/intents/intents.json",
+    "corpus": "data/corpus",
+    "catalog": "data/hypotheses_catalog"
+  },
+  "hypotheses": {
+    "max_candidates": 4,
+    "minimum_generation_score": 0.02
+  },
+  "retrieval": {
+    "initial_top_k_per_hypothesis": 1,
+    "top_k_per_hypothesis": 4,
+    "bm25_weight": 0.60,
+    "dense_weight": 0.40,
+    "rrf_k": 20,
+    "dense_dimensions": 384
+  },
+  "evidence": {
+    "retrieval_weight": 0.25,
+    "observation_weight": 0.40,
+    "anchor_weight": 0.20,
+    "discriminator_weight": 0.15,
+    "foreign_hypothesis_penalty": 0.20
+  },
+  "belief": {
+    "evidence_strength": 4.0,
+    "temperature": 1.0,
+    "probability_floor": 0.000001
+  },
+  "decision": {
+    "answer_confidence": 0.67,
+    "answer_margin": 0.20,
+    "minimum_evidence": 0.28,
+    "minimum_exploration_value": 0.04,
+    "max_explore_rounds": 2,
+    "wrong_answer_cost": 1.4,
+    "exploration_cost": 0.10,
+    "ask_cost": 0.28,
+    "allow_ask": true
+  },
+  "benchmark": {
+    "conditions": ["q0", "q1", "q2"],
+    "cutoff": 10,
+    "bootstrap_samples": 1000,
+    "methods": [
+      "bm25",
+      "dense",
+      "hybrid",
+      "rewrite_hybrid",
+      "full",
+      "noHyp",
+      "noExplore",
+      "noUpdate",
+      "noAsk"
+    ]
+  }
+}

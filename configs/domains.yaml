@@ -1,0 +1,17 @@
+{
+  "astronomy": {
+    "label": "Astronomy and astrophysics",
+    "catalog": "astronomy.json",
+    "corpus": "astronomy.jsonl",
+    "domain_cues": ["star", "planet", "galaxy", "light", "orbit", "radio", "wave", "space"],
+    "clarification_template": "Which astronomical phenomenon do you mean: {options}?"
+  },
+  "ai": {
+    "label": "Artificial intelligence and machine learning",
+    "catalog": "ai.json",
+    "corpus": "ai.jsonl",
+    "domain_cues": ["model", "agent", "retrieval", "training", "prompt", "embedding", "llm", "data"],
+    "clarification_template": "Which AI mechanism do you mean: {options}?"
+  }
+}
+

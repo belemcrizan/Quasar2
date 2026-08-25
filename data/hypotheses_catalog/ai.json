@@ -1,0 +1,144 @@
+{
+  "hypotheses": [
+    {
+      "id": "ai.rag_grounding", "domain": "ai", "label": "Retrieval-augmented grounding",
+      "description": "A language model retrieves external passages and conditions its answer on cited evidence.",
+      "anchors": ["retrieval augmented generation", "grounded answer", "external passages"],
+      "discriminators": ["citation support", "context retrieval", "faithfulness", "knowledge source"],
+      "aliases": ["RAG", "answer from documents", "retrieve then generate"]
+    },
+    {
+      "id": "ai.prompt_injection", "domain": "ai", "label": "Prompt injection attack",
+      "description": "Malicious instructions in user or retrieved content attempt to override an agent's intended policy.",
+      "anchors": ["malicious prompt instruction", "override system policy", "untrusted content"],
+      "discriminators": ["ignore previous instructions", "indirect injection", "instruction hierarchy", "tool exfiltration"],
+      "aliases": ["prompt attack", "jailbreak in document", "hidden instruction"]
+    },
+    {
+      "id": "ai.model_hallucination", "domain": "ai", "label": "Model hallucination",
+      "description": "A generative model produces fluent claims that are unsupported, inconsistent, or factually incorrect.",
+      "anchors": ["unsupported model claim", "fabricated answer", "factual error"],
+      "discriminators": ["plausible but false", "missing evidence", "confabulation", "factuality"],
+      "aliases": ["made up answer", "LLM invents facts", "model confabulation"]
+    },
+    {
+      "id": "ai.concept_drift", "domain": "ai", "label": "Concept drift",
+      "description": "The statistical relationship between inputs and target changes after deployment and degrades predictions.",
+      "anchors": ["production distribution changes", "prediction degradation over time", "input target relationship"],
+      "discriminators": ["post deployment shift", "rolling performance", "seasonal regime", "drift detector"],
+      "aliases": ["model gets stale", "behavior changed over time", "changing data pattern"]
+    },
+    {
+      "id": "ai.data_poisoning", "domain": "ai", "label": "Training-data poisoning",
+      "description": "An adversary corrupts training examples to alter learned behavior or implant a backdoor.",
+      "anchors": ["corrupted training data", "adversarial training examples", "model backdoor"],
+      "discriminators": ["trigger pattern", "label flipping", "training pipeline compromise", "clean accuracy preserved"],
+      "aliases": ["poisoned dataset", "backdoor training", "malicious examples"]
+    },
+    {
+      "id": "ai.adversarial_examples", "domain": "ai", "label": "Adversarial examples",
+      "description": "Small test-time input perturbations intentionally cause a trained model to make an incorrect prediction.",
+      "anchors": ["test time perturbation", "model misclassification", "imperceptible change"],
+      "discriminators": ["gradient attack", "epsilon bound", "robust accuracy", "same model weights"],
+      "aliases": ["fooled classifier", "tiny input change", "evasion attack"]
+    },
+    {
+      "id": "ai.catastrophic_forgetting", "domain": "ai", "label": "Catastrophic forgetting",
+      "description": "Sequential learning on new tasks damages performance on knowledge learned from earlier tasks.",
+      "anchors": ["old task performance lost", "continual learning", "sequential training"],
+      "discriminators": ["replay buffer", "elastic weight consolidation", "task sequence", "retention score"],
+      "aliases": ["model forgets old task", "learning overwrites memory", "continual learning failure"]
+    },
+    {
+      "id": "ai.retrieval_reranking", "domain": "ai", "label": "Retrieval reranking",
+      "description": "A second-stage model reorders initially retrieved candidates using richer query-document interactions.",
+      "anchors": ["reorder search results", "second stage retrieval", "candidate ranking"],
+      "discriminators": ["cross encoder", "top k rerank", "pairwise relevance", "MRR improvement"],
+      "aliases": ["reranker", "reorder retrieved chunks", "second pass ranking"]
+    },
+    {
+      "id": "ai.model_quantization", "domain": "ai", "label": "Model quantization",
+      "description": "Weights or activations use lower numerical precision to reduce memory, latency, and energy.",
+      "anchors": ["lower precision weights", "smaller model memory", "integer inference"],
+      "discriminators": ["int8", "four bit", "calibration set", "quantization error"],
+      "aliases": ["compress model precision", "8 bit inference", "low bit weights"]
+    },
+    {
+      "id": "ai.mixture_of_experts", "domain": "ai", "label": "Mixture-of-experts routing",
+      "description": "A learned router activates a sparse subset of specialized neural experts for each token or example.",
+      "anchors": ["sparse expert model", "learned router", "specialized neural experts"],
+      "discriminators": ["top k experts", "load balancing loss", "expert capacity", "sparse activation"],
+      "aliases": ["MoE", "route tokens to experts", "expert network"]
+    },
+    {
+      "id": "ai.rlhf", "domain": "ai", "label": "Reinforcement learning from human feedback",
+      "description": "Human preference data trains a reward signal used to align a model's responses.",
+      "anchors": ["human preference training", "reward model", "aligned response"],
+      "discriminators": ["preference pairs", "policy optimization", "human ranking", "reward hacking"],
+      "aliases": ["RLHF", "train from human preferences", "feedback alignment"]
+    },
+    {
+      "id": "ai.tool_calling_agents", "domain": "ai", "label": "Tool-calling AI agent",
+      "description": "A model selects structured actions and invokes external tools while maintaining an execution loop.",
+      "anchors": ["agent calls tools", "structured action", "external API execution"],
+      "discriminators": ["function schema", "tool result", "action observation loop", "execution boundary"],
+      "aliases": ["function calling agent", "AI uses API", "agentic tool use"]
+    },
+    {
+      "id": "ai.multi_agent_coordination", "domain": "ai", "label": "Multi-agent coordination",
+      "description": "Multiple specialized agents exchange messages, delegate work, and resolve dependencies toward a shared goal.",
+      "anchors": ["multiple AI agents", "task delegation", "shared goal"],
+      "discriminators": ["message protocol", "role specialization", "coordination failure", "shared state"],
+      "aliases": ["agent team", "agents collaborate", "orchestrated agents"]
+    },
+    {
+      "id": "ai.embedding_drift", "domain": "ai", "label": "Embedding drift",
+      "description": "Changes in encoder versions or input populations move vector distributions and damage similarity retrieval.",
+      "anchors": ["vector distribution changes", "embedding model update", "similarity degradation"],
+      "discriminators": ["centroid shift", "nearest neighbor instability", "encoder version", "vector monitoring"],
+      "aliases": ["vectors moved", "embedding space changed", "similarity drift"]
+    },
+    {
+      "id": "ai.differential_privacy", "domain": "ai", "label": "Differential privacy",
+      "description": "Randomized mechanisms bound how much any individual's data can affect a released result or model.",
+      "anchors": ["privacy guarantee", "individual contribution bound", "randomized mechanism"],
+      "discriminators": ["epsilon delta", "privacy budget", "noise mechanism", "neighboring datasets"],
+      "aliases": ["DP", "add noise for privacy", "epsilon privacy"]
+    },
+    {
+      "id": "ai.federated_learning", "domain": "ai", "label": "Federated learning",
+      "description": "Clients train locally and aggregate model updates without centralizing their raw data.",
+      "anchors": ["distributed local training", "aggregate model updates", "raw data stays local"],
+      "discriminators": ["secure aggregation", "client rounds", "non IID clients", "federated averaging"],
+      "aliases": ["train across devices", "FedAvg", "decentralized training data"]
+    },
+    {
+      "id": "ai.knowledge_distillation", "domain": "ai", "label": "Knowledge distillation",
+      "description": "A smaller student model learns from softened predictions or representations produced by a larger teacher.",
+      "anchors": ["teacher student model", "smaller student", "soft targets"],
+      "discriminators": ["temperature logits", "teacher predictions", "student compression", "distillation loss"],
+      "aliases": ["teacher trains small model", "model distillation", "student imitates teacher"]
+    },
+    {
+      "id": "ai.llm_evaluation", "domain": "ai", "label": "LLM evaluation",
+      "description": "A measurement protocol assesses model quality, safety, calibration, cost, and robustness on defined tasks.",
+      "anchors": ["language model benchmark", "evaluation metric", "test set"],
+      "discriminators": ["human rubric", "LLM as judge", "confidence interval", "contamination control"],
+      "aliases": ["evaluate LLM", "model scorecard", "AI benchmark"]
+    },
+    {
+      "id": "ai.context_window", "domain": "ai", "label": "Context-window limitation",
+      "description": "A model's finite token budget limits how much conversation or retrieved material can be processed at once.",
+      "anchors": ["finite token context", "input length limit", "long prompt"],
+      "discriminators": ["token budget", "lost in the middle", "context truncation", "long context"],
+      "aliases": ["prompt too long", "context limit", "model forgets earlier text"]
+    },
+    {
+      "id": "ai.llm_routing", "domain": "ai", "label": "Cost-aware LLM routing",
+      "description": "A policy sends each task to a model tier that balances expected quality, latency, and monetary cost.",
+      "anchors": ["route tasks across models", "quality cost tradeoff", "model selection policy"],
+      "discriminators": ["per task cost", "fallback model", "latency budget", "quality threshold"],
+      "aliases": ["choose cheap or strong LLM", "multi model gateway", "FinOps routing"]
+    }
+  ]
+}

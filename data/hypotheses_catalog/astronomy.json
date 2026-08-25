@@ -1,0 +1,145 @@
+{
+  "hypotheses": [
+    {
+      "id": "astro.exoplanet_transit", "domain": "astronomy", "label": "Exoplanet transit",
+      "description": "A planet periodically crosses its host star and causes repeatable, shallow decreases in observed brightness.",
+      "anchors": ["periodic brightness dip", "planet crosses star", "transit light curve"],
+      "discriminators": ["flat bottom", "orbital period", "transit depth", "ingress egress"],
+      "aliases": ["starlight dip", "planet shadow", "crossing stellar disk"]
+    },
+    {
+      "id": "astro.stellar_flare", "domain": "astronomy", "label": "Stellar flare",
+      "description": "Magnetic reconnection on a star produces a rapid asymmetric brightening followed by slower cooling.",
+      "anchors": ["sudden stellar brightening", "magnetic reconnection", "flare light curve"],
+      "discriminators": ["fast rise slow decay", "x ray burst", "chromospheric emission", "cooling tail"],
+      "aliases": ["star outburst", "stellar flash", "magnetic eruption"]
+    },
+    {
+      "id": "astro.microlensing", "domain": "astronomy", "label": "Gravitational microlensing",
+      "description": "A foreground mass gravitationally magnifies a background star in an approximately symmetric nonrepeating event.",
+      "anchors": ["temporary star magnification", "foreground lens", "background source"],
+      "discriminators": ["symmetric brightening", "achromatic amplification", "einstein timescale", "single event"],
+      "aliases": ["gravity lens flash", "lens crossing", "paczynski curve"]
+    },
+    {
+      "id": "astro.pulsar_timing", "domain": "astronomy", "label": "Pulsar timing anomaly",
+      "description": "Unexpected residuals in highly regular radio-pulse arrival times indicate a glitch, companion, or propagation effect.",
+      "anchors": ["pulse arrival residual", "radio pulsar", "timing anomaly"],
+      "discriminators": ["dispersion measure", "spin period", "timing residual", "pulse cadence"],
+      "aliases": ["radio lighthouse clock", "late pulses", "pulsar glitch"]
+    },
+    {
+      "id": "astro.fast_radio_burst", "domain": "astronomy", "label": "Fast radio burst",
+      "description": "A millisecond-duration extragalactic radio transient arrives with frequency-dependent dispersion.",
+      "anchors": ["millisecond radio transient", "extragalactic burst", "radio flash"],
+      "discriminators": ["high dispersion measure", "frequency sweep", "millisecond duration", "repeating burst"],
+      "aliases": ["FRB", "brief radio flash", "dispersed pulse"]
+    },
+    {
+      "id": "astro.supernova_light_curve", "domain": "astronomy", "label": "Supernova light curve",
+      "description": "A stellar explosion produces a strong luminosity rise and a multiweek decline powered by expansion or radioactive decay.",
+      "anchors": ["exploding star brightness", "supernova luminosity", "transient light curve"],
+      "discriminators": ["nickel decay", "multiweek fade", "spectral ejecta", "explosion peak"],
+      "aliases": ["star explosion", "dying star brightening", "radioactive tail"]
+    },
+    {
+      "id": "astro.cepheid_variable", "domain": "astronomy", "label": "Cepheid variable star",
+      "description": "A pulsating star follows a period-luminosity relation that enables extragalactic distance measurement.",
+      "anchors": ["pulsating variable star", "period luminosity relation", "distance indicator"],
+      "discriminators": ["regular pulsation", "standard candle", "days long period", "distance ladder"],
+      "aliases": ["Cepheid", "pulsating candle", "variable distance star"]
+    },
+    {
+      "id": "astro.black_hole_accretion", "domain": "astronomy", "label": "Black-hole accretion variability",
+      "description": "Hot plasma in an accretion disk and corona around a black hole produces variable X-ray emission.",
+      "anchors": ["black hole accretion disk", "x ray variability", "hot corona"],
+      "discriminators": ["quasi periodic oscillation", "iron line", "disk temperature", "x ray flicker"],
+      "aliases": ["feeding black hole", "hot disk flicker", "compact object accretion"]
+    },
+    {
+      "id": "astro.gravitational_wave_chirp", "domain": "astronomy", "label": "Gravitational-wave chirp",
+      "description": "A compact binary inspiral emits a waveform whose frequency and amplitude rise before merger.",
+      "anchors": ["compact binary waveform", "gravitational wave", "binary inspiral"],
+      "discriminators": ["rising frequency", "chirp mass", "strain amplitude", "matched filter"],
+      "aliases": ["spacetime chirp", "merger wave", "inspiral signal"]
+    },
+    {
+      "id": "astro.galaxy_redshift", "domain": "astronomy", "label": "Galaxy redshift",
+      "description": "The displacement of galaxy spectral lines toward longer wavelengths estimates recession and cosmic distance.",
+      "anchors": ["galaxy spectral shift", "longer wavelength", "cosmic recession"],
+      "discriminators": ["red spectral lines", "hubble relation", "recession velocity", "spectroscopic distance"],
+      "aliases": ["redshift", "galaxy moving away", "stretched light"]
+    },
+    {
+      "id": "astro.dark_matter_lensing", "domain": "astronomy", "label": "Weak lensing by dark matter",
+      "description": "Coherent distortions in background-galaxy shapes trace otherwise invisible foreground mass.",
+      "anchors": ["background galaxy distortion", "invisible mass map", "weak gravitational lensing"],
+      "discriminators": ["cosmic shear", "ellipticity correlation", "convergence map", "dark matter halo"],
+      "aliases": ["sheared galaxy shapes", "invisible gravity map", "weak lens"]
+    },
+    {
+      "id": "astro.cosmic_microwave_background", "domain": "astronomy", "label": "Cosmic microwave background anisotropy",
+      "description": "Small temperature and polarization fluctuations in relic microwave radiation constrain early-universe physics.",
+      "anchors": ["relic microwave radiation", "early universe", "sky temperature anisotropy"],
+      "discriminators": ["acoustic peaks", "microkelvin fluctuation", "polarization spectrum", "last scattering"],
+      "aliases": ["CMB", "ancient microwave sky", "afterglow temperature spots"]
+    },
+    {
+      "id": "astro.coronal_mass_ejection", "domain": "astronomy", "label": "Solar coronal mass ejection",
+      "description": "The Sun ejects a magnetized plasma cloud that can drive geomagnetic disturbances near Earth.",
+      "anchors": ["solar plasma ejection", "coronal eruption", "space weather"],
+      "discriminators": ["magnetized cloud", "coronagraph front", "geomagnetic storm", "earth directed"],
+      "aliases": ["CME", "sun plasma cloud", "solar eruption"]
+    },
+    {
+      "id": "astro.asteroid_occultation", "domain": "astronomy", "label": "Asteroid occultation",
+      "description": "A small Solar-System body briefly blocks a background star along a narrow path on Earth.",
+      "anchors": ["asteroid blocks star", "brief occultation", "moving small body"],
+      "discriminators": ["seconds long disappearance", "shadow chord", "narrow ground track", "sharp light drop"],
+      "aliases": ["star blink behind rock", "minor planet shadow", "occultation chord"]
+    },
+    {
+      "id": "astro.tidal_disruption_event", "domain": "astronomy", "label": "Tidal disruption event",
+      "description": "A star passing close to a massive black hole is torn apart and creates a luminous nuclear flare.",
+      "anchors": ["star torn by black hole", "galactic nucleus flare", "tidal disruption"],
+      "discriminators": ["fallback rate", "months long nuclear transient", "stellar debris", "massive black hole"],
+      "aliases": ["TDE", "spaghettified star", "black hole tears star"]
+    },
+    {
+      "id": "astro.neutron_star_merger", "domain": "astronomy", "label": "Neutron-star merger kilonova",
+      "description": "Two neutron stars merge, producing gravitational waves, a short gamma-ray burst, and r-process optical emission.",
+      "anchors": ["neutron stars collide", "kilonova", "compact merger"],
+      "discriminators": ["r process elements", "short gamma ray burst", "red optical transient", "heavy element ejecta"],
+      "aliases": ["kilonova glow", "compact stars collide", "gold making merger"]
+    },
+    {
+      "id": "astro.quasar_variability", "domain": "astronomy", "label": "Quasar variability",
+      "description": "An active galactic nucleus changes brightness stochastically as its accretion flow evolves.",
+      "anchors": ["active galactic nucleus", "quasar brightness changes", "accretion variability"],
+      "discriminators": ["damped random walk", "months years variability", "broad emission lines", "AGN flicker"],
+      "aliases": ["quasar flicker", "variable AGN", "galactic core changes"]
+    },
+    {
+      "id": "astro.brown_dwarf_atmosphere", "domain": "astronomy", "label": "Brown-dwarf atmosphere",
+      "description": "Spectra and rotational variability of a cool substellar object reveal molecular absorption and patchy clouds.",
+      "anchors": ["cool substellar atmosphere", "brown dwarf spectrum", "patchy clouds"],
+      "discriminators": ["methane absorption", "infrared colors", "rotation modulation", "failed star"],
+      "aliases": ["cool failed star", "methane dwarf", "substellar weather"]
+    },
+    {
+      "id": "astro.protoplanetary_disk", "domain": "astronomy", "label": "Protoplanetary disk structure",
+      "description": "Dust and gas around a young star form rings, gaps, and spirals associated with planet formation.",
+      "anchors": ["young star dust disk", "planet formation", "gas dust rings"],
+      "discriminators": ["millimeter continuum", "disk gap", "snow line", "spiral structure"],
+      "aliases": ["planet nursery", "dust ring around young star", "forming planetary system"]
+    },
+    {
+      "id": "astro.baryon_acoustic_oscillation", "domain": "astronomy", "label": "Baryon acoustic oscillation",
+      "description": "A preferred comoving separation in galaxy clustering provides a cosmological standard ruler.",
+      "anchors": ["galaxy clustering scale", "standard ruler", "baryon acoustic oscillation"],
+      "discriminators": ["preferred separation", "correlation function peak", "sound horizon", "cosmic expansion"],
+      "aliases": ["BAO", "galaxy spacing ruler", "clustering bump"]
+    }
+  ]
+}
+
