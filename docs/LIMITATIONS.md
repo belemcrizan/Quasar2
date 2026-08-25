@@ -13,6 +13,7 @@
 - Latency and scalability results apply only to an 80-document in-memory corpus.
 - There is no human evaluation of clarification usefulness or answer quality.
 - The current benchmark has one frozen fixture, not 30+ perturbation seeds.
+- The astronomy/AI table is a sanity test; v0.2 ops still is not an external IR collection.
 
 ## Mechanism failure modes
 

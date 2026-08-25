@@ -11,6 +11,7 @@ from quasar2.models.decision import Decision
 from quasar2.models.evidence import EvidenceItem
 from quasar2.models.hypothesis import HypothesisCandidate
 from quasar2.models.observation import Observation
+from quasar2.retrieval.base import SearchHit
 
 
 def _jsonable(value: Any) -> Any:
@@ -58,6 +59,7 @@ class PipelineResult:
     mean_document_novelty: float = 0.0
     total_belief_variation: float = 0.0
     total_observed_entropy_reduction: float = 0.0
+    retrieval_hits: tuple[SearchHit, ...] = ()
 
     def to_dict(self) -> dict[str, Any]:
         return _jsonable(self)

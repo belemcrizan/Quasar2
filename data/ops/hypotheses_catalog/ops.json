@@ -1,0 +1,257 @@
+{
+  "schema_version": "1.0",
+  "hypotheses": [
+    {
+      "id": "ops.secret_rotation_mismatch",
+      "domain": "ops",
+      "label": "Secret rotation version skew",
+      "description": "Workloads still mount the previous credential generation after a vault or KMS rotation.",
+      "anchors": [
+        "vault lease generation",
+        "csi secret volume",
+        "credential version skew"
+      ],
+      "discriminators": [
+        "old lease",
+        "new secret engine version",
+        "volume generation"
+      ],
+      "aliases": [
+        "rotated keys",
+        "stale secret",
+        "credential mismatch"
+      ]
+    },
+    {
+      "id": "ops.tls_cert_expired",
+      "domain": "ops",
+      "label": "Expired ingress TLS certificate",
+      "description": "The edge certificate expired so clients fail handshake while the service itself is healthy.",
+      "anchors": [
+        "certificate notAfter",
+        "ingress tls secret",
+        "handshake failure"
+      ],
+      "discriminators": [
+        "notAfter in the past",
+        "wrong sans",
+        "cert-manager order"
+      ],
+      "aliases": [
+        "expired cert",
+        "tls handshake",
+        "browser padlock"
+      ]
+    },
+    {
+      "id": "ops.dns_cache_stale",
+      "domain": "ops",
+      "label": "Stale DNS cache after failover",
+      "description": "Clients keep resolving the drained endpoint because TTL or nscd still holds the old A record.",
+      "anchors": [
+        "stale a record",
+        "nscd ttl",
+        "coredns cache"
+      ],
+      "discriminators": [
+        "old cluster ip",
+        "negative cache",
+        "split horizon"
+      ],
+      "aliases": [
+        "dns after failover",
+        "wrong ip",
+        "stale resolver"
+      ]
+    },
+    {
+      "id": "ops.db_connection_pool",
+      "domain": "ops",
+      "label": "Database connection pool exhaustion",
+      "description": "The application waits on a saturated pool so requests time out even though the database is up.",
+      "anchors": [
+        "hikari pool",
+        "max connections",
+        "wait timeout"
+      ],
+      "discriminators": [
+        "active equals max",
+        "idle zero",
+        "pg_stat_activity"
+      ],
+      "aliases": [
+        "pool exhausted",
+        "cannot get connection",
+        "too many clients"
+      ]
+    },
+    {
+      "id": "ops.deploy_bad_canary",
+      "domain": "ops",
+      "label": "Bad canary taking mixed traffic",
+      "description": "A broken replica set is receiving a fraction of live traffic so errors look intermittent.",
+      "anchors": [
+        "canary weight",
+        "mesh subset",
+        "partial rollout"
+      ],
+      "discriminators": [
+        "two versions in endpoints",
+        "header routing",
+        "surge"
+      ],
+      "aliases": [
+        "bad deploy",
+        "some pods wrong",
+        "intermittent after release"
+      ]
+    },
+    {
+      "id": "ops.rate_limit_cascade",
+      "domain": "ops",
+      "label": "Upstream rate-limit cascade",
+      "description": "A shared gateway 429s one caller which retries and saturates remaining callers.",
+      "anchors": [
+        "429 too many requests",
+        "retry storm",
+        "shared quota"
+      ],
+      "discriminators": [
+        "burst multiplier",
+        "token bucket",
+        "retry-after"
+      ],
+      "aliases": [
+        "throttled api",
+        "rate limited",
+        "retry cascade"
+      ]
+    },
+    {
+      "id": "ops.queue_backlog",
+      "domain": "ops",
+      "label": "Consumer lag on a work queue",
+      "description": "Producers succeed but downstream latency grows because consumers cannot drain the queue.",
+      "anchors": [
+        "consumer lag",
+        "redis list length",
+        "kafka offset"
+      ],
+      "discriminators": [
+        "lag increasing",
+        "dlq growth",
+        "consumer cpu"
+      ],
+      "aliases": [
+        "queue backing up",
+        "messages piling",
+        "worker lag"
+      ]
+    },
+    {
+      "id": "ops.oom_restart_loop",
+      "domain": "ops",
+      "label": "OOMKill restart loop",
+      "description": "The process is killed for memory and Kubernetes restarts it, causing periodic 502s.",
+      "anchors": [
+        "oomkilled",
+        "lastState terminated",
+        "memory limit"
+      ],
+      "discriminators": [
+        "restart count",
+        "rss at limit",
+        "evicted"
+      ],
+      "aliases": [
+        "killed for memory",
+        "crash loop",
+        "pod restarting"
+      ]
+    },
+    {
+      "id": "ops.clock_skew_auth",
+      "domain": "ops",
+      "label": "Clock skew breaking signed auth",
+      "description": "Tokens or SigV4 fail because the node clock drifted outside the allowed skew window.",
+      "anchors": [
+        "ntp offset",
+        "token nbf",
+        "signature expired"
+      ],
+      "discriminators": [
+        "chrony offset",
+        "skew seconds",
+        "request time too skewed"
+      ],
+      "aliases": [
+        "clock drift",
+        "token not yet valid",
+        "time skewed"
+      ]
+    },
+    {
+      "id": "ops.feature_flag_split",
+      "domain": "ops",
+      "label": "Feature flag split-brain",
+      "description": "Two flag evaluations disagree across services so only some requests hit the new path.",
+      "anchors": [
+        "flag assignment",
+        "bucketing key",
+        "stale sdk cache"
+      ],
+      "discriminators": [
+        "percentage rollout",
+        "sticky bucketing",
+        "offline eval"
+      ],
+      "aliases": [
+        "flag inconsistency",
+        "some users new path",
+        "toggle cache"
+      ]
+    },
+    {
+      "id": "ops.cdn_cache_poison",
+      "domain": "ops",
+      "label": "CDN serving a stale error page",
+      "description": "The edge cached a 5xx or empty body and keeps serving it after origin recovered.",
+      "anchors": [
+        "cache-control s-maxage",
+        "stale-if-error",
+        "surrogate key"
+      ],
+      "discriminators": [
+        "age header large",
+        "origin 200",
+        "purge required"
+      ],
+      "aliases": [
+        "cached error",
+        "cdn stale",
+        "edge still failing"
+      ]
+    },
+    {
+      "id": "ops.region_failover_lag",
+      "domain": "ops",
+      "label": "Cross-region replica lag after failover",
+      "description": "Reads in the new primary region see outdated rows because replication had not caught up.",
+      "anchors": [
+        "replica lag seconds",
+        "gtid executed",
+        "async replication"
+      ],
+      "discriminators": [
+        "seconds behind source",
+        "read-your-writes fail",
+        "promote too early"
+      ],
+      "aliases": [
+        "stale reads after failover",
+        "replication delay",
+        "wrong region data"
+      ]
+    }
+  ]
+}

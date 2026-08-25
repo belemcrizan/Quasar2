@@ -1,16 +1,17 @@
 # QUASAR2
 
 **Competing-hypothesis retrieval for latent-intent recovery under query degradation**  
-Research proof of concept · v0.1.1 · Crizan Belém Ribeiro
+Research proof of concept · v0.2.0 · loop frozen at v0.1.1 · Crizan Belém Ribeiro
 
 > Treat the observed query as a noisy measurement of a latent information need;
 > preserve several plausible interpretations; acquire evidence that separates
 > them; then choose **ANSWER**, **EXPLORE**, or **ASK** by explicit utility.
 
 > [!WARNING]
-> QUASAR2 is mechanism-testing research software. It is not a production search
-> engine and the bundled benchmark does not establish general superiority,
-> novelty, causality, or production readiness.
+> QUASAR2 is mechanism-testing research software. The bundled astronomy/AI table
+> is a **sanity / CI fixture**, not the primary scientific benchmark. It does not
+> establish general superiority, novelty, causality, or production readiness.
+> v0.2 evidence lives in `quasar2 experiment` ([regime protocol](docs/V0.2_REGIME_PROTOCOL.md)).
 
 Portuguese overview: [README.pt-BR.md](README.pt-BR.md).
 
@@ -22,12 +23,14 @@ QUASAR2 instead maintains candidate hypotheses \(H_1,\ldots,H_k\), retrieves
 hypothesis-conditioned evidence, updates a belief distribution, and may issue a
 discriminative follow-up retrieval.
 
-The POC asks a narrow question:
+The POC asks a narrow **regime** question:
 
-> Under controlled query degradation, does maintaining competing hypotheses and
-> using `EXPLORE` increase correct autonomous resolution relative to compatible
-> single-commitment and no-exploration controls—and in which regimes does it
-> tie, lose, or abstain?
+> Under controlled query uncertainty \(Q=(A,L,P,U,D)\), does QUASAR2 on retriever
+> \(R\) improve correct autonomous resolution relative to \(R\) alone — and in
+> which bins does \(\Delta_{loop}\) tie, lose, or cross over?
+
+v0.1.1 still reports ablations on the easy sanity corpus. That table diagnoses
+the mechanism. It does not prove a better retriever.
 
 The hypothesis is allowed to fail. The benchmark retains unfavorable outcomes
 and reports a paired confidence interval rather than presenting one successful
@@ -38,7 +41,8 @@ demo as evidence.
 - deterministic multi-signal observation extraction;
 - **Mode A**, a frozen catalog with 20 astronomy and 20 AI hypotheses;
 - **Mode B**, a typed dependency-injection boundary for an LLM or knowledge base;
-- transparent BM25, deterministic hashing-vector, and hybrid retrieval;
+- transparent BM25, deterministic hashing-vector (debug dense), hybrid retrieval,
+  and an optional neural dense backend behind the same interface;
 - evidence scoring with observation, anchor, discriminator, and provenance terms;
 - posterior-like belief updates with duplicate-evidence suppression;
 - SHA-256 query history and pre-retrieval rejection of repeated exploration;
@@ -174,9 +178,41 @@ What this result says:
    calls for Full from 4.19 to 3.81, for `noUpdate` from 5.76 to 4.51, and for
    `noAsk` from 4.19 to 3.81.
 
-Therefore the current run shows an internal mechanism signal but **does not
+Therefore the current sanity run shows an internal mechanism signal but **does not
 validate the stronger superiority claim**. That is a useful POC outcome: the
 implementation can falsify the thesis instead of only illustrating it.
+
+## v0.2: improve the experiment, not the loop
+
+The v0.1.1 decision loop is the frozen treatment. v0.2 adds evidence quality:
+
+1. **Sanity corpus** (`configs/poc.yaml`, `quasar2 benchmark`) — 80 docs, CI, ablations.
+2. **Ops runbook case** (`configs/v02_regime.yaml`, `quasar2 experiment`) — overlapping
+   incident classes; symptom queries; documents that do not copy the query.
+3. **Matched backends** — `bm25` vs `full+bm25`, `hybrid` vs `full+hybrid`, hashing
+   dense as debug, optional `neural` via `pip install 'quasar2[neural]'`.
+4. **Factorial cells** — sampled \(A,L,P,U,D\) levels, not easy/medium/hard.
+5. **Two ranking stories** — interpretation IRR / correct ARR vs ranking R@10 vs
+   evidence-ranked R@10 (the 0.642 vs 0.950 gap is now an object of study).
+6. **Crossover table** — \(\Delta\) correct ARR by severity bin. Do not fit a
+   routing threshold \(\tau\) on the same run.
+
+```powershell
+quasar2 materialize-ops
+quasar2 experiment --config configs/v02_regime.yaml
+```
+
+Smoke:
+
+```powershell
+quasar2 experiment --methods bm25,full+bm25 --seeds 42 --limit 3
+```
+
+LLM HyDE is not bundled (it needs a generator). `multi_query` is the stdlib
+compatible expansion control. Policy features (`H_unknown`, `DEFER`, receding
+horizon) are deferred to v0.3.
+
+Full details: [v0.2 regime protocol](docs/V0.2_REGIME_PROTOCOL.md).
 
 ## Architecture
 
@@ -214,7 +250,9 @@ flow, and [Trace walkthrough](docs/TRACE_WALKTHROUGH.md) for a concrete run.
 quasar2/
 ├── configs/                 # frozen POC parameters and domain registry
 ├── data/
-│   ├── corpus/              # 80 JSONL evidence documents
+│   ├── corpus/              # sanity JSONL (astronomy + AI)
+│   ├── ops/                 # isolated overlapping runbook fixture
+│   ├── external/            # drop real collections here; do not mix with sanity
 │   ├── hypotheses_catalog/  # Mode-A hypothesis definitions
 │   └── intents/             # 40 intents with Q0/Q1/Q2
 ├── docs/                    # thesis, architecture, protocol, limitations
@@ -243,6 +281,11 @@ The bundled data is synthetic and intentionally small. It diagnoses whether the
 mechanism executes and exposes failure modes; it is not evidence that the method
 will generalize to real search traffic.
 
+See [Scientific thesis](docs/SCIENTIFIC_THESIS.md),
+[Experiment protocol](docs/EXPERIMENT_PROTOCOL.md),
+[Data and metrics](docs/DATA_AND_METRICS.md), and
+[Limitations](docs/LIMITATIONS.md).
+
 Before a paper-level claim, the project requires:
 
 - frozen train/calibration/validation/test roles with leakage controls;
@@ -256,11 +299,10 @@ Before a paper-level claim, the project requires:
   drift, and adversarial noise;
 - a systematic related-work and prior-art review before a novelty statement.
 
-Full details: [Scientific thesis](docs/SCIENTIFIC_THESIS.md),
-[Experiment protocol](docs/EXPERIMENT_PROTOCOL.md),
-[Data and metrics](docs/DATA_AND_METRICS.md), and
-[Limitations](docs/LIMITATIONS.md). The frozen next-version design is in the
-[v0.2 experimental protocol](docs/V0.2_EXPERIMENT_PROTOCOL.md).
+The frozen next-version **policy** design is deferred in
+[v0.3 / former v0.2 policy protocol](docs/V0.2_EXPERIMENT_PROTOCOL.md).
+The experiment that is actually open is the
+[v0.2 regime protocol](docs/V0.2_REGIME_PROTOCOL.md).
 
 ## License
 

@@ -1,6 +1,19 @@
 # Changelog
 
+## 0.2.0 — 2026-08-25
+
+- Froze the v0.1.1 inference loop as the experimental treatment.
+- Demoted the 80-document astronomy/AI set to a sanity / CI mechanism test.
+- Added a matched retriever factory: BM25, hashing dense (debug), hybrid, optional neural.
+- Added an isolated ops-runbook fixture (overlapping incident classes).
+- Added a factorial regime experiment \(Q=(A,L,P,U,D)\) with a sampled design.
+- Added `full+R` methods so \(\Delta_{loop}\) is estimated on the same backend \(R\).
+- Report ranking recall, evidence recall, and interpretation quality separately.
+- Report a severity-bin crossover table; do not fit an adaptive \(\tau\) on the same run.
+- Deferred \(H_{unknown}\), DEFER, and receding-horizon policy to v0.3.
+
 ## 0.1.1 — 2026-08-25
+
 
 - Added stable SHA-256 identities for every hypothesis-conditioned retrieval query.
 - Added a pre-retrieval gate that rejects repeated exploration queries.
