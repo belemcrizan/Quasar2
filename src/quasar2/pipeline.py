@@ -22,7 +22,8 @@ from quasar2.hypotheses.catalog import CatalogHypothesisGenerator, HypothesisCat
 from quasar2.models.decision import Action
 from quasar2.models.evidence import EvidenceBundle, EvidenceItem
 from quasar2.models.telemetry import PipelineResult, TraceEvent
-from quasar2.retrieval import BM25Retriever, HashingDenseRetriever, HybridRetriever, load_corpus
+from quasar2.retrieval import Retriever, SearchHit, load_corpus
+from quasar2.retrieval.factory import build_retriever
 from quasar2.signals.extractor import SignalExtractor, normalize_text
 
 
@@ -37,7 +38,7 @@ class QuasarPipeline:
         *,
         signal_extractor: SignalExtractor,
         hypothesis_generator: CatalogHypothesisGenerator,
-        retriever: HybridRetriever,
+        retriever: Retriever,
         evidence_scorer: EvidenceScorer,
         belief_updater: BeliefUpdater,
         decision_engine: DecisionEngine,
@@ -68,7 +69,7 @@ class QuasarPipeline:
         self.clarification_templates = dict(clarification_templates or {})
 
     @classmethod
-    def from_config(cls, config: ProjectConfig) -> "QuasarPipeline":
+    def from_config(cls, config: ProjectConfig, *, retriever: Retriever | None = None) -> "QuasarPipeline":
         paths = config.section("paths")
         domains = load_structured(config.resolve(str(paths["domains"])))
         cues = {domain: values.get("domain_cues", ()) for domain, values in domains.items()}
@@ -79,16 +80,10 @@ class QuasarPipeline:
         catalog = HypothesisCatalog.from_directory(config.resolve(str(paths["catalog"])))
         documents = load_corpus(config.resolve(str(paths["corpus"])))
         retrieval = config.section("retrieval")
-        sparse = BM25Retriever(documents)
-        dense = HashingDenseRetriever(
-            documents, dimensions=int(retrieval.get("dense_dimensions", 384))
-        )
-        hybrid = HybridRetriever(
-            sparse,
-            dense,
-            sparse_weight=float(retrieval.get("bm25_weight", 0.6)),
-            dense_weight=float(retrieval.get("dense_weight", 0.4)),
-            rrf_k=int(retrieval.get("rrf_k", 20)),
+        selected = retriever or build_retriever(
+            documents,
+            backend=str(retrieval.get("backend", "hybrid")),
+            retrieval=retrieval,
         )
         belief = config.section("belief")
         decision = config.section("decision")
@@ -97,7 +92,7 @@ class QuasarPipeline:
         return cls(
             signal_extractor=SignalExtractor(cues),
             hypothesis_generator=CatalogHypothesisGenerator(catalog),
-            retriever=hybrid,
+            retriever=selected,
             evidence_scorer=EvidenceScorer(config.section("evidence")),
             belief_updater=BeliefUpdater(
                 evidence_strength=float(belief.get("evidence_strength", 4.0)),
@@ -198,6 +193,8 @@ class QuasarPipeline:
         explore_rounds = 0
         termination_reason = "decision"
         document_novelties: list[float] = []
+        retrieval_hits: list[SearchHit] = []
+        seen_hit_ids: set[str] = set()
         total_belief_variation = 0.0
         total_observed_entropy_reduction = 0.0
         current_queries = {
@@ -226,6 +223,11 @@ class QuasarPipeline:
                 )
                 retrieval_calls += 1
                 document_ids = [hit.document.document_id for hit in hits]
+                for hit in hits:
+                    document_id = hit.document.document_id
+                    if document_id not in seen_hit_ids:
+                        seen_hit_ids.add(document_id)
+                        retrieval_hits.append(hit)
                 repeated_document_count = sum(
                     document_id in seen_document_ids for document_id in document_ids
                 )
@@ -483,4 +485,5 @@ class QuasarPipeline:
             ),
             total_belief_variation=total_belief_variation,
             total_observed_entropy_reduction=total_observed_entropy_reduction,
+            retrieval_hits=tuple(retrieval_hits),
         )

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "quasar2"
-version = "0.1.1"
+version = "0.2.0"
 description = "A falsifiable POC for latent-intent recovery with competing hypotheses and discriminative exploration"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -21,6 +21,7 @@ dependencies = []
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "ruff>=0.5"]
+neural = ["sentence-transformers>=3.0", "numpy>=1.24"]
 
 [project.scripts]
 quasar2 = "quasar2.cli:main"

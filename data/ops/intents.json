@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "description": "Twelve overlapping on-call intents. q1/q2 are unused; v0.2 applies factorial regimes to q0.",
+  "intents": [
+    {
+      "id": "ops-01",
+      "domain": "ops",
+      "q0": "prod started returning 401 after we rotated keys and only some pods fail",
+      "correct_hypothesis": "ops.secret_rotation_mismatch",
+      "q1": "prod started returning 401 after we rotated keys and only some pods fail",
+      "q2": "prod started returning 401 after we rotated keys and only some pods fail"
+    },
+    {
+      "id": "ops-02",
+      "domain": "ops",
+      "q0": "browsers show a certificate warning and mobile clients cannot handshake",
+      "correct_hypothesis": "ops.tls_cert_expired",
+      "q1": "browsers show a certificate warning and mobile clients cannot handshake",
+      "q2": "browsers show a certificate warning and mobile clients cannot handshake"
+    },
+    {
+      "id": "ops-03",
+      "domain": "ops",
+      "q0": "after failover some offices still hit the drained cluster ip",
+      "correct_hypothesis": "ops.dns_cache_stale",
+      "q1": "after failover some offices still hit the drained cluster ip",
+      "q2": "after failover some offices still hit the drained cluster ip"
+    },
+    {
+      "id": "ops-04",
+      "domain": "ops",
+      "q0": "checkout times out even though the database cpu is idle",
+      "correct_hypothesis": "ops.db_connection_pool",
+      "q1": "checkout times out even though the database cpu is idle",
+      "q2": "checkout times out even though the database cpu is idle"
+    },
+    {
+      "id": "ops-05",
+      "domain": "ops",
+      "q0": "only a fraction of users error after the release and versions look mixed",
+      "correct_hypothesis": "ops.deploy_bad_canary",
+      "q1": "only a fraction of users error after the release and versions look mixed",
+      "q2": "only a fraction of users error after the release and versions look mixed"
+    },
+    {
+      "id": "ops-06",
+      "domain": "ops",
+      "q0": "partner api started throttling us and our retries made it worse",
+      "correct_hypothesis": "ops.rate_limit_cascade",
+      "q1": "partner api started throttling us and our retries made it worse",
+      "q2": "partner api started throttling us and our retries made it worse"
+    },
+    {
+      "id": "ops-07",
+      "domain": "ops",
+      "q0": "enqueue succeeds but customer emails go out hours late",
+      "correct_hypothesis": "ops.queue_backlog",
+      "q1": "enqueue succeeds but customer emails go out hours late",
+      "q2": "enqueue succeeds but customer emails go out hours late"
+    },
+    {
+      "id": "ops-08",
+      "domain": "ops",
+      "q0": "the api blips 502 every few minutes and the pod keeps restarting",
+      "correct_hypothesis": "ops.oom_restart_loop",
+      "q1": "the api blips 502 every few minutes and the pod keeps restarting",
+      "q2": "the api blips 502 every few minutes and the pod keeps restarting"
+    },
+    {
+      "id": "ops-09",
+      "domain": "ops",
+      "q0": "signed uploads fail with token not valid yet on one node",
+      "correct_hypothesis": "ops.clock_skew_auth",
+      "q1": "signed uploads fail with token not valid yet on one node",
+      "q2": "signed uploads fail with token not valid yet on one node"
+    },
+    {
+      "id": "ops-10",
+      "domain": "ops",
+      "q0": "half the sessions hit the new checkout path and half do not",
+      "correct_hypothesis": "ops.feature_flag_split",
+      "q1": "half the sessions hit the new checkout path and half do not",
+      "q2": "half the sessions hit the new checkout path and half do not"
+    },
+    {
+      "id": "ops-11",
+      "domain": "ops",
+      "q0": "origin is healthy now but the public url still serves yesterday's error page",
+      "correct_hypothesis": "ops.cdn_cache_poison",
+      "q1": "origin is healthy now but the public url still serves yesterday's error page",
+      "q2": "origin is healthy now but the public url still serves yesterday's error page"
+    },
+    {
+      "id": "ops-12",
+      "domain": "ops",
+      "q0": "after we promoted the other region users see yesterday's balances",
+      "correct_hypothesis": "ops.region_failover_lag",
+      "q1": "after we promoted the other region users see yesterday's balances",
+      "q2": "after we promoted the other region users see yesterday's balances"
+    }
+  ]
+}

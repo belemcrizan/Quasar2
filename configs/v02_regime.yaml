@@ -1,25 +1,27 @@
 {
   "seed": 42,
   "mode": "catalog",
-  "role": "sanity_mechanism_test",
+  "role": "scientific_regime_experiment",
   "paths": {
-    "domains": "configs/domains.yaml",
-    "intents": "data/intents/intents.json",
-    "corpus": "data/corpus",
-    "catalog": "data/hypotheses_catalog"
+    "domains": "configs/domains_ops.yaml",
+    "intents": "data/ops/intents.json",
+    "corpus": "data/ops/corpus",
+    "catalog": "data/ops/hypotheses_catalog"
   },
   "hypotheses": {
     "max_candidates": 4,
     "minimum_generation_score": 0.02
   },
   "retrieval": {
+    "backend": "hybrid",
     "initial_top_k_per_hypothesis": 1,
     "top_k_per_hypothesis": 4,
     "bm25_weight": 0.60,
     "dense_weight": 0.40,
     "rrf_k": 20,
     "dense_dimensions": 384,
-    "backend": "hybrid"
+    "neural_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "neural_device": "cpu"
   },
   "evidence": {
     "retrieval_weight": 0.25,
@@ -49,19 +51,22 @@
     "allow_ask": true
   },
   "benchmark": {
-    "conditions": ["q0", "q1", "q2"],
+    "cutoff": 10,
+    "bootstrap_samples": 1000
+  },
+  "experiment": {
     "cutoff": 10,
     "bootstrap_samples": 1000,
+    "seeds": [42, 43, 44],
     "methods": [
       "bm25",
-      "dense",
+      "dense_hash",
       "hybrid",
       "rewrite_hybrid",
-      "full",
-      "noHyp",
-      "noExplore",
-      "noUpdate",
-      "noAsk"
+      "multi_query",
+      "full+bm25",
+      "full+dense_hash",
+      "full+hybrid"
     ]
   }
 }

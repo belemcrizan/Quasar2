@@ -1,0 +1,9 @@
+{
+  "ops": {
+    "label": "Production incident runbooks",
+    "catalog": "ops.json",
+    "corpus": "ops.jsonl",
+    "domain_cues": ["pod", "deploy", "timeout", "failover", "secret", "queue", "region", "cdn"],
+    "clarification_template": "Which incident class do you mean: {options}?"
+  }
+}

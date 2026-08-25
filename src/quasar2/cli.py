@@ -11,6 +11,8 @@ from typing import Sequence
 from quasar2 import __version__
 from quasar2.benchmark import BenchmarkRunner, format_summary_table, load_intents, write_results
 from quasar2.config import ProjectConfig, load_structured
+from quasar2.datasets.ops_runbook import write_fixture
+from quasar2.experiment import RegimeExperiment, format_experiment_table
 from quasar2.hypotheses.catalog import HypothesisCatalog
 from quasar2.pipeline import QuasarPipeline, VALID_ABLATIONS
 from quasar2.retrieval import load_corpus
@@ -67,6 +69,36 @@ def command_benchmark(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_experiment(args: argparse.Namespace) -> int:
+    config_path = args.config
+    if config_path is None:
+        from quasar2.config import discover_project_root
+
+        config_path = str(discover_project_root() / "configs/v02_regime.yaml")
+    config = _config(config_path)
+    runner = RegimeExperiment(config)
+    methods = tuple(args.methods.split(",")) if args.methods else None
+    seeds = tuple(int(item) for item in args.seeds.split(",")) if args.seeds else None
+    results = runner.run(methods=methods, seeds=seeds, limit=args.limit)
+    output = (
+        Path(args.output)
+        if args.output
+        else config.root / "experiments/results/regime.json"
+    )
+    json_path, csv_path = write_results(results, output)
+    print(format_experiment_table(results))
+    print(f"\nJSON: {json_path}")
+    print(f"CSV:  {csv_path}")
+    return 0
+
+
+def command_materialize(args: argparse.Namespace) -> int:
+    root = _config(None).root
+    write_fixture(root)
+    print(f"wrote ops fixture under {root / 'data' / 'ops'}")
+    return 0
+
+
 def command_validate(args: argparse.Namespace) -> int:
     config = _config(args.config)
     paths = config.section("paths")
@@ -108,7 +140,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     demo = subparsers.add_parser("demo", help="run one full inference trace")
     demo.add_argument("--query", required=True)
-    demo.add_argument("--domain", required=True, choices=("astronomy", "ai"))
+    demo.add_argument("--domain", required=True)
     demo.add_argument("--ablation", default="full", choices=sorted(VALID_ABLATIONS))
     demo.add_argument("--config")
     demo.add_argument("--trace", action="store_true")
@@ -122,6 +154,22 @@ def build_parser() -> argparse.ArgumentParser:
     benchmark.add_argument("--conditions", help="comma-separated q0,q1,q2")
     benchmark.add_argument("--limit", type=int, help="limit intents for a smoke run")
     benchmark.set_defaults(func=command_benchmark)
+
+    experiment = subparsers.add_parser(
+        "experiment",
+        help="v0.2 regime experiment (matched backends, factorial degradation)",
+    )
+    experiment.add_argument("--config", default=None)
+    experiment.add_argument("--output")
+    experiment.add_argument("--methods", help="comma-separated method names")
+    experiment.add_argument("--limit", type=int, help="limit intents for a smoke run")
+    experiment.add_argument("--seeds", help="comma-separated integer seeds")
+    experiment.set_defaults(func=command_experiment)
+
+    materialize = subparsers.add_parser(
+        "materialize-ops", help="write the isolated ops runbook fixture under data/ops"
+    )
+    materialize.set_defaults(func=command_materialize)
 
     validate = subparsers.add_parser("validate", help="validate data and cross-references")
     validate.add_argument("--config")
