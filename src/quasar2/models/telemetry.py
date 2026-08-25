@@ -51,6 +51,13 @@ class PipelineResult:
     explore_rounds: int
     elapsed_ms: float
     ablation: str = "full"
+    retrieval_calls_avoided: int = 0
+    pruned_explorations: int = 0
+    termination_reason: str = "decision"
+    issued_query_hashes: tuple[str, ...] = ()
+    mean_document_novelty: float = 0.0
+    total_belief_variation: float = 0.0
+    total_observed_entropy_reduction: float = 0.0
 
     def to_dict(self) -> dict[str, Any]:
         return _jsonable(self)

@@ -46,7 +46,12 @@ class BenchmarkRecord:
     reciprocal_rank: float
     ndcg_at_10: float
     retrieval_calls: int
+    retrieval_calls_avoided: int
     explore_rounds: int
+    pruned_explorations: int
+    mean_document_novelty: float
+    total_belief_variation: float
+    observed_entropy_reduction: float
     latency_ms: float
 
 
@@ -125,7 +130,22 @@ def summarize(records: Sequence[BenchmarkRecord]) -> dict[str, float]:
             float(record.action == Action.ASK.value) for record in records
         ),
         "average_retrieval_calls": statistics.fmean(record.retrieval_calls for record in records),
+        "average_retrieval_calls_avoided": statistics.fmean(
+            record.retrieval_calls_avoided for record in records
+        ),
         "average_explore_rounds": statistics.fmean(record.explore_rounds for record in records),
+        "average_pruned_explorations": statistics.fmean(
+            record.pruned_explorations for record in records
+        ),
+        "mean_document_novelty": statistics.fmean(
+            record.mean_document_novelty for record in records
+        ),
+        "mean_total_belief_variation": statistics.fmean(
+            record.total_belief_variation for record in records
+        ),
+        "mean_observed_entropy_reduction": statistics.fmean(
+            record.observed_entropy_reduction for record in records
+        ),
         "latency_p50_ms": _percentile([record.latency_ms for record in records], 0.50),
         "latency_p95_ms": _percentile([record.latency_ms for record in records], 0.95),
     }
@@ -267,7 +287,12 @@ class BenchmarkRunner:
                         predicted = result.predicted_hypothesis_id
                         action = Action.ANSWER.value
                         calls = result.retrieval_calls
+                        avoided_calls = 0
                         rounds = 0
+                        pruned = 0
+                        document_novelty = 1.0
+                        belief_variation = 0.0
+                        entropy_reduction = 0.0
                         latency = result.elapsed_ms
                     else:
                         pipeline_result = self.pipeline.run(
@@ -280,7 +305,12 @@ class BenchmarkRunner:
                         predicted = pipeline_result.predicted_hypothesis_id
                         action = pipeline_result.decision.action.value
                         calls = pipeline_result.retrieval_calls
+                        avoided_calls = pipeline_result.retrieval_calls_avoided
                         rounds = pipeline_result.explore_rounds
+                        pruned = pipeline_result.pruned_explorations
+                        document_novelty = pipeline_result.mean_document_novelty
+                        belief_variation = pipeline_result.total_belief_variation
+                        entropy_reduction = pipeline_result.total_observed_entropy_reduction
                         latency = pipeline_result.elapsed_ms
                     recall, reciprocal_rank, ndcg = retrieval_metrics(
                         hits,
@@ -303,7 +333,12 @@ class BenchmarkRunner:
                             reciprocal_rank=reciprocal_rank,
                             ndcg_at_10=ndcg,
                             retrieval_calls=calls,
+                            retrieval_calls_avoided=avoided_calls,
                             explore_rounds=rounds,
+                            pruned_explorations=pruned,
+                            mean_document_novelty=document_novelty,
+                            total_belief_variation=belief_variation,
+                            observed_entropy_reduction=entropy_reduction,
                             latency_ms=latency,
                         )
                     )
@@ -348,7 +383,7 @@ class BenchmarkRunner:
                 outcome="correct_autonomous_resolution",
             )
         return {
-            "schema_version": "1.0",
+            "schema_version": "1.1",
             "poc_status": "mechanism test; not evidence of general superiority",
             "started_unix": started,
             "seed": int(self.config.values.get("seed", 42)),
@@ -383,7 +418,7 @@ def write_results(results: Mapping[str, Any], output_path: str | Path) -> tuple[
 
 
 def format_summary_table(results: Mapping[str, Any]) -> str:
-    header = "method             IRR    R@10   MRR    nDCG   ARR    cARR   ASK    calls  p95ms"
+    header = "method             IRR    R@10   MRR    nDCG   ARR    cARR   ASK    calls  saved  p95ms"
     lines = [header, "-" * len(header)]
     for method in results.get("methods", ()):
         values = results["summaries"][method]["overall"]
@@ -394,6 +429,7 @@ def format_summary_table(results: Mapping[str, Any]) -> str:
             f"{values['autonomous_resolution_rate']:.3f}  "
             f"{values['correct_autonomous_resolution_rate']:.3f}  "
             f"{values['ask_fraction']:.3f}  {values['average_retrieval_calls']:.2f}  "
+            f"{values['average_retrieval_calls_avoided']:.2f}  "
             f"{values['latency_p95_ms']:.2f}"
         )
     return "\n".join(lines)

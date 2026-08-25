@@ -1,7 +1,7 @@
 # QUASAR2
 
 **Competing-hypothesis retrieval for latent-intent recovery under query degradation**  
-Research proof of concept · v0.1.0 · Crizan Belém Ribeiro
+Research proof of concept · v0.1.1 · Crizan Belém Ribeiro
 
 > Treat the observed query as a noisy measurement of a latent information need;
 > preserve several plausible interpretations; acquire evidence that separates
@@ -41,13 +41,16 @@ demo as evidence.
 - transparent BM25, deterministic hashing-vector, and hybrid retrieval;
 - evidence scoring with observation, anchor, discriminator, and provenance terms;
 - posterior-like belief updates with duplicate-evidence suppression;
+- SHA-256 query history and pre-retrieval rejection of repeated exploration;
+- zero-novel-evidence termination without changing the frozen v0.1 decision policy;
 - expected-utility `ANSWER / EXPLORE / ASK` decisions;
 - autonomous contrastive retrieval between the two leading hypotheses;
 - four retrieval baselines and five mechanism ablations;
 - 40 intents × three query conditions = **120 canonical observations**;
 - 80 corpus documents split into core and discriminative evidence;
 - Recall@10, MRR, nDCG@10, Intent Recovery Rate, ARR, correct ARR,
-  ASK fraction, calls, exploration rounds, latency, and robustness ratio;
+  ASK fraction, calls, avoided calls, exploration rounds, document novelty,
+  belief variation, entropy reduction, latency, and robustness ratio;
 - paired bootstrap interval for Full minus Hybrid intent recovery;
 - JSON traces, JSON/CSV experiment outputs, validation, and unit tests.
 
@@ -103,6 +106,8 @@ The trace exposes every transition:
 ```text
 OBSERVATION -> HYPOTHESES -> RETRIEVAL -> EVIDENCE -> BELIEF
             -> DECISION -> [EXPLORE -> ...] -> ANSWER | ASK
+                              | repeated/zero novelty
+                              +-> PRUNE -> ANSWER | ASK
 ```
 
 Use `--json` for a machine-readable record. Use `--ablation noHyp`,
@@ -131,17 +136,23 @@ quasar2 benchmark --limit 3 --methods hybrid,full --conditions q2
 The repository includes the deterministic seed-42 run. Values below are not a
 paper result; they characterize this synthetic diagnostic fixture.
 
-| Method | Intent recovery | Recall@10 | MRR | correct ARR | ASK | Calls |
-|---|---:|---:|---:|---:|---:|---:|
-| BM25 | 0.983 | 0.946 | 0.990 | 0.983 | 0.000 | 1.00 |
-| Dense hashing proxy | 0.942 | 0.933 | 0.965 | 0.942 | 0.000 | 1.00 |
-| Hybrid | 0.983 | 0.950 | 0.990 | 0.983 | 0.000 | 1.00 |
-| Rewrite + Hybrid | 0.958 | 0.979 | 0.976 | 0.958 | 0.000 | 1.00 |
-| **Full QUASAR2** | **0.975** | **0.642** | **0.965** | **0.792** | **0.208** | **4.19** |
-| noHyp | 0.958 | 0.483 | 0.967 | 0.958 | 0.000 | 1.00 |
-| noExplore | 0.983 | 0.521 | 0.960 | 0.742 | 0.258 | 3.26 |
-| noUpdate | 0.958 | 0.808 | 0.973 | 0.375 | 0.625 | 5.76 |
-| noAsk | 0.975 | 0.642 | 0.965 | 0.975 | 0.000 | 4.19 |
+The checked-in table is regenerated for v0.1.1. Quality columns remain directly
+comparable with v0.1.0; `Calls` may decrease because a query is now rejected
+before an identical retrieval is executed. See
+[v0.1.1 redundancy pruning](docs/V0.1.1_REDUNDANCY_PRUNING.md) for the exact
+invariant and regression case.
+
+| Method | Intent recovery | Recall@10 | MRR | correct ARR | ASK | Calls | Avoided |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| BM25 | 0.983 | 0.946 | 0.990 | 0.983 | 0.000 | 1.00 | 0.00 |
+| Dense hashing proxy | 0.942 | 0.933 | 0.965 | 0.942 | 0.000 | 1.00 | 0.00 |
+| Hybrid | 0.983 | 0.950 | 0.990 | 0.983 | 0.000 | 1.00 | 0.00 |
+| Rewrite + Hybrid | 0.958 | 0.979 | 0.976 | 0.958 | 0.000 | 1.00 | 0.00 |
+| **Full QUASAR2** | **0.975** | **0.642** | **0.965** | **0.792** | **0.208** | **3.81** | **0.38** |
+| noHyp | 0.958 | 0.483 | 0.967 | 0.958 | 0.000 | 1.00 | 0.00 |
+| noExplore | 0.983 | 0.521 | 0.960 | 0.742 | 0.258 | 3.26 | 0.00 |
+| noUpdate | 0.958 | 0.808 | 0.973 | 0.375 | 0.625 | 4.51 | 1.25 |
+| noAsk | 0.975 | 0.642 | 0.965 | 0.975 | 0.000 | 3.81 | 0.38 |
 
 What this result says:
 
@@ -158,6 +169,10 @@ What this result says:
 4. `noAsk` looks strong on correctness but forces an answer for every case. A
    deployment decision would need a calibrated cost for wrong answers rather
    than treating coverage as free.
+5. Relative to v0.1.0, v0.1.1 changes none of the 1,080 query-level prediction,
+   action, or ranking-quality tuples across the nine methods. It reduces mean
+   calls for Full from 4.19 to 3.81, for `noUpdate` from 5.76 to 4.51, and for
+   `noAsk` from 4.19 to 3.81.
 
 Therefore the current run shows an internal mechanism signal but **does not
 validate the stronger superiority claim**. That is a useful POC outcome: the
@@ -183,6 +198,8 @@ Important safeguards in the POC:
 
 - the ground-truth intent is never passed to the pipeline;
 - evidence is deduplicated by `(hypothesis_id, document_id)`;
+- retrieval queries are deduplicated by a stable hypothesis-conditioned hash;
+- a zero-novel acquisition round disables further automatic exploration;
 - exploration is limited and charged a utility cost;
 - a hypothesis must pass confidence, margin, and evidence gates to answer;
 - all actions, probabilities, evidence, and retrieval queries are traced;
@@ -242,7 +259,8 @@ Before a paper-level claim, the project requires:
 Full details: [Scientific thesis](docs/SCIENTIFIC_THESIS.md),
 [Experiment protocol](docs/EXPERIMENT_PROTOCOL.md),
 [Data and metrics](docs/DATA_AND_METRICS.md), and
-[Limitations](docs/LIMITATIONS.md).
+[Limitations](docs/LIMITATIONS.md). The frozen next-version design is in the
+[v0.2 experimental protocol](docs/V0.2_EXPERIMENT_PROTOCOL.md).
 
 ## License
 
