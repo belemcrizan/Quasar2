@@ -31,6 +31,10 @@
     "temperature": 1.0,
     "probability_floor": 0.000001
   },
+  "exploration": {
+    "deduplicate_queries": true,
+    "stop_on_zero_novelty": true
+  },
   "decision": {
     "answer_confidence": 0.67,
     "answer_margin": 0.20,

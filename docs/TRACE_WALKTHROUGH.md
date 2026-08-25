@@ -47,9 +47,15 @@ leading hypotheses. It selects terms unique to each and issues follow-up
 retrieval. The second round uses a larger top-k so it can discover the separate
 diagnostic document.
 
-A candidate-document pair already seen in any earlier round is ignored. If the
-follow-up query returns nothing new, belief remains unchanged and the wasted
-retrieval remains visible in telemetry.
+A candidate-document pair already seen in any earlier round is ignored. v0.1.1
+also hashes each `(hypothesis, normalized query)` pair. An identical proposed
+follow-up is emitted as `EXPLORATION_PRUNED` and never reaches the retriever. If
+a distinct query executes but returns zero novel evidence, `ACQUISITION_STOP`
+prevents a further exploration round.
+
+Every retrieval event reports `document_novelty`. Every belief event reports
+`total_variation` and `observed_entropy_reduction`; the latter may be negative
+when evidence legitimately increases uncertainty.
 
 ## 5. ANSWER or ASK
 
@@ -71,5 +77,5 @@ Use `--json` to inspect:
 - every retrieved document and scoring feature;
 - probabilities and utilities by round;
 - final action, selected hypothesis, extractive answer or clarification;
-- calls, rounds, elapsed time, and complete ordered trace.
-
+- calls, avoided calls, rounds, pruning reason, novelty, belief movement,
+  elapsed time, and complete ordered trace.

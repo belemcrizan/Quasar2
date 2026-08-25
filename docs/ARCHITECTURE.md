@@ -98,8 +98,10 @@ The loop terminates when:
 - answer confidence, margin, and evidence gates all pass;
 - exploration is exhausted and ASK is enabled;
 - ASK is ablated and the system is forced to answer.
+- a proposed hypothesis-conditioned query repeats an issued query;
+- an executed exploration round yields zero novel evidence and another
+  exploration would otherwise be selected.
 
-`max_explore_rounds` prevents an unbounded retrieval loop. Duplicate evidence
-causes no update, which makes repeated identical searches observable as wasted
-cost rather than false certainty.
-
+`max_explore_rounds` remains the hard budget. v0.1.1 adds query-history and
+zero-novelty gates before that budget is exhausted, while preserving the v0.1
+confidence, evidence, utility, and ASK/ANSWER rules.

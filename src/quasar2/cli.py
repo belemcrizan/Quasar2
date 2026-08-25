@@ -31,7 +31,16 @@ def command_demo(args: argparse.Namespace) -> int:
     print(f"confidence: {result.final_belief.top_probability:.3f}")
     print(f"margin: {result.final_belief.margin:.3f}")
     print(f"retrieval calls: {result.retrieval_calls}")
+    print(f"retrieval calls avoided: {result.retrieval_calls_avoided}")
     print(f"explore rounds: {result.explore_rounds}")
+    print(f"pruned explorations: {result.pruned_explorations}")
+    print(f"termination reason: {result.termination_reason}")
+    print(f"mean document novelty: {result.mean_document_novelty:.3f}")
+    print(f"total belief variation: {result.total_belief_variation:.3f}")
+    print(
+        "observed entropy reduction: "
+        f"{result.total_observed_entropy_reduction:.3f}"
+    )
     if result.answer:
         print(f"answer: {result.answer}")
     if result.clarification_question:
@@ -128,4 +137,3 @@ def main(argv: Sequence[str] | None = None) -> int:
 
 if __name__ == "__main__":  # pragma: no cover
     raise SystemExit(main())
-

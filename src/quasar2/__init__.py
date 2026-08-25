@@ -7,5 +7,4 @@ general discovery, causal inference, or production readiness.
 from quasar2.pipeline import QuasarPipeline
 
 __all__ = ["QuasarPipeline"]
-__version__ = "0.1.0"
-
+__version__ = "0.1.1"

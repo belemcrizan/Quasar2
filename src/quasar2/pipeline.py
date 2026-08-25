@@ -7,6 +7,7 @@ belief -> ANSWER/EXPLORE/ASK.  Every transition is emitted as trace data.
 from __future__ import annotations
 
 from dataclasses import replace
+import hashlib
 import time
 from typing import Any, Mapping
 
@@ -22,7 +23,7 @@ from quasar2.models.decision import Action
 from quasar2.models.evidence import EvidenceBundle, EvidenceItem
 from quasar2.models.telemetry import PipelineResult, TraceEvent
 from quasar2.retrieval import BM25Retriever, HashingDenseRetriever, HybridRetriever, load_corpus
-from quasar2.signals.extractor import SignalExtractor
+from quasar2.signals.extractor import SignalExtractor, normalize_text
 
 
 VALID_ABLATIONS = frozenset({"full", "noHyp", "noExplore", "noUpdate", "noAsk"})
@@ -46,6 +47,8 @@ class QuasarPipeline:
         minimum_generation_score: float = 0.0,
         initial_top_k: int = 1,
         top_k: int = 4,
+        deduplicate_queries: bool = True,
+        stop_on_zero_novelty: bool = True,
         clarification_templates: Mapping[str, str] | None = None,
     ) -> None:
         self.signal_extractor = signal_extractor
@@ -60,6 +63,8 @@ class QuasarPipeline:
         self.minimum_generation_score = minimum_generation_score
         self.initial_top_k = initial_top_k
         self.top_k = top_k
+        self.deduplicate_queries = deduplicate_queries
+        self.stop_on_zero_novelty = stop_on_zero_novelty
         self.clarification_templates = dict(clarification_templates or {})
 
     @classmethod
@@ -87,6 +92,7 @@ class QuasarPipeline:
         )
         belief = config.section("belief")
         decision = config.section("decision")
+        exploration = config.section("exploration")
         hypothesis_config = config.section("hypotheses")
         return cls(
             signal_extractor=SignalExtractor(cues),
@@ -119,8 +125,17 @@ class QuasarPipeline:
             ),
             initial_top_k=int(retrieval.get("initial_top_k_per_hypothesis", 1)),
             top_k=int(retrieval.get("top_k_per_hypothesis", 4)),
+            deduplicate_queries=bool(exploration.get("deduplicate_queries", True)),
+            stop_on_zero_novelty=bool(exploration.get("stop_on_zero_novelty", True)),
             clarification_templates=templates,
         )
+
+    @staticmethod
+    def _query_hash(hypothesis_id: str, query: str) -> str:
+        """Return a stable identity for a hypothesis-conditioned query."""
+
+        canonical = f"{hypothesis_id}\0{normalize_text(query)}"
+        return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
     def run(
         self,
@@ -174,9 +189,17 @@ class QuasarPipeline:
         belief = self.belief_updater.initialize(candidates)
         evidence_items: list[EvidenceItem] = []
         seen_pairs: set[tuple[str, str]] = set()
+        seen_document_ids: set[str] = set()
+        issued_query_hashes: set[str] = set()
         cumulative_support = {candidate.hypothesis.hypothesis_id: 0.0 for candidate in candidates}
         retrieval_calls = 0
+        retrieval_calls_avoided = 0
+        pruned_explorations = 0
         explore_rounds = 0
+        termination_reason = "decision"
+        document_novelties: list[float] = []
+        total_belief_variation = 0.0
+        total_observed_entropy_reduction = 0.0
         current_queries = {
             candidate.hypothesis.hypothesis_id: " ".join(
                 (observation.normalized_query, candidate.hypothesis.label)
@@ -189,23 +212,37 @@ class QuasarPipeline:
 
         while True:
             bundles: list[EvidenceBundle] = []
+            round_novel_items = 0
             candidate_by_id = {c.hypothesis.hypothesis_id: c for c in candidates}
             for hypothesis_id in active_ids:
                 candidate = candidate_by_id[hypothesis_id]
                 retrieval_query = current_queries[hypothesis_id]
+                query_hash = self._query_hash(hypothesis_id, retrieval_query)
+                issued_query_hashes.add(query_hash)
                 hits = self.retriever.search(
                     retrieval_query,
                     top_k=self.initial_top_k if round_index == 0 else self.top_k,
                     domain=domain,
                 )
                 retrieval_calls += 1
+                document_ids = [hit.document.document_id for hit in hits]
+                repeated_document_count = sum(
+                    document_id in seen_document_ids for document_id in document_ids
+                )
+                document_novelty = 1.0 - repeated_document_count / max(1, len(document_ids))
+                document_novelties.append(document_novelty)
+                seen_document_ids.update(document_ids)
                 emit(
                     "RETRIEVAL",
                     "retrieved hypothesis-guided documents",
                     round=round_index,
                     hypothesis_id=hypothesis_id,
                     query=retrieval_query,
-                    documents=[hit.document.document_id for hit in hits],
+                    query_hash=query_hash,
+                    documents=document_ids,
+                    document_novelty=document_novelty,
+                    novel_document_count=len(document_ids) - repeated_document_count,
+                    repeated_document_count=repeated_document_count,
                 )
                 bundle = self.evidence_scorer.score(
                     observation,
@@ -216,6 +253,7 @@ class QuasarPipeline:
                     query=retrieval_query,
                 )
                 bundles.append(bundle)
+                round_novel_items += bundle.novel_item_count
                 for item in bundle.items:
                     seen_pairs.add((item.hypothesis_id, item.document_id))
                     evidence_items.append(item)
@@ -238,10 +276,22 @@ class QuasarPipeline:
                 for candidate in candidates
                 if candidate.hypothesis.hypothesis_id not in bundled_ids
             )
+            previous_belief = belief
             if ablation != "noUpdate":
                 belief = self.belief_updater.update(belief, bundles, round_index=round_index)
             else:
                 belief = replace(belief, round_index=round_index)
+            total_variation = 0.5 * sum(
+                abs(
+                    belief.probabilities.get(hypothesis_id, 0.0)
+                    - previous_belief.probabilities.get(hypothesis_id, 0.0)
+                )
+                for hypothesis_id in set(belief.probabilities)
+                | set(previous_belief.probabilities)
+            )
+            observed_entropy_reduction = previous_belief.entropy - belief.entropy
+            total_belief_variation += total_variation
+            total_observed_entropy_reduction += observed_entropy_reduction
             emit(
                 "BELIEF",
                 "updated competing beliefs" if ablation != "noUpdate" else "belief update ablated",
@@ -249,16 +299,49 @@ class QuasarPipeline:
                 probabilities=dict(belief.probabilities),
                 entropy=belief.normalized_entropy,
                 margin=belief.margin,
+                total_variation=total_variation,
+                observed_entropy_reduction=observed_entropy_reduction,
             )
             plan = self.discriminator.plan(observation, candidates, belief)
-            decision = self.decision_engine.decide(
+            exploration_enabled = ablation != "noExplore" and len(candidates) > 1
+            ungated_decision = self.decision_engine.decide(
                 belief,
                 cumulative_support,
                 explore_rounds=explore_rounds,
                 discriminative_power=plan.power,
-                exploration_enabled=ablation != "noExplore" and len(candidates) > 1,
+                exploration_enabled=exploration_enabled,
                 ask_enabled=ablation != "noAsk" and self.decision_engine.allow_ask,
             )
+            zero_novelty_stop = (
+                self.stop_on_zero_novelty
+                and round_index > 0
+                and round_novel_items == 0
+                and ungated_decision.action == Action.EXPLORE
+            )
+            if zero_novelty_stop:
+                avoided_queries = self.explorer.build_queries(observation, candidates, plan)
+                avoided_count = len(avoided_queries)
+                retrieval_calls_avoided += avoided_count
+                pruned_explorations += 1
+                termination_reason = "zero_novel_evidence"
+                emit(
+                    "ACQUISITION_STOP",
+                    "stopped exploration after a zero-novelty acquisition round",
+                    round=round_index,
+                    reason=termination_reason,
+                    novel_evidence_items=round_novel_items,
+                    avoided_retrieval_calls=avoided_count,
+                )
+                decision = self.decision_engine.decide(
+                    belief,
+                    cumulative_support,
+                    explore_rounds=explore_rounds,
+                    discriminative_power=plan.power,
+                    exploration_enabled=False,
+                    ask_enabled=ablation != "noAsk" and self.decision_engine.allow_ask,
+                )
+            else:
+                decision = ungated_decision
             emit(
                 "DECISION",
                 decision.rationale,
@@ -269,10 +352,55 @@ class QuasarPipeline:
                 expected_information_gain=decision.expected_information_gain,
             )
             if decision.action != Action.EXPLORE:
+                if termination_reason == "decision":
+                    termination_reason = f"decision_{decision.action.value.lower()}"
+                break
+            proposed_queries = self.explorer.build_queries(observation, candidates, plan)
+            repeated_queries: dict[str, str] = {}
+            if self.deduplicate_queries:
+                for hypothesis_id, proposed_query in proposed_queries.items():
+                    query_hash = self._query_hash(hypothesis_id, proposed_query)
+                    if query_hash in issued_query_hashes:
+                        repeated_queries[hypothesis_id] = query_hash
+            current_queries = {
+                hypothesis_id: proposed_query
+                for hypothesis_id, proposed_query in proposed_queries.items()
+                if hypothesis_id not in repeated_queries
+            }
+            if repeated_queries:
+                avoided_count = len(repeated_queries)
+                retrieval_calls_avoided += avoided_count
+                pruned_explorations += 1
+                emit(
+                    "EXPLORATION_PRUNED",
+                    "rejected repeated hypothesis-conditioned retrieval queries",
+                    round=round_index + 1,
+                    reason="repeated_query",
+                    repeated_query_hashes=repeated_queries,
+                    avoided_retrieval_calls=avoided_count,
+                )
+            if not current_queries:
+                termination_reason = "repeated_query"
+                decision = self.decision_engine.decide(
+                    belief,
+                    cumulative_support,
+                    explore_rounds=explore_rounds,
+                    discriminative_power=plan.power,
+                    exploration_enabled=False,
+                    ask_enabled=ablation != "noAsk" and self.decision_engine.allow_ask,
+                )
+                emit(
+                    "DECISION",
+                    f"exploration pruned; {decision.rationale}",
+                    action=decision.action.value,
+                    confidence=decision.confidence,
+                    margin=decision.margin,
+                    utilities=dict(decision.utilities),
+                    expected_information_gain=decision.expected_information_gain,
+                )
                 break
             explore_rounds += 1
             round_index += 1
-            current_queries = self.explorer.build_queries(observation, candidates, plan)
             active_ids = tuple(current_queries)
             emit(
                 "EXPLORATION",
@@ -281,6 +409,10 @@ class QuasarPipeline:
                 rationale=plan.rationale,
                 power=plan.power,
                 queries=current_queries,
+                query_hashes={
+                    hypothesis_id: self._query_hash(hypothesis_id, retrieval_query)
+                    for hypothesis_id, retrieval_query in current_queries.items()
+                },
             )
 
         assert decision is not None
@@ -315,6 +447,16 @@ class QuasarPipeline:
             action=decision.action.value,
             retrieval_calls=retrieval_calls,
             explore_rounds=explore_rounds,
+            retrieval_calls_avoided=retrieval_calls_avoided,
+            pruned_explorations=pruned_explorations,
+            termination_reason=termination_reason,
+            mean_document_novelty=(
+                sum(document_novelties) / len(document_novelties)
+                if document_novelties
+                else 0.0
+            ),
+            total_belief_variation=total_belief_variation,
+            total_observed_entropy_reduction=total_observed_entropy_reduction,
         )
         return PipelineResult(
             observation=observation,
@@ -330,5 +472,15 @@ class QuasarPipeline:
             explore_rounds=explore_rounds,
             elapsed_ms=(time.perf_counter() - started) * 1000.0,
             ablation=ablation,
+            retrieval_calls_avoided=retrieval_calls_avoided,
+            pruned_explorations=pruned_explorations,
+            termination_reason=termination_reason,
+            issued_query_hashes=tuple(sorted(issued_query_hashes)),
+            mean_document_novelty=(
+                sum(document_novelties) / len(document_novelties)
+                if document_novelties
+                else 0.0
+            ),
+            total_belief_variation=total_belief_variation,
+            total_observed_entropy_reduction=total_observed_entropy_reduction,
         )
-

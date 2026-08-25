@@ -42,9 +42,12 @@ own diagnostic.
 
 ### Repeated useless exploration
 
-The discriminator may generate an identical follow-up query on later rounds. The
-evidence deduplicator prevents false confidence, but calls are still wasted. A
-production planner should stop when expected novel yield is low.
+The v0.1 baseline could generate an identical follow-up query on later rounds.
+v0.1.1 rejects an identical hypothesis-conditioned query before retrieval and
+stops after an acquisition round with zero novel evidence. This removes the
+observed exact-repeat failure but does not detect paraphrastic or semantically
+equivalent queries. It is a redundancy gate, not a learned value-of-information
+model.
 
 ### Forced answer artifact
 
@@ -63,4 +66,3 @@ Valid wording is:
 
 Novelty should remain an open question until a systematic prior-art and related-
 work review is completed.
-
