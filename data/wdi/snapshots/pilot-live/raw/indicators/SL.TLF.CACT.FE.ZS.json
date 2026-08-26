@@ -1,0 +1,43 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SL.TLF.CACT.FE.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 662.5138999661431,
+    "sha256": "c5d978221db6bdf21eca161ee49ef767d14d0e39825750123e7003ce4479bbd4",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": "20",
+        "total": 1
+      },
+      [
+        {
+          "id": "SL.TLF.CACT.FE.ZS",
+          "name": "Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "The labor force participation rate is the labor force as a percent of the population ages 15 and older. The labor force is the sum of all persons of working age who are employed and those who are unemployed.",
+          "sourceOrganization": "ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO), uri: https://ilostat.ilo.org/data/bulk/, publisher: ILOSTAT, type: external database, date accessed: January 17, 2026",
+          "topics": [
+            {
+              "id": "10",
+              "value": "Social Protection & Labor"
+            },
+            {
+              "id": "17",
+              "value": "Gender"
+            },
+            {
+              "id": "15",
+              "value": "Social Development "
+            }
+          ]
+        }
+      ]
+    ]
+  }
+]

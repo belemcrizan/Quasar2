@@ -21,7 +21,7 @@ dependencies = []
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "ruff>=0.5"]
-neural = ["sentence-transformers>=3.0", "numpy>=1.24"]
+neural = ["sentence-transformers>=3.0", "numpy>=1.24", "torch>=2.6"]
 
 [project.scripts]
 quasar2 = "quasar2.cli:main"

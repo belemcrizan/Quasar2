@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>QUASAR2 V2.4 developmental report</title></head>
+<body>
+<h1>QUASAR2 V2.4 — developmental external validation</h1>
+<p>Not a sealed test. Source: <code>docs/V2_4_EXTERNAL_VALIDATION_REPORT.md</code>.</p>
+<table border="1" cellpadding="6">
+<tr><th>Method</th><th>Intent exact</th><th>WAR</th><th>Coverage</th><th>Calls</th></tr>
+<tr><td>BM25 top-1</td><td>0.643</td><td>0.357</td><td>1.000</td><td>1.00</td></tr>
+<tr><td>BM25 threshold</td><td>0.146</td><td>0.594</td><td>0.360</td><td>1.00</td></tr>
+<tr><td>BM25 V2.4</td><td>0.525</td><td>0.323</td><td>0.776</td><td>2.91</td></tr>
+</table>
+<p>n=3036 WDI pilot instances, snapshot wdi-pilot-2026-08-26-b6ddb672. Top-1 wins intent exact; V2.4 is not justified on this table.</p>
+</body></html>

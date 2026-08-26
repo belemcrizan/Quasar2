@@ -1,0 +1,37 @@
+{
+  "snapshot_id": "wdi-ci-offline-fixture",
+  "source": "worldbank_wdi",
+  "source_id": 2,
+  "api_version": "2",
+  "stage": "ci",
+  "created_at": "2026-08-26T03:03:49+00:00",
+  "completed_at": "2026-08-26T03:03:49+00:00",
+  "request_count": 0,
+  "row_counts": {
+    "entities": 9,
+    "indicators": 12,
+    "observations": 324,
+    "observed": 323,
+    "not_available": 1
+  },
+  "indicator_count": 12,
+  "country_entity_count": 8,
+  "period_range": [
+    "2020",
+    "2022"
+  ],
+  "schema_versions": {
+    "snapshot": "2.4.0",
+    "normalized": "2.4.0"
+  },
+  "software_commit": "offline-fixture",
+  "status": "COMPLETE",
+  "hashes": {
+    "entities": "5957cfb0e5071b737b3683850081258db0acb805d3f562fc444c2a90bd8cb02e",
+    "indicators": "31c20253daac4a97b3ef9335242e8c0c7699a623a35eb57a7542ecb7b1ac9af8",
+    "observations": "984ff624b860fb1fe0ff65c2a6722a205509a46a11bc45d0a6d0cb0a5a87b18e",
+    "attribution": "99abc8d76864ed0284eaae05eaae5988614e39749579e180c97ffb2093a11a94"
+  },
+  "errors": [],
+  "fixture": true
+}

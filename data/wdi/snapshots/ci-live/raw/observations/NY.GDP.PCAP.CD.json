@@ -1,0 +1,2900 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;LCN/indicator/NY.GDP.PCAP.CD?format=json&source=2&date=2018%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 301.27910000737756,
+    "sha256": "876a8255b7b83a7b13bf816da2cb8565513b5071aed99017a90db067b8e38454",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": 1000,
+        "total": 180,
+        "sourceid": "2",
+        "lastupdated": "2026-07-13"
+      },
+      [
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2025",
+          "value": 14898.0885943842,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2024",
+          "value": 13969.7836603737,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2023",
+          "value": 14261.8465667948,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2022",
+          "value": 13962.1894087223,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2021",
+          "value": 10738.0179223384,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2020",
+          "value": 8535.59938004389,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2019",
+          "value": 9955.97478680428,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2018",
+          "value": 11752.7998922979,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2017",
+          "value": 14532.5009308511,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2016",
+          "value": 12699.9623137756,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2015",
+          "value": 13679.6264980954,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2014",
+          "value": 12233.1444119186,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2013",
+          "value": 12963.675773326,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2012",
+          "value": 12949.717486654,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2011",
+          "value": 12704.2831819684,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2010",
+          "value": 10260.1313108254,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2009",
+          "value": 8150.23527028221,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2008",
+          "value": 8944.1102657357,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2007",
+          "value": 7185.25155147027,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2006",
+          "value": 5869.38028970204,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2025",
+          "value": 10713.2856869511,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2024",
+          "value": 10310.5486973693,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2023",
+          "value": 10377.5892792557,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2022",
+          "value": 9281.33334441234,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2021",
+          "value": 7972.5366498646,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2020",
+          "value": 7074.19378337644,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2019",
+          "value": 9029.83326681073,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2018",
+          "value": 9300.66164923219,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2017",
+          "value": 10080.5092819305,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2016",
+          "value": 8836.28652735657,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2015",
+          "value": 8936.19661712113,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2014",
+          "value": 12274.9939689363,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2013",
+          "value": 12458.8912138813,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2012",
+          "value": 12521.7213519966,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2011",
+          "value": 13396.6243562986,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2010",
+          "value": 11403.2821278747,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2009",
+          "value": 8678.6592244676,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2008",
+          "value": 8908.33176538648,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2007",
+          "value": 7409.69130673473,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2006",
+          "value": 5934.14470924968,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2025",
+          "value": 13861.970224368,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2024",
+          "value": 13293.1162269366,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2023",
+          "value": 12951.1782397043,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2022",
+          "value": 12970.6056414327,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2021",
+          "value": 12887.4357242941,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2020",
+          "value": 10627.4637989619,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2019",
+          "value": 10342.9009524335,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2018",
+          "value": 10085.6638148819,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2017",
+          "value": 8979.67652709856,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2016",
+          "value": 8254.86859320357,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2015",
+          "value": 8175.33285077393,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2014",
+          "value": 7781.06597484974,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2013",
+          "value": 7147.03518622344,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2012",
+          "value": 6405.0574241349,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2011",
+          "value": 5703.76027973346,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2010",
+          "value": 4629.24551710077,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2009",
+          "value": 3898.24459158811,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2008",
+          "value": 3523.44302065213,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2007",
+          "value": 2734.72709877693,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2006",
+          "value": 2129.25696999613,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2025",
+          "value": 60496.4350820414,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2024",
+          "value": 56103.7323182554,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2023",
+          "value": 54776.7668235491,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2022",
+          "value": 50506.5179638543,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2021",
+          "value": 52349.2459994422,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2020",
+          "value": 47394.8734504469,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2019",
+          "value": 47656.199739747,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2018",
+          "value": 48916.1686612154,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2017",
+          "value": 45553.9341495339,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2016",
+          "value": 42948.9381932694,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2015",
+          "value": 41929.7549110722,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2014",
+          "value": 48959.5991203133,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2013",
+          "value": 47206.8353514242,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2012",
+          "value": 44718.0159214069,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2011",
+          "value": 47630.9761883572,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2010",
+          "value": 42396.9665976293,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2009",
+          "value": 42471.8868625226,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2008",
+          "value": 46379.1647953479,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2007",
+          "value": 42350.9217211489,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2006",
+          "value": 36980.3349948954,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2025",
+          "value": 2702.47987141553,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2024",
+          "value": 2591.9916607122,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2023",
+          "value": 2434.44826340989,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2022",
+          "value": 2279.98145719369,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2021",
+          "value": 2239.61384367482,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2020",
+          "value": 1907.04251637669,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2019",
+          "value": 2041.42863698585,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2018",
+          "value": 1966.25455171679,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2017",
+          "value": 1950.10468280866,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2016",
+          "value": 1707.50892912243,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2015",
+          "value": 1583.99815907985,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2014",
+          "value": 1553.88396075118,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2013",
+          "value": 1432.84397512195,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2012",
+          "value": 1429.32199520032,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2011",
+          "value": 1445.46127486037,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2010",
+          "value": 1347.51939071367,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2009",
+          "value": 1094.94974598436,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2008",
+          "value": 992.519584923828,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2007",
+          "value": 1021.88707706826,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2006",
+          "value": 801.668353659022,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2025",
+          "value": 35951.0449549304,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2024",
+          "value": 33797.1014287876,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2023",
+          "value": 35215.003535366,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2022",
+          "value": 35548.2645222433,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2021",
+          "value": 41580.739040705,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2020",
+          "value": 41098.9739004553,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2019",
+          "value": 41424.8655601543,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2018",
+          "value": 40645.478086519,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2017",
+          "value": 39679.8635262948,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2016",
+          "value": 40214.9688631562,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2015",
+          "value": 35664.6446110613,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2014",
+          "value": 39172.8471161948,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2013",
+          "value": 41369.1948479498,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2012",
+          "value": 49626.6830327571,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2011",
+          "value": 49122.077634247,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2010",
+          "value": 45378.1378109399,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2009",
+          "value": 41678.1783063195,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2008",
+          "value": 40294.2081309702,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2007",
+          "value": 36129.9535132925,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2006",
+          "value": 36354.4271646349,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2025",
+          "value": 11095.2176548294,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2024",
+          "value": 10705.1067802788,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2023",
+          "value": 10507.6138782353,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2022",
+          "value": 9412.05924553392,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2021",
+          "value": 8292.15210222359,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2020",
+          "value": 7169.39235876452,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2019",
+          "value": 8539.95940708219,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2018",
+          "value": 8778.55673829884,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2017",
+          "value": 9065.82390216762,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2016",
+          "value": 8241.51169070648,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2015",
+          "value": 8546.9179023802,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2014",
+          "value": 10146.146495038,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2013",
+          "value": 10305.4184021496,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2012",
+          "value": 10328.6495660788,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2011",
+          "value": 10334.0365238871,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2010",
+          "value": 9183.55248272126,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2009",
+          "value": 7495.05965615866,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2008",
+          "value": 8077.96531899755,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2007",
+          "value": 7035.79956287181,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2006",
+          "value": 6047.73392908046,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2025",
+          "value": 1224.25410237743,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2024",
+          "value": 1084.16041805058,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2023",
+          "value": 2138.76383718757,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2022",
+          "value": 2899.16047469267,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2021",
+          "value": 2787.48779220991,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2020",
+          "value": 2797.184580679,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2019",
+          "value": 3189.81286496183,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2018",
+          "value": 2057.87944554011,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2017",
+          "value": 1876.34027111773,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2016",
+          "value": 2070.4127339595,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2015",
+          "value": 2585.73360671797,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2014",
+          "value": 3088.72131316169,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2013",
+          "value": 2872.79083379398,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2012",
+          "value": 2633.19734671361,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2011",
+          "value": 2418.41316975875,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2010",
+          "value": 2202.25672957344,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2009",
+          "value": 1820.48633854782,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2008",
+          "value": 2154.10543545364,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2007",
+          "value": 1815.52697545827,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2006",
+          "value": 1599.53891556365,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2025",
+          "value": 90026.5163005744,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2024",
+          "value": 86169.6641581917,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2023",
+          "value": 82586.7847707894,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2022",
+          "value": 78008.6895811877,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2021",
+          "value": 71441.2319805947,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2020",
+          "value": 64465.2971415748,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2019",
+          "value": 65227.9565911038,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2018",
+          "value": 62875.6661382728,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2017",
+          "value": 60047.7190728307,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2016",
+          "value": 57976.628204291,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2015",
+          "value": 56849.4697923159,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2014",
+          "value": 55153.3940182967,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2013",
+          "value": 53297.3862901595,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2012",
+          "value": 51708.3940614082,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2011",
+          "value": 50024.8812320773,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2010",
+          "value": 48642.6312088213,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2009",
+          "value": 47194.9500893872,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2008",
+          "value": 48570.0594269601,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2007",
+          "value": 48050.227412195,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "NY.GDP.PCAP.CD",
+            "value": "GDP per capita (current US$)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2006",
+          "value": 46301.9876485519,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        }
+      ]
+    ]
+  }
+]

@@ -1,0 +1,884 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;LCN/indicator/FP.CPI.TOTL.ZG?format=json&source=2&date=2018%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 1338.5897999396548,
+    "sha256": "2c1a10fbf12e48d0110c97eedb3393f6b9a88b73677e4e359984d8d4f87e2b1c",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": 1000,
+        "total": 54,
+        "sourceid": "2",
+        "lastupdated": "2026-07-13"
+      },
+      [
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2023",
+          "value": 133.488935594175,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2022",
+          "value": 72.430757531824,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2021",
+          "value": 48.4093786255199,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2020",
+          "value": 42.0150947376509,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2019",
+          "value": 53.5483043492339,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "AR",
+            "value": "Argentina"
+          },
+          "countryiso3code": "ARG",
+          "date": "2018",
+          "value": 34.2772237131003,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2023",
+          "value": 4.59356282283204,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2022",
+          "value": 9.28010608956873,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2021",
+          "value": 8.30165975585673,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2020",
+          "value": 3.21176803803376,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2019",
+          "value": 3.73297621216894,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "BR",
+            "value": "Brazil"
+          },
+          "countryiso3code": "BRA",
+          "date": "2018",
+          "value": 3.66485028376729,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2023",
+          "value": 0.234836828893051,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2022",
+          "value": 1.97357555739051,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2021",
+          "value": 0.981015135544882,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2020",
+          "value": 2.41942189457782,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2019",
+          "value": 2.89923416358227,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "CN",
+            "value": "China"
+          },
+          "countryiso3code": "CHN",
+          "date": "2018",
+          "value": 2.07479039965576,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2023",
+          "value": 5.94643667725823,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2022",
+          "value": 6.87257438551097,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2021",
+          "value": 3.06666666666673,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2020",
+          "value": 0.144877925813982,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2019",
+          "value": 1.44565976888253,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "DE",
+            "value": "Germany"
+          },
+          "countryiso3code": "DEU",
+          "date": "2018",
+          "value": 1.73216879766942,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2023",
+          "value": 5.64914318907925,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2022",
+          "value": 6.69903414079858,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2021",
+          "value": 5.13140747176364,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2020",
+          "value": 6.6234367762853,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2019",
+          "value": 3.72950573539123,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "IN",
+            "value": "India"
+          },
+          "countryiso3code": "IND",
+          "date": "2018",
+          "value": 3.93882646691643,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2023",
+          "value": 3.26813365933163,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2022",
+          "value": 2.49770278172255,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2021",
+          "value": -0.233352779398264,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2020",
+          "value": -0.024995834027731,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2019",
+          "value": 0.46877615938395,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "JP",
+            "value": "Japan"
+          },
+          "countryiso3code": "JPN",
+          "date": "2018",
+          "value": 0.989094598021848,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2023",
+          "value": 4.63202285403356,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2022",
+          "value": 8.08552554700602,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2021",
+          "value": 3.87805442411131,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2020",
+          "value": 1.49389017299587,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2019",
+          "value": 2.18225589066245,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "ZJ",
+            "value": "Latin America & Caribbean"
+          },
+          "countryiso3code": "LCN",
+          "date": "2018",
+          "value": 2.37951733360489,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2023",
+          "value": 24.659550203114,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2022",
+          "value": 18.8471877843274,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2021",
+          "value": 16.9528457221608,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2020",
+          "value": 13.2460234276598,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2019",
+          "value": 11.3964223378115,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "NG",
+            "value": "Nigeria"
+          },
+          "countryiso3code": "NGA",
+          "date": "2018",
+          "value": 12.0951065173432,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2023",
+          "value": 4.11633838374488,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2022",
+          "value": 8.00279982052121,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2021",
+          "value": 4.69785886363742,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2020",
+          "value": 1.23358439630629,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2019",
+          "value": 1.81221007526021,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        },
+        {
+          "indicator": {
+            "id": "FP.CPI.TOTL.ZG",
+            "value": "Inflation, consumer prices (annual %)"
+          },
+          "country": {
+            "id": "US",
+            "value": "United States"
+          },
+          "countryiso3code": "USA",
+          "date": "2018",
+          "value": 2.44258329692817,
+          "unit": "",
+          "obs_status": "",
+          "decimal": 1
+        }
+      ]
+    ]
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/indicator/IT.NET.USER.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 51.827199989929795,
+    "sha256": "0ace6b6603f0d9d936b015b2d2f1c7a5e89fa277129a12a75b41f10234761a3b",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": "20",
+        "total": 1
+      },
+      [
+        {
+          "id": "IT.NET.USER.ZS",
+          "name": "Individuals using the Internet (% of population)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "Internet users are individuals who have used the Internet (from any location) in the last 3 months. The Internet can be used via a computer, mobile phone, personal digital assistant, games machine, digital TV etc.",
+          "sourceOrganization": "World Telecommunication/ICT Indicators Database, International Telecommunication Union (ITU), uri: https://datahub.itu.int/",
+          "topics": [
+            {
+              "id": "9",
+              "value": "Infrastructure "
+            }
+          ]
+        }
+      ]
+    ]
+  }
+]

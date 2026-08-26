@@ -1,0 +1,35 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SH.XPD.CHEX.GD.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 44.45719998329878,
+    "sha256": "241812d34485fb718f72dc6e9fa22a41f791863b727f4447276e2dd473c55a65",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": "20",
+        "total": 1
+      },
+      [
+        {
+          "id": "SH.XPD.CHEX.GD.ZS",
+          "name": "Current health expenditure (% of GDP)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "Level of current health expenditure expressed as a percentage of GDP.  Estimates of current health expenditures include healthcare goods and services consumed during each year. This indicator does not include capital health expenditures such as buildings, machinery, IT and stocks of vaccines for emergency or outbreaks.",
+          "sourceOrganization": "Global Health Expenditure Database, updated December 12th, 2025, World Health Organization (WHO), uri: https://apps.who.int/nha/database",
+          "topics": [
+            {
+              "id": "8",
+              "value": "Health "
+            }
+          ]
+        }
+      ]
+    ]
+  }
+]
