@@ -1,0 +1,1348 @@
+{
+  "figure1_R_vs_deltaU": [
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.020000000000000018,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.09999999999999998,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.25,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.01999999999999999,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.1,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.25,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.01999999999999999,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.09999999999999998,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.25,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.01999999999999999,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.1,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.25,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.020000000000000018,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.09999999999999998,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.25,
+      "family": "MissingEvidence"
+    },
+    {
+      "R_hat": 0.44400000000000006,
+      "R_star": 0.44400000000000006,
+      "tau": 0.12399999999999989,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.44400000000000006,
+      "R_star": 0.44400000000000006,
+      "tau": 0.04399999999999993,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.44400000000000006,
+      "R_star": 0.44400000000000006,
+      "tau": -0.1060000000000001,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.02000000000000013,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.10000000000000009,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.2500000000000002,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.019999999999999796,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.09999999999999987,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.25,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.02000000000000013,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.10000000000000009,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.2500000000000002,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.44400000000000006,
+      "R_star": 0.44400000000000006,
+      "tau": 0.12399999999999989,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.44400000000000006,
+      "R_star": 0.44400000000000006,
+      "tau": 0.04399999999999993,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.44400000000000006,
+      "R_star": 0.44400000000000006,
+      "tau": -0.1060000000000001,
+      "family": "OpenSet"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.25999999999999995,
+      "tau": 0.21999999999999986,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.25999999999999995,
+      "tau": 0.1399999999999999,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.25999999999999995,
+      "tau": -0.01000000000000012,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.38,
+      "tau": 0.5799999999999998,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.38,
+      "tau": 0.49999999999999994,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.38,
+      "tau": 0.3499999999999999,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": 0.94,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": 0.86,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": 0.71,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.38,
+      "tau": 0.5799999999999998,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.38,
+      "tau": 0.49999999999999994,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.38,
+      "tau": 0.3499999999999999,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.25999999999999995,
+      "tau": 0.21999999999999986,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.25999999999999995,
+      "tau": 0.1399999999999999,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.25999999999999995,
+      "tau": -0.01000000000000012,
+      "family": "ProxyMismatch"
+    },
+    {
+      "R_hat": 0.27199999999999996,
+      "R_star": 0.27199999999999996,
+      "tau": 0.17199999999999993,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.27199999999999996,
+      "R_star": 0.27199999999999996,
+      "tau": 0.09199999999999997,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.27199999999999996,
+      "R_star": 0.27199999999999996,
+      "tau": -0.05800000000000005,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.386,
+      "R_star": 0.386,
+      "tau": 0.532,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.386,
+      "R_star": 0.386,
+      "tau": 0.4520000000000001,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.386,
+      "R_star": 0.386,
+      "tau": 0.3020000000000001,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": 0.8919999999999999,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": 0.8119999999999999,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": 0.6619999999999999,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.386,
+      "R_star": 0.386,
+      "tau": 0.532,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.386,
+      "R_star": 0.386,
+      "tau": 0.4520000000000001,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.386,
+      "R_star": 0.386,
+      "tau": 0.3020000000000001,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.27199999999999996,
+      "R_star": 0.27199999999999996,
+      "tau": 0.17199999999999993,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.27199999999999996,
+      "R_star": 0.27199999999999996,
+      "tau": 0.09199999999999997,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.27199999999999996,
+      "R_star": 0.27199999999999996,
+      "tau": -0.05800000000000005,
+      "family": "CorrelatedEvidence"
+    },
+    {
+      "R_hat": 0.25999999999999995,
+      "R_star": 0.0,
+      "tau": -0.020000000000000018,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.25999999999999995,
+      "R_star": 0.0,
+      "tau": -0.09999999999999998,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.25999999999999995,
+      "R_star": 0.0,
+      "tau": -0.25,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.38,
+      "R_star": 0.0,
+      "tau": -0.01999999999999999,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.38,
+      "R_star": 0.0,
+      "tau": -0.1,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.38,
+      "R_star": 0.0,
+      "tau": -0.25,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": -0.017600000000000032,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": -0.09760000000000002,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": -0.24760000000000004,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.38,
+      "R_star": 0.0,
+      "tau": -0.01999999999999999,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.38,
+      "R_star": 0.0,
+      "tau": -0.1,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.38,
+      "R_star": 0.0,
+      "tau": -0.25,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.25999999999999995,
+      "R_star": 0.0,
+      "tau": -0.020000000000000018,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.25999999999999995,
+      "R_star": 0.0,
+      "tau": -0.09999999999999998,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.25999999999999995,
+      "R_star": 0.0,
+      "tau": -0.25,
+      "family": "AdversarialProxy"
+    },
+    {
+      "R_hat": 0.03940000000000003,
+      "R_star": 0.03940000000000003,
+      "tau": 0.027999999999999914,
+      "family": "AntiClear"
+    },
+    {
+      "R_hat": 0.02960000000000003,
+      "R_star": 0.02960000000000003,
+      "tau": 0.0040000000000000036,
+      "family": "AntiClear"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.020000000000000018,
+      "family": "AntiClear"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.019999999999999962,
+      "family": "NonRecoverableAmbiguity"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.09999999999999998,
+      "family": "NonRecoverableAmbiguity"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.25,
+      "family": "NonRecoverableAmbiguity"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": -0.017600000000000032,
+      "family": "NonRecoverableAmbiguity"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": -0.09760000000000002,
+      "family": "NonRecoverableAmbiguity"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": -0.24760000000000004,
+      "family": "NonRecoverableAmbiguity"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.019999999999999962,
+      "family": "NonRecoverableAmbiguity"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.09999999999999998,
+      "family": "NonRecoverableAmbiguity"
+    },
+    {
+      "R_hat": 0.0,
+      "R_star": 0.0,
+      "tau": -0.25,
+      "family": "NonRecoverableAmbiguity"
+    },
+    {
+      "R_hat": 0.26,
+      "R_star": 0.26,
+      "tau": 0.21999999999999986,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.26,
+      "R_star": 0.26,
+      "tau": 0.1399999999999999,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.26,
+      "R_star": 0.26,
+      "tau": -0.01000000000000012,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.38,
+      "R_star": 0.38,
+      "tau": 0.5799999999999998,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.38,
+      "R_star": 0.38,
+      "tau": 0.49999999999999994,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.38,
+      "R_star": 0.38,
+      "tau": 0.3499999999999999,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": 0.94,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": 0.86,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.5,
+      "R_star": 0.5,
+      "tau": 0.71,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.38,
+      "R_star": 0.38,
+      "tau": 0.5799999999999998,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.38,
+      "R_star": 0.38,
+      "tau": 0.49999999999999994,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.38,
+      "R_star": 0.38,
+      "tau": 0.3499999999999999,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.26,
+      "R_star": 0.26,
+      "tau": 0.21999999999999986,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.26,
+      "R_star": 0.26,
+      "tau": 0.1399999999999999,
+      "family": "Multimodal"
+    },
+    {
+      "R_hat": 0.26,
+      "R_star": 0.26,
+      "tau": -0.01000000000000012,
+      "family": "Multimodal"
+    }
+  ],
+  "figure2_mismatch": [
+    {
+      "mu": 0.0,
+      "n": 3,
+      "spearman_R_hat_deltaU": 1.0000000000000002,
+      "mean_abs_error_R": 0.0,
+      "mean_regret": 0.0,
+      "false_explore_rate": 0.0,
+      "missed_explore_rate": 0.0
+    },
+    {
+      "mu": 0.25,
+      "n": 3,
+      "spearman_R_hat_deltaU": 1.0000000000000002,
+      "mean_abs_error_R": 0.04,
+      "mean_regret": 0.0,
+      "false_explore_rate": 0.0,
+      "missed_explore_rate": 0.0
+    },
+    {
+      "mu": 0.5,
+      "n": 3,
+      "spearman_R_hat_deltaU": null,
+      "mean_abs_error_R": 0.42,
+      "mean_regret": 0.57,
+      "false_explore_rate": 0.0,
+      "missed_explore_rate": 1.0
+    },
+    {
+      "mu": 0.75,
+      "n": 3,
+      "spearman_R_hat_deltaU": 1.0000000000000002,
+      "mean_abs_error_R": 0.04,
+      "mean_regret": 0.0,
+      "false_explore_rate": 0.0,
+      "missed_explore_rate": 0.0
+    },
+    {
+      "mu": 1.0,
+      "n": 3,
+      "spearman_R_hat_deltaU": 1.0000000000000002,
+      "mean_abs_error_R": 0.0,
+      "mean_regret": 0.0,
+      "false_explore_rate": 0.0,
+      "missed_explore_rate": 0.0
+    }
+  ],
+  "figure3_regret_vs_mismatch": [
+    {
+      "mu": 0.0,
+      "regret": 0.0
+    },
+    {
+      "mu": 0.0,
+      "regret": 0.0
+    },
+    {
+      "mu": 0.0,
+      "regret": 0.0
+    },
+    {
+      "mu": 0.25,
+      "regret": 0.0
+    },
+    {
+      "mu": 0.25,
+      "regret": 0.0
+    },
+    {
+      "mu": 0.25,
+      "regret": 0.0
+    },
+    {
+      "mu": 0.5,
+      "regret": 0.49999999999999994
+    },
+    {
+      "mu": 0.5,
+      "regret": 0.7100000000000001
+    },
+    {
+      "mu": 0.5,
+      "regret": 0.49999999999999994
+    },
+    {
+      "mu": 0.75,
+      "regret": 0.0
+    },
+    {
+      "mu": 0.75,
+      "regret": 0.0
+    },
+    {
+      "mu": 0.75,
+      "regret": 0.0
+    },
+    {
+      "mu": 1.0,
+      "regret": 0.0
+    },
+    {
+      "mu": 1.0,
+      "regret": 0.0
+    },
+    {
+      "mu": 1.0,
+      "regret": 0.0
+    }
+  ],
+  "figure4_neu_rho": [
+    {
+      "rho": 0.5,
+      "kappa": 0.02,
+      "NEU": 0.8,
+      "selected": "EXPLORE"
+    },
+    {
+      "rho": 0.5,
+      "kappa": 0.1,
+      "NEU": 0.7200000000000001,
+      "selected": "EXPLORE"
+    },
+    {
+      "rho": 0.5,
+      "kappa": 0.4,
+      "NEU": 0.42000000000000004,
+      "selected": "EXPLORE"
+    },
+    {
+      "rho": 1.4,
+      "kappa": 0.02,
+      "NEU": 0.692,
+      "selected": "EXPLORE"
+    },
+    {
+      "rho": 1.4,
+      "kappa": 0.1,
+      "NEU": 0.612,
+      "selected": "EXPLORE"
+    },
+    {
+      "rho": 1.4,
+      "kappa": 0.4,
+      "NEU": 0.31199999999999994,
+      "selected": "EXPLORE"
+    },
+    {
+      "rho": 3.0,
+      "kappa": 0.02,
+      "NEU": 0.5,
+      "selected": "EXPLORE"
+    },
+    {
+      "rho": 3.0,
+      "kappa": 0.1,
+      "NEU": 0.42000000000000004,
+      "selected": "EXPLORE"
+    },
+    {
+      "rho": 3.0,
+      "kappa": 0.4,
+      "NEU": 0.12,
+      "selected": "EXPLORE"
+    }
+  ],
+  "figure5_kappa": [
+    {
+      "kappa": 0.02,
+      "NEU": 0.8,
+      "selected": "EXPLORE"
+    },
+    {
+      "kappa": 0.1,
+      "NEU": 0.7200000000000001,
+      "selected": "EXPLORE"
+    },
+    {
+      "kappa": 0.4,
+      "NEU": 0.42000000000000004,
+      "selected": "EXPLORE"
+    },
+    {
+      "kappa": 0.02,
+      "NEU": 0.692,
+      "selected": "EXPLORE"
+    },
+    {
+      "kappa": 0.1,
+      "NEU": 0.612,
+      "selected": "EXPLORE"
+    },
+    {
+      "kappa": 0.4,
+      "NEU": 0.31199999999999994,
+      "selected": "EXPLORE"
+    },
+    {
+      "kappa": 0.02,
+      "NEU": 0.5,
+      "selected": "EXPLORE"
+    },
+    {
+      "kappa": 0.1,
+      "NEU": 0.42000000000000004,
+      "selected": "EXPLORE"
+    },
+    {
+      "kappa": 0.4,
+      "NEU": 0.12,
+      "selected": "EXPLORE"
+    }
+  ],
+  "figure9_oracle_vs_proxy": [
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.44400000000000006,
+      "R_hat": 0.44400000000000006,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.44400000000000006,
+      "R_hat": 0.44400000000000006,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.44400000000000006,
+      "R_hat": 0.44400000000000006,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.44400000000000006,
+      "R_hat": 0.44400000000000006,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.44400000000000006,
+      "R_hat": 0.44400000000000006,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.44400000000000006,
+      "R_hat": 0.44400000000000006,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.25999999999999995,
+      "R_hat": 0.0,
+      "abs_error_R": 0.25999999999999995
+    },
+    {
+      "R_star": 0.25999999999999995,
+      "R_hat": 0.0,
+      "abs_error_R": 0.25999999999999995
+    },
+    {
+      "R_star": 0.25999999999999995,
+      "R_hat": 0.0,
+      "abs_error_R": 0.25999999999999995
+    },
+    {
+      "R_star": 0.38,
+      "R_hat": 0.0,
+      "abs_error_R": 0.38
+    },
+    {
+      "R_star": 0.38,
+      "R_hat": 0.0,
+      "abs_error_R": 0.38
+    },
+    {
+      "R_star": 0.38,
+      "R_hat": 0.0,
+      "abs_error_R": 0.38
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.38,
+      "R_hat": 0.0,
+      "abs_error_R": 0.38
+    },
+    {
+      "R_star": 0.38,
+      "R_hat": 0.0,
+      "abs_error_R": 0.38
+    },
+    {
+      "R_star": 0.38,
+      "R_hat": 0.0,
+      "abs_error_R": 0.38
+    },
+    {
+      "R_star": 0.25999999999999995,
+      "R_hat": 0.0,
+      "abs_error_R": 0.25999999999999995
+    },
+    {
+      "R_star": 0.25999999999999995,
+      "R_hat": 0.0,
+      "abs_error_R": 0.25999999999999995
+    },
+    {
+      "R_star": 0.25999999999999995,
+      "R_hat": 0.0,
+      "abs_error_R": 0.25999999999999995
+    },
+    {
+      "R_star": 0.27199999999999996,
+      "R_hat": 0.27199999999999996,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.27199999999999996,
+      "R_hat": 0.27199999999999996,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.27199999999999996,
+      "R_hat": 0.27199999999999996,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.386,
+      "R_hat": 0.386,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.386,
+      "R_hat": 0.386,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.386,
+      "R_hat": 0.386,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.386,
+      "R_hat": 0.386,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.386,
+      "R_hat": 0.386,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.386,
+      "R_hat": 0.386,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.27199999999999996,
+      "R_hat": 0.27199999999999996,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.27199999999999996,
+      "R_hat": 0.27199999999999996,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.27199999999999996,
+      "R_hat": 0.27199999999999996,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.25999999999999995,
+      "abs_error_R": 0.25999999999999995
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.25999999999999995,
+      "abs_error_R": 0.25999999999999995
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.25999999999999995,
+      "abs_error_R": 0.25999999999999995
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.38,
+      "abs_error_R": 0.38
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.38,
+      "abs_error_R": 0.38
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.38,
+      "abs_error_R": 0.38
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.38,
+      "abs_error_R": 0.38
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.38,
+      "abs_error_R": 0.38
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.38,
+      "abs_error_R": 0.38
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.25999999999999995,
+      "abs_error_R": 0.25999999999999995
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.25999999999999995,
+      "abs_error_R": 0.25999999999999995
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.25999999999999995,
+      "abs_error_R": 0.25999999999999995
+    },
+    {
+      "R_star": 0.03940000000000003,
+      "R_hat": 0.03940000000000003,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.02960000000000003,
+      "R_hat": 0.02960000000000003,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.0,
+      "R_hat": 0.0,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.26,
+      "R_hat": 0.26,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.26,
+      "R_hat": 0.26,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.26,
+      "R_hat": 0.26,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.38,
+      "R_hat": 0.38,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.38,
+      "R_hat": 0.38,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.38,
+      "R_hat": 0.38,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.5,
+      "R_hat": 0.5,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.38,
+      "R_hat": 0.38,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.38,
+      "R_hat": 0.38,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.38,
+      "R_hat": 0.38,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.26,
+      "R_hat": 0.26,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.26,
+      "R_hat": 0.26,
+      "abs_error_R": 0.0
+    },
+    {
+      "R_star": 0.26,
+      "R_hat": 0.26,
+      "abs_error_R": 0.0
+    }
+  ],
+  "figure10_failure": {
+    "anti_quasar_expected_simple_behavior": 27,
+    "observation_model_mismatch": 26,
+    "recoverability_estimation_failure": 20,
+    "policy_selection_failure": 26,
+    "action_value_estimation_failure": 13,
+    "near_tie": 3
+  }
+}

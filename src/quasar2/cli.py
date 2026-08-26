@@ -433,6 +433,34 @@ def command_recoverability_bench(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_cycle2_audit(args: argparse.Namespace) -> int:
+    from quasar2.cycle2.runner import run_cycle2
+
+    dest = Path(args.output)
+    if dest.exists() and not args.overwrite:
+        raise FileExistsError(f"Refusing to overwrite {dest}; pass --overwrite")
+    payload = run_cycle2(
+        output=dest,
+        seed=int(args.seed),
+        include_wdi=not args.skip_wdi,
+        include_ops=not args.skip_ops,
+        reproduce_gate1=not args.skip_gate1_reproduce,
+    )
+    print(
+        json.dumps(
+            {
+                "run_id": payload.get("run_id"),
+                "answers": payload.get("answers"),
+                "maturity": payload.get("maturity"),
+            },
+            indent=2,
+            default=str,
+            ensure_ascii=True,
+        )
+    )
+    return 0
+
+
 def command_gate1_audit(args: argparse.Namespace) -> int:
     from quasar2.eval.gate1 import run_gate1_audit, write_gate1_audit
     from quasar2.reporting.registry import allocate_run_dir, write_manifest
@@ -738,6 +766,18 @@ def build_parser() -> argparse.ArgumentParser:
     policy.add_argument("--run-id")
     policy.add_argument("--overwrite", action="store_true")
     policy.set_defaults(func=command_policy_compare)
+
+    cycle2 = subparsers.add_parser(
+        "cycle2-audit",
+        help="cycle-2 recoverability/policy/synthetic/deployment-like path (does not change the legacy loop)",
+    )
+    cycle2.add_argument("--output", default="experiments/results/cycle2_maturity")
+    cycle2.add_argument("--seed", type=int, default=0)
+    cycle2.add_argument("--overwrite", action="store_true")
+    cycle2.add_argument("--skip-wdi", action="store_true")
+    cycle2.add_argument("--skip-ops", action="store_true")
+    cycle2.add_argument("--skip-gate1-reproduce", action="store_true")
+    cycle2.set_defaults(func=command_cycle2_audit)
     return parser
 
 

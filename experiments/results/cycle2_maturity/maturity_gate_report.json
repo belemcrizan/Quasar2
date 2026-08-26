@@ -1,0 +1,48 @@
+{
+  "Operational Recoverability": 7.0,
+  "Deployment-Ready Policy": 8.8,
+  "Controlled Synthetic Evidence": 9.6,
+  "Deployment-Like Evidence": 8.6,
+  "notes": {
+    "recoverability": [
+      "no calibrated uncertainty PASS -> <=7.0",
+      "Gate 1 remains failed without decisive operational follow-up -> <=7.0",
+      "explicit negative/narrowing conclusion recorded; not operational utility"
+    ],
+    "policy": [],
+    "synthetic": [],
+    "deployment": []
+  },
+  "gates": {
+    "recoverability": {
+      "heldout_family": "PASS",
+      "mismatch": "PASS",
+      "calibrated_uncertainty": "PARTIAL",
+      "equal_budget_acquisition": "PASS",
+      "gate1_followup": "FAIL"
+    },
+    "policy": {
+      "bound_as_q": "PASS",
+      "empirical_q": "PASS",
+      "baseline_fallback": "PASS",
+      "ope_unsupported": "PASS",
+      "equal_budget": "PASS",
+      "fault_tests": "PASS"
+    },
+    "synthetic": {
+      "counterfactual_oracle": "PASS",
+      "family_holdout": "PASS",
+      "only_row_split": "PASS",
+      "anti_quasar": "PASS",
+      "oracle_leakage": "PASS"
+    },
+    "deployment": {
+      "not_synthetic_only": "PASS",
+      "wdi_snapshot": "PASS",
+      "neural_executed": "PASS",
+      "real_retrieval_x_policy": "PASS",
+      "shadow_as_causal": "PASS",
+      "ops_sequential": "PASS"
+    }
+  }
+}

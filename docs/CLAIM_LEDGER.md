@@ -16,6 +16,14 @@ Statuses: HYPOTHESIS | SUPPORTED_IN_SCOPE | PARTIALLY_SUPPORTED | UNSUPPORTED | 
 | H9 | Hold-out generalization | UNKNOWN | splits exist | no hold-out report |
 | H10 | Simple baseline matches QUASAR at lower cost | PARTIALLY_SUPPORTED against full policy | BM25 pilot | top-1 cheaper and higher intent exact |
 | C1 | Selective (gated) reasoning is more compute-efficient than always-on QUASAR | INCONCLUSIVE / exploratory | gate experiment + A1 decomposition | No sealed preregistered margins; A1 is descriptive rescue/overthinking only |
+| G1-deploy-R-predicts-deltaU | Deployment-observable recoverability predicts realized EXPLORE ΔU | NOT_SUPPORTED (LOCKED) | Gate 1 registered_test | gate1_cycle1 | Do not retune DRS on this set |
+| GR-R-adds-beyond-U-holdout-families | Proxy R_leverage adds Spearman info for tau_EXPLORE beyond entropy on new holdout families | NOT_SUPPORTED | cycle2 holdout N=85, 8 families, seed 0 | cycle2_maturity | ΔSpearman 0.191; cluster CI −0.229 to 0.492 includes 0 |
+| C2-empirical-Q-not-T2 | T2 bound is not Q(s,EXPLORE) | SUPPORTED_WITHIN_SCOPE | cycle2 action-value contract | cycle2_maturity | implementation + tests |
+| C2-policy-beats-strong-baseline-synthetic-holdout | Empirical myopic beats entropy/ANSWER on holdout regret | NOT_SUPPORTED | cycle2 holdout | cycle2_maturity | empirical mean regret 0.073 vs entropy 0.068 |
+| WDI-CD-R-adds-beyond-U | Recoverability adds info beyond uncertainty on WDI controlled degradation | NOT_SUPPORTED | validation split; sealed_test excluded | cycle2_maturity | snapshot wdi-ci-offline-fixture |
+| C2-ops-positive-deltaU-vs-top1 | Adaptive EXPLORE beats BM25 top-1 under equal budget in OPS sim | NOT_SUPPORTED / TESTED | 12 OPS intents, BM25 paired | cycle2_maturity | mean ΔU_EXPLORE −0.08 (cost); policy utility = force ANSWER 0.52 |
+
+No claim is upgraded to SUPPORTED_IN_SCOPE without a pre-specified clustered interval.
 
 No claim is upgraded to SUPPORTED_IN_SCOPE without a pre-specified clustered interval.
 

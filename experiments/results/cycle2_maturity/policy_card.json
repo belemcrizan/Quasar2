@@ -1,0 +1,24 @@
+{
+  "policy_id": "empirical_myopic_cycle2",
+  "version": "exp-c2",
+  "action_set": [
+    "ANSWER",
+    "EXPLORE",
+    "ASK",
+    "ANALYZE",
+    "DEFER"
+  ],
+  "feature_schema": "proxy observation kernels + belief; no gold",
+  "fallback_policy": "DEFER",
+  "supported_domains": [
+    "cycle2_synthetic"
+  ],
+  "unsupported_states": [
+    "production",
+    "WDI as default"
+  ],
+  "stage": "SHADOW",
+  "known_failures": [
+    "Gate 1 proxy recoverability"
+  ]
+}

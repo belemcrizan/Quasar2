@@ -1,0 +1,60 @@
+{
+  "cycle_id": "C2",
+  "schema_version": "cycle2.1",
+  "label": "EXPLORATORY_AND_CONFIRMATORY_SEPARATED",
+  "frozen_gate1": {
+    "gate_id": "G1",
+    "result": "FAIL",
+    "locked": true,
+    "artifact": "experiments/results/gate1_cycle1/gate1.json",
+    "plan": "experiments/analysis_plans/gate1.json",
+    "note": "Do not retune DRS on Gate-1 registered_test. Successors use new families and new claim_ids."
+  },
+  "primary_questions": [
+    "Can operational recoverability predict useful acquisition beyond uncertainty?",
+    "Can empirical action values support a policy that is not T2-as-Q?",
+    "Does synthetic evidence transfer to held-out generator families and mismatch?",
+    "Does any policy show positive decision value under equal-budget deployment-like evaluation?"
+  ],
+  "successor_choice": "SUCCESSOR_A_diagnostic_plus_SUCCESSOR_B_decomposed_construct_on_new_families",
+  "successors_permitted": ["SUCCESSOR_A", "SUCCESSOR_B", "SUCCESSOR_C"],
+  "not_permitted": "Rerun Gate 1 variants on the same registered_test until one is positive",
+  "splits": {
+    "development_families": [
+      "EasySeparable",
+      "HeavyOverlap",
+      "CostDominated",
+      "AnswerDominated",
+      "ExploreDominated",
+      "AskDominated"
+    ],
+    "calibration_families": ["NearIdentical"],
+    "holdout_families": [
+      "MissingEvidence",
+      "OpenSet",
+      "ProxyMismatch",
+      "CorrelatedEvidence",
+      "AdversarialProxy",
+      "AntiClear",
+      "NonRecoverableAmbiguity",
+      "Multimodal"
+    ]
+  },
+  "seeds": [0, 1, 2],
+  "cluster_id": "family",
+  "primary_estimands": ["tau_explore", "delta_R", "delta_V", "gap_deploy"],
+  "delta_min": {
+    "spearman_incremental": 0.05,
+    "mean_utility": 0.02,
+    "source": "declared from Gate-1 practical_margin_delta and cost of one retrieval (0.10) relative to U_correct=1; not chosen after cycle-2 results"
+  },
+  "alpha": 0.05,
+  "inference": "cluster bootstrap by family; percentile 95%",
+  "bootstrap_samples": 400,
+  "exclusions": "Gate-1 registered_test and sealed_replication are not used for successor fitting or G-R. WDI sealed_test is not accessed.",
+  "missing_data_policy": "drop non-finite pairs; no imputation",
+  "ope_default": "OPE_NOT_IDENTIFIABLE unless propensities are logged",
+  "graph_path": "GRAPH_PATH_PRESERVED; GRAPH_EXPERIMENT_NOT_RUN_OUT_OF_SCOPE",
+  "legacy_policy": "untouched",
+  "promotion_default_eligible": false
+}

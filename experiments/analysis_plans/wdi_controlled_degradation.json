@@ -1,0 +1,22 @@
+{
+  "gate_id": "WDI-CD",
+  "claim_id": "WDI-CD-R-adds-beyond-U",
+  "role": "CONFIRMATORY",
+  "primary_question": "Does any deployment-observable recoverability estimator add out-of-sample information for realized FULL vs forced-NOEXPLORE decision utility beyond uncertainty on WDI controlled-degradation, excluding sealed_test?",
+  "primary_estimand": "Delta_R Spearman on validation split only",
+  "primary_metric": "cluster-bootstrap Spearman(DRS_proxy, DeltaU) minus Spearman(entropy, DeltaU)",
+  "delta_threshold": 0.05,
+  "clustering_unit": "canonical_intent_id",
+  "confidence_interval": "percentile cluster bootstrap 95%, samples=400, seed=0",
+  "predictor_set": ["entropy", "belief_margin", "decision_recoverability", "jsd", "tv"],
+  "transformations": "none other than clipping scores to finite reals",
+  "missing_value_handling": "drop non-finite pairs",
+  "exclusion_criteria": "split==sealed_test is never read; natural queries reported separately from degraded",
+  "seed_policy": [0],
+  "stopping_rule": "single look; no sequential peeking",
+  "multiple_comparison_correction": "none; one primary endpoint",
+  "snapshot": "data/wdi/snapshots/ci-offline",
+  "snapshot_id": "wdi-ci-offline-fixture",
+  "strata": ["NATURAL_WDI_QUERY", "CONTROLLED_DEGRADATION_OF_WDI_QUERY"],
+  "do_not_access_before_plan_hash": true
+}
