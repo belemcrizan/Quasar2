@@ -1,0 +1,22 @@
+{
+  "gate_id": "G-R",
+  "claim_id": "GR-R-adds-beyond-U-holdout-families",
+  "hypothesis_id": "H-C2-decomposed-R-leverage",
+  "role": "CONFIRMATORY",
+  "successor_of": "G1",
+  "primary_question": "On held-out synthetic families never used in Gate 1, does proxy R_leverage add Spearman information for tau_EXPLORE beyond entropy and belief margin?",
+  "primary_estimand": "Delta_R = Spearman(M1, tau) - Spearman(M0, tau) on holdout_families",
+  "m0": ["intercept", "entropy", "belief_margin"],
+  "m1": ["intercept", "entropy", "belief_margin", "r_leverage"],
+  "outcome": "tau_explore_net",
+  "cluster_id": "family",
+  "delta_min": 0.05,
+  "pass_rule": "leakage pass AND cluster-bootstrap CI of Delta_R excludes 0 with point>=0.05 AND calibration ECE of R vs 1[tau>delta] <= 0.25 AND equal-budget top-k utility of R >= entropy at k matching 25% acquisition rate AND false EXPLORE rate under mu>=0.75 does not increase by more than 0.10 vs entropy",
+  "fail_rule": "any confirmatory clause fails; recoverability remains diagnostic telemetry (SUCCESSOR_A)",
+  "fit_on": "development_families only",
+  "evaluate_on": "holdout_families",
+  "calibration_on": "calibration_families; may not select among many formulations",
+  "candidates_tried_cap": 4,
+  "seeds": [0, 1, 2],
+  "do_not_use": ["gate1 registered_test", "gold intent", "true kernels in deployment features", "oracle Q as feature"]
+}

@@ -1,0 +1,5 @@
+{
+  "synthetic": "cycle2-synth-v1",
+  "wdi_snapshot": "wdi-ci-offline-fixture",
+  "ops": "data/ops"
+}

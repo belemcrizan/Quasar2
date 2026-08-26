@@ -1,0 +1,29 @@
+{
+  "schema_version": "cycle2.1",
+  "benchmark_version": "cycle2-synth-v1",
+  "n": 179,
+  "by_role": {
+    "development": [
+      "AnswerDominated",
+      "AskDominated",
+      "CostDominated",
+      "EasySeparable",
+      "ExploreDominated",
+      "HeavyOverlap"
+    ],
+    "calibration": [
+      "NearIdentical"
+    ],
+    "holdout": [
+      "AdversarialProxy",
+      "AntiClear",
+      "CorrelatedEvidence",
+      "MissingEvidence",
+      "Multimodal",
+      "NonRecoverableAmbiguity",
+      "OpenSet",
+      "ProxyMismatch"
+    ]
+  },
+  "state_id_hash": "d1e9c62db2b0b4dc7daf19e619224509523d76f95cd90043d5b8aaab7b322de7"
+}

@@ -1,0 +1,6 @@
+{
+  "bm25": "executed",
+  "hybrid_hash": "executed",
+  "neural": "executed",
+  "hashing_is_not_neural": true
+}

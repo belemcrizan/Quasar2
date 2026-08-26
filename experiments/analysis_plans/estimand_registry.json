@@ -1,0 +1,37 @@
+{
+  "schema_version": "cycle2.1",
+  "estimands": {
+    "tau_explore": {
+      "formula": "E[Y(EXPLORE)-Y(NOEXPLORE)|X=x]",
+      "observational_unit": "synthetic_state or query",
+      "clustering_unit": "family or canonical_intent_id",
+      "reference_action": "force ANSWER / NOEXPLORE",
+      "outcome_window": "one-step",
+      "cost_convention": "net of declared retrieval/ask/analyze costs",
+      "missing_outcome_convention": "drop",
+      "population": "cycle2 synthetic families or WDI validation",
+      "delta_min": 0.02,
+      "inference": "two-sided 95% cluster bootstrap",
+      "identification": "SIMULATOR_CAUSAL_WITHIN_MODEL or paired forced actions"
+    },
+    "delta_R": {
+      "formula": "Performance(U,R,covariates)-Performance(U,covariates)",
+      "primary_metric": "Spearman",
+      "delta_min": 0.05,
+      "clustering_unit": "family",
+      "inference": "two-sided 95% cluster bootstrap"
+    },
+    "delta_V": {
+      "formula": "V(pi)-V(pi_0)",
+      "reference_policy": "immediate ANSWER or entropy-only or BM25 top-1 depending on environment",
+      "delta_min": 0.02,
+      "safety": "UCB[Risk(pi)-Risk(pi_0)] <= 0.05 wrong-answer rate",
+      "identification": "paired oracle Q* on synthetic; OPE_NOT_IDENTIFIABLE on shadow logs"
+    },
+    "gap_deploy": {
+      "formula": "V_controlled - V_deployment_like",
+      "delta_min": null,
+      "note": "report with uncertainty; no binary promotion from this estimand"
+    }
+  }
+}
