@@ -433,6 +433,37 @@ def command_recoverability_bench(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_gate1_audit(args: argparse.Namespace) -> int:
+    from quasar2.eval.gate1 import run_gate1_audit, write_gate1_audit
+    from quasar2.reporting.registry import allocate_run_dir, write_manifest
+
+    dest = Path(args.output)
+    if args.register:
+        dest = allocate_run_dir(dest, run_id=args.run_id, overwrite=args.overwrite)
+        write_manifest(dest, seed=0, command="gate1-audit", root=Path.cwd())
+    config = _config(args.config) if args.include_fixture else None
+    payload = run_gate1_audit(
+        config=config,
+        include_fixture=bool(args.include_fixture),
+        fixture_limit=args.fixture_limit,
+    )
+    path = write_gate1_audit(dest, payload)
+    gate = payload["synthetic"]["gate"]
+    print(
+        json.dumps(
+            {
+                "gate1": gate["gate1"],
+                "reason": gate["reason"],
+                "analysis_plan_hash": payload["analysis_plan_hash"],
+                "n_registered_test": payload["synthetic"]["n_registered_test"],
+                "artifact": str(path),
+            },
+            indent=2,
+        )
+    )
+    return 0
+
+
 def command_shadow_study(args: argparse.Namespace) -> int:
     from quasar2.eval.shadow_study import run_shadow_study, write_shadow_study
     from quasar2.reporting.registry import allocate_run_dir, write_manifest
@@ -664,6 +695,23 @@ def build_parser() -> argparse.ArgumentParser:
     recov.add_argument("--run-id")
     recov.add_argument("--overwrite", action="store_true")
     recov.set_defaults(func=command_recoverability_bench)
+
+    gate1 = subparsers.add_parser(
+        "gate1-audit",
+        help="Gate 1: deployment recoverability vs realized EXPLORE gain (does not change the legacy loop)",
+    )
+    gate1.add_argument("--output", default="experiments/runs")
+    gate1.add_argument("--register", action="store_true")
+    gate1.add_argument("--run-id")
+    gate1.add_argument("--overwrite", action="store_true")
+    gate1.add_argument(
+        "--include-fixture",
+        action="store_true",
+        help="also run FULL vs noExplore on the sanity fixture (exploratory; slow relative to synthetic)",
+    )
+    gate1.add_argument("--fixture-limit", type=int, help="limit intents for a fixture smoke")
+    gate1.add_argument("--config")
+    gate1.set_defaults(func=command_gate1_audit)
 
     shadow = subparsers.add_parser(
         "shadow-study",

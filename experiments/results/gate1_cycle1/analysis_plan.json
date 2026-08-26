@@ -1,0 +1,65 @@
+{
+  "gate_id": "G1",
+  "claim_ids": [
+    "G1-deploy-R-predicts-deltaU",
+    "G1-R-adds-beyond-uncertainty",
+    "G1-quadrant-effect-modification"
+  ],
+  "primary_question": "Does deployment-observable recoverability predict realized EXPLORE gain beyond uncertainty?",
+  "primary_estimand": "forced-action tau_action(s) = U(force EXPLORE) - U(force ANSWER) inside the synthetic observation model (SIMULATOR_CAUSAL_WITHIN_MODEL). Secondary: availability tau_avail on the 120-query sanity fixture.",
+  "null_hypothesis": "Deployment-safe recoverability does not add out-of-sample predictive information for Delta U_EXPLORE beyond uncertainty predictors.",
+  "alternative_hypothesis": "A deployment-safe recoverability score improves registered-test Spearman/R2/AUROC for Delta U beyond entropy and belief margin.",
+  "primary_endpoint": "cluster-bootstrap Spearman(DRS_proxy, Delta U_raw) minus Spearman(entropy, Delta U_raw) on split_role=registered_test",
+  "safety_endpoint": "leakage audit (no gold, no future outcome in R_pre); sealed set unused for the gate decision",
+  "unit_of_analysis": "synthetic state (regime_id, b, cost)",
+  "cluster_id": "regime_id",
+  "minimum_practical_effect": 0.05,
+  "superiority_or_noninferiority_margin": 0.05,
+  "alpha_or_interval_policy": "percentile cluster bootstrap 95% interval; no multiplicity correction across exploratory metrics",
+  "multiple_testing_family": "confirmatory: primary Spearman difference and M1-M0 Spearman on registered_test only",
+  "sample_size_or_power": "registered_test has 4 regimes x 3 beliefs x 3 costs = 36 states (cluster n=4). This detects only large effects; absence of significance is not equivalence.",
+  "splits": {
+    "development": [
+      "high_H_high_R",
+      "high_H_low_R"
+    ],
+    "model_selection": [
+      "low_H_high_R",
+      "low_H_low_R",
+      "near_zero_treatment"
+    ],
+    "registered_test": [
+      "false_recoverability",
+      "hidden_recoverability",
+      "misspecified_observation",
+      "heldout_family_true_proxy"
+    ],
+    "sealed_replication": [
+      "sealed_pro",
+      "sealed_anti"
+    ]
+  },
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "exclusions": "sealed_replication rows are stored and must not enter the gate decision",
+  "missing_data_policy": "drop non-finite predictor/outcome pairs; do not impute",
+  "pass_rule": "PASS if (a) leakage audit passes AND (b) cluster-bootstrap CI of Spearman(DRS)-Spearman(entropy) on registered_test excludes 0 with point>0 AND (c) M1-M0 Spearman CI excludes 0 with point>0 AND (d) the DRS-minus-entropy Spearman difference has the same sign on at least two registered regimes",
+  "partial_rule": "PARTIAL if leakage passes and either (b) or (c) holds, or the quadrant contrast CI excludes 0, but not all PASS clauses",
+  "fail_rule": "FAIL if leakage fails, or both confirmatory incremental intervals include 0 or have non-positive point estimates",
+  "inconclusive_rule": "INCONCLUSIVE if Spearman is undefined or fewer than two registered regimes have finite Spearman",
+  "practical_margin_delta": 0.05,
+  "utility": {
+    "u_correct": 1.0,
+    "u_wrong_answer": 1.4,
+    "c_call": 0.1,
+    "ask_cost": 0.28
+  },
+  "notes": [
+    "T2 Lipschitz bound is a certificate, never Q(s, EXPLORE).",
+    "120-query fixture is a regression/availability sanity arm, not the confirmatory Gate-1 test.",
+    "Identification status for synthetic forced-action: SIMULATOR_CAUSAL_WITHIN_MODEL."
+  ]
+}

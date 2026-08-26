@@ -29,7 +29,8 @@
 - Highest-mass prediction sets in shadow telemetry are heuristics, not split-conformal coverage.
 - Proxy Bernoulli kernels from evidence support are not oracle \(P(O\mid H,a)\).
 - MyopicVoIPolicy uses the Lipschitz bound as a point UCB; that is not a statistical tail inequality.
-- Decision Recoverability Score and the learned recoverability estimator are synthetic until a WDI paired study exists.
+- Decision Recoverability Score and the learned recoverability estimator are synthetic until a WDI paired study exists. Gate 1 tests proxy R on frozen stress regimes; that is not WDI.
+- Section-2 Spearman values in the claim ledger are UNVERIFIED_HISTORICAL_OBSERVATION until a run-addressable artifact exists; Gate 1 recomputes them without silently superseding the ledger.
 - SPRTInspiredPolicy is not Wald SPRT.
 - TabularOraclePolicy must not be applied to WDI proxy kernels as if they were true observation models.
 - `PolicyGapDecomposition` is a nested diagnostic, not an additive accounting identity.

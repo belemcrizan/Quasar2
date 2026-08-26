@@ -1,0 +1,22 @@
+{
+  "schema_version": "split_registry.1",
+  "gate_id": "G1",
+  "unit": "regime_id",
+  "roles": {
+    "development": ["high_H_high_R", "high_H_low_R"],
+    "model_selection": ["low_H_high_R", "low_H_low_R", "near_zero_treatment"],
+    "registered_test": [
+      "false_recoverability",
+      "hidden_recoverability",
+      "misspecified_observation",
+      "heldout_family_true_proxy"
+    ],
+    "sealed_replication": ["sealed_pro", "sealed_anti"]
+  },
+  "sanity_fixture": {
+    "role": "regression_availability_sanity",
+    "dataset": "data/intents/intents.json",
+    "not_a_discovery_holdout": true
+  },
+  "notes": "A regime belongs to exactly one role. Sealed outcomes are stored and must not enter the Gate-1 decision."
+}

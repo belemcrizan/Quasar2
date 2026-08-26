@@ -1,0 +1,76 @@
+{
+  "scientific_maturity": {
+    "theory": {
+      "state": "TESTED",
+      "evidence_ids": [
+        "docs/THEORY.md",
+        "T2-binary-voi"
+      ]
+    },
+    "measurement": {
+      "state": "FAILED",
+      "evidence_ids": [
+        "G1",
+        "8b1c9bb04a2b7cea3fc24bd75e4a7df534e9093eff591fdf9aaac02081386aff"
+      ]
+    },
+    "causal": {
+      "state": "TESTED",
+      "evidence_ids": [
+        "SIMULATOR_CAUSAL_WITHIN_MODEL"
+      ],
+      "note": "not real-world causal"
+    },
+    "policy": {
+      "state": "SPECIFIED",
+      "evidence_ids": [
+        "H-learned-beats-voi"
+      ]
+    },
+    "retrieval": {
+      "state": "SPECIFIED",
+      "evidence_ids": [
+        "H-discriminative-recall-decouple"
+      ]
+    },
+    "external": {
+      "state": "TESTED",
+      "evidence_ids": [
+        "H10-simple-baseline"
+      ]
+    },
+    "statistics": {
+      "state": "TESTED",
+      "evidence_ids": [
+        "G1-cluster-bootstrap"
+      ]
+    },
+    "reproducibility": {
+      "state": "IMPLEMENTED",
+      "evidence_ids": [
+        "quasar2 gate1-audit"
+      ]
+    },
+    "replication": {
+      "state": "NOT_STARTED",
+      "evidence_ids": []
+    }
+  },
+  "vetoes": {
+    "critical_gold_leakage": false,
+    "untraceable_primary_result": false,
+    "primary_endpoint_selected_after_test": false,
+    "no_strong_baseline": false,
+    "no_uncertainty_for_primary_effect": false,
+    "no_reproducible_primary_run": false,
+    "causal_language_without_identification": false,
+    "external_replication_falsely_claimed": false
+  },
+  "scalar_96_percent_label": "NOT_CLAIMED",
+  "dashboards_separated": [
+    "scientific_maturity",
+    "engineering_maturity",
+    "product_readiness",
+    "operational_safety"
+  ]
+}

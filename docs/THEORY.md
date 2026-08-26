@@ -199,6 +199,27 @@ Decision Recoverability Score (DRS) is \(P_o(\text{0-1 argmax flips})\). It is a
 - Conformal coverage, if used later, is marginal under exchangeability.
 - Oracle regret is available only in controlled environments.
 
+## Canonical notation registry
+
+Use these spellings in generated docs and comments. Do not concatenate plaintext
+and LaTeX (`FULLiFULL_i`).
+
+| symbol | meaning |
+|---|---|
+| `R_pre` | recoverability estimated before the intervention from deployment-visible information |
+| `R^*` | oracle recoverability (unavailable to deployment policy) |
+| `VoI_upper-bound` | Lipschitz / T2 certificate |
+| `VoI_realized` | observed or simulated net/raw acquisition value |
+| `VoI_oracle` | oracle raw value of information inside a simulator |
+| `Q(s,a)` | action value; not equal to `VoI_upper-bound` unless a theorem says so |
+| `ΔU` | paired utility difference for a declared estimand |
+| `τ_availability` | effect of making EXPLORE available to a policy |
+| `τ_action(s)` | effect of forcing EXPLORE versus a specified alternative |
+| `M_0` | `ΔU ~ uncertainty` |
+| `M_1` | `ΔU ~ uncertainty + recoverability` |
+| `UsefulExplore(δ)` | `1[ΔU > δ]` for a prespecified practical margin |
+| `H_unknown` | explicit unknown-hypothesis mass; not automatically an OOD detector |
+
 ## Empirical status
 
 See `docs/THEOREM_STATUS.md` and `artifacts/theorem_checks.json` after
