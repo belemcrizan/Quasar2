@@ -59,6 +59,7 @@ def build_discriminative_queries(
         part for part in (q, "evidence that would falsify", hi.label, minus) if part
     )
     queries["contrast"] = " ".join(part for part in (q, "observable differences", delta) if part)
+    queries["support"] = queries["pairwise_plus"]
     if seen_document_ids:
         queries["novelty_hint"] = q
     return queries

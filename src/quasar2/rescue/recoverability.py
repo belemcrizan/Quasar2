@@ -46,6 +46,8 @@ def preaction_features(row: dict[str, object]) -> dict[str, float]:
     leak = FORBIDDEN_DEPLOYMENT_FIELDS.intersection(allowed)
     if leak:
         raise LeakageError(f"recoverability features saw gold fields {sorted(leak)}")
+    if FORBIDDEN_DEPLOYMENT_FIELDS.intersection(allowed):
+        raise LeakageError("post-treatment fields leaked into R*(s)")
     return allowed
 
 

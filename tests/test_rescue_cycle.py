@@ -283,6 +283,9 @@ class RescueIntegrationTests(unittest.TestCase):
             "action-value-experiment",
             "cycle-report",
             "rescue-cycle",
+            "rescue-experiment",
+            "serve",
+            "dashboard",
         ):
             self.assertIn(name, choices)
 
@@ -300,7 +303,7 @@ class RescueIntegrationTests(unittest.TestCase):
                 conditions=("q2",),
             )
             self.assertGreaterEqual(payload["n_queries"], 1)
-            self.assertTrue((dest / "anatomy.jsonl").exists())
+            self.assertTrue((dest / "traces.jsonl").exists())
             self.assertTrue((dest / "REPORT.md").exists())
             self.assertEqual(payload["gates"]["leakage_contract"], "PASS")
             self.assertIn("cycle4_anatomy", payload["gates"])

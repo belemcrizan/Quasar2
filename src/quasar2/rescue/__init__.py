@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 CYCLE_ID = "C4-C7A"
-SCHEMA_VERSION = "rescue.1"
+SCHEMA_VERSION = "rescue.2"
 LEGACY_LOOP = "v0.1.1"
 
 __all__ = ["CYCLE_ID", "SCHEMA_VERSION", "LEGACY_LOOP"]

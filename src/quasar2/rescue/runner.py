@@ -39,8 +39,10 @@ from quasar2.rescue.recoverability import (
     predict_logreg,
     threshold_predict,
 )
+from quasar2.rescue.neural_protocol import reranker_status
 from quasar2.rescue.report import render_report, write_json, write_jsonl
 from quasar2.rescue.taxonomy import classify_primary
+from quasar2.rescue.trace import build_trace, compact_runtime_from_run
 from quasar2.retrieval import load_corpus
 from quasar2.retrieval.bm25 import BM25Retriever
 from quasar2.retrieval.dense import HashingDenseRetriever
@@ -184,6 +186,7 @@ def run_rescue_cycle(
 
     anatomy: list[dict[str, Any]] = []
     intervention_matrix: list[dict[str, Any]] = []
+    traces: list[dict[str, Any]] = []
 
     for intent in intents:
         gold = catalog.get(intent.correct_hypothesis)
@@ -369,6 +372,37 @@ def run_rescue_cycle(
                 "review_needed": oracle_rec.review_needed,
             }
             anatomy.append(row)
+            traces.append(
+                build_trace(
+                    run_id=output.name,
+                    runtime=compact_runtime_from_run(
+                        query=query,
+                        domain=intent.domain,
+                        arm="pairwise_contrastive",
+                        mode="predicted_hypothesis",
+                        predicted_id=disc.predicted_id,
+                        action=disc.action,
+                        retrieval_calls=disc.retrieval_calls,
+                        seed_calls=disc.seed_calls,
+                        explore_rounds=disc.explore_rounds,
+                        belief_top=disc.belief.top_hypothesis_id,
+                        entropy=disc.belief.normalized_entropy,
+                        margin=disc.belief.margin,
+                        selected_action="DISCRIMINATIVE",
+                        executed_action="DISCRIMINATIVE",
+                        document_ids=disc.retrieved_ids[:12],
+                    ),
+                    evaluation={
+                        "four_way_class": four.label,
+                        "fast_correct": fast_ok,
+                        "disc_correct": disc_ok,
+                    },
+                    oracle={
+                        "primary_failure": primary_label,
+                        "sufficient": oracle_rec.sufficient,
+                    },
+                )
+            )
             intervention_matrix.append(
                 {
                     "query_id": query_id,
@@ -544,6 +578,8 @@ def run_rescue_cycle(
         "cycle6_policy": cycle6,
         "cycle7a_analyze_ask_defer": "TESTED" if analyze_rows else "SKIPPED",
         "leakage_contract": "PASS",
+        "gate_e_observability": "PASS" if traces else "FAIL",
+        "neural_reranker_full_protocol": reranker_status()["status"],
     }
 
     if included_errors and ceiling_overall["rate"] < 0.05:
@@ -655,6 +691,7 @@ def run_rescue_cycle(
     }
 
     write_jsonl(output / "anatomy.jsonl", anatomy)
+    write_jsonl(output / "traces.jsonl", traces)
     write_json(output / "intervention_matrix.json", {"rows": intervention_matrix})
     write_json(output / "run_manifest.json", payload)
     examples: dict[str, Any] = {}

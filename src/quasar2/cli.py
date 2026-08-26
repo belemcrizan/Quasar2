@@ -609,6 +609,57 @@ def command_policy_compare(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_policy_evaluate(args: argparse.Namespace) -> int:
+    from quasar2.rescue.policy import evaluate_gated_policy
+    from quasar2.rescue.runner import _build_rescue_pipeline
+
+    pipeline, _, _, _ = _build_rescue_pipeline(_config(args.config))
+    payload = evaluate_gated_policy(
+        pipeline,
+        (
+            ("The starlight keeps dipping when something crosses the disk", "astronomy"),
+            ("please reset the billing SKU for tenant 7f3", "astronomy"),
+        ),
+    )
+    dest = Path(args.output)
+    dest.mkdir(parents=True, exist_ok=True)
+    (dest / "policy_evaluate.json").write_text(json.dumps(payload, indent=2, default=str), encoding="utf-8")
+    print(json.dumps({k: payload[k] for k in ("n", "mismatches", "gate_c_policy", "note")}, indent=2))
+    return 0 if payload["mismatches"] == 0 else 2
+
+
+def command_serve(args: argparse.Namespace) -> int:
+    from quasar2.observability.http import serve
+
+    serve(args.host, int(args.port))
+    return 0
+
+
+def command_dashboard(args: argparse.Namespace) -> int:
+    if args.streamlit:
+        from quasar2.observability.streamlit_app import main as streamlit_main
+
+        streamlit_main()
+        return 0
+    return command_serve(args)
+
+
+def command_compare_runs(args: argparse.Namespace) -> int:
+    from quasar2.rescue.compare import compare_run_dirs
+
+    payload = compare_run_dirs(Path(args.run_a), Path(args.run_b))
+    print(json.dumps(payload, indent=2, default=str))
+    return 0
+
+
+def command_load_test(args: argparse.Namespace) -> int:
+    from quasar2.observability.loadtest import run_load_test
+
+    payload = run_load_test(args.base, concurrency=int(args.concurrency), n=int(args.n), path=args.path)
+    print(json.dumps(payload, indent=2))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="quasar2", description=__doc__)
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
@@ -928,6 +979,62 @@ def build_parser() -> argparse.ArgumentParser:
         )
     )
     rescue.set_defaults(func=command_rescue_cycle, stages="anatomy,discriminative,recoverability,actions")
+    rescue_exp = _add_rescue_flags(
+        subparsers.add_parser("rescue-experiment", help="alias of rescue-cycle")
+    )
+    rescue_exp.set_defaults(func=command_rescue_cycle, stages="anatomy,discriminative,recoverability,actions")
+
+    policy_eval = subparsers.add_parser(
+        "policy-evaluate",
+        help="execute experimental gated actions on the rescue pipeline (does not change v0.1.1)",
+    )
+    policy_eval.add_argument("--config")
+    policy_eval.add_argument("--output", default="experiments/results/policy_evaluate")
+    policy_eval.set_defaults(func=command_policy_evaluate)
+
+    serve = subparsers.add_parser("serve", help="stdlib HTTP API + Research Cockpit (no extra deps)")
+    serve.add_argument("--host", default="127.0.0.1")
+    serve.add_argument("--port", type=int, default=8080)
+    serve.set_defaults(func=command_serve)
+
+    dash = subparsers.add_parser("dashboard", help="Research Cockpit (HTML stdlib server, or Streamlit if --streamlit)")
+    dash.add_argument("--host", default="127.0.0.1")
+    dash.add_argument("--port", type=int, default=8080)
+    dash.add_argument("--streamlit", action="store_true")
+    dash.set_defaults(func=command_dashboard)
+
+    compare = subparsers.add_parser("compare-runs", help="compare two rescue-cycle run directories")
+    compare.add_argument("--run-a", required=True)
+    compare.add_argument("--run-b", required=True)
+    compare.set_defaults(func=command_compare_runs)
+
+    load = subparsers.add_parser("load-test", help="local HTTP probe against a running serve endpoint")
+    load.add_argument("--base", default="http://127.0.0.1:8080")
+    load.add_argument("--path", default="/health")
+    load.add_argument("--concurrency", type=int, default=1)
+    load.add_argument("--n", type=int, default=10)
+    load.set_defaults(func=command_load_test)
+
+    ext_sync = subparsers.add_parser(
+        "external-sync",
+        help="alias of source-validate for fixture families (not live NASA/ESA/ALMA TAP dumps)",
+    )
+    ext_sync.add_argument("--family", default="jwst_mast", choices=("worldbank_wdi", "jwst_mast", "cern_open_data", "inspire_hep"))
+    ext_sync.add_argument("--snapshot")
+    ext_sync.set_defaults(func=command_source_validate)
+
+    ext_val = subparsers.add_parser("external-validate", help="alias of external-validity --smoke")
+    ext_val.add_argument("--output", default="experiments/results/external_validity")
+    ext_val.add_argument("--seed", type=int, default=0)
+    ext_val.add_argument("--overwrite", action="store_true")
+    ext_val.set_defaults(func=command_external_validity, smoke=True)
+
+    ext_bench = subparsers.add_parser("external-benchmark", help="alias of external-validity")
+    ext_bench.add_argument("--output", default="experiments/results/external_validity")
+    ext_bench.add_argument("--seed", type=int, default=0)
+    ext_bench.add_argument("--overwrite", action="store_true")
+    ext_bench.add_argument("--smoke", action="store_true")
+    ext_bench.set_defaults(func=command_external_validity)
     return parser
 
 
