@@ -1,0 +1,28 @@
+{
+  "rows": [
+    {
+      "query": "please reset the billing SKU for tenant 7f3",
+      "domain": "astronomy",
+      "predicted": "astro.brown_dwarf_atmosphere",
+      "defer": true,
+      "entropy": 0.993637773623337,
+      "top_generation_score": 1e-06
+    },
+    {
+      "query": "how do I file a tax extension for a deceased spouse",
+      "domain": "ai",
+      "predicted": "ai.catastrophic_forgetting",
+      "defer": true,
+      "entropy": 0.9968488797841825,
+      "top_generation_score": 1e-06
+    },
+    {
+      "query": "calibrate the espresso pump pressure after descaling",
+      "domain": "astronomy",
+      "predicted": "astro.brown_dwarf_atmosphere",
+      "defer": true,
+      "entropy": 0.993637773623337,
+      "top_generation_score": 1e-06
+    }
+  ]
+}

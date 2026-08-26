@@ -1,0 +1,587 @@
+{
+  "schema_version": "rescue.1",
+  "run_id": "cycle4_rescue",
+  "git_sha": "0622a0ced622b90b0ca2a06da0d1e1c347fcf18e",
+  "package_version": "0.2.0",
+  "python": "3.13.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "seed": 42,
+  "n_queries": 120,
+  "n_intents": 40,
+  "hashes": {
+    "poc.yaml": "5a0749cddc798cc8291fc2a1fed195bcb083de37001c24eb59a2b6da4028d13f",
+    "intents": "6fb12fbe12b99f7e9d3abc27cd7c2eb3911a6901c774126e291434110a946453",
+    "cycle4_plan": "311990bafd5de4a84404c6e5092d679c931d9672ee0d4bbf1970d798e0a2731d",
+    "ai.jsonl": "9e21e75f627b4e18294c3ff4909b97d2a8bb63bb6a7d14e2a29bc1a816d15d8d",
+    "astronomy.jsonl": "c050484a0fa32eea12ed577a9d3115f057347ac93a1b43700fa20d62eb639ca6"
+  },
+  "historical_a1": {
+    "source": "experiments/results/milestone_a1/metrics.json",
+    "n_matched": 3116,
+    "RescueRate": 0.0,
+    "BothWrongRate": 0.35397946084724,
+    "BothWrong_count": 1103,
+    "note": "Preserved historical WDI/A1 observation. Prompt cited ~153/400; this artifact differs and is not overwritten."
+  },
+  "oracle_ceiling": {
+    "overall": {
+      "k": 2,
+      "n": 2,
+      "rate": 1.0,
+      "ci_low": 0.34237195288961925,
+      "ci_high": 1.0
+    },
+    "by_regime": {
+      "astronomy:q1": {
+        "k": 2,
+        "n": 2,
+        "rate": 1.0,
+        "ci_low": 0.34237195288961925,
+        "ci_high": 1.0
+      }
+    },
+    "OracleRecoverability": {
+      "k": 2,
+      "n": 2,
+      "rate": 1.0,
+      "ci_low": 0.34237195288961925,
+      "ci_high": 1.0
+    }
+  },
+  "anatomy_distribution": {
+    "HYPOTHESIS_FAILURE": 1,
+    "RETRIEVAL_FAILURE": 1
+  },
+  "indeterminate_count": 0,
+  "confirmatory_metrics": {
+    "legacy_full": {
+      "N": 120,
+      "counts": {
+        "RESCUE": 0,
+        "OVERTHINKING": 1,
+        "BOTH_CORRECT": 117,
+        "BOTH_WRONG": 2
+      },
+      "FastWrong": 2,
+      "FastCorrect": 118,
+      "RescueRate_FW": {
+        "k": 0,
+        "n": 2,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.6576280471103807
+      },
+      "OverthinkingRate_FC": {
+        "k": 1,
+        "n": 118,
+        "rate": 0.00847457627118644,
+        "ci_low": 0.0014975019757751395,
+        "ci_high": 0.04644671412119009
+      },
+      "BothWrongRate": {
+        "k": 2,
+        "n": 120,
+        "rate": 0.016666666666666666,
+        "ci_low": 0.004582468541151397,
+        "ci_high": 0.058737126812913806
+      },
+      "BothCorrectRate": {
+        "k": 117,
+        "n": 120,
+        "rate": 0.975,
+        "ci_low": 0.9290687625956524,
+        "ci_high": 0.9914619799012145
+      },
+      "NetRescueRate": {
+        "numerator": -1,
+        "denominator": 120,
+        "rate": -0.008333333333333333,
+        "cluster_bootstrap": {
+          "point": -0.008333333333333333,
+          "ci_low": -0.025,
+          "ci_high": 0.0,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      },
+      "DeltaU_EXPLORE": {
+        "mean": -0.09583333333333334,
+        "n": 120,
+        "cluster_bootstrap": {
+          "point": -0.09583333333333334,
+          "ci_low": -0.16425,
+          "ci_high": -0.036166666666666666,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      }
+    },
+    "disc_predicted": {
+      "N": 120,
+      "counts": {
+        "RESCUE": 0,
+        "OVERTHINKING": 0,
+        "BOTH_CORRECT": 118,
+        "BOTH_WRONG": 2
+      },
+      "FastWrong": 2,
+      "FastCorrect": 118,
+      "RescueRate_FW": {
+        "k": 0,
+        "n": 2,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.6576280471103807
+      },
+      "OverthinkingRate_FC": {
+        "k": 0,
+        "n": 118,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.03152946120208533
+      },
+      "BothWrongRate": {
+        "k": 2,
+        "n": 120,
+        "rate": 0.016666666666666666,
+        "ci_low": 0.004582468541151397,
+        "ci_high": 0.058737126812913806
+      },
+      "BothCorrectRate": {
+        "k": 118,
+        "n": 120,
+        "rate": 0.9833333333333333,
+        "ci_low": 0.9412628731870861,
+        "ci_high": 0.9954175314588486
+      },
+      "NetRescueRate": {
+        "numerator": 0,
+        "denominator": 120,
+        "rate": 0.0,
+        "cluster_bootstrap": {
+          "point": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      },
+      "DeltaU_EXPLORE": {
+        "mean": -0.1634166666666667,
+        "n": 120,
+        "cluster_bootstrap": {
+          "point": -0.1634166666666667,
+          "ci_low": -0.24068541666666673,
+          "ci_high": -0.09400000000000004,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      }
+    },
+    "relevance": {
+      "N": 120,
+      "counts": {
+        "RESCUE": 0,
+        "OVERTHINKING": 1,
+        "BOTH_CORRECT": 117,
+        "BOTH_WRONG": 2
+      },
+      "FastWrong": 2,
+      "FastCorrect": 118,
+      "RescueRate_FW": {
+        "k": 0,
+        "n": 2,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.6576280471103807
+      },
+      "OverthinkingRate_FC": {
+        "k": 1,
+        "n": 118,
+        "rate": 0.00847457627118644,
+        "ci_low": 0.0014975019757751395,
+        "ci_high": 0.04644671412119009
+      },
+      "BothWrongRate": {
+        "k": 2,
+        "n": 120,
+        "rate": 0.016666666666666666,
+        "ci_low": 0.004582468541151397,
+        "ci_high": 0.058737126812913806
+      },
+      "BothCorrectRate": {
+        "k": 117,
+        "n": 120,
+        "rate": 0.975,
+        "ci_low": 0.9290687625956524,
+        "ci_high": 0.9914619799012145
+      },
+      "NetRescueRate": {
+        "numerator": -1,
+        "denominator": 120,
+        "rate": -0.008333333333333333,
+        "cluster_bootstrap": {
+          "point": -0.008333333333333333,
+          "ci_low": -0.025,
+          "ci_high": 0.0,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      },
+      "DeltaU_EXPLORE": {
+        "mean": -0.03341666666666664,
+        "n": 120,
+        "cluster_bootstrap": {
+          "point": -0.03341666666666664,
+          "ci_low": -0.09146874999999999,
+          "ci_high": 0.03321874999999998,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      }
+    },
+    "bm25": {
+      "N": 120,
+      "counts": {
+        "RESCUE": 0,
+        "OVERTHINKING": 2,
+        "BOTH_CORRECT": 116,
+        "BOTH_WRONG": 2
+      },
+      "FastWrong": 2,
+      "FastCorrect": 118,
+      "RescueRate_FW": {
+        "k": 0,
+        "n": 2,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.6576280471103807
+      },
+      "OverthinkingRate_FC": {
+        "k": 2,
+        "n": 118,
+        "rate": 0.01694915254237288,
+        "ci_low": 0.004660344845762193,
+        "ci_high": 0.059698626146082956
+      },
+      "BothWrongRate": {
+        "k": 2,
+        "n": 120,
+        "rate": 0.016666666666666666,
+        "ci_low": 0.004582468541151397,
+        "ci_high": 0.058737126812913806
+      },
+      "BothCorrectRate": {
+        "k": 116,
+        "n": 120,
+        "rate": 0.9666666666666667,
+        "ci_low": 0.9174184205147198,
+        "ci_high": 0.9869626598330794
+      },
+      "NetRescueRate": {
+        "numerator": -2,
+        "denominator": 120,
+        "rate": -0.016666666666666666,
+        "cluster_bootstrap": {
+          "point": -0.016666666666666666,
+          "ci_low": -0.05,
+          "ci_high": 0.0,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      },
+      "DeltaU_EXPLORE": {
+        "mean": -0.026916666666666644,
+        "n": 120,
+        "cluster_bootstrap": {
+          "point": -0.026916666666666644,
+          "ci_low": -0.08699999999999998,
+          "ci_high": 0.041854166666666595,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      }
+    },
+    "dense": {
+      "N": 120,
+      "counts": {
+        "RESCUE": 0,
+        "OVERTHINKING": 0,
+        "BOTH_CORRECT": 118,
+        "BOTH_WRONG": 2
+      },
+      "FastWrong": 2,
+      "FastCorrect": 118,
+      "RescueRate_FW": {
+        "k": 0,
+        "n": 2,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.6576280471103807
+      },
+      "OverthinkingRate_FC": {
+        "k": 0,
+        "n": 118,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.03152946120208533
+      },
+      "BothWrongRate": {
+        "k": 2,
+        "n": 120,
+        "rate": 0.016666666666666666,
+        "ci_low": 0.004582468541151397,
+        "ci_high": 0.058737126812913806
+      },
+      "BothCorrectRate": {
+        "k": 118,
+        "n": 120,
+        "rate": 0.9833333333333333,
+        "ci_low": 0.9412628731870861,
+        "ci_high": 0.9954175314588486
+      },
+      "NetRescueRate": {
+        "numerator": 0,
+        "denominator": 120,
+        "rate": 0.0,
+        "cluster_bootstrap": {
+          "point": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      },
+      "DeltaU_EXPLORE": {
+        "mean": -0.04849999999999998,
+        "n": 120,
+        "cluster_bootstrap": {
+          "point": -0.04849999999999998,
+          "ci_low": -0.09141666666666665,
+          "ci_high": 0.0030000000000000213,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      }
+    },
+    "falsification": {
+      "N": 120,
+      "counts": {
+        "RESCUE": 1,
+        "OVERTHINKING": 1,
+        "BOTH_CORRECT": 117,
+        "BOTH_WRONG": 1
+      },
+      "FastWrong": 2,
+      "FastCorrect": 118,
+      "RescueRate_FW": {
+        "k": 1,
+        "n": 2,
+        "rate": 0.5,
+        "ci_low": 0.09452865480086614,
+        "ci_high": 0.9054713451991339
+      },
+      "OverthinkingRate_FC": {
+        "k": 1,
+        "n": 118,
+        "rate": 0.00847457627118644,
+        "ci_low": 0.0014975019757751395,
+        "ci_high": 0.04644671412119009
+      },
+      "BothWrongRate": {
+        "k": 1,
+        "n": 120,
+        "rate": 0.008333333333333333,
+        "ci_low": 0.001472517830674952,
+        "ci_high": 0.045697415374322405
+      },
+      "BothCorrectRate": {
+        "k": 117,
+        "n": 120,
+        "rate": 0.975,
+        "ci_low": 0.9290687625956524,
+        "ci_high": 0.9914619799012145
+      },
+      "NetRescueRate": {
+        "numerator": 0,
+        "denominator": 120,
+        "rate": 0.0,
+        "cluster_bootstrap": {
+          "point": 0.0,
+          "ci_low": -0.025,
+          "ci_high": 0.025,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      },
+      "DeltaU_EXPLORE": {
+        "mean": -0.03991666666666664,
+        "n": 120,
+        "cluster_bootstrap": {
+          "point": -0.03991666666666664,
+          "ci_low": -0.0935520833333333,
+          "ci_high": 0.018187499999999926,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      }
+    },
+    "no_disc_update": {
+      "N": 120,
+      "counts": {
+        "RESCUE": 0,
+        "OVERTHINKING": 0,
+        "BOTH_CORRECT": 118,
+        "BOTH_WRONG": 2
+      },
+      "FastWrong": 2,
+      "FastCorrect": 118,
+      "RescueRate_FW": {
+        "k": 0,
+        "n": 2,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.6576280471103807
+      },
+      "OverthinkingRate_FC": {
+        "k": 0,
+        "n": 118,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.03152946120208533
+      },
+      "BothWrongRate": {
+        "k": 2,
+        "n": 120,
+        "rate": 0.016666666666666666,
+        "ci_low": 0.004582468541151397,
+        "ci_high": 0.058737126812913806
+      },
+      "BothCorrectRate": {
+        "k": 118,
+        "n": 120,
+        "rate": 0.9833333333333333,
+        "ci_low": 0.9412628731870861,
+        "ci_high": 0.9954175314588486
+      },
+      "NetRescueRate": {
+        "numerator": 0,
+        "denominator": 120,
+        "rate": 0.0,
+        "cluster_bootstrap": {
+          "point": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      },
+      "DeltaU_EXPLORE": {
+        "mean": -0.18841666666666673,
+        "n": 120,
+        "cluster_bootstrap": {
+          "point": -0.18841666666666673,
+          "ci_low": -0.24850000000000003,
+          "ci_high": -0.12811875000000025,
+          "n_clusters": 40,
+          "samples": 400,
+          "n_successful_draws": 400
+        }
+      }
+    }
+  },
+  "best_predicted_arm": "falsification",
+  "non_oracle_rescue_count": 1,
+  "recoverability_v2": {
+    "n_dev": 84,
+    "n_hold": 36,
+    "positive_hold": 0,
+    "logreg": {
+      "auroc": null,
+      "auprc": 0.0,
+      "brier": 0.00018050534354805125
+    },
+    "entropy_gate": {
+      "cut": 0.13989213964453995,
+      "auroc": null,
+      "auprc": 0.0,
+      "brier": 0.6388888888888888
+    },
+    "label_note": "Positive label is RECOVERABLE_RESCUED. Fast-correct cases are negatives. Pre-action features only."
+  },
+  "analyze": {
+    "n": 12,
+    "prediction_changes": 0,
+    "evidence_frozen_all": true
+  },
+  "ask": {
+    "n": 12,
+    "resolved": 11,
+    "beats_explore": 1
+  },
+  "defer": {
+    "n": 3,
+    "defer_count": 3,
+    "false_answer_if_forced": 0
+  },
+  "gates": {
+    "cycle4_anatomy": "PASS",
+    "cycle5_non_oracle_rescue": "PASS",
+    "cycle5_net_utility": "FAIL",
+    "cycle6_policy": "BLOCKED",
+    "cycle7a_analyze_ask_defer": "TESTED",
+    "leakage_contract": "PASS"
+  },
+  "claims": [
+    {
+      "claim_id": "C4-oracle-ceiling-known",
+      "status": "demonstrada",
+      "evidence": "OracleRescueCeiling k=2 n=2",
+      "scope": "sanity fixture FastWrong",
+      "limitation": "gold uses document.hypothesis_ids; not a human adjudication"
+    },
+    {
+      "claim_id": "C5-non-oracle-rescue",
+      "status": "demonstrada",
+      "evidence": "Rescue count=1 on best predicted arm=falsification (pairwise disc=0)",
+      "scope": "sanity 120 queries, clustered by intent_id",
+      "limitation": "small catalog; lexical discrimination only"
+    },
+    {
+      "claim_id": "C5-net-utility",
+      "status": "n\u00e3o demonstrada",
+      "evidence": "NetRescueRate=0.0; DeltaU=-0.03991666666666664; CI={'point': -0.03991666666666664, 'ci_low': -0.0935520833333333, 'ci_high': 0.018187499999999926, 'n_clusters': 40, 'samples': 400, 'n_successful_draws': 400}",
+      "scope": "same confirmatory fixture",
+      "limitation": "utility uses pre-registered costs, not production money"
+    },
+    {
+      "claim_id": "C6-policy-neu",
+      "status": "ainda n\u00e3o testada",
+      "evidence": "default v0.1.1 policy unchanged; Cycle 6 blocked unless Cycle 5 net-utility PASS",
+      "scope": "operational policy",
+      "limitation": "no silent policy promotion"
+    },
+    {
+      "claim_id": "A1-wdi-rescue-zero",
+      "status": "demonstrada",
+      "evidence": "{'source': 'experiments/results/milestone_a1/metrics.json', 'n_matched': 3116, 'RescueRate': 0.0, 'BothWrongRate': 0.35397946084724, 'BothWrong_count': 1103, 'note': 'Preserved historical WDI/A1 observation. Prompt cited ~153/400; this artifact differs and is not overwritten.'}",
+      "scope": "historical WDI A1 matched table",
+      "limitation": "not re-run in this cycle; preserved artifact"
+    }
+  ],
+  "next_test": "Rescue exists but NetRescueRate or \u0394U is non-positive (overthinking/cost). Next falsifiable test: recoverability-gated EXPLORE on holdout, not always-explore.",
+  "reproduction_command": "quasar2 rescue-cycle --output experiments/results/cycle4_rescue --seed 42"
+}

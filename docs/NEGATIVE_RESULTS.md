@@ -20,5 +20,9 @@ Statuses: `RETAINED` | `RECOMPUTED` | `UNVERIFIED_HISTORICAL_OBSERVATION`.
 | NR-fixture-explore-availability-harm | FULL vs noExplore mean ΔU −0.049 (query-clustered CI excludes 0) on the 120-query sanity fixture | RETAINED | `gate1_cycle1` fixture arm | 6/120 pairs useful at δ=0.05; not confirmatory |
 
 | NR-c3-not-live-dumps | Cycle 3 confirmatory evidence is schema-faithful SYN- snapshots, not live NASA/ESA TAP | RETAINED | external_validity | Do not advertise SYN- ids as archive rows |
+| NR-c4-easy-fixture-few-fastwrong | Sanity 120-query FastWrong is only 2/120; Rescue ceiling CI is wide | RETAINED | cycle4_rescue | Do not treat N=120 paraphrases as 120 independent errors |
+| NR-c5-pairwise-disc-zero-rescue | Pairwise contrastive predicted-hypothesis EXPLORE rescued 0/2 FastWrong | RETAINED | cycle4_rescue | Falsification arm rescued 1; still NetRescueRate=0 |
+| NR-c5-always-explore-negative-du | Always-on extra acquisition ΔU < 0 on the easy sanity fixture | RETAINED | cycle4_rescue | Cost of extra calls on FastCorrect dominates; matches Gate-1 fixture-harm direction |
+| NR-a1-n-not-400 | Checked-in A1 table is n_matched=3116 BothWrong=1103 Rescue=0, not ~153/400 | RETAINED | milestone_a1 | Historical prompt memory ≠ artifact; artifact preserved |
 
 Do not delete rows to make the thesis look stronger.

@@ -1,0 +1,88 @@
+{
+  "rows": [
+    {
+      "query_id": "astro-01:q0",
+      "ask_resolved": true,
+      "fast_correct": true,
+      "disc_correct": true,
+      "ask_beats_explore": false
+    },
+    {
+      "query_id": "astro-01:q1",
+      "ask_resolved": true,
+      "fast_correct": true,
+      "disc_correct": true,
+      "ask_beats_explore": false
+    },
+    {
+      "query_id": "astro-01:q2",
+      "ask_resolved": true,
+      "fast_correct": true,
+      "disc_correct": true,
+      "ask_beats_explore": false
+    },
+    {
+      "query_id": "astro-02:q0",
+      "ask_resolved": true,
+      "fast_correct": true,
+      "disc_correct": true,
+      "ask_beats_explore": false
+    },
+    {
+      "query_id": "astro-02:q1",
+      "ask_resolved": false,
+      "fast_correct": false,
+      "disc_correct": false,
+      "ask_beats_explore": false
+    },
+    {
+      "query_id": "astro-02:q2",
+      "ask_resolved": true,
+      "fast_correct": true,
+      "disc_correct": true,
+      "ask_beats_explore": false
+    },
+    {
+      "query_id": "astro-03:q0",
+      "ask_resolved": true,
+      "fast_correct": true,
+      "disc_correct": true,
+      "ask_beats_explore": false
+    },
+    {
+      "query_id": "astro-03:q1",
+      "ask_resolved": true,
+      "fast_correct": false,
+      "disc_correct": false,
+      "ask_beats_explore": true
+    },
+    {
+      "query_id": "astro-03:q2",
+      "ask_resolved": true,
+      "fast_correct": true,
+      "disc_correct": true,
+      "ask_beats_explore": false
+    },
+    {
+      "query_id": "astro-04:q0",
+      "ask_resolved": true,
+      "fast_correct": true,
+      "disc_correct": true,
+      "ask_beats_explore": false
+    },
+    {
+      "query_id": "astro-04:q1",
+      "ask_resolved": true,
+      "fast_correct": true,
+      "disc_correct": true,
+      "ask_beats_explore": false
+    },
+    {
+      "query_id": "astro-04:q2",
+      "ask_resolved": true,
+      "fast_correct": true,
+      "disc_correct": true,
+      "ask_beats_explore": false
+    }
+  ]
+}

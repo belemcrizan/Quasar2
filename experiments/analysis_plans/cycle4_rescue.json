@@ -1,0 +1,75 @@
+{
+  "cycle_id": "C4-C7A",
+  "schema_version": "rescue.1",
+  "label": "EXPLORATORY_AND_CONFIRMATORY_SEPARATED",
+  "frozen_defaults": {
+    "legacy_loop": "v0.1.1",
+    "package_version": "0.2.0",
+    "gate1": "FAIL",
+    "note": "Do not retune Gate 1 or overwrite frozen v0.1.1 / A1 / cycle2 artifacts."
+  },
+  "primary_question": "Can additional information actually rescue a decision?",
+  "primary_estimands": [
+    "RescueRate_FW = #Rescue / #FastWrong",
+    "OverthinkingRate_FC = #Overthinking / #FastCorrect",
+    "NetRescueRate = (#Rescue - #Overthinking) / N",
+    "DeltaU_EXPLORE = mean_i [U(Deliberative_i) - U(Fast_i)]",
+    "OracleRescueCeiling = #FastWrong with sufficient corpus evidence / #FastWrong",
+    "OracleRecoverability = P(error is correctable | corpus)"
+  ],
+  "correctness": "predicted_hypothesis_id == intent.correct_hypothesis (same as sanity benchmark). ASK still carries a predicted hypothesis.",
+  "unit_of_analysis": "query instance (intent_id, condition)",
+  "cluster_id": "intent_id",
+  "confirmatory_dataset": "sanity fixture 40 intents x {q0,q1,q2} = 120 queries under configs/poc.yaml",
+  "exploratory_datasets": [
+    "in-memory property tests",
+    "optional rescue_probe queries (mechanism check, not confirmatory)",
+    "historical WDI A1 matched table if present (not re-fit)"
+  ],
+  "splits": {
+    "rule": "Group by intent_id. All paraphrases (q0/q1/q2) of an intent stay in the same split.",
+    "recoverability_development": "first 28 intent_ids lexicographic (seed 42 shuffle of unique intent_id)",
+    "recoverability_holdout": "remaining 12 intent_ids",
+    "sealed": "unused; do not mine"
+  },
+  "seeds": [42],
+  "budgets": {
+    "max_explore_rounds": 2,
+    "top_k_seed": 1,
+    "top_k_explore": 4,
+    "discriminative_query_budget": 3
+  },
+  "costs": {
+    "u_correct_answer": 1.0,
+    "wrong_answer_cost": 1.4,
+    "exploration_cost_per_extra_call": 0.10,
+    "ask_cost": 0.28,
+    "defer_cost": 0.05
+  },
+  "causal_order": [
+    "OPEN_SET",
+    "MISSING_EVIDENCE",
+    "HYPOTHESIS_FAILURE",
+    "RETRIEVAL_FAILURE",
+    "DISCRIMINATION_FAILURE",
+    "BELIEF_UPDATE_FAILURE",
+    "DECISION_FAILURE",
+    "NON_MONOTONIC_INTERACTION",
+    "INDETERMINATE"
+  ],
+  "gates": {
+    "cycle4": "100% included FastWrong classified; INDETERMINATE=0 on confirmatory included set; OracleRescueCeiling reported by domain and condition",
+    "cycle5_mechanism": "NonOracleRescueCount > 0 on confirmatory holdout-untouched queries, no gold in query construction",
+    "cycle5_policy_ready": "NetRescueRate > 0 AND DeltaU_EXPLORE > 0 with cluster-bootstrap 95% CI on confirmatory set",
+    "cycle6": "Delta NEU > 0 only if cycle5_policy_ready PASS; else BLOCKED"
+  },
+  "multiple_comparisons": "Holm on confirmatory arm comparisons (full, disc_predicted, bm25-only) vs Fast; exploratory arms unadjusted and labeled EXPLORATORY",
+  "exclusions": "Queries with missing intent.correct_hypothesis. INDETERMINATE rows fail Cycle 4 unless excluded under this plan (none pre-registered).",
+  "identification": "Oracle interventions are controlled counterfactuals inside this system, not identified real-world causes. Do not sum attributions as a causal partition.",
+  "notes": [
+    "Ground truth is isolated in oracle.* modules.",
+    "predicted_hypothesis mode never receives H*, intent label, or gold document ids.",
+    "Heuristic discrimination score is not exact EIG.",
+    "WDI A1 Rescue=0 is a preserved historical observation; this cycle's confirmatory fixture is the 120-query sanity set."
+  ]
+}

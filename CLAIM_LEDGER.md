@@ -33,5 +33,10 @@ The historical V2.4 ledger remains at [docs/CLAIM_LEDGER.md](docs/CLAIM_LEDGER.m
 | H_MISMATCH | Observation-model mismatch explains recoverability/policy failure. | PROPOSED | channel shifts | `external-validity` | Connects to Cycle 2 |
 | H_REPLICATION | Major findings reproduce on independent compute. | UNKNOWN | Dockerfile + reproduce-paper | cloud NOT_RUN | Not archive replication |
 | C3-live-official-dumps | Live NASA/ESA/ALMA TAP dumps used as confirmatory evidence. | REFUTED | this cycle | schema-faithful SYN- snapshots only | Do not cite SYN- ids as archive rows |
+| C4-oracle-ceiling-known | OracleRescueCeiling is identified on sanity FastWrong. | TESTED | 2/2 FastWrong have gold discriminative docs (Wilson [0.34, 1.00]) | `experiments/results/cycle4_rescue` | n=2 errors; catalog gold map not human adjudication |
+| C5-falsification-rescue | Deployment-valid falsification retrieval can rescue a Fast error without gold queries. | PARTIALLY_SUPPORTED | Rescue 1/2 FastWrong on falsification arm; pairwise disc Rescue=0 | same run, `astro-03:q1` | Easy fixture; N_FastWrong=2 |
+| C5-net-explore-utility | Always-on discriminative EXPLORE has positive net utility on the sanity fixture. | NOT_SUPPORTED | Best arm NetRescueRate=0; ΔU=−0.040 (cluster bootstrap mean negative) | same run | Extra calls tax the 118 FastCorrect cases |
+| C6-policy-neu | Gated policy ΔNEU>0 vs equal-budget baseline. | BLOCKED | Cycle 5 net-utility gate FAIL; v0.1.1 policy not changed | — | Do not promote |
+| A1-wdi-rescue-zero | WDI matched FAST vs QUASAR RescueRate=0. | NOT_SUPPORTED | RescueRate=0, BothWrong=1103/3116 | `experiments/results/milestone_a1/metrics.json` | Not re-run this cycle; prompt memory of 153/400 is not this artifact |
 
 Promotion gate: versioned hypothesis, passing implementation tests, checked assumptions, reproducible run id, pre-specified CI/effect, cost/risk, no known leakage, matching claim scope.
