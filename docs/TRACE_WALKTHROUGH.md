@@ -79,3 +79,27 @@ Use `--json` to inspect:
 - final action, selected hypothesis, extractive answer or clarification;
 - calls, avoided calls, rounds, pruning reason, novelty, belief movement,
   elapsed time, and complete ordered trace.
+
+## V2 trajectory sketches (hypothesis, not frozen policy)
+
+These sketches describe intended v2 diagnostics. The v0.1.1 loop still executes
+only ANSWER / EXPLORE / ASK. Enable `--v2-shadow` to record
+`recommended_action_v2` beside `executed_action_legacy`.
+
+### Caso A
+
+query → hypotheses → confidence sufficient → ANSWER
+
+### Caso B
+
+query → ambiguity → high recoverability → EXPLORE → belief update → ANSWER
+
+### Caso C
+
+query → high ambiguity → low recoverability → EXPLORE has low VoI → ASK or DEFER
+
+### Caso D
+
+query → sufficient evidence → high inference error → ANALYZE → lower inference error → ANSWER
+
+ANALYZE in Caso D MUST leave the evidence set unchanged.

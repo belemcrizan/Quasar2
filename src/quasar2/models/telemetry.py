@@ -30,6 +30,44 @@ def _jsonable(value: Any) -> Any:
 
 
 @dataclass(frozen=True, slots=True)
+class DecisionTelemetry:
+    """Optional v2 decision diagnostics. Absent on legacy results unless shadow mode is on."""
+
+    belief_entropy: float | None = None
+    prior_dispersion: float | None = None
+    recoverability: float | None = None
+    voi: float | None = None
+    voi_true_oracle: float | None = None
+    voi_estimate: float | None = None
+    voi_ucb: float | None = None
+    voi_realized: float | None = None
+    net_voi: float | None = None
+    net_voi_true_oracle: float | None = None
+    net_voi_estimate: float | None = None
+    net_voi_ucb: float | None = None
+    ucb: float | None = None
+    analyze_voc: float | None = None
+    inference_error: float | None = None
+    conformal_set_size: int | None = None
+    selected_action: str | None = None
+    recommended_action_v2: str | None = None
+    executed_action_legacy: str | None = None
+    action_utility: float | None = None
+    decision_utility_realized: float | None = None
+    cost: float | None = None
+    risk: float | None = None
+    unknown_probability: float | None = None
+    belief_top1: str | None = None
+    belief_top2: str | None = None
+    belief_margin: float | None = None
+    policy_name: str | None = None
+    lipschitz_norm: str | None = None
+    lipschitz_constant: float | None = None
+    divergence_units: str | None = None
+    tv_convention: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
 class TraceEvent:
     sequence: int
     stage: str
@@ -66,6 +104,7 @@ class PipelineResult:
     evidence_scoring_ms: float = 0.0
     belief_update_ms: float = 0.0
     policy_ms: float = 0.0
+    v2_telemetry: DecisionTelemetry | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return _jsonable(self)
