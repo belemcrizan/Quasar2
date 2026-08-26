@@ -17,6 +17,8 @@ Portuguese overview: [README.pt-BR.md](README.pt-BR.md).
 
 V2.1 status (research program, not a result): **M0 audit complete**. The v0.1.1 loop and sanity table are frozen. See [V2 repository audit](docs/V2_REPOSITORY_AUDIT.md). No V2.1 scientific hypothesis is treated as demonstrated.
 
+V2.4 status: developmental WDI + neural path is implemented through a 3036-instance BM25 pilot. See [V2.4 external validation](docs/V2_4_EXTERNAL_VALIDATION_REPORT.md). Simple top-1 BM25 currently beats the V2.4 policy on intent exact in that table.
+
 ## The falsifiable question
 
 Let an observed query \(Q_{obs}\) be a degraded view of a latent intent \(I\).

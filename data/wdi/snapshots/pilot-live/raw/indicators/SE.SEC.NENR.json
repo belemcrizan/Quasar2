@@ -1,0 +1,35 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SE.SEC.NENR?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 306.83130002580583,
+    "sha256": "c7c6bd7889b3a99fa5d4bb4bb71ec4481be497093544678cd5c9bf1bb8994879",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": "20",
+        "total": 1
+      },
+      [
+        {
+          "id": "SE.SEC.NENR",
+          "name": "School enrollment, secondary (% net)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "Net enrollment rate is the ratio of children of official school age who are enrolled in school to the population of the corresponding official school age. Secondary education completes the provision of basic education that began at the primary level, and aims at laying the foundations for lifelong learning and human development, by offering more subject- or skill-oriented instruction using more specialized teachers.",
+          "sourceOrganization": "Stat Bulk Data Download Service, UN Educational, Scientific and Cultural Organization (UNESCO), uri: https://uis.unesco.org/bdds, publisher: UNESCO Institute for Statistics (UIS)",
+          "topics": [
+            {
+              "id": "4",
+              "value": "Education "
+            }
+          ]
+        }
+      ]
+    ]
+  }
+]

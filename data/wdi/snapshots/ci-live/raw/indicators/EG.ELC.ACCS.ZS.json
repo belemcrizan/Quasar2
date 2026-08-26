@@ -1,0 +1,43 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/indicator/EG.ELC.ACCS.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 51.83400004170835,
+    "sha256": "76b4099b5195c9f92d49c650a09ad49e84708c5920ccb0d54969c2a55c05dca7",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": "20",
+        "total": 1
+      },
+      [
+        {
+          "id": "EG.ELC.ACCS.ZS",
+          "name": "Access to electricity (% of population)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "Access to electricity is the percentage of population with access to electricity. Electrification data are collected from industry, national surveys and international sources.",
+          "sourceOrganization": "SDG 7.1.1 Electrification Dataset, World Bank (WB), uri: https://trackingsdg7.esmap.org/downloads, note: Data is downloaded from ESMAP website. Data is released when a new Tracking SDG7 report is released., publisher: World Bank (WB), date accessed: 2024-05-16, date published: 2023",
+          "topics": [
+            {
+              "id": "5",
+              "value": "Energy & Mining "
+            },
+            {
+              "id": "19",
+              "value": "Climate Change"
+            },
+            {
+              "id": "6",
+              "value": "Environment "
+            }
+          ]
+        }
+      ]
+    ]
+  }
+]

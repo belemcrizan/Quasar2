@@ -1,0 +1,39 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/indicator/NE.TRD.GNFS.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 287.6977000851184,
+    "sha256": "6cde768e8b2515f4cfa839e5fe525f08f66ea70d3fc17bf81c4a1c946ae87659",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": "20",
+        "total": 1
+      },
+      [
+        {
+          "id": "NE.TRD.GNFS.ZS",
+          "name": "Trade (% of GDP)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "Trade is the sum of exports and imports of goods and services. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
+          "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
+          "topics": [
+            {
+              "id": "3",
+              "value": "Economy & Growth"
+            },
+            {
+              "id": "21",
+              "value": "Trade"
+            }
+          ]
+        }
+      ]
+    ]
+  }
+]

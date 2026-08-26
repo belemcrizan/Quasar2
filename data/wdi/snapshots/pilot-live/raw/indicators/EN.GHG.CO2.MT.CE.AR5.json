@@ -1,0 +1,35 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/indicator/EN.GHG.CO2.MT.CE.AR5?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 300.47290003858507,
+    "sha256": "50422f9bf5fd3ea30271aa14bd154345ab9ef81a54a77515e3ca190558ffe642",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": "20",
+        "total": 1
+      },
+      [
+        {
+          "id": "EN.GHG.CO2.MT.CE.AR5",
+          "name": "Carbon dioxide (CO2) emissions (total) excluding LULUCF (Mt CO2e)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "A measure of annual emissions of carbon dioxide (CO2), one of the six Kyoto greenhouse gases (GHG), from the agriculture, energy, waste, and industrial sectors, excluding LULUCF. The measure is standardized to carbon dioxide equivalent values using the Global Warming Potential (GWP) factors of IPCC's 5th Assessment Report (AR5).",
+          "sourceOrganization": "EDGAR (Emissions Database for Global Atmospheric Research) Community GHG Database, Joint Research Centre (JRC) - European Commission, uri: https://edgar.jrc.ec.europa.eu/dataset_ghg2024, publisher: JRC European Commission, date published: 2024;\nInternational Energy Agency (IEA), uri: https://edgar.jrc.ec.europa.eu/dataset_ghg2024, publisher: International Energy Agency (IEA), date published: 2024",
+          "topics": [
+            {
+              "id": "6",
+              "value": "Environment "
+            }
+          ]
+        }
+      ]
+    ]
+  }
+]

@@ -1,0 +1,270 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;LCN?format=json&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 84.02309997472912,
+    "sha256": "931ad231763ddc37d7f78a260f11aeaf8b9e7678a9cdff2b0ee91587bd87869c",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": "1000",
+        "total": 9
+      },
+      [
+        {
+          "id": "ARG",
+          "iso2Code": "AR",
+          "name": "Argentina",
+          "region": {
+            "id": "LCN",
+            "iso2code": "ZJ",
+            "value": "Latin America & Caribbean "
+          },
+          "adminregion": {
+            "id": "LAC",
+            "iso2code": "XJ",
+            "value": "Latin America & Caribbean (excluding high income)"
+          },
+          "incomeLevel": {
+            "id": "UMC",
+            "iso2code": "XT",
+            "value": "Upper middle income"
+          },
+          "lendingType": {
+            "id": "IBD",
+            "iso2code": "XF",
+            "value": "IBRD"
+          },
+          "capitalCity": "Buenos Aires",
+          "longitude": "-58.4173",
+          "latitude": "-34.6118"
+        },
+        {
+          "id": "BRA",
+          "iso2Code": "BR",
+          "name": "Brazil",
+          "region": {
+            "id": "LCN",
+            "iso2code": "ZJ",
+            "value": "Latin America & Caribbean "
+          },
+          "adminregion": {
+            "id": "LAC",
+            "iso2code": "XJ",
+            "value": "Latin America & Caribbean (excluding high income)"
+          },
+          "incomeLevel": {
+            "id": "UMC",
+            "iso2code": "XT",
+            "value": "Upper middle income"
+          },
+          "lendingType": {
+            "id": "IBD",
+            "iso2code": "XF",
+            "value": "IBRD"
+          },
+          "capitalCity": "Brasilia",
+          "longitude": "-47.9292",
+          "latitude": "-15.7801"
+        },
+        {
+          "id": "CHN",
+          "iso2Code": "CN",
+          "name": "China",
+          "region": {
+            "id": "EAS",
+            "iso2code": "Z4",
+            "value": "East Asia & Pacific"
+          },
+          "adminregion": {
+            "id": "EAP",
+            "iso2code": "4E",
+            "value": "East Asia & Pacific (excluding high income)"
+          },
+          "incomeLevel": {
+            "id": "UMC",
+            "iso2code": "XT",
+            "value": "Upper middle income"
+          },
+          "lendingType": {
+            "id": "IBD",
+            "iso2code": "XF",
+            "value": "IBRD"
+          },
+          "capitalCity": "Beijing",
+          "longitude": "116.286",
+          "latitude": "40.0495"
+        },
+        {
+          "id": "DEU",
+          "iso2Code": "DE",
+          "name": "Germany",
+          "region": {
+            "id": "ECS",
+            "iso2code": "Z7",
+            "value": "Europe & Central Asia"
+          },
+          "adminregion": {
+            "id": "",
+            "iso2code": "",
+            "value": ""
+          },
+          "incomeLevel": {
+            "id": "HIC",
+            "iso2code": "XD",
+            "value": "High income"
+          },
+          "lendingType": {
+            "id": "LNX",
+            "iso2code": "XX",
+            "value": "Not classified"
+          },
+          "capitalCity": "Berlin",
+          "longitude": "13.4115",
+          "latitude": "52.5235"
+        },
+        {
+          "id": "IND",
+          "iso2Code": "IN",
+          "name": "India",
+          "region": {
+            "id": "SAS",
+            "iso2code": "8S",
+            "value": "South Asia"
+          },
+          "adminregion": {
+            "id": "SAS",
+            "iso2code": "8S",
+            "value": "South Asia"
+          },
+          "incomeLevel": {
+            "id": "LMC",
+            "iso2code": "XN",
+            "value": "Lower middle income"
+          },
+          "lendingType": {
+            "id": "IBD",
+            "iso2code": "XF",
+            "value": "IBRD"
+          },
+          "capitalCity": "New Delhi",
+          "longitude": "77.225",
+          "latitude": "28.6353"
+        },
+        {
+          "id": "JPN",
+          "iso2Code": "JP",
+          "name": "Japan",
+          "region": {
+            "id": "EAS",
+            "iso2code": "Z4",
+            "value": "East Asia & Pacific"
+          },
+          "adminregion": {
+            "id": "",
+            "iso2code": "",
+            "value": ""
+          },
+          "incomeLevel": {
+            "id": "HIC",
+            "iso2code": "XD",
+            "value": "High income"
+          },
+          "lendingType": {
+            "id": "LNX",
+            "iso2code": "XX",
+            "value": "Not classified"
+          },
+          "capitalCity": "Tokyo",
+          "longitude": "139.77",
+          "latitude": "35.67"
+        },
+        {
+          "id": "LCN",
+          "iso2Code": "ZJ",
+          "name": "Latin America & Caribbean ",
+          "region": {
+            "id": "NA",
+            "iso2code": "NA",
+            "value": "Aggregates"
+          },
+          "adminregion": {
+            "id": "",
+            "iso2code": "",
+            "value": ""
+          },
+          "incomeLevel": {
+            "id": "NA",
+            "iso2code": "NA",
+            "value": "Aggregates"
+          },
+          "lendingType": {
+            "id": "",
+            "iso2code": "",
+            "value": "Aggregates"
+          },
+          "capitalCity": "",
+          "longitude": "",
+          "latitude": ""
+        },
+        {
+          "id": "NGA",
+          "iso2Code": "NG",
+          "name": "Nigeria",
+          "region": {
+            "id": "SSF",
+            "iso2code": "ZG",
+            "value": "Sub-Saharan Africa "
+          },
+          "adminregion": {
+            "id": "SSA",
+            "iso2code": "ZF",
+            "value": "Sub-Saharan Africa (excluding high income)"
+          },
+          "incomeLevel": {
+            "id": "LMC",
+            "iso2code": "XN",
+            "value": "Lower middle income"
+          },
+          "lendingType": {
+            "id": "IDB",
+            "iso2code": "XH",
+            "value": "Blend"
+          },
+          "capitalCity": "Abuja",
+          "longitude": "7.48906",
+          "latitude": "9.05804"
+        },
+        {
+          "id": "USA",
+          "iso2Code": "US",
+          "name": "United States",
+          "region": {
+            "id": "NAC",
+            "iso2code": "XU",
+            "value": "North America"
+          },
+          "adminregion": {
+            "id": "",
+            "iso2code": "",
+            "value": ""
+          },
+          "incomeLevel": {
+            "id": "HIC",
+            "iso2code": "XD",
+            "value": "High income"
+          },
+          "lendingType": {
+            "id": "LNX",
+            "iso2code": "XX",
+            "value": "Not classified"
+          },
+          "capitalCity": "Washington D.C.",
+          "longitude": "-77.032",
+          "latitude": "38.8895"
+        }
+      ]
+    ]
+  }
+]

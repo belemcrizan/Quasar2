@@ -1,0 +1,35 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SE.PRM.NENR?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 273.31910002976656,
+    "sha256": "813a6b83650d3f8b76a324c3ea19977d667198b98a442064582cf59c5050db4c",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": "20",
+        "total": 1
+      },
+      [
+        {
+          "id": "SE.PRM.NENR",
+          "name": "School enrollment, primary (% net)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "Net enrollment rate is the ratio of children of official school age who are enrolled in school to the population of the corresponding official school age. Primary education provides children with basic reading, writing, and mathematics skills along with an elementary understanding of such subjects as history, geography, natural science, social science, art, and music.",
+          "sourceOrganization": "Stat Bulk Data Download Service, UN Educational, Scientific and Cultural Organization (UNESCO), uri: https://uis.unesco.org/bdds, publisher: UNESCO Institute for Statistics (UIS)",
+          "topics": [
+            {
+              "id": "4",
+              "value": "Education "
+            }
+          ]
+        }
+      ]
+    ]
+  }
+]

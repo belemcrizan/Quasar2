@@ -1,0 +1,43 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/indicator/EG.FEC.RNEW.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 681.5933999605477,
+    "sha256": "e1772c5039f9d09c392c32e7ccd13bece39b053e6b0486f88f60ea109dcb43dd",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": "20",
+        "total": 1
+      },
+      [
+        {
+          "id": "EG.FEC.RNEW.ZS",
+          "name": "Renewable energy consumption (% of total final energy consumption)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "Renewable energy consumption is the share of renewable energy in total final energy consumption.",
+          "sourceOrganization": "IEA Energy Statistics Data Browser, International Energy Agency (IEA), uri: https://www.iea.org/data-and-statistics/data-tools/energy-statistics-data-browser, publisher: International Energy Agency (IEA), date accessed: 2025-03-25",
+          "topics": [
+            {
+              "id": "5",
+              "value": "Energy & Mining "
+            },
+            {
+              "id": "19",
+              "value": "Climate Change"
+            },
+            {
+              "id": "6",
+              "value": "Environment "
+            }
+          ]
+        }
+      ]
+    ]
+  }
+]

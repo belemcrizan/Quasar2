@@ -133,6 +133,87 @@ def command_validate(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_wdi_sync(args: argparse.Namespace) -> int:
+    from quasar2.wdi.snapshot import sync_slice
+
+    manifest = sync_slice(Path(args.output), stage=args.stage, source_id=args.source)
+    print(json.dumps(manifest, indent=2))
+    return 0 if manifest.get("status") == "COMPLETE" else 1
+
+
+def command_wdi_validate(args: argparse.Namespace) -> int:
+    from quasar2.wdi.snapshot import load_snapshot
+    from quasar2.wdi.source import WDIEvidenceSource
+
+    loaded = load_snapshot(Path(args.snapshot))
+    source = WDIEvidenceSource(args.snapshot)
+    report = source.validate()
+    print(json.dumps({"manifest": loaded["manifest"], "validation": report.ok}, indent=2, default=str))
+    return 0 if report.ok else 1
+
+
+def command_wdi_build_corpus(args: argparse.Namespace) -> int:
+    from quasar2.wdi.source import WDIEvidenceSource
+
+    source = WDIEvidenceSource(args.snapshot)
+    print(f"documents: {len(source.documents())}")
+    print(f"snapshot: {source.manifest['snapshot_id']}")
+    return 0
+
+
+def command_neural_doctor(args: argparse.Namespace) -> int:
+    import platform
+    import sys
+
+    info = {
+        "python": sys.version.split()[0],
+        "platform": platform.platform(),
+        "torch": None,
+        "sentence_transformers": None,
+        "cuda": False,
+        "hashing_is_not_neural": True,
+    }
+    try:
+        import torch
+
+        info["torch"] = torch.__version__
+        info["cuda"] = bool(torch.cuda.is_available())
+    except Exception as error:
+        info["torch_error"] = str(error)
+    try:
+        import sentence_transformers
+
+        info["sentence_transformers"] = sentence_transformers.__version__
+    except Exception as error:
+        info["st_error"] = str(error)
+    print(json.dumps(info, indent=2))
+    return 0 if info["sentence_transformers"] else 1
+
+
+def command_dataset_build(args: argparse.Namespace) -> int:
+    from quasar2.benchmarks.wdi_bench import write_benchmark
+
+    stage = "pilot" if args.dataset == "wdi-pilot" else "ci"
+    path = write_benchmark(args.snapshot, args.output, stage=stage)
+    print(path)
+    return 0
+
+
+def command_wdi_experiment(args: argparse.Namespace) -> int:
+    from quasar2.v24.experiment import run_wdi_experiment
+
+    payload = run_wdi_experiment(
+        args.snapshot,
+        stage=args.stage,
+        policies=tuple(args.policies.split(",")),
+        backends=tuple(args.backends.split(",")),
+        output_dir=args.output,
+        limit=args.limit,
+    )
+    print(json.dumps(payload["summaries"], indent=2))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="quasar2", description=__doc__)
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
@@ -174,6 +255,38 @@ def build_parser() -> argparse.ArgumentParser:
     validate = subparsers.add_parser("validate", help="validate data and cross-references")
     validate.add_argument("--config")
     validate.set_defaults(func=command_validate)
+
+    wdi_sync = subparsers.add_parser("wdi-sync", help="download an immutable WDI snapshot slice (network)")
+    wdi_sync.add_argument("--source", type=int, default=2)
+    wdi_sync.add_argument("--stage", default="ci", choices=("ci", "pilot"))
+    wdi_sync.add_argument("--output", required=True)
+    wdi_sync.set_defaults(func=command_wdi_sync)
+
+    wdi_validate = subparsers.add_parser("wdi-validate", help="validate a local WDI snapshot offline")
+    wdi_validate.add_argument("--snapshot", required=True)
+    wdi_validate.set_defaults(func=command_wdi_validate)
+
+    wdi_corpus = subparsers.add_parser("wdi-build-corpus", help="summarize IndicatorDocument/EntityDocument corpus")
+    wdi_corpus.add_argument("--snapshot", required=True)
+    wdi_corpus.set_defaults(func=command_wdi_build_corpus)
+
+    neural = subparsers.add_parser("neural-doctor", help="report neural dependency versions")
+    neural.set_defaults(func=command_neural_doctor)
+
+    dataset = subparsers.add_parser("dataset-build", help="materialize QUASAR-Bench-WDI JSON")
+    dataset.add_argument("--dataset", default="wdi-ci")
+    dataset.add_argument("--snapshot", required=True)
+    dataset.add_argument("--output", required=True)
+    dataset.set_defaults(func=command_dataset_build)
+
+    wdi_exp = subparsers.add_parser("wdi-experiment", help="crossed retriever x policy WDI evaluation")
+    wdi_exp.add_argument("--snapshot", required=True)
+    wdi_exp.add_argument("--stage", default="ci")
+    wdi_exp.add_argument("--backends", default="bm25")
+    wdi_exp.add_argument("--policies", default="top1,threshold,v24")
+    wdi_exp.add_argument("--output")
+    wdi_exp.add_argument("--limit", type=int)
+    wdi_exp.set_defaults(func=command_wdi_experiment)
     return parser
 
 

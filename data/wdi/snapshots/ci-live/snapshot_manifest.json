@@ -1,0 +1,61 @@
+{
+  "snapshot_id": "wdi-ci-2026-08-26-6ead85fe",
+  "source": "worldbank_wdi",
+  "source_id": 2,
+  "api_version": "2",
+  "stage": "ci",
+  "created_at": "2026-08-26T03:11:16+00:00",
+  "completed_at": "2026-08-26T03:11:25+00:00",
+  "request_count": 25,
+  "row_counts": {
+    "entities": 9,
+    "indicators": 12,
+    "observations": 1152,
+    "observed": 981,
+    "not_available": 171
+  },
+  "indicator_count": 12,
+  "country_entity_count": 8,
+  "period_range": [
+    "2005",
+    "2025"
+  ],
+  "schema_versions": {
+    "snapshot": "2.4.0",
+    "normalized": "2.4.0"
+  },
+  "software_commit": "unknown",
+  "status": "COMPLETE",
+  "hashes": {
+    "entities": "18135cf8281e85a99379d1753e55acf77cd259c42f1d3edfd32fac5dd5a8c682",
+    "indicators": "b19867cc55426959dfee68dd68865aa101213c2a1fbc2f96c02da3b0059bad69",
+    "observations": "a5606f7505b18a8acac41c03ace304fc720edf4898d63fb4d3305166cfe97957",
+    "attribution": "7f907370cd5f63c6e74d08eedcb901d6258f5fd738fed5b34eadca56013aee07",
+    "countries": "e03fda2c2a41bc79ff0d592520c1e0bfb9fd92e9fc0dd446851176ab70b5fcf1",
+    "indicator_NY.GDP.PCAP.CD": "bb04f0fd6a0fd0c6b81411bcfb67738f28059481d46c6359d9f6ab94238b5761",
+    "indicator_NY.GDP.MKTP.CD": "d4c7fbb7e51aec5b3771d0bf1f68a7720555f7a5b804a0ef536a3bea71908748",
+    "indicator_SP.POP.TOTL": "ca6ab2d05f31e8773eb1ede4834578d935d2797c4226fa4f7ce901c3cb10bfdc",
+    "indicator_SI.POV.DDAY": "52ffb8184bf9030a987027fdeaa7aa89006e85c1e12074a5de4439345a7349e7",
+    "indicator_FP.CPI.TOTL.ZG": "b4de0d81b68cfd30c8efe1938045b3391092c51d1c9561ca212dc2a5b1faba37",
+    "indicator_SL.UEM.TOTL.ZS": "76c4fcd0d9e1f7302411cb031eff49347055e6c8f9ff707120183ab6636d2b96",
+    "indicator_SP.DYN.LE00.IN": "3e36780d44ddf7be6fdc5dab0836a2526f23f5461ca8a179133720ac1527d9d4",
+    "indicator_SE.ADT.LITR.ZS": "84d37b15c89535a1ca3b800f163061f1a439ef61ce66e3923f777a92d2529f11",
+    "indicator_EG.ELC.ACCS.ZS": "1ed1d128247951698b471326f18b2dc6e764243b7f0d47fe4ebc3cefe6e529aa",
+    "indicator_EN.GHG.CO2.PC.CE.AR5": "fcd574d0a959fd76db3ee764a932d7e13b1072cd36a139ea715005c1b53b75d7",
+    "indicator_IT.NET.USER.ZS": "e5df2ba8d79bf98a6f164541fcc65718da8dc867c7da6daf7912c8fc2673ef95",
+    "indicator_SH.XPD.CHEX.GD.ZS": "d5e37b88027fd281ce9fbdf3068b5502864e3c848a336c4aec6f65b1a721d0a4",
+    "obs_NY.GDP.PCAP.CD": "61d33d47058e1fb2b1f0ad35e52409a4365ad3d8722eb83212c5b510dd784447",
+    "obs_NY.GDP.MKTP.CD": "e2b22c602aad4dd6169dc4fb8006eca4e2b213560febb26d7b3c3a069a6465cc",
+    "obs_SP.POP.TOTL": "57f7109aa36846bfed8f0f88ad7342b4b0e1c165052e548fcac95774e47d9ece",
+    "obs_SI.POV.DDAY": "9ddeaf88bb7a33d04e02c5714af9d9706fa3aafc647e75148d91293582e49005",
+    "obs_FP.CPI.TOTL.ZG": "3ddd8ecfe8e028d3b14fc9c10195dc623d8c3a266a6796a4336182de55a80ff5",
+    "obs_SL.UEM.TOTL.ZS": "a9130377e14b40de288cc1978a7fd75169533acf043678dcd97ac031cefbf98b",
+    "obs_SP.DYN.LE00.IN": "0179c49ed338a87a481270e4b114d3bcdd098ee3b9f2d9ebcd00c940e0805502",
+    "obs_SE.ADT.LITR.ZS": "3826ff0877cc9087ecb5c7f5b3d3d0041fcec60fcffc0eb97f95c3442cf32eb9",
+    "obs_EG.ELC.ACCS.ZS": "1e4cc8d96248d69577dd21b9cc968668095c8fa5440f3be83b6d583f47ec526b",
+    "obs_EN.GHG.CO2.PC.CE.AR5": "0d3e02919457f17b7d054ec89f02ba2cb2727ecbe419eca42e47f620ab894e5f",
+    "obs_IT.NET.USER.ZS": "4e80f58b4028fd4197b2ae5400081b35f5680a7012f9701801fd254a2d039113",
+    "obs_SH.XPD.CHEX.GD.ZS": "4991184c79054a1bc5bea3a86e27faf8d654cf942254fd6084361860b5e9e268"
+  },
+  "errors": []
+}

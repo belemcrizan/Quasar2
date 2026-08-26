@@ -1,0 +1,368 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN?format=json&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 745.9076999220997,
+    "sha256": "e7f32e74c30931762b3bcf78c3659f7dab629bfb949f33f012bb54ad5f0affc2"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/NY.GDP.PCAP.CD?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 43.11729990877211,
+    "sha256": "b55cebbc11da11b7ab883eabbed637f8d774febb8c0e6857334eff465d2eab40"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/NY.GDP.MKTP.CD?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 64.69440006185323,
+    "sha256": "beb3e326519e4d69d03a45c06c8e87b3d557d99fdac9bf15ceab48751f7995d0"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SP.POP.TOTL?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 68.82339995354414,
+    "sha256": "b842cf65164d6d7302729364d66a5e977e13adc6ca3829a5fc4d67fe3f87a56e"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SI.POV.DDAY?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 47.52370005007833,
+    "sha256": "ff4842d78a808feb045f949596f78a6ec2bd5f122a3c96b4960de95a2cb811e1"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 51.79880000650883,
+    "sha256": "1b02cef394eadd15e94f757f6a7b80c69ce405574d38f790e8c4ab06fceaa684"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SL.UEM.TOTL.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 61.024899943731725,
+    "sha256": "50e677dd0198300da681726adb139151da6a9395568e744edf2146895f744560"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SP.DYN.LE00.IN?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 60.11439999565482,
+    "sha256": "4ab2fba2c1c87749c2cad67f0c889c12b7c5acab459e73e9c865f66fe1ed83d1"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SE.ADT.LITR.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 40.895799989812076,
+    "sha256": "d9048633f647fe93a0abcf06ede92ba844ee688386692c1ddf8faf9281ace5a1"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/EG.ELC.ACCS.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 63.32000007387251,
+    "sha256": "76b4099b5195c9f92d49c650a09ad49e84708c5920ccb0d54969c2a55c05dca7"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/EN.GHG.CO2.PC.CE.AR5?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 57.49649996869266,
+    "sha256": "28d91764321406e4265e83301e4305ff3d0d305fd101f9466cac49ceedcd42b7"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/IT.NET.USER.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 61.32690003141761,
+    "sha256": "0ace6b6603f0d9d936b015b2d2f1c7a5e89fa277129a12a75b41f10234761a3b"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SH.XPD.CHEX.GD.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 44.45719998329878,
+    "sha256": "241812d34485fb718f72dc6e9fa22a41f791863b727f4447276e2dd473c55a65"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/NY.GDP.PCAP.PP.CD?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 301.07839999254793,
+    "sha256": "024945a41bf48aab2a87e83597fb0578a464b18b7545e69c82d279e60457b36f"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/NY.GNP.PCAP.CD?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 290.1001999853179,
+    "sha256": "fa7a703ad9a872b217ccd6af784352597ad2c73653783d3d39521fb11ccdff31"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SP.URB.TOTL.IN.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 369.87209995277226,
+    "sha256": "fa8caaf2ce931c4f3f781a7e46a3fbbee9c0742fb7b5943333e53d01e7366a55"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SP.DYN.TFRT.IN?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 304.14300004485995,
+    "sha256": "16f1cb12a35a4fce27191064c84fb8fedccae8e4feabde50c1d1ad79450f1ffb"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 292.9552999557927,
+    "sha256": "71c26b8fd431ff0c213a72bcae4142fba1f94037f25e70b07cc056589f02aafd"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SE.PRM.NENR?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 273.31910002976656,
+    "sha256": "813a6b83650d3f8b76a324c3ea19977d667198b98a442064582cf59c5050db4c"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SE.SEC.NENR?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 306.83130002580583,
+    "sha256": "c7c6bd7889b3a99fa5d4bb4bb71ec4481be497093544678cd5c9bf1bb8994879"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/EG.FEC.RNEW.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 681.5933999605477,
+    "sha256": "e1772c5039f9d09c392c32e7ccd13bece39b053e6b0486f88f60ea109dcb43dd"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/EN.GHG.CO2.MT.CE.AR5?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 300.47290003858507,
+    "sha256": "50422f9bf5fd3ea30271aa14bd154345ab9ef81a54a77515e3ca190558ffe642"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/NE.TRD.GNFS.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 287.6977000851184,
+    "sha256": "6cde768e8b2515f4cfa839e5fe525f08f66ea70d3fc17bf81c4a1c946ae87659"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/IT.CEL.SETS.P2?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 284.87880004104227,
+    "sha256": "aec4b0e54774eb05d6d1041c32e1dbb294137bff2e47fc42bf69fb9146d1a8b6"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/IT.NET.BBND.P2?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 329.2801999486983,
+    "sha256": "2c5474242330a38d4eecc35618d5288580b94f45bf99430fb4d7386656147a75"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/GC.DOD.TOTL.GD.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 343.8983999658376,
+    "sha256": "f2fb51e62c42f7518685f3fb433080c02d3ce71b5e70ba5c78abeb74fc870536"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/FS.AST.DOMS.GD.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 286.8519000476226,
+    "sha256": "bd466835da160d59f6deee7ff6b482f137f4d0f02078aa127fb9836990bf1a8c"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SG.GEN.PARL.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 296.9143999507651,
+    "sha256": "299255c158f638592ca64f0fa128564959c45cbce02ac80329dd19c53244493a"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SL.TLF.CACT.FE.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 662.5138999661431,
+    "sha256": "c5d978221db6bdf21eca161ee49ef767d14d0e39825750123e7003ce4479bbd4"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/IQ.CPA.PUBS.XQ?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 278.5793000366539,
+    "sha256": "0175583fba4d65437002e4cf39e009a7ebdabd8671f8f14d84c7278b8f0139b0"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SP.POP.GROW?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 283.92150008585304,
+    "sha256": "351d224b3b709a24b07da34a99dd2ebb736d914acf043f9641d2ba7333c8ac4b"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/NY.GDP.PCAP.CD?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 460.358600015752,
+    "sha256": "9c0d1c7a67c5337304de9c851d2dcd22cb0f60d6d12d246e13c3b7f679f95250"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/NY.GDP.MKTP.CD?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 424.9401999404654,
+    "sha256": "183336c93d93bf26b0b7c3d7c5056fdae844778ba3c92e0e1c51912d543a3eeb"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SP.POP.TOTL?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 507.935700006783,
+    "sha256": "d3a70c86c8ae3205669c046c9321bb1c3996fe319f3aaf55d3d64fac6acc8a98"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SI.POV.DDAY?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 400.1780999824405,
+    "sha256": "c89f3a37c697cafcfb1abb098cdb54a95b338de3e2a68bf5670ee8aff993d2db"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/FP.CPI.TOTL.ZG?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 800.8487999904901,
+    "sha256": "a595600d992ff81d804c2e314b4108dffaac8f0f478becc2e031a3aa88a7fa20"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SL.UEM.TOTL.ZS?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 456.3889999408275,
+    "sha256": "2a77c6691d852bcf918c1fee2119d7fb5b5bb9560c194aa9895053202cda6983"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SP.DYN.LE00.IN?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 825.6776001071557,
+    "sha256": "c2399946dc55d13334abc36e457cd06805d3bb7ca357eca46d4f1d42c4fb9406"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SE.ADT.LITR.ZS?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 404.5176000799984,
+    "sha256": "01c1618198512d7398fa08f7884591aa731910176e043c6bf0d150b331a6d530"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/EG.ELC.ACCS.ZS?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 399.54509993549436,
+    "sha256": "619195353cc19e818a92c947c327eba9e0487b622a9688919f2fca381b3b449d"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/EN.GHG.CO2.PC.CE.AR5?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 417.55180002655834,
+    "sha256": "aca3c58ac3ab90d6d9446e6a15f9bc12d3e5108d193c7a90440310241e4cd2d1"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/IT.NET.USER.ZS?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 418.4942999854684,
+    "sha256": "8d11e5086407e970aa20b804a338cec27a9a94e020b4ff2ed78ad9ad4ac44992"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SH.XPD.CHEX.GD.ZS?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 427.53770004492253,
+    "sha256": "47fa7c5ac632c759104fdafcc46feca5fde6f9d07ae336f5e2858194dae6e98a"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/NY.GDP.PCAP.PP.CD?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 1037.7327000023797,
+    "sha256": "3d1c50785c6bac14b558e2767374f800cde9b2f4b81a3f33defabc826b3a1081"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/NY.GNP.PCAP.CD?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 569.3200000096112,
+    "sha256": "0e6afc4ac07bc4d7c340868a0bc7df261f89a331936e9e5254f462db2b6a2b3a"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SP.URB.TOTL.IN.ZS?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 445.50790009088814,
+    "sha256": "b92bab710fe2ff8886a3b94294ca5e53fd8d5635485e89227faba286e92e56ec"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SP.DYN.TFRT.IN?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 623.4508999623358,
+    "sha256": "90942bae609a83abb407bfe8aa1dac1e0fb558a7bb1f175ce716c2ea44a34ae1"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SH.DYN.MORT?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 742.538999998942,
+    "sha256": "5e68ba1a6097e30b7a6e0d58fda939a71e4f81e2a25169280c620e76182b1bff"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SE.PRM.NENR?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 522.1626999555156,
+    "sha256": "df3fa9a04da5166f4b372f7b7152b2d40874fc06ef1a6887739ce555a71fcc6f"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SE.SEC.NENR?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 512.3767000623047,
+    "sha256": "eb74fac624973495f1cdd44467141d97e37930a1eb6cbe54f90ef171ca570111"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/EG.FEC.RNEW.ZS?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 2483.8502999627963,
+    "sha256": "cd62f553f6ced13eb2a2d69d9987cf2161e2020b009f662e2ebe4e0fa5f8c42d"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/EN.GHG.CO2.MT.CE.AR5?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 699.0364000666887,
+    "sha256": "83c0b3e938f4fa7d6f81581df0f95bf5779ff5918475d3a45ba7f39fca59400a"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/NE.TRD.GNFS.ZS?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 448.6489000264555,
+    "sha256": "ae495a5ca3156f1a051d4f32698ff9077a6bd02a6227385fe4bd7423bc562e86"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/IT.CEL.SETS.P2?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 599.1131999762729,
+    "sha256": "f33167b57db52539e539e26d0e80a5a188aa174cb25eb1b6a812a73e14539348"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/IT.NET.BBND.P2?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 491.66909989435226,
+    "sha256": "d06de7d27e22db17bb218688251ce12293d8be2c8642c819f700c8bb3791ed00"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/GC.DOD.TOTL.GD.ZS?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 537.573599955067,
+    "sha256": "56e36df8dfebfff1f500d4f226dd92cb7582596a9f8d077ffe64115b3c337996"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/FS.AST.DOMS.GD.ZS?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 852.8697000583634,
+    "sha256": "026809d952970eb159c9218a7f45bb73c447772d01da381c349903ee2412c589"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SG.GEN.PARL.ZS?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 1463.8166000368074,
+    "sha256": "e352c87b2577ebe9dfcca8e414af87bb913dde5e0a9b70e0cb6e6f135f0f5c17"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SL.TLF.CACT.FE.ZS?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 2784.110000007786,
+    "sha256": "569b046980b179c0e86911ac9a35be8c3f2932a41ef7cce789e95ed149a11e74"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/IQ.CPA.PUBS.XQ?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 714.4804999697953,
+    "sha256": "78f0f0f39c35bc80f447e2a1600b16f3e6ce74183ea25a7f097260eba3f4b800"
+  },
+  {
+    "url": "https://api.worldbank.org/v2/country/BRA;USA;CHN;IND;DEU;NGA;JPN;ARG;MEX;ZAF;FRA;GBR;IDN;PAK;EGY;VNM;KEN;COL;BGD;TUR;LCN/indicator/SP.POP.GROW?format=json&source=2&date=2000%3A2023&per_page=1000&page=1",
+    "status": 200,
+    "elapsed_ms": 469.29669997189194,
+    "sha256": "ef788c3736d8bf68d7099ea7eea0aee02aebafac900ceabebecc4f097cab71cf"
+  }
+]

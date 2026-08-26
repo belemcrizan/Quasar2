@@ -1,0 +1,43 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SG.GEN.PARL.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 296.9143999507651,
+    "sha256": "299255c158f638592ca64f0fa128564959c45cbce02ac80329dd19c53244493a",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": "20",
+        "total": 1
+      },
+      [
+        {
+          "id": "SG.GEN.PARL.ZS",
+          "name": "Proportion of seats held by women in national parliaments (%)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "Women in parliaments are the percentage of parliamentary seats in a single or lower chamber held by women.",
+          "sourceOrganization": "Monthly ranking of women in national parliaments, Inter-Parliamentary Union (IPU), uri: https://data.ipu.org/women-ranking/, note: For the year of 1998, the data is as of August 10, 1998., type: Excel, date accessed: 2026-03-29",
+          "topics": [
+            {
+              "id": "13",
+              "value": "Public Sector "
+            },
+            {
+              "id": "17",
+              "value": "Gender"
+            },
+            {
+              "id": "15",
+              "value": "Social Development "
+            }
+          ]
+        }
+      ]
+    ]
+  }
+]

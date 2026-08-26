@@ -10,7 +10,7 @@ from quasar2.retrieval.dense import HashingDenseRetriever
 from quasar2.retrieval.hybrid import HybridRetriever
 
 DEBUG_BACKENDS = frozenset({"bm25", "dense", "dense_hash", "hybrid"})
-SCIENTIFIC_BACKENDS = frozenset({"neural", "hybrid_neural"})
+SCIENTIFIC_BACKENDS = frozenset({"neural", "hybrid_neural", "e5", "bge-m3", "hybrid_bge"})
 ALL_BACKENDS = DEBUG_BACKENDS | SCIENTIFIC_BACKENDS
 
 
@@ -47,12 +47,25 @@ def build_retriever(
         )
     from quasar2.retrieval.neural import NeuralDenseRetriever
 
+    profile = "minilm"
+    if name == "e5":
+        profile = "e5"
+    elif name in {"bge-m3", "hybrid_bge"}:
+        profile = "bge-m3"
+    elif name in {"neural", "hybrid_neural"}:
+        profile = "minilm"
     neural = NeuralDenseRetriever(
         documents,
-        model_name=str(settings.get("neural_model", "sentence-transformers/all-MiniLM-L6-v2")),
+        model_name=str(settings.get("neural_model") or {
+            "e5": "intfloat/multilingual-e5-base",
+            "bge-m3": "BAAI/bge-m3",
+            "hybrid_bge": "BAAI/bge-m3",
+        }.get(name, "sentence-transformers/all-MiniLM-L6-v2")),
         device=str(settings.get("neural_device", "cpu")),
+        profile=profile,
+        cache_dir=settings.get("neural_cache_dir"),
     )
-    if name == "neural":
+    if name in {"neural", "e5", "bge-m3"}:
         return neural
     return HybridRetriever(
         sparse,
@@ -68,7 +81,7 @@ def backend_for_method(method: str) -> str | None:
 
     if method.startswith("full+"):
         return method.split("+", 1)[1]
-    if method in {"bm25", "dense", "dense_hash", "hybrid", "neural", "hybrid_neural"}:
+    if method in {"bm25", "dense", "dense_hash", "hybrid", "neural", "hybrid_neural", "e5", "bge-m3", "hybrid_bge"}:
         return "dense_hash" if method == "dense" else method
     if method in {"rewrite_hybrid", "rewrite", "multi_query"}:
         return "hybrid"

@@ -1,0 +1,9 @@
+{
+  "freeze_id": "v24-r0-baseline",
+  "package": "0.2.0",
+  "python": "3.13.3",
+  "unittest": "35 passed including historical 22",
+  "validate": "40 hypotheses, 80 documents, 40 intents, 120 queries",
+  "historical_full_vs_hybrid_irr": {"full": 0.975, "hybrid": 0.983, "note": "from frozen v0.1.1 JSON; CI includes 0"},
+  "hashing_is_not_neural": true
+}

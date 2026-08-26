@@ -1,6 +1,3 @@
-"""Evidence scoring and aggregation."""
+from quasar2.evidence.contracts import EvidenceSource, FetchRequest, SearchRequest
 
-from quasar2.evidence.scorer import EvidenceScorer
-
-__all__ = ["EvidenceScorer"]
-
+__all__ = ["EvidenceSource", "FetchRequest", "SearchRequest"]

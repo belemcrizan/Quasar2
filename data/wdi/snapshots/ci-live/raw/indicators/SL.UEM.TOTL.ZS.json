@@ -1,0 +1,39 @@
+[
+  {
+    "url": "https://api.worldbank.org/v2/indicator/SL.UEM.TOTL.ZS?format=json&per_page=20&page=1",
+    "status": 200,
+    "elapsed_ms": 47.73029999341816,
+    "sha256": "50e677dd0198300da681726adb139151da6a9395568e744edf2146895f744560",
+    "body": [
+      {
+        "page": 1,
+        "pages": 1,
+        "per_page": "20",
+        "total": 1
+      },
+      [
+        {
+          "id": "SL.UEM.TOTL.ZS",
+          "name": "Unemployment, total (% of total labor force) (modeled ILO estimate)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "Unemployment refers to the share of the labor force that is without work but available for and seeking employment.",
+          "sourceOrganization": "ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO), uri: https://ilostat.ilo.org/data/bulk/, publisher: ILOSTAT, type: external database, date accessed: January 17, 2026",
+          "topics": [
+            {
+              "id": "4",
+              "value": "Education "
+            },
+            {
+              "id": "10",
+              "value": "Social Protection & Labor"
+            }
+          ]
+        }
+      ]
+    ]
+  }
+]
