@@ -10,7 +10,7 @@ from quasar2.math.divergences import (
     weighted_jsd,
 )
 from quasar2.math.information import information_difference, surprisal
-from quasar2.math.voi import voi_bound_binary, voi_bound_general
+from quasar2.math.voi import voi_bound_binary, voi_bound_general, empirical_binary_voi_zero_one
 
 __all__ = [
     "LipschitzNorm",
@@ -27,5 +27,6 @@ __all__ = [
     "total_variation",
     "voi_bound_binary",
     "voi_bound_general",
+    "empirical_binary_voi_zero_one",
     "weighted_jsd",
 ]

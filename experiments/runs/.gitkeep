@@ -1,0 +1,4 @@
+This directory stores non-overwriting experiment runs.
+
+Each run id contains config, metrics, traces, and reports. Existing directories
+are refused unless `overwrite=True`.

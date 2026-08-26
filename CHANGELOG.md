@@ -2,7 +2,9 @@
 
 ## Unreleased
 
-- Added V2.4 WDI snapshot sync, five-action policy path, neural profiles (E5, BGE-M3, MiniLM), and a 600-intent WDI pilot. Historical v0.1.1 sanity results are unchanged.
+- Added V2 math utilities, recoverability estimators, ANALYZE operators, theorem harness T1–T4/C1, and optional `--v2-shadow` telemetry. The v0.1.1 loop is unchanged unless shadow mode is enabled, and even then only diagnostics are added.
+- Added MyopicVoIPolicy and ThresholdPolicy as **shadow recommenders**, proxy recoverability from evidence support, `quasar2 phase-diagram`, and a non-overwriting `experiments/runs/` registry. Executed legacy actions are unchanged.
+
 - Added M0 repository audit (`docs/V2_REPOSITORY_AUDIT.md`) and a frozen copy of the v0.1.1 sanity benchmark artifacts under `experiments/results/frozen/v0.1.1/`. No inference-loop or metric change.
 
 ## 0.2.0 — 2026-08-25

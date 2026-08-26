@@ -154,14 +154,14 @@ These are **motivating applications**, not deployments or customer validations.
 | V2.4 WDI policy (ANALYZE, DEFER, `H_unknown`) | EXPERIMENTAL | BM25 pilot n=3036; top-1 wins intent exact |
 | Complexity gate + A1 decomposition | EXPERIMENTAL / INCONCLUSIVE | `gate-experiment`, `a1-decompose`; claim C1 not sealed |
 | V2 math, VoI bounds, theory harness | IMPLEMENTED (synthetic checks) | `quasar2 theory-check`; claims not SUPPORTED |
-| Recoverability estimators | IMPLEMENTED, not in default policy | `src/quasar2/recoverability.py` |
+| Recoverability estimators | IMPLEMENTED, not in default policy | `src/quasar2/recoverability.py`; shadow uses proxy kernels |
 | VERIFY as selected action | PARTIALLY_IMPLEMENTED | label exists; default policy omits it |
 | Knowledge graph | NOT_FOUND | empty extra `graph = []` |
-| Conformal prediction | NOT_FOUND | optional telemetry field only |
+| Conformal prediction | PARTIALLY_IMPLEMENTED | highest-mass heuristic + split-conformal helper; no live calibration split |
 | Sequential / anytime UCB stopping in production policy | NOT_FOUND | fixed-stage estimators + T4 harness only |
 | JWST / CERN **benchmarks** | NOT_FOUND | metadata fixtures + `jwst-validate` / `cern-validate` only |
 | Cloud runner / HTTP API / UI | NOT_FOUND | — |
-| `phase-diagram` CLI | NOT_FOUND | — |
+| `phase-diagram` CLI | IMPLEMENTED (synthetic shadow grid) | `quasar2 phase-diagram`; topology not imposed |
 
 ---
 
@@ -258,11 +258,12 @@ Writes `experiments/results/benchmark.json` and `.csv` unless `--output` is set.
 | `source-validate` | Typed source family | `--family worldbank_wdi\|jwst_mast\|cern_open_data\|inspire_hep` |
 | `jwst-validate` / `cern-validate` | Aliases for metadata fixtures | not full domain benches |
 | `repository-audit` | Structural capability manifest | `--output` default `experiments/results/repository_state` |
-| `theory-check` | T1–T4 and C1 harness | `--output` default `artifacts/theorem_checks.json`; `--t4-trials` default 400. Parser also accepts `--seed`, `--offline`, `--artifact-dir`, `--fail-fast`, `--dry-run`, `--max-examples` but the current handler **does not use them**. |
+| `theory-check` | T1–T4 and C1 harness | `--output` default `artifacts/theorem_checks.json`; `--t4-trials` default 400. `--seed` is used by T4; `--offline` skips T2_grid/T4_families; `--dry-run` lists cards; `--fail-fast` exits 1 on FAIL; `--artifact-dir` copies into a run folder. `--max-examples` is still unused. |
 | `theorem-benchmark` | Alias of `theory-check` | same flags |
-| `report` | Markdown/JSON theory status | `--output` default `artifacts/theory_report.md`; `--t4-trials` default 200 |
+| `report` | Markdown/JSON/CSV theory status | `--output` default `artifacts/theory_report.md`; `--t4-trials` default 200 |
+| `phase-diagram` | 2D shadow-action grids | `--output` default `experiments/runs`; `--register` allocates a run id |
 
-There is no `phase-diagram` or `wdi-build-queries` command. Query JSON is produced by `dataset-build`.
+There is no `wdi-build-queries` command. Query JSON is produced by `dataset-build`.
 
 ---
 

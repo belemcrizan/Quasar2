@@ -151,3 +151,30 @@ def bound_gap(empirical: float, bound: float) -> dict[str, float | bool]:
         "voi_bound_ratio": ratio,
         "voi_bound_violated": violated,
     }
+
+
+def binary_zero_one_value(b: float) -> float:
+    """V*(b) for two hypotheses under 0-1 utility: max(b, 1-b). Lipschitz L_b = 1."""
+
+    return max(b, 1.0 - b)
+
+
+def empirical_binary_voi_zero_one(
+    b: float,
+    p1: Mapping[str, float],
+    p2: Mapping[str, float],
+) -> float:
+    """E_o[V*(b'(o)) - V*(b)] for 0-1 utility. Independent of the Lipschitz bound."""
+
+    value_now = binary_zero_one_value(b)
+    outcomes = sorted(set(p1) | set(p2))
+    expected = 0.0
+    for outcome in outcomes:
+        p1_o = float(p1.get(outcome, 0.0))
+        p2_o = float(p2.get(outcome, 0.0))
+        m_o = b * p1_o + (1.0 - b) * p2_o
+        if m_o <= 0.0:
+            continue
+        b_prime = b * p1_o / m_o
+        expected += m_o * binary_zero_one_value(b_prime)
+    return expected - value_now

@@ -154,14 +154,14 @@ São **motivações**, não deploys nem validações com clientes.
 | Política V2.4 WDI (ANALYZE, DEFER, `H_unknown`) | EXPERIMENTAL | piloto BM25 n=3036; top-1 vence em intent exact |
 | Gate de complexidade + decomposição A1 | EXPERIMENTAL / INCONCLUSIVE | `gate-experiment`, `a1-decompose`; claim C1 não selado |
 | Matemática V2, bounds de VoI, harness | IMPLEMENTED (checagens sintéticas) | `quasar2 theory-check`; claims não SUPPORTED |
-| Estimadores de recoverability | IMPLEMENTED, fora da política padrão | `src/quasar2/recoverability.py` |
+| Estimadores de recoverability | IMPLEMENTED, fora da política padrão | `src/quasar2/recoverability.py`; shadow usa kernels proxy |
 | VERIFY como ação escolhida | PARTIALLY_IMPLEMENTED | rótulo existe; política padrão omite |
 | Grafo de conhecimento | NOT_FOUND | extra vazio `graph = []` |
-| Conformal prediction | NOT_FOUND | só campo opcional de telemetria |
+| Conformal prediction | PARTIALLY_IMPLEMENTED | heurística highest-mass + helper split-conformal; sem split de calibração no laço vivo |
 | Stopping UCB sequencial/anytime na política real | NOT_FOUND | estimadores de estágio fixo + harness T4 |
 | Benchmarks **JWST / CERN** | NOT_FOUND | fixtures de metadados + `jwst-validate` / `cern-validate` |
 | Runner em nuvem / API HTTP / UI | NOT_FOUND | — |
-| CLI `phase-diagram` | NOT_FOUND | — |
+| CLI `phase-diagram` | IMPLEMENTED (grid sintético shadow) | `quasar2 phase-diagram`; topologia não imposta |
 
 ---
 
@@ -258,11 +258,12 @@ Grava `experiments/results/benchmark.json` e `.csv`, salvo `--output`.
 | `source-validate` | Família de fonte tipada | `--family worldbank_wdi\|jwst_mast\|cern_open_data\|inspire_hep` |
 | `jwst-validate` / `cern-validate` | Aliases dos fixtures de metadados | não são benches de domínio completos |
 | `repository-audit` | Manifesto estrutural de capacidades | `--output` padrão `experiments/results/repository_state` |
-| `theory-check` | Harness T1–T4 e C1 | `--output` padrão `artifacts/theorem_checks.json`; `--t4-trials` padrão 400. O parser também aceita `--seed`, `--offline`, `--artifact-dir`, `--fail-fast`, `--dry-run`, `--max-examples`, mas o handler atual **não os usa**. |
+| `theory-check` | Harness T1–T4 e C1 | `--output` padrão `artifacts/theorem_checks.json`; `--t4-trials` padrão 400. `--seed` entra no T4; `--offline` omite T2_grid/T4_families; `--dry-run` lista cards; `--fail-fast` sai 1 em FAIL; `--artifact-dir` copia para uma pasta de run. `--max-examples` ainda não é usado. |
 | `theorem-benchmark` | Alias de `theory-check` | mesmas flags |
-| `report` | Relatório markdown/JSON de teoria | `--output` padrão `artifacts/theory_report.md`; `--t4-trials` padrão 200 |
+| `report` | Relatório markdown/JSON/CSV de teoria | `--output` padrão `artifacts/theory_report.md`; `--t4-trials` padrão 200 |
+| `phase-diagram` | Grades 2D da ação shadow | `--output` padrão `experiments/runs`; `--register` aloca um run id |
 
-Não existem os comandos `phase-diagram` nem `wdi-build-queries`. O JSON de queries sai de `dataset-build`.
+Não existe o comando `wdi-build-queries`. O JSON de queries sai de `dataset-build`.
 
 ---
 

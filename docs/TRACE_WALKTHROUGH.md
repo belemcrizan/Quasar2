@@ -103,3 +103,9 @@ query → high ambiguity → low recoverability → EXPLORE has low VoI → ASK 
 query → sufficient evidence → high inference error → ANALYZE → lower inference error → ANSWER
 
 ANALYZE in Caso D MUST leave the evidence set unchanged.
+
+Shadow telemetry may now include proxy `recoverability` from evidence-support
+Bernoulli kernels. That quantity is a **proxy**, not an oracle observation model.
+`quasar2 phase-diagram` plots the same quadrant function on a continuous
+\(\eta\in[0,1]\) grid; it does not execute ANALYZE/DEFER in the frozen loop.
+

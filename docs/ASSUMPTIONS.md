@@ -10,7 +10,7 @@ Each scientific claim must name which of these are in force.
 | A-finite-A | finite action set | argmax Q | yes |
 | A-exchangeability | calibration/test exchangeable | conformal guarantee | **not** assumed on drifting WDI |
 | A-ucb-valid | UCB tail inequality holds for the sample class | T4 coverage | NormalUCB: approximate |
-| A-kernel | observation kernels used in JSD/TV match the sampling mechanism | T2 bounds on real data | false on WDI unless oracle kernels |
+| A-kernel | observation kernels used in JSD/TV match the sampling mechanism | T2 bounds on real data | false on WDI unless oracle kernels; shadow uses labeled proxy kernels |
 | A-vi-t1 | ANALYZE is an admissible variational update on a fixed target | T1 | heuristic operators: **false** |
 | A-markov-degradation | \(I\to Q_{\mathrm{clean}}\to Q_{\mathrm{obs}}\) | nonnegative information loss | only controlled degradations |
 | A-markov-state | \(S_t\) is sufficient | exact Bellman | **HYPOTHESIS**; may fail |
