@@ -312,11 +312,15 @@ def command_theory_check(args: argparse.Namespace) -> int:
         print(json.dumps({"cards": [card.id for card in default_cards()], "dry_run": True}, indent=2))
         return 0
     dest = Path(args.output)
+    t4_trials = args.t4_trials
+    if args.max_examples is not None:
+        t4_trials = min(t4_trials, args.max_examples)
     path = write_theory_checks(
         dest,
-        t4_trials=args.t4_trials,
+        t4_trials=t4_trials,
         seed=args.seed,
         include_grids=not args.offline,
+        t4_near_zero_trials=min(40, t4_trials),
     )
     payload = json.loads(path.read_text(encoding="utf-8"))
     if args.artifact_dir:
@@ -413,6 +417,64 @@ def command_phase_diagram(args: argparse.Namespace) -> int:
         dest.mkdir(parents=True, exist_ok=True)
     path = write_diagrams(dest, axes=axes, step=args.step)
     print(path)
+    return 0
+
+
+def command_recoverability_bench(args: argparse.Namespace) -> int:
+    from quasar2.eval.recoverability_bench import write_recoverability_benchmark
+    from quasar2.reporting.registry import allocate_run_dir, write_manifest
+
+    dest = Path(args.output)
+    if args.register:
+        dest = allocate_run_dir(dest, run_id=args.run_id, overwrite=args.overwrite)
+        write_manifest(dest, seed=0, command="recoverability-bench", root=Path.cwd())
+    path = write_recoverability_benchmark(dest)
+    print(path)
+    return 0
+
+
+def command_shadow_study(args: argparse.Namespace) -> int:
+    from quasar2.eval.shadow_study import run_shadow_study, write_shadow_study
+    from quasar2.reporting.registry import allocate_run_dir, write_manifest
+
+    dest = Path(args.output)
+    if args.register:
+        dest = allocate_run_dir(dest, run_id=args.run_id, overwrite=args.overwrite)
+        write_manifest(dest, seed=int(_config(args.config).values.get("seed", 42)), command="shadow-study", root=Path.cwd())
+    else:
+        dest.mkdir(parents=True, exist_ok=True)
+    conditions = tuple(item for item in args.conditions.split(",") if item)
+    payload = run_shadow_study(
+        _config(args.config),
+        limit=args.limit,
+        conditions=conditions,
+        shadow_policy=args.shadow_policy,
+    )
+    path = write_shadow_study(dest, payload)
+    print(json.dumps({
+        "n": payload["n"],
+        "agreement_rate": payload["agreement_rate"],
+        "transition_matrix": payload["transition_matrix"],
+        "divergence_taxonomy": payload["divergence_taxonomy"],
+        "artifact": str(path),
+    }, indent=2))
+    return 0
+
+
+def command_policy_compare(args: argparse.Namespace) -> int:
+    from quasar2.eval.oracle_env import compare_policies
+    from quasar2.reporting.registry import allocate_run_dir, write_manifest
+
+    dest = Path(args.output)
+    if args.register:
+        dest = allocate_run_dir(dest, run_id=args.run_id, overwrite=args.overwrite)
+        write_manifest(dest, seed=args.seed, command="policy-compare", root=Path.cwd())
+    else:
+        dest.mkdir(parents=True, exist_ok=True)
+    payload = compare_policies(args.n, seed=args.seed)
+    path = dest / "policy_compare.json"
+    path.write_text(json.dumps(payload, indent=2, default=str), encoding="utf-8")
+    print(json.dumps({"table": payload["table"], "budget_winners": payload["budget_winners"], "artifact": str(path)}, indent=2))
     return 0
 
 
@@ -592,6 +654,42 @@ def build_parser() -> argparse.ArgumentParser:
     phase.add_argument("--run-id")
     phase.add_argument("--overwrite", action="store_true")
     phase.set_defaults(func=command_phase_diagram)
+
+    recov = subparsers.add_parser(
+        "recoverability-bench",
+        help="synthetic recoverability vs empirical VoI (does not change the legacy loop)",
+    )
+    recov.add_argument("--output", default="experiments/runs")
+    recov.add_argument("--register", action="store_true")
+    recov.add_argument("--run-id")
+    recov.add_argument("--overwrite", action="store_true")
+    recov.set_defaults(func=command_recoverability_bench)
+
+    shadow = subparsers.add_parser(
+        "shadow-study",
+        help="sanity-fixture shadow transition matrix; does not overwrite frozen benchmark.json",
+    )
+    shadow.add_argument("--config")
+    shadow.add_argument("--output", default="experiments/runs")
+    shadow.add_argument("--limit", type=int)
+    shadow.add_argument("--conditions", default="q0,q1,q2")
+    shadow.add_argument("--shadow-policy", default="quadrant", choices=("quadrant", "threshold", "myopic_voi", "sprt_inspired"))
+    shadow.add_argument("--register", action="store_true")
+    shadow.add_argument("--run-id")
+    shadow.add_argument("--overwrite", action="store_true")
+    shadow.set_defaults(func=command_shadow_study)
+
+    policy = subparsers.add_parser(
+        "policy-compare",
+        help="synthetic oracle vs threshold/myopic/SPRT/learned (not WDI)",
+    )
+    policy.add_argument("--output", default="experiments/runs")
+    policy.add_argument("--n", type=int, default=400)
+    policy.add_argument("--seed", type=int, default=0)
+    policy.add_argument("--register", action="store_true")
+    policy.add_argument("--run-id")
+    policy.add_argument("--overwrite", action="store_true")
+    policy.set_defaults(func=command_policy_compare)
     return parser
 
 

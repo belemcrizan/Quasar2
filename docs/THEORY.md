@@ -177,6 +177,19 @@ Harness: `check_t4`. Family breakdown: `check_t4_families` (Gaussian, Student-t,
 Gumbel, skewed, mixture, heavy-tail) at \(\alpha\in\{0.10,0.05,0.01\}\).
 Parametric breakdown is recorded as `exceeds_alpha`, not hidden.
 
+Near-zero means \(\mu\in\{-0.05,-0.02,-0.01,0,0.01,0.02,0.05\}\) are checked by
+`check_t4_near_zero` comparing Normal, percentile bootstrap, BCa, and Empirical
+Bernstein. That check is labeled **INCONCLUSIVE** by design: it is a stress
+diagnostic, not a coverage theorem.
+
+Tightness of the T2 Lipschitz bound vs 0-1 empirical VoI is classified
+operationally as `tight` / `useful` / `loose` / `vacuous` / `violated` in
+`check_t2_grid` and `quasar2 recoverability-bench`. A valid but vacuous bound
+does not refute T2.
+
+Decision Recoverability Score (DRS) is \(P_o(\text{0-1 argmax flips})\). It is a
+**HYPOTHESIS-level** predictor of empirical VoI, not a theorem.
+
 
 ## Limitations of the bounds
 

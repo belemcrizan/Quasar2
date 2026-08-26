@@ -258,10 +258,13 @@ Writes `experiments/results/benchmark.json` and `.csv` unless `--output` is set.
 | `source-validate` | Typed source family | `--family worldbank_wdi\|jwst_mast\|cern_open_data\|inspire_hep` |
 | `jwst-validate` / `cern-validate` | Aliases for metadata fixtures | not full domain benches |
 | `repository-audit` | Structural capability manifest | `--output` default `experiments/results/repository_state` |
-| `theory-check` | T1–T4 and C1 harness | `--output` default `artifacts/theorem_checks.json`; `--t4-trials` default 400. `--seed` is used by T4; `--offline` skips T2_grid/T4_families; `--dry-run` lists cards; `--fail-fast` exits 1 on FAIL; `--artifact-dir` copies into a run folder. `--max-examples` is still unused. |
+| `theory-check` | T1–T4 and C1 harness | `--output` default `artifacts/theorem_checks.json`; `--t4-trials` default 400. `--seed` is used by T4; `--offline` skips T2_grid/T4_families/T4_near_zero; `--dry-run` lists cards; `--fail-fast` exits 1 on FAIL; `--artifact-dir` copies into a run folder. `--max-examples` caps T4 trial count. |
 | `theorem-benchmark` | Alias of `theory-check` | same flags |
 | `report` | Markdown/JSON/CSV theory status | `--output` default `artifacts/theory_report.md`; `--t4-trials` default 200 |
 | `phase-diagram` | 2D shadow-action grids | `--output` default `experiments/runs`; `--register` allocates a run id |
+| `recoverability-bench` | Synthetic recoverability vs empirical VoI | `--register` writes under `experiments/runs/` (never overwrites frozen sanity JSON) |
+| `shadow-study` | Sanity shadow transition matrix | `--limit`, `--conditions`, `--shadow-policy`; does not write `experiments/results/benchmark.json` |
+| `policy-compare` | Oracle vs threshold/myopic/SPRT/learned on synthetic states | `--n`, `--seed`; not WDI |
 
 There is no `wdi-build-queries` command. Query JSON is produced by `dataset-build`.
 
@@ -516,7 +519,7 @@ Claim policy and paper-scale gaps: [Limitations](docs/LIMITATIONS.md), [Scientif
 
 - Graph backend, provenance traversal, graph ablations.
 - VERIFY selected by policy with independent sources.
-- Sequential / anytime stopping; tight T4 near zero / heavy tails.
+- Sequential / anytime stopping; T4 near-zero is now a **harness**, not a sealed result.
 - Recoverability-driven EXPLORE in the **executed** policy (today: shadow / estimators only).
 - Completed JWST/CERN query benches (fixtures only now).
 - Fair BM25 vs dense vs hybrid vs rerank under equal budgets on the full pilot.
@@ -532,6 +535,8 @@ Former v0.3 policy note: [docs/V0.2_EXPERIMENT_PROTOCOL.md](docs/V0.2_EXPERIMENT
 | Doc | Content |
 |---|---|
 | [docs/THEORY.md](docs/THEORY.md) | Canonical T1–T4, C1 |
+| [docs/RELATED_WORK_MATRIX.md](docs/RELATED_WORK_MATRIX.md) | Competitive map (not reimplementation claims) |
+| [docs/EXPERIMENT_PLAN.md](docs/EXPERIMENT_PLAN.md) | Pre-registered P0 recoverability / shadow / T4 plan |
 | [CLAIM_LEDGER.md](CLAIM_LEDGER.md) / [docs/CLAIM_LEDGER.md](docs/CLAIM_LEDGER.md) | Claim statuses |
 | [docs/V2_REPOSITORY_AUDIT.md](docs/V2_REPOSITORY_AUDIT.md) | M0 audit |
 | [docs/V2_4_PROTOCOL.md](docs/V2_4_PROTOCOL.md) | WDI protocol |

@@ -140,16 +140,53 @@ def voi_bound_general(
     )
 
 
-def bound_gap(empirical: float, bound: float) -> dict[str, float | bool]:
+def classify_bound_tightness(
+    empirical: float,
+    bound: float,
+    *,
+    ratio: float | None = None,
+) -> str:
+    """Operational tightness of a valid Lipschitz bound. Not a theorem label.
+
+    tight: ratio >= 0.8; useful: >= 0.3; loose: >= 0.05; vacuous otherwise.
+    Violations are recorded separately and never relabeled as tightness.
+    """
+
+    if empirical > bound + 1e-12:
+        return "violated"
+    if math.isinf(bound):
+        return "vacuous"
+    if abs(bound) <= 1e-15:
+        return "tight" if abs(empirical) <= 1e-12 else "violated"
+    if ratio is None:
+        ratio = empirical / bound if bound else math.inf
+    if math.isinf(ratio):
+        return "vacuous"
+    if ratio >= 0.8:
+        return "tight"
+    if ratio >= 0.3:
+        return "useful"
+    if ratio >= 0.05:
+        return "loose"
+    return "vacuous"
+
+
+def bound_gap(empirical: float, bound: float) -> dict[str, float | bool | str]:
     gap = bound - empirical
-    violated = empirical > bound
-    ratio = empirical / bound if bound not in (0.0, math.inf) else math.inf
+    violated = empirical > bound + 1e-12
+    if bound in (0.0, math.inf) or math.isinf(bound):
+        ratio = math.inf
+    else:
+        ratio = empirical / bound
+    tightness = classify_bound_tightness(empirical, bound, ratio=ratio)
     return {
         "voi_empirical": empirical,
         "voi_bound": bound,
         "voi_bound_gap": gap,
         "voi_bound_ratio": ratio,
         "voi_bound_violated": violated,
+        "voi_bound_tightness": tightness,
+        "tightness": tightness,
     }
 
 
@@ -178,3 +215,42 @@ def empirical_binary_voi_zero_one(
         b_prime = b * p1_o / m_o
         expected += m_o * binary_zero_one_value(b_prime)
     return expected - value_now
+
+
+def empirical_decision_flip_probability(
+    b: float,
+    p1: Mapping[str, float],
+    p2: Mapping[str, float],
+) -> float:
+    """P_o(argmax_{0-1} changes) under a Bayes update. Decision Recoverability Score.
+
+    This is not SPRT optimality and not a Lipschitz bound. It estimates whether
+    available observations can change the committed 0-1 decision.
+    """
+
+    current = 1 if b >= 0.5 else 0
+    outcomes = sorted(set(p1) | set(p2))
+    flip = 0.0
+    for outcome in outcomes:
+        p1_o = float(p1.get(outcome, 0.0))
+        p2_o = float(p2.get(outcome, 0.0))
+        m_o = b * p1_o + (1.0 - b) * p2_o
+        if m_o <= 0.0:
+            continue
+        b_prime = b * p1_o / m_o
+        after = 1 if b_prime >= 0.5 else 0
+        if after != current:
+            flip += m_o
+    return flip
+
+
+def binary_zero_one_q_explore(
+    b: float,
+    p1: Mapping[str, float],
+    p2: Mapping[str, float],
+    *,
+    cost: float,
+) -> float:
+    """One-step expected 0-1 value of EXPLORE minus declared cost."""
+
+    return binary_zero_one_value(b) + empirical_binary_voi_zero_one(b, p1, p2) - cost
