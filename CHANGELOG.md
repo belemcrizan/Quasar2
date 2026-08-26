@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Added M0 repository audit (`docs/V2_REPOSITORY_AUDIT.md`) and a frozen copy of the v0.1.1 sanity benchmark artifacts under `experiments/results/frozen/v0.1.1/`. No inference-loop or metric change.
+
 ## 0.2.0 — 2026-08-25
 
 - Froze the v0.1.1 inference loop as the experimental treatment.
