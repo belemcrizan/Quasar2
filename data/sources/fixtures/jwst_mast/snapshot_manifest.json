@@ -1,0 +1,32 @@
+{
+  "source_id": "jwst_mast",
+  "family": "JWST_MAST",
+  "tier": 1,
+  "mode": "metadata_only",
+  "scientific_benchmark_complete": false,
+  "records": [
+    {
+      "record_id": "jwst-obs-001",
+      "instrument": "NIRCam",
+      "program": "2736",
+      "target": "WASP-39",
+      "available_at": "2023-06-01",
+      "observed_at": "2022-07-10",
+      "pipeline_version": "1.12.5",
+      "crds_context": "jwst_1140.pmap"
+    },
+    {
+      "record_id": "jwst-obs-002",
+      "instrument": "NIRSpec",
+      "program": "2736",
+      "target": "WASP-39",
+      "available_at": "2024-02-15",
+      "observed_at": "2022-07-10",
+      "pipeline_version": "1.14.0",
+      "crds_context": "jwst_1215.pmap",
+      "supersedes": "jwst-obs-001"
+    }
+  ],
+  "attribution": "JWST data from MAST; cite program, DOI, and CRDS context.",
+  "terms": "https://jwst-docs.stsci.edu/accessing-jwst-data/citing-jwst-data"
+}

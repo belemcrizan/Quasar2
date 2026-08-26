@@ -1,0 +1,145 @@
+{
+  "schema_version": "2.4.1",
+  "created_at": "2026-08-26T11:33:28+00:00",
+  "snapshot_id": "wdi-pilot-2026-08-26-b6ddb672",
+  "stage": "pilot",
+  "n_instances": 3036,
+  "n_canonical": 600,
+  "benchmark_hash": "327ca371810babcf2872a3a4e4e07f845c1f8f1503e0ba15ce33228201d1c8fe",
+  "methods": {
+    "backends": [
+      "bm25"
+    ],
+    "policies": [
+      "fast_only",
+      "quasar_always",
+      "gated_quasar"
+    ]
+  },
+  "summaries": {
+    "bm25|fast_only": {
+      "n": 3036,
+      "intent_exact": 0.6429512516469038,
+      "wrong_answer_rate": 0.3570487483530962,
+      "answer_coverage": 1.0,
+      "ask_rate": 0.0,
+      "defer_rate": 0.0,
+      "mean_retrieval_calls": 1.0,
+      "mean_compute_proxy": 1.1,
+      "mean_latency_ms": 1.3160354744846048
+    },
+    "bm25|quasar_always": {
+      "n": 3036,
+      "intent_exact": 0.5253623188405797,
+      "wrong_answer_rate": 0.32300509337860783,
+      "answer_coverage": 0.7760210803689065,
+      "ask_rate": 0.0,
+      "defer_rate": 0.22397891963109354,
+      "mean_retrieval_calls": 2.912714097496706,
+      "mean_compute_proxy": 3.537005928853755,
+      "mean_latency_ms": 2.019708596726104
+    },
+    "bm25|gated_quasar": {
+      "n": 3036,
+      "intent_exact": 0.5312911725955204,
+      "wrong_answer_rate": 0.32026970080067424,
+      "answer_coverage": 0.7816205533596838,
+      "ask_rate": 0.0,
+      "defer_rate": 0.2183794466403162,
+      "mean_retrieval_calls": 2.781949934123847,
+      "mean_compute_proxy": 3.372364953886693,
+      "mean_latency_ms": 1.9799975295411851
+    }
+  },
+  "latency_summary": {
+    "bm25|fast_only": {
+      "n": 3036,
+      "mean_ms": 1.3160354744846048,
+      "p50_ms": 1.1712000705301762,
+      "p95_ms": 1.8489999929443002,
+      "p99_ms": 2.3978000972419977,
+      "mean_gate_ms": 0.06552154135556551,
+      "mean_retrieval_ms": 0.15190826675717195,
+      "mean_compute_proxy": 1.1
+    },
+    "bm25|quasar_always": {
+      "n": 3036,
+      "mean_ms": 2.019708596726104,
+      "p50_ms": 1.8234000308439136,
+      "p95_ms": 3.083599964156747,
+      "p99_ms": 4.1464000241830945,
+      "mean_gate_ms": 0.06883537554156344,
+      "mean_retrieval_ms": 0.4436651845471823,
+      "mean_compute_proxy": 3.537005928853755
+    },
+    "bm25|gated_quasar": {
+      "n": 3036,
+      "mean_ms": 1.9799975295411851,
+      "p50_ms": 1.8155999714508653,
+      "p95_ms": 2.932499977760017,
+      "p99_ms": 3.7275999784469604,
+      "mean_gate_ms": 0.06510243661074662,
+      "mean_retrieval_ms": 0.4167138012641444,
+      "mean_compute_proxy": 3.372364953886693
+    }
+  },
+  "paired_comparisons": [
+    {
+      "backend": "bm25",
+      "left": "gated_quasar",
+      "right": "quasar_always",
+      "n": 3036,
+      "intent_exact_diff": 0.005928853754940711,
+      "intent_exact_ci_low": 0.0032938076416337285,
+      "intent_exact_ci_high": 0.008893280632411068,
+      "compute_proxy_diff": -0.16464097496706193,
+      "compute_proxy_ci_low": -0.1865612648221344,
+      "compute_proxy_ci_high": -0.14351119894598155,
+      "retrieval_calls_diff": -0.13076416337285904,
+      "wrong_answer_diff": -0.00032938076416337287,
+      "comparison_label": "EXPLORATORY"
+    },
+    {
+      "backend": "bm25",
+      "left": "gated_quasar",
+      "right": "fast_only",
+      "n": 3036,
+      "intent_exact_diff": -0.11166007905138339,
+      "intent_exact_ci_low": -0.12318840579710146,
+      "intent_exact_ci_high": -0.10046113306982872,
+      "compute_proxy_diff": 2.272364953886693,
+      "compute_proxy_ci_low": 2.246887351778656,
+      "compute_proxy_ci_high": 2.296277997364954,
+      "retrieval_calls_diff": 1.7819499341238472,
+      "wrong_answer_diff": -0.1067193675889328,
+      "comparison_label": "EXPLORATORY"
+    },
+    {
+      "backend": "bm25",
+      "left": "quasar_always",
+      "right": "fast_only",
+      "n": 3036,
+      "intent_exact_diff": -0.11758893280632411,
+      "intent_exact_ci_low": -0.12911725955204217,
+      "intent_exact_ci_high": -0.10606060606060606,
+      "compute_proxy_diff": 2.437005928853755,
+      "compute_proxy_ci_low": 2.4230072463768115,
+      "compute_proxy_ci_high": 2.4497694334650855,
+      "retrieval_calls_diff": 1.9127140974967063,
+      "wrong_answer_diff": -0.10638998682476944,
+      "comparison_label": "EXPLORATORY"
+    }
+  ],
+  "status": "COMPLETE",
+  "claim_boundary": "Pilot/CI descriptive results. Not a sealed-test claim.",
+  "claim_status": {
+    "C1": {
+      "status": "INCONCLUSIVE",
+      "text": "Selective reasoning is more compute-efficient than universal reasoning.",
+      "n": 3036,
+      "sealed": false,
+      "note": "C1 remains exploratory: thresholds were not frozen against a sealed test set before viewing these results. Descriptive paired CIs are recorded.",
+      "paired_rows": 3
+    }
+  }
+}

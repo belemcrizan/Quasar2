@@ -1,0 +1,17 @@
+# Keep immutable snapshot and experiment artifacts as LF so SHA-256
+# hashes do not change when Git checks out on Windows (CRLF conversion).
+* text=auto eol=lf
+
+*.json text eol=lf
+*.jsonl text eol=lf
+*.csv text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.py text eol=lf
+*.txt text eol=lf
+*.toml text eol=lf
+
+data/wdi/snapshots/** text eol=lf
+data/sources/fixtures/** text eol=lf
+experiments/results/** text eol=lf

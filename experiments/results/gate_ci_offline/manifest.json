@@ -1,0 +1,6 @@
+{
+  "run_kind": "wdi_v24",
+  "snapshot_id": "wdi-ci-offline-fixture",
+  "stage": "ci",
+  "n_records": 144
+}

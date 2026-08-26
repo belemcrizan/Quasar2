@@ -1,0 +1,11 @@
+{
+  "schema_version": "0.3.0",
+  "families": {
+    "synthetic_regression": {"command": "quasar2 benchmark", "complete": true},
+    "wdi_pilot": {"command": "quasar2 wdi-experiment", "complete": true, "n_queries_target": 3036},
+    "wdi_expanded": {"command": "quasar2 wdi-experiment --stage expanded", "complete": false},
+    "jwst_metadata": {"command": "quasar2 jwst-validate", "complete": false, "tier": 1},
+    "cern_metadata": {"command": "quasar2 cern-validate", "complete": false, "tier": 1}
+  },
+  "note": "Index only. Family schemas remain distinct. Do not join WDI, JWST, and CERN answers."
+}

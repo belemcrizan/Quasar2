@@ -1,0 +1,8 @@
+{
+  "source_id": "worldbank_wdi",
+  "snapshot_id": "wdi-ci-offline-fixture",
+  "stage": "ci",
+  "snapshot_dir": "data\\wdi\\snapshots\\ci-offline",
+  "official_base_url": "https://api.worldbank.org/v2",
+  "terms": "https://www.worldbank.org/ext/en/legal/terms-conditions/datasets"
+}

@@ -9,8 +9,22 @@ from typing import Any
 from quasar2.wdi.taxonomy import EntityType, ObservationStatus, classify_entity
 
 
+def canonical_text_bytes(payload: bytes) -> bytes:
+    """Normalize newlines to LF so Windows CRLF checkouts hash like Unix.
+
+    Immutable snapshot hashes are defined over LF-encoded UTF-8 text. Git
+    ``core.autocrlf`` must not change those hashes.
+    """
+
+    return payload.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
+
 def sha256_bytes(payload: bytes) -> str:
     return hashlib.sha256(payload).hexdigest()
+
+
+def sha256_canonical_text(payload: bytes) -> str:
+    return sha256_bytes(canonical_text_bytes(payload))
 
 
 def sha256_json(value: Any) -> str:

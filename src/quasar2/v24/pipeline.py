@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 import time
-from typing import Any, Callable, Mapping
+from typing import Any, Callable, Mapping, Sequence
 
 from quasar2.evidence.contracts import FetchRequest
-from quasar2.retrieval.base import Document, Retriever
+from quasar2.gate.complexity import GateConfig, RetrievalSignals, evaluate_gate
+from quasar2.retrieval.base import Retriever, SearchHit
 from quasar2.retrieval.bm25 import BM25Retriever
 from quasar2.v24.actions import EpistemicAction
 from quasar2.v24.analyze import analyze
@@ -15,6 +16,21 @@ from quasar2.v24.policy import PolicyConfig, decide
 from quasar2.v24.state import BudgetState, HypothesisView, PolicyState
 from quasar2.wdi.source import WDIEvidenceSource
 from quasar2.wdi.taxonomy import DeferReason, ObservationStatus
+
+POLICY_ALIASES = {
+    "fast_only": "top1",
+    "quasar_always": "v24",
+    "gated": "gated_quasar",
+}
+
+
+def canonicalize_policy(policy: str) -> str:
+    return POLICY_ALIASES.get(policy, policy)
+
+
+def compute_proxy(retrieval_calls: int, steps: int, source_calls: int) -> float:
+    extra_steps = max(0, steps - 1)
+    return retrieval_calls * 1.0 + extra_steps * 0.25 + source_calls * 0.1
 
 
 @dataclass(frozen=True, slots=True)
@@ -37,6 +53,19 @@ class V24Result:
     defer_reason: str | None = None
     policy_name: str = "v24"
     backend: str = "bm25"
+    gate_route: str | None = None
+    complexity_score: float = 0.0
+    ambiguity_score: float = 0.0
+    open_set_score: float = 0.0
+    gate_reasons: tuple[str, ...] = ()
+    latency_ms: float = 0.0
+    gate_ms: float = 0.0
+    retrieval_ms: float = 0.0
+    candidate_generation_ms: float = 0.0
+    evidence_scoring_ms: float = 0.0
+    belief_update_ms: float = 0.0
+    policy_ms: float = 0.0
+    compute_proxy: float = 0.0
 
 
 def _slots_filled(hyp: HypothesisView) -> float:
@@ -60,24 +89,45 @@ class V24Pipeline:
         retriever: Retriever | None = None,
         policy: str = "v24",
         config: PolicyConfig | None = None,
+        gate_config: GateConfig | None = None,
         user_reply: Callable[[str, tuple[str, ...]], str | None] | None = None,
     ) -> None:
         self.source = source
         self.retriever = retriever or BM25Retriever(source.documents())
-        self.policy = policy
+        self.policy = canonicalize_policy(policy)
+        self.requested_policy = policy
         self.config = config or PolicyConfig()
+        self.gate_config = gate_config or GateConfig()
         self.user_reply = user_reply
 
     def run(self, query: str, *, language: str = "en", period_hint: str | None = None) -> V24Result:
-        started = time.perf_counter()
+        wall0 = time.perf_counter()
         trace: list[dict[str, Any]] = []
         retrieval_calls = 0
         source_calls = 0
         expected_gains: list[float] = []
         realized: list[float] = []
+        retrieval_ms = 0.0
+        gate_ms = 0.0
+        candidate_ms = 0.0
+        policy_ms = 0.0
+        belief_ms = 0.0
 
-        hits = self.retriever.search(query, top_k=8, domain="wdi")
+        t0 = time.perf_counter()
+        hits: Sequence[SearchHit] = self.retriever.search(query, top_k=8, domain="wdi")
+        retrieval_ms += (time.perf_counter() - t0) * 1000.0
         retrieval_calls += 1
+
+        t0 = time.perf_counter()
+        probe = RetrievalSignals(
+            scores=tuple(float(hit.score) for hit in hits),
+            top_kinds=tuple(str(hit.document.metadata.get("kind") or "") for hit in hits[:4]),
+            open_set_prior=0.6 if any(token in query.lower() for token in ("bitcoin", "weather", "fifa", "stock")) else 0.0,
+        )
+        gate = evaluate_gate(query, probe, config=self.gate_config)
+        gate_ms += (time.perf_counter() - t0) * 1000.0
+
+        t0 = time.perf_counter()
         evidence_ids = [hit.document.document_id for hit in hits]
         indicators = [hit.document for hit in hits if hit.document.metadata.get("kind") == "INDICATOR_METADATA"]
         entities = [hit.document for hit in hits if hit.document.metadata.get("kind") == "ENTITY_METADATA"]
@@ -128,21 +178,6 @@ class V24Pipeline:
             for item in hypotheses
         ]
         unknown = next(item.belief_score for item in hypotheses if item.hypothesis_id == "H_unknown")
-        top = _top(
-            PolicyState(
-                query=query,
-                language=language,
-                hypotheses=tuple(hypotheses),
-                evidence_ids=tuple(evidence_ids),
-                entropy=1.2,
-                margin=0.1,
-                unknown_score=unknown,
-                coverage=_slots_filled(hypotheses[0]),
-                contradiction=0.0,
-                source_available=True,
-                budget=BudgetState(),
-            )
-        )
         state = PolicyState(
             query=query,
             language=language,
@@ -156,6 +191,8 @@ class V24Pipeline:
             source_available=True,
             budget=BudgetState(),
         )
+        candidate_ms += (time.perf_counter() - t0) * 1000.0
+
         last = "OBSERVE"
         structured: dict[str, Any] = {}
         clarification = None
@@ -163,14 +200,31 @@ class V24Pipeline:
         reason = "SUFFICIENT_EVIDENCE"
         action = EpistemicAction.DEFER
         steps = 0
+        applied_route = None
 
-        if self.policy in {"always_answer", "top1"}:
+        effective = self.policy
+        if self.policy == "gated_quasar":
+            applied_route = gate.route
+            if gate.route == "FAST":
+                effective = "top1"
+            elif gate.route == "DEFER_EARLY":
+                effective = "defer_early"
+            else:
+                effective = "v24"
+
+        if effective == "defer_early":
+            action = EpistemicAction.DEFER
+            reason = "OPEN_SET"
+            defer_reason = DeferReason.OPEN_SET.value
+            steps = 1
+        elif effective in {"always_answer", "top1"}:
             action = EpistemicAction.ANSWER
             reason = "SUFFICIENT_EVIDENCE"
             top = _top(state)
             structured = self._commit(top, period_hint)
             source_calls += 1
-        elif self.policy == "threshold":
+            steps = 1
+        elif effective == "threshold":
             top = _top(state)
             if top and top.belief_score >= 0.35 and _slots_filled(top) >= 0.99:
                 action = EpistemicAction.ANSWER
@@ -180,11 +234,14 @@ class V24Pipeline:
                 action = EpistemicAction.DEFER
                 defer_reason = DeferReason.BUDGET_EXHAUSTED_UNSAFE.value
                 reason = "RISK_LIMIT"
+            steps = 1
         else:
             while steps < 8:
                 steps += 1
                 before_hash = state.state_hash()
+                t_dec = time.perf_counter()
                 action, reason, scores = decide(state, last=last, cfg=self.config)
+                policy_ms += (time.perf_counter() - t_dec) * 1000.0
                 expected_gains.append(scores[action.value])
                 trace.append(
                     {
@@ -201,7 +258,9 @@ class V24Pipeline:
                         (hyp.hypothesis_id, 0.4 if hyp.indicator_id and hyp.entity_code else 0.05, 0.0)
                         for hyp in state.hypotheses
                     ]
+                    t_b = time.perf_counter()
                     new_state = analyze(state, supports)
+                    belief_ms += (time.perf_counter() - t_b) * 1000.0
                     if new_state.evidence_ids != state.evidence_ids:
                         raise RuntimeError("ANALYZE mutated evidence ids")
                     realized.append(abs(new_state.entropy - state.entropy))
@@ -225,7 +284,9 @@ class V24Pipeline:
                 if action == EpistemicAction.EXPLORE:
                     top = _top(state)
                     extra_q = f"{query} {top.indicator_id if top else ''} discriminating metadata"
+                    t_r = time.perf_counter()
                     extra = self.retriever.search(extra_q, top_k=4, domain="wdi")
+                    retrieval_ms += (time.perf_counter() - t_r) * 1000.0
                     retrieval_calls += 1
                     new_ids = tuple(dict.fromkeys(state.evidence_ids + tuple(hit.document.document_id for hit in extra)))
                     realized.append(float(len(new_ids) - len(state.evidence_ids)))
@@ -328,6 +389,9 @@ class V24Pipeline:
                 break
 
         top = _top(state)
+        latency_ms = (time.perf_counter() - wall0) * 1000.0
+        steps_out = max(1, steps)
+        proxy = compute_proxy(retrieval_calls, steps_out, source_calls)
         return V24Result(
             query=query,
             final_action=action.value,
@@ -339,14 +403,27 @@ class V24Pipeline:
             evidence_ids=state.evidence_ids,
             retrieval_calls=retrieval_calls,
             source_calls=source_calls,
-            steps=max(1, steps),
+            steps=steps_out,
             expected_gains=tuple(expected_gains),
             realized_observable_gains=tuple(realized),
             trace=tuple(trace),
             clarification=clarification,
             defer_reason=defer_reason,
-            policy_name=self.policy,
+            policy_name=self.requested_policy,
             backend=getattr(self.retriever, "profile_id", self.retriever.__class__.__name__),
+            gate_route=applied_route or gate.route,
+            complexity_score=gate.complexity_score,
+            ambiguity_score=gate.ambiguity_score,
+            open_set_score=gate.open_set_score,
+            gate_reasons=gate.reasons,
+            latency_ms=latency_ms,
+            gate_ms=gate_ms,
+            retrieval_ms=retrieval_ms,
+            candidate_generation_ms=candidate_ms,
+            evidence_scoring_ms=0.0,
+            belief_update_ms=belief_ms,
+            policy_ms=policy_ms,
+            compute_proxy=proxy,
         )
 
     def _commit(self, top: HypothesisView | None, period_hint: str | None) -> dict[str, Any]:

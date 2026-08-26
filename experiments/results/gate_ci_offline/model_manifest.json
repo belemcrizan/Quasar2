@@ -1,0 +1,8 @@
+{
+  "backends": [
+    "bm25"
+  ],
+  "retrieval": {},
+  "silent_hashing_fallback": false,
+  "note": "dense_hash is debug-only and is never a neural substitute"
+}

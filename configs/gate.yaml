@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.3.0",
+  "claim": "C1",
+  "note": "Feature flag and thresholds for the deterministic complexity gate. Not tuned on sealed_test.",
+  "gate": {
+    "fast_complexity_max": 0.38,
+    "fast_ambiguity_max": 0.42,
+    "fast_margin_min": 0.12,
+    "defer_open_set_min": 0.72,
+    "estimated_fast_cost": 1.0,
+    "estimated_quasar_cost": 3.0,
+    "estimated_defer_cost": 0.2
+  },
+  "policies": ["fast_only", "quasar_always", "gated_quasar"],
+  "compute_proxy": {
+    "retrieval_weight": 1.0,
+    "step_weight": 0.25,
+    "source_fetch_weight": 0.1
+  }
+}

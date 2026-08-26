@@ -159,6 +159,7 @@ class QuasarPipeline:
             signal_quality=observation.signal_quality,
             estimated_degradation=observation.estimated_degradation,
         )
+        t_cand = time.perf_counter()
         generated = self.hypothesis_generator.generate(
             observation, max_candidates=self.max_candidates
         )
@@ -169,6 +170,11 @@ class QuasarPipeline:
         ) or generated[:1]
         if ablation == "noHyp":
             candidates = candidates[:1]
+        candidate_generation_ms = (time.perf_counter() - t_cand) * 1000.0
+        retrieval_ms = 0.0
+        evidence_scoring_ms = 0.0
+        belief_update_ms = 0.0
+        policy_ms = 0.0
         emit(
             "HYPOTHESES",
             "generated explicit candidate interpretations",
@@ -216,11 +222,13 @@ class QuasarPipeline:
                 retrieval_query = current_queries[hypothesis_id]
                 query_hash = self._query_hash(hypothesis_id, retrieval_query)
                 issued_query_hashes.add(query_hash)
+                t_ret = time.perf_counter()
                 hits = self.retriever.search(
                     retrieval_query,
                     top_k=self.initial_top_k if round_index == 0 else self.top_k,
                     domain=domain,
                 )
+                retrieval_ms += (time.perf_counter() - t_ret) * 1000.0
                 retrieval_calls += 1
                 document_ids = [hit.document.document_id for hit in hits]
                 for hit in hits:
@@ -486,4 +494,9 @@ class QuasarPipeline:
             total_belief_variation=total_belief_variation,
             total_observed_entropy_reduction=total_observed_entropy_reduction,
             retrieval_hits=tuple(retrieval_hits),
+            candidate_generation_ms=candidate_generation_ms,
+            retrieval_ms=retrieval_ms,
+            evidence_scoring_ms=evidence_scoring_ms,
+            belief_update_ms=belief_update_ms,
+            policy_ms=policy_ms,
         )

@@ -9,7 +9,14 @@ from typing import Any, Iterable, Sequence
 
 from quasar2.wdi.catalog import entities_for_stage, indicators_for_stage
 from quasar2.wdi.client import WorldBankClient
-from quasar2.wdi.normalize import normalize_entity, normalize_indicator, normalize_observation, sha256_bytes, sha256_json
+from quasar2.wdi.normalize import (
+    normalize_entity,
+    normalize_indicator,
+    normalize_observation,
+    sha256_bytes,
+    sha256_canonical_text,
+    sha256_json,
+)
 from quasar2.wdi.taxonomy import EntityType
 
 
@@ -262,8 +269,9 @@ def load_snapshot(root: Path) -> dict[str, Any]:
         ("indicators", manifest["hashes"]["indicators"], paths["indicators"]),
         ("observations", manifest["hashes"]["observations"], paths["observations"]),
     ):
-        digest = sha256_bytes(actual_path.read_bytes())
-        if digest != expected:
+        raw = actual_path.read_bytes()
+        digest = sha256_canonical_text(raw)
+        if digest != expected and sha256_bytes(raw) != expected:
             raise ValueError(f"Hash mismatch for {name}: {digest} != {expected}")
     return {
         "manifest": manifest,
