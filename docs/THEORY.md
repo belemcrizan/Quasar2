@@ -119,7 +119,11 @@ For \(K>2\), if \(V^*\) is \(L_U\)-Lipschitz in \(L_1\) on the simplex,
 \operatorname{JSD}_{\mathbf b}(a)=I(H;O\mid a,\mathbf b).
 \]
 
-Harness: `check_t2`.
+Harness: `check_t2`. Family grid: `check_t2_grid` (Bernoulli, Categorical,
+HeavyOverlap, NearIdentical, Mixture, discretized Gaussian). The grid compares
+0-1 empirical VoI to the Lipschitz bound; a recorded `voi_bound_violated` is
+evidence, not an automatic claim promotion.
+
 
 ## T3 — Bellman contraction
 
@@ -169,7 +173,10 @@ binomial interval, not a single sample proportion vs \(\alpha\).
 Reference: Maurer & Pontil empirical Bernstein (arXiv:0907.3740);
 anytime-valid sequences (arXiv:1810.08240) for future sequential work.
 
-Harness: `check_t4`.
+Harness: `check_t4`. Family breakdown: `check_t4_families` (Gaussian, Student-t,
+Gumbel, skewed, mixture, heavy-tail) at \(\alpha\in\{0.10,0.05,0.01\}\).
+Parametric breakdown is recorded as `exceeds_alpha`, not hidden.
+
 
 ## Limitations of the bounds
 

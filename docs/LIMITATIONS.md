@@ -26,6 +26,10 @@
 - Exact POMDP optimality is intractable; T3 checks a tiny tabular MDP.
 - World Bank results do not imply JWST/CERN transfer.
 - Mode `v2_shadow` records `recommended_action_v2` without changing executed legacy actions.
+- Highest-mass prediction sets in shadow telemetry are heuristics, not split-conformal coverage.
+- Proxy Bernoulli kernels from evidence support are not oracle \(P(O\mid H,a)\).
+- MyopicVoIPolicy uses the Lipschitz bound as a point UCB; that is not a statistical tail inequality.
+
 
 ## Mechanism failure modes
 

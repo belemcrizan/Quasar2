@@ -12,7 +12,9 @@ The historical V2.4 ledger remains at [docs/CLAIM_LEDGER.md](docs/CLAIM_LEDGER.m
 | T3-contraction | Bellman operator is a γ-contraction on tabular MDPs. | UNKNOWN | tiny tabular MDP | implementation check only | not a POMDP at scale |
 | T4-false-stop | Fixed-stage Bonferroni UCB has P(false stop) ≤ α. | UNKNOWN | Gaussian synthetic | NormalUCB is approximate | sequential looks not covered |
 | C1-information-loss | Information loss is nonnegative iff Markov degradation holds. | UNKNOWN | synthetic joints | counterexample with side information is encoded as a test | real queries may have side channels |
-| JSD-best-predictor | Weighted JSD is the best predictor of empirical VoI. | PROPOSED | recoverability comparison not yet run | none | other divergences may win |
+| JSD-best-predictor | Weighted JSD is the best predictor of empirical VoI. | PROPOSED | recoverability comparison not yet run | T2_grid records empirical VoI vs TV/KL/JSD columns; no winner declared | other divergences may win |
+| H-myopic-voi-shadow | Myopic NetVoI recommendations diverge from legacy execution on some queries. | UNKNOWN | shadow telemetry only | not measured on the 120-query table | executed action unchanged |
+| H-phase-topology | Ambiguity×recoverability phase diagram matches quadrants A–D. | UNKNOWN | synthetic shadow grid | `quasar2 phase-diagram` | topology is not imposed |
 | H-analyze-value | ANALYZE improves decision utility on some regimes. | UNKNOWN | v24 heuristic ANALYZE exists | no sealed utility table | may worsen calibration |
 | H-wdi-transfer | WDI results transfer to JWST/CERN. | UNKNOWN | fixtures only | metadata snapshots, not full benches | domain shift unmeasured |
 | H10-simple-baseline | Simple baselines can beat QUASAR2. | PARTIALLY_SUPPORTED | BM25 WDI pilot (legacy ledger) | top-1 BM25 > V2.4 policy on intent exact | does not refute theorems |

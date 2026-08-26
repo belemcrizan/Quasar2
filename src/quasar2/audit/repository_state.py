@@ -223,6 +223,18 @@ def build_repository_state_manifest(root: str | Path) -> dict[str, Any]:
             validation_command="python -m unittest tests.test_v24_wdi",
             notes="docs/LIMITATIONS.md still says the current decision space has no explicit UNKNOWN_HYPOTHESIS; v24 pipeline emits H_unknown. Historical limitation text preserved.",
         ),
+        _capability(
+            capability_id="phase_diagram_cli",
+            claimed_status="present as synthetic shadow grid",
+            verified_status=VERIFIED if _exists(root, "src", "quasar2", "reporting", "phase_diagram.py") else MISSING,
+            implementation_files=("src/quasar2/reporting/phase_diagram.py", "src/quasar2/cli.py"),
+            test_files=("tests/test_v2_policies.py",),
+            cli_or_api="quasar2 phase-diagram",
+            artifact_paths=("experiments/runs/",),
+            last_verified_commit=commit,
+            validation_command="python -m unittest tests.test_v2_policies.RegistryAndPhaseTests",
+            notes="Regions emerge from the shadow recommender. Not a production policy.",
+        ),
     ]
     return {
         "schema_version": "repository_state.1",

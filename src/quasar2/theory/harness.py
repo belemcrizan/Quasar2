@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from dataclasses import asdict
 import json
+import math
 from pathlib import Path
 import random
 from typing import Any
@@ -34,8 +35,14 @@ from quasar2.math.stopping import (
     wilson_lower,
     wilson_upper,
 )
-from quasar2.math.voi import expected_binary_belief_movement, voi_bound_binary
+from quasar2.math.voi import (
+    bound_gap,
+    empirical_binary_voi_zero_one,
+    expected_binary_belief_movement,
+    voi_bound_binary,
+)
 from quasar2.theory.cards import TheoremCheck, default_cards
+from quasar2.theory.kernels import KERNEL_FAMILIES
 
 
 def check_t1(*, atol: float = DEFAULT_ATOL, rtol: float = DEFAULT_RTOL) -> TheoremCheck:
@@ -140,6 +147,69 @@ def check_t2(*, atol: float = DEFAULT_ATOL, rtol: float = DEFAULT_RTOL) -> Theor
         dataset="synthetic_binary_kernels",
         notes="" if not failures else f"failures={failures}",
         metrics={"n_records": len(records), "scalar_vs_l1_factor_two": factor_ok, "failures": failures},
+    )
+
+
+def check_t2_grid(*, atol: float = DEFAULT_ATOL, rtol: float = DEFAULT_RTOL) -> TheoremCheck:
+    """Empirical 0-1 VoI vs Lipschitz bound across synthetic kernel families."""
+
+    priors = (0.1, 0.25, 0.5, 0.75, 0.9)
+    violations: list[str] = []
+    records: list[dict[str, Any]] = []
+    identity_failures: list[str] = []
+    for family, pair in KERNEL_FAMILIES.items():
+        p1, p2 = pair["H1"], pair["H2"]
+        for b in priors:
+            bound = voi_bound_binary(b, p1, p2, atol=atol, rtol=rtol)
+            empirical = empirical_binary_voi_zero_one(b, p1, p2)
+            stats = bound_gap(empirical, bound.voi_bound_tv)
+            if not bound.identity_holds:
+                identity_failures.append(f"{family}:b={b}")
+            if stats["voi_bound_violated"]:
+                violations.append(f"{family}:b={b}")
+            records.append(
+                {
+                    "family": family,
+                    "b": b,
+                    "prior_dispersion": bound.prior_dispersion,
+                    "recoverability_tv": bound.recoverability_tv,
+                    "recoverability_kl": bound.recoverability_kl,
+                    "voi_empirical": empirical,
+                    "voi_bound_tv": bound.voi_bound_tv,
+                    "voi_bound_gap": stats["voi_bound_gap"],
+                    "voi_bound_ratio": stats["voi_bound_ratio"],
+                    "voi_bound_violated": stats["voi_bound_violated"],
+                    "identity_holds": bound.identity_holds,
+                }
+            )
+    failed = bool(identity_failures)
+    state = "PASS_WITHIN_ASSUMPTIONS" if not failed else "FAIL_NUMERICAL"
+    notes = (
+        "0-1 empirical VoI is compared to the scalar-binary Lipschitz bound. "
+        "Bound violations are recorded and do not auto-refute T2 if identity holds."
+    )
+    if violations:
+        notes += f" voi_bound_violated={violations}"
+    if identity_failures:
+        notes += f" identity_failures={identity_failures}"
+    return TheoremCheck(
+        card_id="T2_grid",
+        execution_state=state,
+        layer="NUMERICAL_QUADRATURE",
+        assumptions_verified=("binary", "0-1 utility", "declared Lipschitz scalar_binary"),
+        implementation="empirical_binary_voi_zero_one",
+        atol=atol,
+        rtol=rtol,
+        seeds=(),
+        dataset="synthetic_kernel_families",
+        notes=notes,
+        metrics={
+            "n_records": len(records),
+            "n_bound_violations": len(violations),
+            "n_identity_failures": len(identity_failures),
+            "families": sorted(KERNEL_FAMILIES),
+            "records": records,
+        },
     )
 
 
@@ -270,6 +340,110 @@ def check_t4(*, n_trials: int = 400, n_samples: int = 40, seed: int = 0, alpha: 
     )
 
 
+def _sample_family(rng: random.Random, family: str, mean: float) -> float:
+    if family == "gaussian":
+        return rng.gauss(mean, 1.0)
+    if family == "student_t":
+        z = rng.gauss(0.0, 1.0)
+        df = 3
+        chi = sum(rng.gauss(0.0, 1.0) ** 2 for _ in range(df))
+        return mean + z / math.sqrt(chi / df)
+    if family == "gumbel":
+        u = min(1.0 - 1e-12, max(1e-12, rng.random()))
+        return mean - math.log(-math.log(u))
+    if family == "skewed":
+        return mean + math.exp(rng.gauss(0.0, 0.5)) - 1.0
+    if family == "mixture":
+        if rng.random() < 0.9:
+            return rng.gauss(mean, 1.0)
+        return rng.gauss(mean, 4.0)
+    if family == "heavy_tail":
+        z = rng.gauss(0.0, 1.0)
+        df = 2
+        chi = max(1e-9, sum(rng.gauss(0.0, 1.0) ** 2 for _ in range(df)))
+        return mean + z / math.sqrt(chi / df)
+    raise ValueError(family)
+
+
+def check_t4_families(
+    *,
+    n_trials: int = 80,
+    n_samples: int = 30,
+    seed: int = 0,
+    alphas: tuple[float, ...] = (0.10, 0.05, 0.01),
+) -> TheoremCheck:
+    """Compare NormalUCB false-stop rates across non-Gaussian families."""
+
+    families = ("gaussian", "student_t", "gumbel", "skewed", "mixture", "heavy_tail")
+    estimator = NormalUCB()
+    breakdown: list[dict[str, Any]] = []
+    for family in families:
+        for alpha in alphas:
+            rng = random.Random(seed + (sum(ord(ch) for ch in family) % 1000))
+            false_stops = 0
+            eligible = 0
+            for _ in range(n_trials):
+                true_mean = 0.15
+                samples_a = [_sample_family(rng, family, true_mean) for _ in range(n_samples)]
+                samples_b = [_sample_family(rng, family, true_mean / 2.0) for _ in range(n_samples)]
+                samples_c = [_sample_family(rng, family, -0.2) for _ in range(n_samples)]
+                ucbs = {
+                    "ANALYZE": estimator.upper_bound(samples_a, alpha, 3),
+                    "EXPLORE": estimator.upper_bound(samples_b, alpha, 3),
+                    "ASK": estimator.upper_bound(samples_c, alpha, 3),
+                }
+                estimates = {
+                    "ANALYZE": sum(samples_a) / n_samples,
+                    "EXPLORE": sum(samples_b) / n_samples,
+                    "ASK": sum(samples_c) / n_samples,
+                }
+                decision = stop_if_all_ucb_nonpositive(
+                    ucbs,
+                    estimates,
+                    alpha=alpha,
+                    coverage_scope="fixed_stage",
+                    oracle_best_net_voi=true_mean,
+                    delta_positive=0.02,
+                )
+                eligible += 1
+                if decision.false_stop:
+                    false_stops += 1
+            rate = false_stops / max(1, eligible)
+            upper = wilson_upper(false_stops, eligible)
+            breakdown.append(
+                {
+                    "family": family,
+                    "alpha": alpha,
+                    "false_stop_rate": rate,
+                    "wilson_upper": upper,
+                    "exceeds_alpha": upper > alpha + 0.05,
+                }
+            )
+    gaussian_rows = [row for row in breakdown if row["family"] == "gaussian"]
+    parametric_breakdown = [row for row in breakdown if row["exceeds_alpha"]]
+    return TheoremCheck(
+        card_id="T4_families",
+        execution_state="INCONCLUSIVE",
+        layer="MONTE_CARLO",
+        assumptions_verified=("fixed_stage", "normal_ucb_approximate", "bonferroni_m=3"),
+        implementation="NormalUCB",
+        atol=0.05,
+        rtol=0.0,
+        seeds=(seed,),
+        dataset="synthetic_netvoi_families",
+        notes=(
+            "NormalUCB is not assumed valid outside Gaussians. Rows with "
+            "exceeds_alpha document parametric breakdown rather than theorem failure."
+        ),
+        metrics={
+            "n_trials": n_trials,
+            "breakdown": breakdown,
+            "parametric_breakdown_rows": len(parametric_breakdown),
+            "gaussian_rows": gaussian_rows,
+        },
+    )
+
+
 def check_c1() -> TheoremCheck:
     # Markov degradation: extra noise independent of I given Q_clean.
     # I in {0,1}, Q_clean copies I, Q_obs flips Q_clean.
@@ -318,23 +492,41 @@ def check_c1() -> TheoremCheck:
     )
 
 
-def run_theory_checks(*, t4_trials: int = 400) -> dict[str, Any]:
-    checks = (check_c1(), check_t1(), check_t2(), check_t3(), check_t4(n_trials=t4_trials))
+def run_theory_checks(
+    *,
+    t4_trials: int = 400,
+    seed: int = 0,
+    include_grids: bool = True,
+    t4_family_trials: int = 80,
+) -> dict[str, Any]:
+    checks = [
+        check_c1(),
+        check_t1(),
+        check_t2(),
+        check_t3(),
+        check_t4(n_trials=t4_trials, seed=seed),
+    ]
+    if include_grids:
+        checks.append(check_t2_grid())
+        checks.append(check_t4_families(n_trials=t4_family_trials, seed=seed))
     return {
         "schema_version": "theorem_checks.1",
         "code_version": __version__,
         "cards": [card.to_dict() for card in default_cards()],
         "checks": [check.to_dict() for check in checks],
-        "summary": {
-            check.card_id: check.execution_state
-            for check in checks
-        },
+        "summary": {check.card_id: check.execution_state for check in checks},
     }
 
 
-def write_theory_checks(path: str | Path, *, t4_trials: int = 400) -> Path:
+def write_theory_checks(
+    path: str | Path,
+    *,
+    t4_trials: int = 400,
+    seed: int = 0,
+    include_grids: bool = True,
+) -> Path:
     dest = Path(path)
     dest.parent.mkdir(parents=True, exist_ok=True)
-    payload = run_theory_checks(t4_trials=t4_trials)
+    payload = run_theory_checks(t4_trials=t4_trials, seed=seed, include_grids=include_grids)
     dest.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
     return dest

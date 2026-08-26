@@ -474,7 +474,13 @@ class QuasarPipeline:
         )
         elapsed_ms = (time.perf_counter() - started) * 1000.0
         v2_telemetry = (
-            build_shadow_telemetry(belief, decision) if self.v2_shadow_enabled else None
+            build_shadow_telemetry(
+                belief,
+                decision,
+                supports=cumulative_support,
+            )
+            if self.v2_shadow_enabled
+            else None
         )
         return PipelineResult(
             observation=observation,

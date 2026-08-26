@@ -305,11 +305,31 @@ def command_cern_validate(_args: argparse.Namespace) -> int:
 
 
 def command_theory_check(args: argparse.Namespace) -> int:
+    from quasar2.theory.cards import default_cards
     from quasar2.theory.harness import write_theory_checks
 
+    if args.dry_run:
+        print(json.dumps({"cards": [card.id for card in default_cards()], "dry_run": True}, indent=2))
+        return 0
     dest = Path(args.output)
-    path = write_theory_checks(dest, t4_trials=args.t4_trials)
+    path = write_theory_checks(
+        dest,
+        t4_trials=args.t4_trials,
+        seed=args.seed,
+        include_grids=not args.offline,
+    )
     payload = json.loads(path.read_text(encoding="utf-8"))
+    if args.artifact_dir:
+        from quasar2.reporting.registry import allocate_run_dir, write_manifest
+
+        run_dir = allocate_run_dir(
+            Path(args.artifact_dir) / "runs",
+            run_id=None,
+            overwrite=True,
+        )
+        write_manifest(run_dir, seed=args.seed, command="theory-check", root=Path.cwd())
+        (run_dir / "metrics.json").write_text(json.dumps(payload["summary"], indent=2), encoding="utf-8")
+        (run_dir / "theorem_checks.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(json.dumps(payload["summary"], indent=2))
     print(f"artifact: {path}")
     failing = [
@@ -317,6 +337,8 @@ def command_theory_check(args: argparse.Namespace) -> int:
         for card_id, state in payload["summary"].items()
         if state.startswith("FAIL")
     ]
+    if args.fail_fast and failing:
+        return 1
     return 1 if failing else 0
 
 
@@ -327,7 +349,7 @@ def command_theorem_benchmark(args: argparse.Namespace) -> int:
 def command_report(args: argparse.Namespace) -> int:
     from quasar2.theory.harness import run_theory_checks
 
-    payload = run_theory_checks(t4_trials=args.t4_trials)
+    payload = run_theory_checks(t4_trials=args.t4_trials, include_grids=True)
     lines = [
         "# QUASAR2 theory report",
         "",
@@ -355,10 +377,42 @@ def command_report(args: argparse.Namespace) -> int:
         dest.write_text(text, encoding="utf-8")
         json_path = dest.with_suffix(".json")
         json_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+        csv_path = dest.with_suffix(".csv")
+        import csv
+
+        with csv_path.open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=("card_id", "execution_state", "layer", "notes"))
+            writer.writeheader()
+            for check in payload["checks"]:
+                writer.writerow(
+                    {
+                        "card_id": check["card_id"],
+                        "execution_state": check["execution_state"],
+                        "layer": check["layer"],
+                        "notes": check.get("notes", ""),
+                    }
+                )
         print(f"wrote {dest}")
         print(f"wrote {json_path}")
+        print(f"wrote {csv_path}")
     else:
         print(text)
+    return 0
+
+
+def command_phase_diagram(args: argparse.Namespace) -> int:
+    from quasar2.reporting.phase_diagram import AXES, write_diagrams
+    from quasar2.reporting.registry import allocate_run_dir, write_manifest
+
+    axes = tuple(args.axes.split(",")) if args.axes else AXES
+    dest = Path(args.output)
+    if args.register:
+        dest = allocate_run_dir(dest, run_id=args.run_id, overwrite=args.overwrite)
+        write_manifest(dest, seed=0, command="phase-diagram", root=Path.cwd())
+    else:
+        dest.mkdir(parents=True, exist_ok=True)
+    path = write_diagrams(dest, axes=axes, step=args.step)
+    print(path)
     return 0
 
 
@@ -500,7 +554,7 @@ def build_parser() -> argparse.ArgumentParser:
     theory.add_argument("--seed", type=int, default=0)
     theory.add_argument("--max-examples", type=int, default=None)
     theory.add_argument("--offline", action="store_true")
-    theory.add_argument("--artifact-dir", default="artifacts")
+    theory.add_argument("--artifact-dir", default=None)
     theory.add_argument("--fail-fast", action="store_true")
     theory.add_argument("--dry-run", action="store_true")
     theory.set_defaults(func=command_theory_check)
@@ -514,7 +568,7 @@ def build_parser() -> argparse.ArgumentParser:
     theorem_bench.add_argument("--seed", type=int, default=0)
     theorem_bench.add_argument("--max-examples", type=int, default=None)
     theorem_bench.add_argument("--offline", action="store_true")
-    theorem_bench.add_argument("--artifact-dir", default="artifacts")
+    theorem_bench.add_argument("--artifact-dir", default=None)
     theorem_bench.add_argument("--fail-fast", action="store_true")
     theorem_bench.add_argument("--dry-run", action="store_true")
     theorem_bench.set_defaults(func=command_theorem_benchmark)
@@ -523,6 +577,21 @@ def build_parser() -> argparse.ArgumentParser:
     report.add_argument("--output", default="artifacts/theory_report.md")
     report.add_argument("--t4-trials", type=int, default=200)
     report.set_defaults(func=command_report)
+
+    phase = subparsers.add_parser(
+        "phase-diagram",
+        help="write 2D shadow-decision diagrams (does not change the legacy policy)",
+    )
+    phase.add_argument("--output", default="experiments/runs")
+    phase.add_argument(
+        "--axes",
+        help="comma-separated axis ids (default: all)",
+    )
+    phase.add_argument("--step", type=float, default=0.1)
+    phase.add_argument("--register", action="store_true", help="allocate a non-overwriting run directory")
+    phase.add_argument("--run-id")
+    phase.add_argument("--overwrite", action="store_true")
+    phase.set_defaults(func=command_phase_diagram)
     return parser
 
 

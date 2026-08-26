@@ -5,6 +5,7 @@
   "decision": {
     "policy": "legacy",
     "v2_shadow": true,
+    "v2_shadow_policy": "quadrant",
     "gamma": 0.95,
     "verify_enabled": false
   },

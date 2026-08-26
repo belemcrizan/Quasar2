@@ -65,6 +65,27 @@ class DecisionTelemetry:
     lipschitz_constant: float | None = None
     divergence_units: str | None = None
     tv_convention: str | None = None
+    recoverability_method: str | None = None
+    voi_bound_binary: float | None = None
+    voi_bound_general: float | None = None
+    voi_empirical: float | None = None
+    voi_bound_gap: float | None = None
+    voi_bound_violated: bool | None = None
+    stop_decision: bool | None = None
+    stop_reason: str | None = None
+    best_info_action: str | None = None
+    conformal_alpha: float | None = None
+    conformal_coverage: float | None = None
+    nonconformity_score: float | None = None
+    estimated_q_answer: float | None = None
+    estimated_q_analyze: float | None = None
+    estimated_q_explore: float | None = None
+    estimated_q_ask: float | None = None
+    estimated_q_defer: float | None = None
+    second_best_action: str | None = None
+    action_margin: float | None = None
+    shadow_policy: str | None = None
+    kernel_source: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
