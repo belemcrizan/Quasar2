@@ -19,4 +19,6 @@ Statuses: `RETAINED` | `RECOMPUTED` | `UNVERIFIED_HISTORICAL_OBSERVATION`.
 | NR-gate1-quadrant-reversed | High-H high-R mean ΔU (0.243) < high-H low-R (0.360) on registered_test | RETAINED | `gate1_cycle1` quadrant | Operational recoverability hypothesis weakened under proxy mismatch |
 | NR-fixture-explore-availability-harm | FULL vs noExplore mean ΔU −0.049 (query-clustered CI excludes 0) on the 120-query sanity fixture | RETAINED | `gate1_cycle1` fixture arm | 6/120 pairs useful at δ=0.05; not confirmatory |
 
+| NR-c3-not-live-dumps | Cycle 3 confirmatory evidence is schema-faithful SYN- snapshots, not live NASA/ESA TAP | RETAINED | external_validity | Do not advertise SYN- ids as archive rows |
+
 Do not delete rows to make the thesis look stronger.

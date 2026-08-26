@@ -1,0 +1,16 @@
+{
+  "python": "3.13.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "os": "win32",
+  "package_versions": {
+    "numpy": "2.2.6",
+    "torch": "2.7.1+cpu",
+    "sentence_transformers": "3.4.1",
+    "pytest": "8.4.2"
+  },
+  "embedding_models": "NOT_LOADED_IN_DEFAULT_STDLIB_RUN",
+  "git_sha": "2170646474483bd8b818740da08fe4301111ab3d",
+  "timestamp_utc": "2026-08-26T21:14:41.556624+00:00",
+  "cpu": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "note": "Hashing dense is not a neural encoder. Neural extras absent unless installed."
+}

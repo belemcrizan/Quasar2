@@ -160,6 +160,7 @@ These are **motivating applications**, not deployments or customer validations.
 | Conformal prediction | PARTIALLY_IMPLEMENTED | highest-mass heuristic + split-conformal helper; no live calibration split |
 | Sequential / anytime UCB stopping in production policy | NOT_FOUND | fixed-stage estimators + T4 harness only |
 | JWST / CERN **benchmarks** | NOT_FOUND | metadata fixtures + `jwst-validate` / `cern-validate` only |
+| External NASA/ESA/ALMA **official dumps** | NOT_RUN | schema-faithful `SYN-` snapshots + source audit; not TAP confirmation |
 | Cloud runner / HTTP API / UI | NOT_FOUND | — |
 | `phase-diagram` CLI | IMPLEMENTED (synthetic shadow grid) | `quasar2 phase-diagram`; topology not imposed |
 
@@ -266,6 +267,9 @@ Writes `experiments/results/benchmark.json` and `.csv` unless `--output` is set.
 | `gate1-audit` | Gate 1: deployment R vs realized EXPLORE ΔU | Frozen analysis card; `--include-fixture` adds FULL vs noExplore sanity pairing |
 | `shadow-study` | Sanity shadow transition matrix | `--limit`, `--conditions`, `--shadow-policy`; does not write `experiments/results/benchmark.json` |
 | `policy-compare` | Oracle vs threshold/myopic/SPRT/learned on synthetic states | `--n`, `--seed`; not WDI |
+| `cycle2-audit` | Cycle 2 recoverability/policy path | does not change the legacy loop |
+| `external-validity` | Source audit, schema-faithful NASA/ESA/ALMA transfer, scale, equal-budget, regime | `--smoke` for CI; **not** live TAP dumps; `--overwrite` |
+| `reproduce-paper` | Reconstruct frozen v0.1.1 tables + rerun offline external program | no silent mutable downloads; `--full` for non-smoke |
 
 There is no `wdi-build-queries` command. Query JSON is produced by `dataset-build`.
 
@@ -307,6 +311,7 @@ Set `"v2_shadow": true` under `decision` to enable shadow telemetry from config 
 | `src/quasar2/gate/` | Complexity gate (Milestone A) |
 | `src/quasar2/analysis/` | A1 decomposition + ANALYZE operators |
 | `src/quasar2/sources/` | JWST/CERN/INSPIRE **metadata** fixtures |
+| `src/quasar2/external/` | Cycle 3 external-validity protocol (audit, schema snapshots, regime) |
 | `configs/`, `data/`, `docs/`, `experiments/results/`, `tests/` | Frozen parameters, fixtures, protocol, artifacts, tests |
 
 ```text
@@ -394,6 +399,32 @@ quasar2 wdi-experiment --snapshot data/wdi/snapshots/pilot-live --stage pilot --
 
 Typed **metadata-only** fixtures and validators. Manifests set `scientific_benchmark_complete: false`. Treat as transfer-domain **scaffolds**, not completed benches.
 
+### External validity (Cycle 3)
+
+The next scientific phase is **transfer, scale, equal-budget comparison, and regime discovery** — not more internal theory. Protocol: [docs/EXTERNAL_VALIDITY.md](docs/EXTERNAL_VALIDITY.md).
+
+What this cycle **does**:
+
+- audit official NASA / ESA / observatory archives (no arbitrary scraping);
+- select Exoplanet Archive, Gaia, and ALMA as the first trio **on scientific structure**, not prestige;
+- run zero-shot transfer on **schema-faithful frozen snapshots** (`SYN-` ids) plus the in-repo JWST fixture;
+- keep OPS as the cross-domain contrast;
+- upgrade the comparison to retrieval vs decision baselines under an equal-call budget;
+- estimate a candidate advantage region \(R^*\) on development data and check it on held-out splits;
+- provide `quasar2 reproduce-paper` and a Dockerfile.
+
+What this cycle **does not** claim:
+
+- live TAP/ADQL dumps were confirmatory evidence (they were **not** fetched);
+- QUASAR2 beats BM25/Hybrid/entropy on average;
+- Gate 1 is reversed (it remains **FAIL**);
+- the shadow policy is promoted.
+
+```bash
+quasar2 external-validity --output experiments/results/external_validity --overwrite
+quasar2 reproduce-paper --output experiments/results/paper_reproduce --overwrite
+```
+
 ---
 
 ## Metrics (three layers)
@@ -478,6 +509,23 @@ From [V2.4 external validation](docs/V2_4_EXTERNAL_VALIDATION_REPORT.md) / `expe
 
 **Top-1 BM25 beats V2.4 on intent exact** at lower call cost. ASK never fired. MiniLM CI smoke n=40: BM25 top-1 0.775 vs MiniLM top-1 0.750. Gated compute (Milestone A / A1) is **INCONCLUSIVE**.
 
+### External validity (Cycle 3, schema-faithful offline)
+
+From `experiments/results/external_validity/` after `quasar2 external-validity` (seed 0). **Not** live NASA/ESA TAP dumps. Leakage audit ok. Policy remains shadow. Gate 1 remains FAIL.
+
+| Question | Answer |
+|---|---|
+| A. Generalize across independent public scientific sources? | **NO** (schema snapshots; clustered ΔNEU vs immediate ANSWER not a supported transfer) |
+| B. Decision principle transfer outside astronomy? | **NO** on this OPS structured map (Cycle 2 equal-budget negative retained) |
+| C. Useful behavior as corpus/\|H\|/query scale grows? | **PARTIAL** (scale protocol executed; 10^5 TAP not run) |
+| D. Reproduce from a clean independent environment? | **PARTIAL** (`reproduce-paper` + Dockerfile; cloud NOT_RUN) |
+| E. Beat strong baselines anywhere under equal budget? | **NO** as a confirmatory clustered claim |
+| H. Stable empirical advantage regime \(R^*\)? | **NO** as a validated transferable region |
+
+A minority of states still show ΔQ>0 vs immediate ANSWER (121/587 in that run). That is a **candidate map**, not a supported regime. SYN- identifiers are not archive rows.
+
+---
+
 ### Theory harness
 
 `artifacts/theorem_checks.json`: C1, T1, T2, T3, T4 recorded `PASS_WITHIN_ASSUMPTIONS` under their synthetic assumptions. T4 used a well-separated Gaussian mean (easy). Heuristic ANALYZE is outside T1.
@@ -523,6 +571,7 @@ Claim policy and paper-scale gaps: [Limitations](docs/LIMITATIONS.md), [Scientif
 - Sequential / anytime stopping; T4 near-zero is now a **harness**, not a sealed result.
 - Recoverability-driven EXPLORE in the **executed** policy (today: shadow / estimators only).
 - Completed JWST/CERN query benches (fixtures only now).
+- Frozen official TAP/ADQL snapshots for KOI/TOI and Gaia NSS (protocol exists; dumps not fetched).
 - Fair BM25 vs dense vs hybrid vs rerank under equal budgets on the full pilot.
 - Pre-registered clustered intervals before any `SUPPORTED` claim.
 - Cloud/stateless runners, public PyPI automation, UI.
@@ -544,6 +593,7 @@ Former v0.3 policy note: [docs/V0.2_EXPERIMENT_PROTOCOL.md](docs/V0.2_EXPERIMENT
 | [docs/WORLD_BANK_WDI.md](docs/WORLD_BANK_WDI.md) | WDI notes |
 | [docs/MILESTONE_A.md](docs/MILESTONE_A.md) / [A1](docs/MILESTONE_A1.md) | Gate and decomposition |
 | [docs/SOURCE_REGISTRY.md](docs/SOURCE_REGISTRY.md) | Source families |
+| [docs/EXTERNAL_VALIDITY.md](docs/EXTERNAL_VALIDITY.md) | Cycle 3 protocol (audit, transfer, regime) |
 | [docs/EXTENDING.md](docs/EXTENDING.md) | Add a domain or retriever |
 | [docs/DATA_AND_METRICS.md](docs/DATA_AND_METRICS.md) | Sanity metrics |
 

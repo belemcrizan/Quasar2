@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Cycle 3 external-validity program (`quasar2 external-validity`, `quasar2 reproduce-paper`): official NASA/ESA/observatory source audit, schema-faithful snapshots (not live TAP dumps), clustered transfer/scale/equal-budget/regime maps, Dockerfile. Frozen v0.1.1, Gate 1 FAIL, and Cycle 2 negative results are unchanged. No claim promoted to SUPPORTED_IN_SCOPE.
+
 - Cycle 2 scientific path (`quasar2 cycle2-audit`): recoverability state, mismatch/corruption tests, empirical action values (T2 is not Q), family-holdout synthetic oracle, WDI controlled-degradation card, OPS sequential/fault simulator. Frozen v0.1.1 and Gate 1 FAIL are unchanged. Recoverability remains diagnostic (G-R FAIL; Gate 1 locked). Equal-budget OPS: BM25 top-1/ANSWER matched the entropy policy and beat forced extra retrieval.
 
 - Added a synthetic recoverability-vs-VoI benchmark, Decision Recoverability Score, optional learned recoverability estimator, T2 tightness labels, T4 near-zero stress, tabular oracle / SPRT-inspired / learned shadow policies, and `shadow-study` / `policy-compare` CLIs. The v0.1.1 executed loop is unchanged. Frozen sanity JSON is not overwritten by these commands.

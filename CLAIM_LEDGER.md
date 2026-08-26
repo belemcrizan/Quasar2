@@ -25,5 +25,13 @@ The historical V2.4 ledger remains at [docs/CLAIM_LEDGER.md](docs/CLAIM_LEDGER.m
 | H-bayes-voi-nonnegative | Under true kernels and 0-1 Bayes updates, retrieval cannot harm V*. | TESTED | `p0-recoverability` | harm rate 0.0 | operational heuristic updates can still harm |
 | H-learned-beats-voi | Learned epistemic policy beats myopic VoI on synthetic regret. | PARTIALLY_SUPPORTED | `p0-policy-compare` n_test=400 | learned regret 0.006 vs myopic 0.279 vs threshold 0.218; oracle 0; learned agreement 0.87 | imitation of oracle, not RL; myopic uses Lipschitz bound as VoI; not WDI |
 | H-discriminative-recall-decouple | Discriminative scoring can change decision LLR without Recall@10 gains. | PROPOSED | bag-of-words diagnostic only | not connected to frozen retrieval | concept-inspired, not a neural cross-encoder |
+| H_EXT | Adaptive epistemic action transfers across independent scientific sources. | PROPOSED | schema-faithful NASA/ESA/ALMA snapshots | `external-validity` | Not live TAP dumps; SYN- ids |
+| H_DOMAIN | Decision-theoretic acquisition transfers astronomy ↔ OPS. | PROPOSED | ops_structured | `external-validity` | Cycle 2 OPS equal-budget negative retained |
+| H_SCALE | Advantage region detectable as corpus/|H| scale. | PROPOSED | offline sweeps | `external-validity` | 10^5 TAP not executed |
+| H_BUDGET | Occupies part of utility-cost Pareto frontier under equal budget. | PROPOSED | equal-call NEU | `external-validity` | Neural/HyDE not run |
+| H_REGIME | Advantage predictable from observable regime variables. | PROPOSED | development-fit | `external-validity` | Coefficients not expected to transfer |
+| H_MISMATCH | Observation-model mismatch explains recoverability/policy failure. | PROPOSED | channel shifts | `external-validity` | Connects to Cycle 2 |
+| H_REPLICATION | Major findings reproduce on independent compute. | UNKNOWN | Dockerfile + reproduce-paper | cloud NOT_RUN | Not archive replication |
+| C3-live-official-dumps | Live NASA/ESA/ALMA TAP dumps used as confirmatory evidence. | REFUTED | this cycle | schema-faithful SYN- snapshots only | Do not cite SYN- ids as archive rows |
 
 Promotion gate: versioned hypothesis, passing implementation tests, checked assumptions, reproducible run id, pre-specified CI/effect, cost/risk, no known leakage, matching claim scope.

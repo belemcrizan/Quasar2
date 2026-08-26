@@ -13,6 +13,8 @@ Typed source families live in `quasar2.sources.registry`. Offline metadata fixtu
 
 Cross-source answer synthesis is out of scope. Time-travel evaluation must use cutoff-filtered local records, not a live current index.
 
+Cycle 3 source audit (NASA Exoplanet Archive, Gaia, ALMA selected; ADS/HEASARC/ESO useful; scrape/PR/Wikipedia rejected as primary) lives in `quasar2.external.source_audit` and `docs/EXTERNAL_VALIDITY.md`. Executed snapshots are schema-faithful, not TAP dumps.
+
 ```text
 quasar2 source-validate --family jwst_mast
 quasar2 jwst-validate
