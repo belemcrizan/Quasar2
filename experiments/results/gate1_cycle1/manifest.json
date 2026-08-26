@@ -1,0 +1,11 @@
+{
+  "run_id": "gate1_cycle1",
+  "seed": 0,
+  "config_hash": null,
+  "dataset_hash": null,
+  "git_sha": "24a312462dcb5177b65c5cffc72549d0fd41e223",
+  "python_version": "3.13.3",
+  "package_version": "0.2.0",
+  "timestamp": "2026-08-26T18:57:58+00:00",
+  "command": "gate1-audit"
+}

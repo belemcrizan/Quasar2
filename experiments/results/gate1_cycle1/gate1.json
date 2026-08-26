@@ -1,0 +1,830 @@
+{
+  "schema_version": "gate1.1",
+  "analysis_plan": {
+    "gate_id": "G1",
+    "claim_ids": [
+      "G1-deploy-R-predicts-deltaU",
+      "G1-R-adds-beyond-uncertainty",
+      "G1-quadrant-effect-modification"
+    ],
+    "primary_question": "Does deployment-observable recoverability predict realized EXPLORE gain beyond uncertainty?",
+    "primary_estimand": "forced-action tau_action(s) = U(force EXPLORE) - U(force ANSWER) inside the synthetic observation model (SIMULATOR_CAUSAL_WITHIN_MODEL). Secondary: availability tau_avail on the 120-query sanity fixture.",
+    "null_hypothesis": "Deployment-safe recoverability does not add out-of-sample predictive information for Delta U_EXPLORE beyond uncertainty predictors.",
+    "alternative_hypothesis": "A deployment-safe recoverability score improves registered-test Spearman/R2/AUROC for Delta U beyond entropy and belief margin.",
+    "primary_endpoint": "cluster-bootstrap Spearman(DRS_proxy, Delta U_raw) minus Spearman(entropy, Delta U_raw) on split_role=registered_test",
+    "safety_endpoint": "leakage audit (no gold, no future outcome in R_pre); sealed set unused for the gate decision",
+    "unit_of_analysis": "synthetic state (regime_id, b, cost)",
+    "cluster_id": "regime_id",
+    "minimum_practical_effect": 0.05,
+    "superiority_or_noninferiority_margin": 0.05,
+    "alpha_or_interval_policy": "percentile cluster bootstrap 95% interval; no multiplicity correction across exploratory metrics",
+    "multiple_testing_family": "confirmatory: primary Spearman difference and M1-M0 Spearman on registered_test only",
+    "sample_size_or_power": "registered_test has 4 regimes x 3 beliefs x 3 costs = 36 states (cluster n=4). This detects only large effects; absence of significance is not equivalence.",
+    "splits": {
+      "development": [
+        "high_H_high_R",
+        "high_H_low_R"
+      ],
+      "model_selection": [
+        "low_H_high_R",
+        "low_H_low_R",
+        "near_zero_treatment"
+      ],
+      "registered_test": [
+        "false_recoverability",
+        "hidden_recoverability",
+        "misspecified_observation",
+        "heldout_family_true_proxy"
+      ],
+      "sealed_replication": [
+        "sealed_pro",
+        "sealed_anti"
+      ]
+    },
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "exclusions": "sealed_replication rows are stored and must not enter the gate decision",
+    "missing_data_policy": "drop non-finite predictor/outcome pairs; do not impute",
+    "pass_rule": "PASS if (a) leakage audit passes AND (b) cluster-bootstrap CI of Spearman(DRS)-Spearman(entropy) on registered_test excludes 0 with point>0 AND (c) M1-M0 Spearman CI excludes 0 with point>0 AND (d) the DRS-minus-entropy Spearman difference has the same sign on at least two registered regimes",
+    "partial_rule": "PARTIAL if leakage passes and either (b) or (c) holds, or the quadrant contrast CI excludes 0, but not all PASS clauses",
+    "fail_rule": "FAIL if leakage fails, or both confirmatory incremental intervals include 0 or have non-positive point estimates",
+    "inconclusive_rule": "INCONCLUSIVE if Spearman is undefined or fewer than two registered regimes have finite Spearman",
+    "practical_margin_delta": 0.05,
+    "utility": {
+      "u_correct": 1.0,
+      "u_wrong_answer": 1.4,
+      "c_call": 0.1,
+      "ask_cost": 0.28
+    },
+    "notes": [
+      "T2 Lipschitz bound is a certificate, never Q(s, EXPLORE).",
+      "120-query fixture is a regression/availability sanity arm, not the confirmatory Gate-1 test.",
+      "Identification status for synthetic forced-action: SIMULATOR_CAUSAL_WITHIN_MODEL."
+    ]
+  },
+  "analysis_plan_hash": "8b1c9bb04a2b7cea3fc24bd75e4a7df534e9093eff591fdf9aaac02081386aff",
+  "evidence_trace": {
+    "historical": [
+      {
+        "metric_name": "DRS holdout Spearman vs synthetic empirical VoI",
+        "point_estimate": 0.62,
+        "run_id": null,
+        "artifact_path": null,
+        "status": "UNVERIFIED_HISTORICAL_OBSERVATION",
+        "note": "Cited from CLAIM_LEDGER H-uncertainty-retrieval; no immutable recoverability_bench.json in-repo."
+      },
+      {
+        "metric_name": "JSD/MI holdout Spearman",
+        "point_estimate": 0.602,
+        "run_id": null,
+        "artifact_path": null,
+        "status": "UNVERIFIED_HISTORICAL_OBSERVATION"
+      },
+      {
+        "metric_name": "entropy holdout Spearman",
+        "point_estimate": 0.545,
+        "run_id": null,
+        "artifact_path": null,
+        "status": "UNVERIFIED_HISTORICAL_OBSERVATION"
+      },
+      {
+        "metric_name": "learned ridge holdout Spearman",
+        "point_estimate": 0.544,
+        "run_id": null,
+        "artifact_path": null,
+        "status": "UNVERIFIED_HISTORICAL_OBSERVATION",
+        "note": "Ledger also records train overfit relative to holdout."
+      },
+      {
+        "metric_name": "TV holdout Spearman",
+        "point_estimate": 0.443,
+        "run_id": null,
+        "artifact_path": null,
+        "status": "UNVERIFIED_HISTORICAL_OBSERVATION"
+      },
+      {
+        "metric_name": "T2 bound vacuous on substantial fraction of synthetic states",
+        "point_estimate": null,
+        "run_id": null,
+        "artifact_path": null,
+        "status": "UNVERIFIED_HISTORICAL_OBSERVATION",
+        "note": "CLAIM_LEDGER T2-binary-voi: vacuous 40 / useful 32 / tight 8 / loose 8 of 88 states."
+      },
+      {
+        "metric_name": "T2-as-point-policy worse than crude threshold",
+        "point_estimate": null,
+        "run_id": "p0-policy-compare",
+        "artifact_path": null,
+        "status": "UNVERIFIED_HISTORICAL_OBSERVATION",
+        "note": "Ledger H-learned-beats-voi: myopic 0.279 regret vs threshold 0.218; myopic used bound as VoI."
+      },
+      {
+        "metric_name": "shadow 120 agreement",
+        "point_estimate": 0.633,
+        "run_id": "p0-shadow-120",
+        "artifact_path": null,
+        "status": "UNVERIFIED_HISTORICAL_OBSERVATION",
+        "note": "76/120 agree; 0 EXPLORE recommendations."
+      },
+      {
+        "metric_name": "shadow recommended EXPLORE count on easy 120 fixture",
+        "point_estimate": 0,
+        "run_id": "p0-shadow-120",
+        "artifact_path": null,
+        "status": "UNVERIFIED_HISTORICAL_OBSERVATION"
+      }
+    ],
+    "recomputed_recoverability_bench": {
+      "drs_holdout_spearman": 0.6204659732642164,
+      "entropy_holdout_spearman": 0.544626954857437,
+      "best_holdout_spearman": "decision_recoverability",
+      "jsd_holdout_spearman": 0.6022161275460741,
+      "tv_holdout_spearman": 0.4426204444672339,
+      "learned_holdout_spearman": 0.5441171704748174,
+      "learned_train_spearman": 0.9786989117992995,
+      "tightness_counts": {
+        "vacuous": 40,
+        "useful": 32,
+        "tight": 8,
+        "loose": 8
+      },
+      "n": 88,
+      "schema_version": "recoverability_bench.1",
+      "label": "RECOMPUTED_THIS_CYCLE",
+      "does_not_supersede_historical": true
+    },
+    "graph_assisted_retrieval": "NOT_IMPLEMENTED",
+    "neural_retrieval": "OPTIONAL / IMPLEMENTED PATH, subject to repository verification",
+    "n4_reranker_evaluation": "NOT_EXECUTED, subject to repository verification"
+  },
+  "synthetic": {
+    "n_train": 45,
+    "n_registered_test": 36,
+    "n_sealed": 18,
+    "method_table_registered_test": [
+      {
+        "method": "entropy",
+        "n": 36,
+        "spearman": 0.5082941956424876,
+        "pearson": 0.11539784572574809,
+        "r2": 0.013316662798143556,
+        "auroc_useful": 0.5436363636363636,
+        "auprc_useful": 0.62160207909732,
+        "brier_useful": 0.2931844562582644,
+        "reliability": [
+          {
+            "bin": 7,
+            "low": 0.875,
+            "high": 1.0,
+            "n": 36,
+            "mean_score": 0.9779043692818951,
+            "mean_target": 0.6944444444444444,
+            "calibration_gap": 0.28345992483745064
+          }
+        ]
+      },
+      {
+        "method": "belief_margin",
+        "n": 36,
+        "spearman": -0.5174492805105512,
+        "pearson": -0.15083428441566699,
+        "r2": 0.02275098135518632,
+        "auroc_useful": 0.45636363636363636,
+        "auprc_useful": 0.6697107451308253,
+        "brier_useful": 0.5255555555555556,
+        "reliability": [
+          {
+            "bin": 0,
+            "low": 0.0,
+            "high": 0.125,
+            "n": 12,
+            "mean_score": 0.0,
+            "mean_target": 0.75,
+            "calibration_gap": 0.75
+          },
+          {
+            "bin": 1,
+            "low": 0.125,
+            "high": 0.25,
+            "n": 18,
+            "mean_score": 0.20000000000000012,
+            "mean_target": 0.6666666666666666,
+            "calibration_gap": 0.4666666666666665
+          },
+          {
+            "bin": 7,
+            "low": 0.875,
+            "high": 1.0,
+            "n": 6,
+            "mean_score": 1.0,
+            "mean_target": 0.6666666666666666,
+            "calibration_gap": 0.33333333333333337
+          }
+        ]
+      },
+      {
+        "method": "decision_recoverability",
+        "n": 36,
+        "spearman": 0.3281024924495415,
+        "pearson": -0.12048621371529657,
+        "r2": 0.014516927695448118,
+        "auroc_useful": 0.45636363636363636,
+        "auprc_useful": 0.62160207909732,
+        "brier_useful": 0.5078097777777777,
+        "reliability": [
+          {
+            "bin": 0,
+            "low": 0.0,
+            "high": 0.125,
+            "n": 12,
+            "mean_score": 0.0,
+            "mean_target": 0.8333333333333334,
+            "calibration_gap": 0.8333333333333334
+          },
+          {
+            "bin": 7,
+            "low": 0.875,
+            "high": 1.0,
+            "n": 24,
+            "mean_score": 0.968,
+            "mean_target": 0.625,
+            "calibration_gap": 0.34299999999999997
+          }
+        ]
+      },
+      {
+        "method": "jsd",
+        "n": 36,
+        "spearman": -0.37103400064012604,
+        "pearson": -0.4452425243468142,
+        "r2": 0.19824090548672346,
+        "auroc_useful": 0.18363636363636363,
+        "auprc_useful": 0.5428612096212414,
+        "brier_useful": 0.6918288020299419,
+        "reliability": [
+          {
+            "bin": 0,
+            "low": 0.0,
+            "high": 0.125,
+            "n": 18,
+            "mean_score": 0.0009738354741193574,
+            "mean_target": 0.8888888888888888,
+            "calibration_gap": 0.8879150534147695
+          },
+          {
+            "bin": 7,
+            "low": 0.875,
+            "high": 1.0,
+            "n": 18,
+            "mean_score": 0.9962879657822246,
+            "mean_target": 0.5,
+            "calibration_gap": 0.49628796578222456
+          }
+        ]
+      },
+      {
+        "method": "tv",
+        "n": 36,
+        "spearman": -0.453484088626208,
+        "pearson": -0.45149524291661564,
+        "r2": 0.20384795437633377,
+        "auroc_useful": 0.2381818181818182,
+        "auprc_useful": 0.5150528151171946,
+        "brier_useful": 0.6743765625,
+        "reliability": [
+          {
+            "bin": 0,
+            "low": 0.0,
+            "high": 0.125,
+            "n": 18,
+            "mean_score": 0.026250000000000023,
+            "mean_target": 0.8888888888888888,
+            "calibration_gap": 0.8626388888888888
+          },
+          {
+            "bin": 7,
+            "low": 0.875,
+            "high": 1.0,
+            "n": 18,
+            "mean_score": 1.0,
+            "mean_target": 0.5,
+            "calibration_gap": 0.5
+          }
+        ]
+      },
+      {
+        "method": "mutual_information",
+        "n": 36,
+        "spearman": -0.37103400064012604,
+        "pearson": -0.4452425243468142,
+        "r2": 0.19824090548672346,
+        "auroc_useful": 0.18363636363636363,
+        "auprc_useful": 0.5428612096212414,
+        "brier_useful": 0.6918288020299419,
+        "reliability": [
+          {
+            "bin": 0,
+            "low": 0.0,
+            "high": 0.125,
+            "n": 18,
+            "mean_score": 0.0009738354741193574,
+            "mean_target": 0.8888888888888888,
+            "calibration_gap": 0.8879150534147695
+          },
+          {
+            "bin": 7,
+            "low": 0.875,
+            "high": 1.0,
+            "n": 18,
+            "mean_score": 0.9962879657822246,
+            "mean_target": 0.5,
+            "calibration_gap": 0.49628796578222456
+          }
+        ]
+      },
+      {
+        "method": "retriever_score_margin",
+        "n": 36,
+        "spearman": null,
+        "pearson": null,
+        "r2": null,
+        "auroc_useful": 0.5,
+        "auprc_useful": 0.5150528151171946,
+        "brier_useful": 0.6944444444444444,
+        "reliability": [
+          {
+            "bin": 0,
+            "low": 0.0,
+            "high": 0.125,
+            "n": 36,
+            "mean_score": 0.0,
+            "mean_target": 0.6944444444444444,
+            "calibration_gap": 0.6944444444444444
+          }
+        ]
+      },
+      {
+        "method": "embedding_separation",
+        "n": 36,
+        "spearman": -0.453484088626208,
+        "pearson": -0.45149524291661564,
+        "r2": 0.20384795437633377,
+        "auroc_useful": 0.2381818181818182,
+        "auprc_useful": 0.5150528151171946,
+        "brier_useful": 0.6743765625,
+        "reliability": [
+          {
+            "bin": 0,
+            "low": 0.0,
+            "high": 0.125,
+            "n": 18,
+            "mean_score": 0.026250000000000023,
+            "mean_target": 0.8888888888888888,
+            "calibration_gap": 0.8626388888888888
+          },
+          {
+            "bin": 7,
+            "low": 0.875,
+            "high": 1.0,
+            "n": 18,
+            "mean_score": 1.0,
+            "mean_target": 0.5,
+            "calibration_gap": 0.5
+          }
+        ]
+      },
+      {
+        "method": "learned",
+        "n": 36,
+        "spearman": 0.007067314297907162,
+        "pearson": -0.4362794872384463,
+        "r2": 0.1903397909850416,
+        "auroc_useful": 0.39636363636363636,
+        "auprc_useful": 0.6956020790973199,
+        "brier_useful": 0.663057454379244,
+        "reliability": [
+          {
+            "bin": 0,
+            "low": 0.0,
+            "high": 0.125,
+            "n": 18,
+            "mean_score": 0.014952884473291711,
+            "mean_target": 0.8888888888888888,
+            "calibration_gap": 0.8739360044155972
+          },
+          {
+            "bin": 7,
+            "low": 0.875,
+            "high": 1.0,
+            "n": 18,
+            "mean_score": 0.9647568537670946,
+            "mean_target": 0.5,
+            "calibration_gap": 0.46475685376709464
+          }
+        ]
+      },
+      {
+        "method": "kl",
+        "n": 36,
+        "spearman": -0.5932593268941606,
+        "pearson": -0.4454352999177979,
+        "r2": 0.19841260641285857,
+        "auroc_useful": 0.14,
+        "auprc_useful": 0.5150528151171946,
+        "brier_useful": 0.6937346564822879,
+        "reliability": [
+          {
+            "bin": 0,
+            "low": 0.0,
+            "high": 0.125,
+            "n": 18,
+            "mean_score": 0.0009130007552241907,
+            "mean_target": 0.8888888888888888,
+            "calibration_gap": 0.8879758881336647
+          },
+          {
+            "bin": 7,
+            "low": 0.875,
+            "high": 1.0,
+            "n": 18,
+            "mean_score": 1.0,
+            "mean_target": 0.5,
+            "calibration_gap": 0.5
+          }
+        ]
+      },
+      {
+        "method": "symmetric_kl",
+        "n": 36,
+        "spearman": -0.453484088626208,
+        "pearson": -0.4454352999177979,
+        "r2": 0.19841260641285857,
+        "auroc_useful": 0.2381818181818182,
+        "auprc_useful": 0.5150528151171946,
+        "brier_useful": 0.6937346564822879,
+        "reliability": [
+          {
+            "bin": 0,
+            "low": 0.0,
+            "high": 0.125,
+            "n": 18,
+            "mean_score": 0.0009130007552241907,
+            "mean_target": 0.8888888888888888,
+            "calibration_gap": 0.8879758881336647
+          },
+          {
+            "bin": 7,
+            "low": 0.875,
+            "high": 1.0,
+            "n": 18,
+            "mean_score": 1.0,
+            "mean_target": 0.5,
+            "calibration_gap": 0.5
+          }
+        ]
+      }
+    ],
+    "per_regime_registered_test": [
+      {
+        "regime_id": "false_recoverability",
+        "n": 9,
+        "mean_delta_u": -0.12299999999999997,
+        "spearman_drs": 0.8660254037844386,
+        "spearman_entropy": 0.8660254037844386,
+        "spearman_jsd": 0.5
+      },
+      {
+        "regime_id": "hidden_recoverability",
+        "n": 9,
+        "mean_delta_u": 0.25000000000000006,
+        "spearman_drs": 0.8660254037844386,
+        "spearman_entropy": 0.8660254037844386,
+        "spearman_jsd": 0.5
+      },
+      {
+        "regime_id": "misspecified_observation",
+        "n": 9,
+        "mean_delta_u": 0.16333333333333344,
+        "spearman_drs": 0.8660254037844386,
+        "spearman_entropy": 0.8660254037844386,
+        "spearman_jsd": 1.0
+      },
+      {
+        "regime_id": "heldout_family_true_proxy",
+        "n": 9,
+        "mean_delta_u": 0.25,
+        "spearman_drs": 1.0,
+        "spearman_entropy": 1.0,
+        "spearman_jsd": 0.8660254037844386
+      }
+    ],
+    "drs_vs_entropy_spearman_difference": {
+      "point": -0.18019170319294608,
+      "ci_low": -0.41403933560541256,
+      "ci_high": 0.0,
+      "n_clusters": 4,
+      "samples": 400,
+      "n_successful_draws": 400
+    },
+    "incremental_information": {
+      "fit_split": "development+model_selection",
+      "eval_split": "registered_test",
+      "m0_features": [
+        "intercept",
+        "entropy",
+        "belief_margin"
+      ],
+      "m1_features": [
+        "intercept",
+        "entropy",
+        "belief_margin",
+        "drs",
+        "jsd",
+        "tv"
+      ],
+      "spearman_m0": 0.5174492805105512,
+      "spearman_m1": -0.19788480034140055,
+      "r2_m0": 0.025970923242735162,
+      "r2_m1": 0.17611520324436308,
+      "auroc_m0": 0.5436363636363636,
+      "auroc_m1": 0.24909090909090909,
+      "delta_spearman": -0.7153340808519517,
+      "delta_r2": 0.1501442800016279,
+      "cluster_bootstrap_delta_spearman": {
+        "point": -0.7153340808519517,
+        "ci_low": -1.1352343008766146,
+        "ci_high": -0.09989647489487663,
+        "n_clusters": 4,
+        "samples": 400,
+        "n_successful_draws": 400
+      },
+      "preprocessing_inside_train": true,
+      "test_untouched_until_eval": true
+    },
+    "quadrant": {
+      "thresholds_fit_on": "development+model_selection",
+      "entropy_cut": 0.9709505944546688,
+      "drs_cut": 0.19599999999999998,
+      "n_high_H_high_R": 24,
+      "n_high_H_low_R": 6,
+      "mean_delta_u_high_H_high_R": 0.242625,
+      "mean_delta_u_high_H_low_R": 0.36000000000000004,
+      "contrast": -0.11737500000000003,
+      "ci_high_H_high_R": {
+        "point": 0.242625,
+        "ci_low": 0.04230000000000003,
+        "ci_high": 0.41,
+        "n_clusters": 4,
+        "samples": 400,
+        "n_successful_draws": 400
+      },
+      "ci_high_H_low_R": {
+        "point": 0.36000000000000004,
+        "ci_low": 0.36000000000000004,
+        "ci_high": 0.36000000000000004,
+        "n_clusters": 1,
+        "samples": 400,
+        "n_successful_draws": 400
+      },
+      "secondary_not_primary": true
+    },
+    "leakage": {
+      "deployment_feature_names": [
+        "intercept",
+        "entropy",
+        "belief_margin",
+        "top1",
+        "tv",
+        "jsd",
+        "kl",
+        "drs",
+        "score_margin",
+        "unknown_mass"
+      ],
+      "forbidden_tokens_in_feature_names": [],
+      "gold_key_does_not_change_features": true,
+      "predictors_use_proxy_not_true_kernels": true,
+      "pass": true
+    },
+    "seed_stability": {
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "signs": [
+        -1,
+        -1,
+        -1
+      ],
+      "direction_stable": true
+    },
+    "gate": {
+      "gate1": "FAIL",
+      "reason": "no_stable_incremental_information_on_registered_test",
+      "clause_b_drs_minus_entropy_ci_excludes_0": false,
+      "clause_c_m1_minus_m0_ci_excludes_0": false,
+      "clause_d_two_regime_sign": false,
+      "same_sign_regime_count": 0,
+      "quadrant_positive_exploratory": false,
+      "analysis_plan_hash": "8b1c9bb04a2b7cea3fc24bd75e4a7df534e9093eff591fdf9aaac02081386aff",
+      "label": "confirmatory_on_registered_test"
+    },
+    "test_access_log": [
+      {
+        "event": "fit_on_development_model_selection",
+        "n": 45,
+        "used_for_gate": false
+      },
+      {
+        "event": "evaluate_registered_test",
+        "n": 36,
+        "used_for_gate": true
+      },
+      {
+        "event": "store_sealed_replication",
+        "n": 18,
+        "used_for_gate": false
+      }
+    ],
+    "strongest_uncertainty_baseline": {
+      "method": "entropy",
+      "n": 36,
+      "spearman": 0.5082941956424876,
+      "pearson": 0.11539784572574809,
+      "r2": 0.013316662798143556,
+      "auroc_useful": 0.5436363636363636,
+      "auprc_useful": 0.62160207909732,
+      "brier_useful": 0.2931844562582644,
+      "reliability": [
+        {
+          "bin": 7,
+          "low": 0.875,
+          "high": 1.0,
+          "n": 36,
+          "mean_score": 0.9779043692818951,
+          "mean_target": 0.6944444444444444,
+          "calibration_gap": 0.28345992483745064
+        }
+      ]
+    },
+    "sealed_unused_for_decision": true,
+    "generator": {
+      "learned_fitted_on": "development+model_selection"
+    }
+  },
+  "fixture": {
+    "schema": "gate1_fixture_availability.1",
+    "n_pairs": 120,
+    "n_useful_explore_delta": 6,
+    "n_full_with_explore_rounds": 31,
+    "mean_delta_u": -0.04933333333333335,
+    "metrics": {
+      "spearman_drs": -0.21381991365953307,
+      "spearman_entropy": -0.4985946779020914,
+      "mean_delta_u_ci": {
+        "point": -0.04933333333333335,
+        "ci_low": -0.0780041666666667,
+        "ci_high": -0.024491666666666686,
+        "n_clusters": 40,
+        "samples": 400,
+        "n_successful_draws": 400
+      }
+    },
+    "limitation": "Easy 120-query fixture is a regression/availability sanity test, not the confirmatory Gate-1 holdout. Zero or rare EXPLORE under the legacy loop is an expected limitation, not a reason to force EXPLORE.",
+    "label": "exploratory_sanity"
+  },
+  "claims": [
+    {
+      "claim_id": "G1-deploy-R-predicts-deltaU",
+      "from_status": "PROPOSED",
+      "to_status": "NOT_SUPPORTED",
+      "scope": "synthetic registered_test regimes; SIMULATOR_CAUSAL_WITHIN_MODEL",
+      "reason": "no_stable_incremental_information_on_registered_test",
+      "supporting_run_ids": [
+        "gate1-audit"
+      ],
+      "assumptions": [
+        "proxy Bernoulli/true kernels as specified",
+        "0-1 Bayes value"
+      ],
+      "confirmatory": true
+    },
+    {
+      "claim_id": "G1-R-adds-beyond-uncertainty",
+      "from_status": "PROPOSED",
+      "to_status": "NOT_SUPPORTED",
+      "scope": "M0 entropy+margin vs M1 + DRS/JSD/TV on registered_test",
+      "reason": "no_stable_incremental_information_on_registered_test",
+      "supporting_run_ids": [
+        "gate1-audit"
+      ],
+      "confirmatory": true
+    },
+    {
+      "claim_id": "G1-quadrant-effect-modification",
+      "from_status": "PROPOSED",
+      "to_status": "TESTED",
+      "scope": "secondary quadrant contrast; thresholds frozen on train",
+      "reason": "secondary_not_primary",
+      "confirmatory": false
+    },
+    {
+      "claim_id": "G1-fixture-availability-explore-gain",
+      "from_status": "PROPOSED",
+      "to_status": "TESTED",
+      "scope": "120-query sanity fixture FULL vs noExplore",
+      "reason": "Easy 120-query fixture is a regression/availability sanity test, not the confirmatory Gate-1 holdout. Zero or rare EXPLORE under the legacy loop is an expected limitation, not a reason to force EXPLORE.",
+      "confirmatory": false
+    }
+  ],
+  "maturity": {
+    "scientific_maturity": {
+      "theory": {
+        "state": "TESTED",
+        "evidence_ids": [
+          "docs/THEORY.md",
+          "T2-binary-voi"
+        ]
+      },
+      "measurement": {
+        "state": "FAILED",
+        "evidence_ids": [
+          "G1",
+          "8b1c9bb04a2b7cea3fc24bd75e4a7df534e9093eff591fdf9aaac02081386aff"
+        ]
+      },
+      "causal": {
+        "state": "TESTED",
+        "evidence_ids": [
+          "SIMULATOR_CAUSAL_WITHIN_MODEL"
+        ],
+        "note": "not real-world causal"
+      },
+      "policy": {
+        "state": "SPECIFIED",
+        "evidence_ids": [
+          "H-learned-beats-voi"
+        ]
+      },
+      "retrieval": {
+        "state": "SPECIFIED",
+        "evidence_ids": [
+          "H-discriminative-recall-decouple"
+        ]
+      },
+      "external": {
+        "state": "TESTED",
+        "evidence_ids": [
+          "H10-simple-baseline"
+        ]
+      },
+      "statistics": {
+        "state": "TESTED",
+        "evidence_ids": [
+          "G1-cluster-bootstrap"
+        ]
+      },
+      "reproducibility": {
+        "state": "IMPLEMENTED",
+        "evidence_ids": [
+          "quasar2 gate1-audit"
+        ]
+      },
+      "replication": {
+        "state": "NOT_STARTED",
+        "evidence_ids": []
+      }
+    },
+    "vetoes": {
+      "critical_gold_leakage": false,
+      "untraceable_primary_result": false,
+      "primary_endpoint_selected_after_test": false,
+      "no_strong_baseline": false,
+      "no_uncertainty_for_primary_effect": false,
+      "no_reproducible_primary_run": false,
+      "causal_language_without_identification": false,
+      "external_replication_falsely_claimed": false
+    },
+    "scalar_96_percent_label": "NOT_CLAIMED",
+    "dashboards_separated": [
+      "scientific_maturity",
+      "engineering_maturity",
+      "product_readiness",
+      "operational_safety"
+    ]
+  },
+  "largest_threat": "Deployment recoverability may be a restatement of the true kernel, or a misleading proxy under misspecification. The strongest simple baseline this cycle is entropy/belief-margin. The strongest modern operational threat remains BM25/hybrid one-shot on WDI (historical). Registered-test entropy Spearman=0.5082941956424876.",
+  "next_experiment": "Cycle 2 confirmatory: freeze the current analysis card and measure whether recoverability adds incremental information for paired FULL vs forced-NOEXPLORE on a WDI controlled-degradation slice that is not the sealed replication set, using query-family clustered inference.",
+  "bugs_found": "No seed/config no-op found in Gate-1 path. Section-2 metrics lacked run artifacts (traceability bug of the research record, not of the frozen loop).",
+  "reproduction_command": "quasar2 gate1-audit --output experiments/results/gate1_cycle1",
+  "reproduction_command_status": "implemented",
+  "equal_budget_status": "not_this_gate",
+  "exploratory_versus_confirmatory": {
+    "confirmatory": "synthetic registered_test incremental information",
+    "exploratory": "quadrant contrast, fixture availability, method table beyond DRS/entropy"
+  }
+}

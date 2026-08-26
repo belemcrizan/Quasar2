@@ -9,8 +9,8 @@ This is an audit against the top-tier acceleration spec. Implementation ≠ scie
 | Frozen v0.1.1 loop | EXISTS | Unchanged; shadow is additive |
 | WDI / astronomy / V2.4 / claim ledger | EXISTS | Preserved |
 | Recoverability estimators | PARTIAL | TV/KL/JSD/MI/DRS/learned; not validated on WDI |
-| Recoverability → empirical VoI | PARTIAL | Synthetic bench CLI; Gate 1 open |
-| Learned recoverability | PARTIAL | Ridge on synthetic VoI; no gold intent |
+| Recoverability → empirical VoI | PARTIAL | Synthetic bench + Gate 1 registered_test; 96% label not claimed |
+| Learned recoverability | PARTIAL | Ridge on synthetic VoI; fit on development/model_selection only |
 | Decision Recoverability Score | EXISTS | Flip probability; hypothesis-level |
 | Legacy/Threshold/Myopic/RecedingHorizon | PARTIAL | Receding horizon>1 NOT_IMPLEMENTED (falls back) |
 | TabularOracle / Learned / SPRT-inspired | PARTIAL | Synthetic only; SPRT not classical |

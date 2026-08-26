@@ -263,6 +263,7 @@ Writes `experiments/results/benchmark.json` and `.csv` unless `--output` is set.
 | `report` | Markdown/JSON/CSV theory status | `--output` default `artifacts/theory_report.md`; `--t4-trials` default 200 |
 | `phase-diagram` | 2D shadow-action grids | `--output` default `experiments/runs`; `--register` allocates a run id |
 | `recoverability-bench` | Synthetic recoverability vs empirical VoI | `--register` writes under `experiments/runs/` (never overwrites frozen sanity JSON) |
+| `gate1-audit` | Gate 1: deployment R vs realized EXPLORE ΔU | Frozen analysis card; `--include-fixture` adds FULL vs noExplore sanity pairing |
 | `shadow-study` | Sanity shadow transition matrix | `--limit`, `--conditions`, `--shadow-policy`; does not write `experiments/results/benchmark.json` |
 | `policy-compare` | Oracle vs threshold/myopic/SPRT/learned on synthetic states | `--n`, `--seed`; not WDI |
 

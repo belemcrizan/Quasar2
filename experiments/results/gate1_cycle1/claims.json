@@ -1,0 +1,44 @@
+[
+  {
+    "claim_id": "G1-deploy-R-predicts-deltaU",
+    "from_status": "PROPOSED",
+    "to_status": "NOT_SUPPORTED",
+    "scope": "synthetic registered_test regimes; SIMULATOR_CAUSAL_WITHIN_MODEL",
+    "reason": "no_stable_incremental_information_on_registered_test",
+    "supporting_run_ids": [
+      "gate1-audit"
+    ],
+    "assumptions": [
+      "proxy Bernoulli/true kernels as specified",
+      "0-1 Bayes value"
+    ],
+    "confirmatory": true
+  },
+  {
+    "claim_id": "G1-R-adds-beyond-uncertainty",
+    "from_status": "PROPOSED",
+    "to_status": "NOT_SUPPORTED",
+    "scope": "M0 entropy+margin vs M1 + DRS/JSD/TV on registered_test",
+    "reason": "no_stable_incremental_information_on_registered_test",
+    "supporting_run_ids": [
+      "gate1-audit"
+    ],
+    "confirmatory": true
+  },
+  {
+    "claim_id": "G1-quadrant-effect-modification",
+    "from_status": "PROPOSED",
+    "to_status": "TESTED",
+    "scope": "secondary quadrant contrast; thresholds frozen on train",
+    "reason": "secondary_not_primary",
+    "confirmatory": false
+  },
+  {
+    "claim_id": "G1-fixture-availability-explore-gain",
+    "from_status": "PROPOSED",
+    "to_status": "TESTED",
+    "scope": "120-query sanity fixture FULL vs noExplore",
+    "reason": "Easy 120-query fixture is a regression/availability sanity test, not the confirmatory Gate-1 holdout. Zero or rare EXPLORE under the legacy loop is an expected limitation, not a reason to force EXPLORE.",
+    "confirmatory": false
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "event": "fit_on_development_model_selection",
+    "n": 45,
+    "used_for_gate": false
+  },
+  {
+    "event": "evaluate_registered_test",
+    "n": 36,
+    "used_for_gate": true
+  },
+  {
+    "event": "store_sealed_replication",
+    "n": 18,
+    "used_for_gate": false
+  }
+]

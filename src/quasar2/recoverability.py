@@ -259,6 +259,20 @@ class EmbeddingSeparationRecoverability:
         return RecoverabilityResult(self.name, tv, recoverability_tv=tv)
 
 
+DEPLOYMENT_FEATURE_NAMES: tuple[str, ...] = (
+    "intercept",
+    "entropy",
+    "belief_margin",
+    "top1",
+    "tv",
+    "jsd",
+    "kl",
+    "drs",
+    "score_margin",
+    "unknown_mass",
+)
+
+
 def deployment_features(
     belief: Mapping[str, float],
     hypotheses: tuple[str, ...],
