@@ -1,0 +1,21 @@
+{
+  "source_id": "inspire_hep",
+  "family": "INSPIRE_HEP",
+  "tier": 1,
+  "mode": "metadata_only",
+  "scientific_benchmark_complete": false,
+  "records": [
+    {
+      "record_id": "inspire-1",
+      "arxiv": "1207.7235",
+      "available_at": "2012-07-31"
+    },
+    {
+      "record_id": "inspire-2",
+      "arxiv": "2101.00001",
+      "available_at": "2021-01-02"
+    }
+  ],
+  "attribution": "INSPIRE-HEP metadata is not collision-event evidence.",
+  "docs": "https://github.com/inspirehep/rest-api-doc"
+}

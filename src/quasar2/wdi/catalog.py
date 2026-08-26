@@ -106,6 +106,8 @@ def indicators_for_stage(stage: str) -> tuple[IndicatorSpec, ...]:
         return CI_INDICATORS
     if stage in {"pilot", "full"}:
         return CI_INDICATORS + PILOT_EXTRA_INDICATORS
+    if stage == "expanded":
+        return CI_INDICATORS + PILOT_EXTRA_INDICATORS
     raise ValueError(f"Unknown stage {stage!r}")
 
 
@@ -113,5 +115,7 @@ def entities_for_stage(stage: str) -> tuple[EntitySpec, ...]:
     if stage == "ci":
         return CI_ENTITIES
     if stage in {"pilot", "full"}:
+        return CI_ENTITIES + PILOT_EXTRA_ENTITIES
+    if stage == "expanded":
         return CI_ENTITIES + PILOT_EXTRA_ENTITIES
     raise ValueError(f"Unknown stage {stage!r}")

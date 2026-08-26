@@ -70,11 +70,14 @@ def build_benchmark(snapshot_dir: str | Path, *, stage: str = "ci", seed: int = 
         for row in snapshot["entities"]
         if row["entity_type"] == EntityType.COUNTRY.value
     }
-    wanted = [spec for spec in indicators_for_stage("ci" if stage == "ci" else "pilot") if spec.indicator_id in indicators]
+    wanted = [spec for spec in indicators_for_stage(stage if stage != "full" else "pilot") if spec.indicator_id in indicators]
     countries = list(entities.values())
     if stage == "ci":
         countries = countries[:8]
         wanted = wanted[:12]
+    elif stage == "expanded":
+        countries = countries[:100]
+        wanted = wanted[:200]
     else:
         countries = countries[:20]
         wanted = wanted[:30]

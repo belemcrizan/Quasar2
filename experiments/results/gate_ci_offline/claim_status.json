@@ -1,0 +1,10 @@
+{
+  "C1": {
+    "status": "INCONCLUSIVE",
+    "text": "Selective reasoning is more compute-efficient than universal reasoning.",
+    "n": 48,
+    "sealed": false,
+    "note": "C1 remains exploratory: thresholds were not frozen against a sealed test set before viewing these results. Descriptive paired CIs are recorded.",
+    "paired_rows": 3
+  }
+}

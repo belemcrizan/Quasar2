@@ -1,4 +1,4 @@
-"""V2.4 five-action vocabulary. Frozen v0.1.1 Action remains three-valued."""
+"""Canonical public action labels. Frozen v0.1.1 Action remains three-valued."""
 
 from __future__ import annotations
 
@@ -10,11 +10,37 @@ class EpistemicAction(str, Enum):
     ANALYZE = "ANALYZE"
     EXPLORE = "EXPLORE"
     ASK = "ASK"
+    VERIFY = "VERIFY"
     DEFER = "DEFER"
 
 
+PUBLIC_ACTIONS = (
+    EpistemicAction.ANSWER,
+    EpistemicAction.ANALYZE,
+    EpistemicAction.EXPLORE,
+    EpistemicAction.ASK,
+    EpistemicAction.VERIFY,
+    EpistemicAction.DEFER,
+)
+
+# THINK/SEARCH are internal controller ops and must map to public labels.
+INTERNAL_ACTION_MAP = {
+    "THINK": EpistemicAction.ANALYZE.value,
+    "SEARCH": EpistemicAction.EXPLORE.value,
+}
+
+# Default policy does not select VERIFY; existing five-action utilities stay intact.
+DEFAULT_POLICY_ACTIONS = (
+    EpistemicAction.ANSWER,
+    EpistemicAction.ANALYZE,
+    EpistemicAction.EXPLORE,
+    EpistemicAction.ASK,
+    EpistemicAction.DEFER,
+)
+
+
 LEGAL_TRANSITIONS = {
-    "OBSERVE": frozenset(EpistemicAction),
+    "OBSERVE": frozenset(DEFAULT_POLICY_ACTIONS),
     EpistemicAction.ANALYZE: frozenset(
         {EpistemicAction.ANSWER, EpistemicAction.EXPLORE, EpistemicAction.ASK, EpistemicAction.DEFER}
     ),
@@ -28,6 +54,15 @@ LEGAL_TRANSITIONS = {
         }
     ),
     EpistemicAction.ASK: frozenset(
+        {
+            EpistemicAction.ANALYZE,
+            EpistemicAction.EXPLORE,
+            EpistemicAction.ANSWER,
+            EpistemicAction.ASK,
+            EpistemicAction.DEFER,
+        }
+    ),
+    EpistemicAction.VERIFY: frozenset(
         {
             EpistemicAction.ANALYZE,
             EpistemicAction.EXPLORE,
@@ -59,3 +94,7 @@ FORBIDDEN_POLICY_FIELDS = frozenset(
         "expected_observation",
     }
 )
+
+
+def public_action_label(action: str) -> str:
+    return INTERNAL_ACTION_MAP.get(action, action)

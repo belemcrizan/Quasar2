@@ -1,0 +1,8 @@
+{
+  "source_id": "worldbank_wdi",
+  "snapshot_id": "wdi-pilot-2026-08-26-b6ddb672",
+  "stage": "pilot",
+  "snapshot_dir": "data\\wdi\\snapshots\\pilot-live",
+  "official_base_url": "https://api.worldbank.org/v2",
+  "terms": "https://www.worldbank.org/ext/en/legal/terms-conditions/datasets"
+}

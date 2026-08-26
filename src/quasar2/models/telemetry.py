@@ -60,6 +60,12 @@ class PipelineResult:
     total_belief_variation: float = 0.0
     total_observed_entropy_reduction: float = 0.0
     retrieval_hits: tuple[SearchHit, ...] = ()
+    gate_ms: float = 0.0
+    candidate_generation_ms: float = 0.0
+    retrieval_ms: float = 0.0
+    evidence_scoring_ms: float = 0.0
+    belief_update_ms: float = 0.0
+    policy_ms: float = 0.0
 
     def to_dict(self) -> dict[str, Any]:
         return _jsonable(self)

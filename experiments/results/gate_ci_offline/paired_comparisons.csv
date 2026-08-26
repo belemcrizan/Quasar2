@@ -1,0 +1,4 @@
+backend,left,right,n,intent_exact_diff,intent_exact_ci_low,intent_exact_ci_high,compute_proxy_diff,compute_proxy_ci_low,compute_proxy_ci_high,retrieval_calls_diff,wrong_answer_diff,comparison_label
+bm25,gated_quasar,quasar_always,48,0.0625,0.0,0.14583333333333334,-0.46875,-0.7291666666666666,-0.20833333333333334,-0.375,0.0,EXPLORATORY
+bm25,gated_quasar,fast_only,48,-0.25,-0.375,-0.125,2.03125,1.7708333333333333,2.2916666666666665,1.625,0.0,EXPLORATORY
+bm25,quasar_always,fast_only,48,-0.3125,-0.4583333333333333,-0.1875,2.5,2.5,2.5,2.0,0.0,EXPLORATORY

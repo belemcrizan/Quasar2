@@ -214,6 +214,57 @@ def command_wdi_experiment(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_gate_experiment(args: argparse.Namespace) -> int:
+    from quasar2.v24.experiment import run_wdi_experiment
+
+    payload = run_wdi_experiment(
+        args.snapshot,
+        stage=args.stage,
+        policies=("fast_only", "quasar_always", "gated_quasar"),
+        backends=tuple(args.backends.split(",")),
+        output_dir=args.output,
+        limit=args.limit,
+    )
+    print(json.dumps({"summaries": payload["summaries"], "claim_status": payload["claim_status"]}, indent=2))
+    return 0
+
+
+def command_source_validate(args: argparse.Namespace) -> int:
+    from quasar2.sources.fixtures import cern_open_data_source, inspire_hep_source, jwst_mast_source
+    from quasar2.sources.registry import builtin_registry
+
+    registry = builtin_registry()
+    family = args.family
+    if family == "worldbank_wdi":
+        if not args.snapshot:
+            print("ERROR: --snapshot is required for worldbank_wdi", file=sys.stderr)
+            return 2
+        from quasar2.wdi.source import WDIEvidenceSource
+
+        report = WDIEvidenceSource(args.snapshot).validate()
+        print(json.dumps({"source_id": "worldbank_wdi", "ok": report.ok, "descriptor": registry.get("worldbank_wdi").source_id}, indent=2))
+        return 0 if report.ok else 1
+    sources = {
+        "jwst_mast": jwst_mast_source,
+        "cern_open_data": cern_open_data_source,
+        "inspire_hep": inspire_hep_source,
+    }
+    source = sources[family]()
+    report = source.validate()
+    print(json.dumps({"descriptor": dict(source.descriptor()), "validation": report}, indent=2))
+    return 0 if report["ok"] else 1
+
+
+def command_jwst_validate(_args: argparse.Namespace) -> int:
+    namespace = argparse.Namespace(family="jwst_mast", snapshot=None)
+    return command_source_validate(namespace)
+
+
+def command_cern_validate(_args: argparse.Namespace) -> int:
+    namespace = argparse.Namespace(family="cern_open_data", snapshot=None)
+    return command_source_validate(namespace)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="quasar2", description=__doc__)
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
@@ -287,6 +338,35 @@ def build_parser() -> argparse.ArgumentParser:
     wdi_exp.add_argument("--output")
     wdi_exp.add_argument("--limit", type=int)
     wdi_exp.set_defaults(func=command_wdi_experiment)
+
+    gate_exp = subparsers.add_parser(
+        "gate-experiment",
+        help="Milestone A: FAST_ONLY vs QUASAR_ALWAYS vs GATED_QUASAR on WDI",
+    )
+    gate_exp.add_argument("--snapshot", required=True)
+    gate_exp.add_argument("--stage", default="ci")
+    gate_exp.add_argument("--backends", default="bm25")
+    gate_exp.add_argument("--output", required=True)
+    gate_exp.add_argument("--limit", type=int)
+    gate_exp.set_defaults(func=command_gate_experiment)
+
+    source_val = subparsers.add_parser(
+        "source-validate",
+        help="validate a typed source family against an offline fixture",
+    )
+    source_val.add_argument(
+        "--family",
+        required=True,
+        choices=("worldbank_wdi", "jwst_mast", "cern_open_data", "inspire_hep"),
+    )
+    source_val.add_argument("--snapshot", help="WDI snapshot directory when family=worldbank_wdi")
+    source_val.set_defaults(func=command_source_validate)
+
+    jwst_val = subparsers.add_parser("jwst-validate", help="alias: validate JWST/MAST metadata fixture")
+    jwst_val.set_defaults(func=command_jwst_validate)
+
+    cern_val = subparsers.add_parser("cern-validate", help="alias: validate CERN Open Data metadata fixture")
+    cern_val.set_defaults(func=command_cern_validate)
     return parser
 
 
