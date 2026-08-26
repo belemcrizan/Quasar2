@@ -1,0 +1,246 @@
+{
+  "rows": [
+    {
+      "predicted_before": "astro.exoplanet_transit",
+      "predicted_after": "astro.exoplanet_transit",
+      "entropy_before": 0.10640551110202619,
+      "entropy_after": 0.00016314410053276047,
+      "evidence_ids_before": [
+        "astro-doc-01-core"
+      ],
+      "evidence_ids_after": [
+        "astro-doc-01-core"
+      ],
+      "retrieval_calls": 4,
+      "analyze_added_retrieval": 0,
+      "changed_prediction": false,
+      "query_id": "astro-01:q0",
+      "evidence_frozen": true
+    },
+    {
+      "predicted_before": "astro.exoplanet_transit",
+      "predicted_after": "astro.exoplanet_transit",
+      "entropy_before": 0.9513197843068445,
+      "entropy_after": 0.8301072914261579,
+      "evidence_ids_before": [
+        "astro-doc-01-core",
+        "astro-doc-07-core",
+        "astro-doc-14-core",
+        "astro-doc-19-core"
+      ],
+      "evidence_ids_after": [
+        "astro-doc-01-core",
+        "astro-doc-07-core",
+        "astro-doc-14-core",
+        "astro-doc-19-core"
+      ],
+      "retrieval_calls": 4,
+      "analyze_added_retrieval": 0,
+      "changed_prediction": false,
+      "query_id": "astro-01:q1",
+      "evidence_frozen": true
+    },
+    {
+      "predicted_before": "astro.exoplanet_transit",
+      "predicted_after": "astro.exoplanet_transit",
+      "entropy_before": 0.7727387935035849,
+      "entropy_after": 0.6558772990912054,
+      "evidence_ids_before": [
+        "astro-doc-01-core",
+        "astro-doc-08-core",
+        "astro-doc-14-core",
+        "astro-doc-19-core"
+      ],
+      "evidence_ids_after": [
+        "astro-doc-01-core",
+        "astro-doc-08-core",
+        "astro-doc-14-core",
+        "astro-doc-19-core"
+      ],
+      "retrieval_calls": 4,
+      "analyze_added_retrieval": 0,
+      "changed_prediction": false,
+      "query_id": "astro-01:q2",
+      "evidence_frozen": true
+    },
+    {
+      "predicted_before": "astro.stellar_flare",
+      "predicted_after": "astro.stellar_flare",
+      "entropy_before": 0.4339392040034495,
+      "entropy_after": 0.3870747654085323,
+      "evidence_ids_before": [
+        "astro-doc-02-core",
+        "astro-doc-15-disc"
+      ],
+      "evidence_ids_after": [
+        "astro-doc-02-core",
+        "astro-doc-15-disc"
+      ],
+      "retrieval_calls": 4,
+      "analyze_added_retrieval": 0,
+      "changed_prediction": false,
+      "query_id": "astro-02:q0",
+      "evidence_frozen": true
+    },
+    {
+      "predicted_before": "astro.brown_dwarf_atmosphere",
+      "predicted_after": "astro.brown_dwarf_atmosphere",
+      "entropy_before": 0.9377986989349867,
+      "entropy_after": 0.7748069585653959,
+      "evidence_ids_before": [
+        "astro-doc-07-core",
+        "astro-doc-14-core",
+        "astro-doc-18-core",
+        "astro-doc-19-core"
+      ],
+      "evidence_ids_after": [
+        "astro-doc-07-core",
+        "astro-doc-14-core",
+        "astro-doc-18-core",
+        "astro-doc-19-core"
+      ],
+      "retrieval_calls": 4,
+      "analyze_added_retrieval": 0,
+      "changed_prediction": false,
+      "query_id": "astro-02:q1",
+      "evidence_frozen": true
+    },
+    {
+      "predicted_before": "astro.stellar_flare",
+      "predicted_after": "astro.stellar_flare",
+      "entropy_before": 0.32185171295593795,
+      "entropy_after": 0.00301032468290957,
+      "evidence_ids_before": [
+        "astro-doc-02-disc"
+      ],
+      "evidence_ids_after": [
+        "astro-doc-02-disc"
+      ],
+      "retrieval_calls": 4,
+      "analyze_added_retrieval": 0,
+      "changed_prediction": false,
+      "query_id": "astro-02:q2",
+      "evidence_frozen": true
+    },
+    {
+      "predicted_before": "astro.microlensing",
+      "predicted_after": "astro.microlensing",
+      "entropy_before": 0.8573283545035763,
+      "entropy_after": 0.8197681880072544,
+      "evidence_ids_before": [
+        "astro-doc-03-core",
+        "astro-doc-09-core",
+        "astro-doc-11-core",
+        "astro-doc-15-disc"
+      ],
+      "evidence_ids_after": [
+        "astro-doc-03-core",
+        "astro-doc-09-core",
+        "astro-doc-11-core",
+        "astro-doc-15-disc"
+      ],
+      "retrieval_calls": 4,
+      "analyze_added_retrieval": 0,
+      "changed_prediction": false,
+      "query_id": "astro-03:q0",
+      "evidence_frozen": true
+    },
+    {
+      "predicted_before": "astro.cepheid_variable",
+      "predicted_after": "astro.cepheid_variable",
+      "entropy_before": 0.9802041207792507,
+      "entropy_after": 0.950938677853,
+      "evidence_ids_before": [
+        "astro-doc-03-core",
+        "astro-doc-07-core",
+        "astro-doc-14-core",
+        "astro-doc-19-core"
+      ],
+      "evidence_ids_after": [
+        "astro-doc-03-core",
+        "astro-doc-07-core",
+        "astro-doc-14-core",
+        "astro-doc-19-core"
+      ],
+      "retrieval_calls": 4,
+      "analyze_added_retrieval": 0,
+      "changed_prediction": false,
+      "query_id": "astro-03:q1",
+      "evidence_frozen": true
+    },
+    {
+      "predicted_before": "astro.microlensing",
+      "predicted_after": "astro.microlensing",
+      "entropy_before": 0.7977860057836071,
+      "entropy_after": 0.7328277017319577,
+      "evidence_ids_before": [
+        "astro-doc-03-core",
+        "astro-doc-05-core",
+        "astro-doc-11-core",
+        "astro-doc-20-core"
+      ],
+      "evidence_ids_after": [
+        "astro-doc-03-core",
+        "astro-doc-05-core",
+        "astro-doc-11-core",
+        "astro-doc-20-core"
+      ],
+      "retrieval_calls": 4,
+      "analyze_added_retrieval": 0,
+      "changed_prediction": false,
+      "query_id": "astro-03:q2",
+      "evidence_frozen": true
+    },
+    {
+      "predicted_before": "astro.pulsar_timing",
+      "predicted_after": "astro.pulsar_timing",
+      "entropy_before": 8.568638658294805e-06,
+      "entropy_after": 3.825209417695962e-08,
+      "evidence_ids_before": [
+        "astro-doc-04-core"
+      ],
+      "evidence_ids_after": [
+        "astro-doc-04-core"
+      ],
+      "retrieval_calls": 4,
+      "analyze_added_retrieval": 0,
+      "changed_prediction": false,
+      "query_id": "astro-04:q0",
+      "evidence_frozen": true
+    },
+    {
+      "predicted_before": "astro.pulsar_timing",
+      "predicted_after": "astro.pulsar_timing",
+      "entropy_before": 0.13229674603987554,
+      "entropy_after": 0.002363177903343072,
+      "evidence_ids_before": [
+        "astro-doc-04-core"
+      ],
+      "evidence_ids_after": [
+        "astro-doc-04-core"
+      ],
+      "retrieval_calls": 4,
+      "analyze_added_retrieval": 0,
+      "changed_prediction": false,
+      "query_id": "astro-04:q1",
+      "evidence_frozen": true
+    },
+    {
+      "predicted_before": "astro.pulsar_timing",
+      "predicted_after": "astro.pulsar_timing",
+      "entropy_before": 0.23782504370584387,
+      "entropy_after": 0.002392269554958919,
+      "evidence_ids_before": [
+        "astro-doc-04-core"
+      ],
+      "evidence_ids_after": [
+        "astro-doc-04-core"
+      ],
+      "retrieval_calls": 4,
+      "analyze_added_retrieval": 0,
+      "changed_prediction": false,
+      "query_id": "astro-04:q2",
+      "evidence_frozen": true
+    }
+  ]
+}

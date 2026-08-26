@@ -16,7 +16,7 @@ This is an audit against the top-tier acceleration spec. Implementation ≠ scie
 | TabularOracle / Learned / SPRT-inspired | PARTIAL | Synthetic only; SPRT not classical |
 | Policy gap decomposition | PARTIAL | Diagnostic, explicitly non-additive |
 | Discriminative vs relevance scorer | PARTIAL | Protocol + bag-of-words LLR; not in frozen retrieval |
-| ASK VoI question selection | MISSING | Clarification templates only |
+| ASK VoI question selection | PARTIAL | Cycle 7A user simulator; not a deployed ASK policy |
 | ANALYZE depth k | PARTIAL | Operators exist; no cost ladder experiment |
 | Open-set competitive track | PARTIAL | H_unknown on V2.4; no AUROC_OOD suite |
 | Budget frontiers | PARTIAL | Synthetic equal-cost slices; no full Active-RAG tournament |

@@ -162,7 +162,8 @@ These are **motivating applications**, not deployments or customer validations.
 | JWST / CERN **benchmarks** | NOT_FOUND | metadata fixtures + `jwst-validate` / `cern-validate` only |
 | External NASA/ESA/ALMA **official dumps** | NOT_RUN | schema-faithful `SYN-` snapshots + source audit; not TAP confirmation |
 | Cloud runner / HTTP API / UI | NOT_FOUND | — |
-| `phase-diagram` CLI | IMPLEMENTED (synthetic shadow grid) | `quasar2 phase-diagram`; topology not imposed |
+| Discriminative / falsification EXPLORE (rescue path) | EXPERIMENTAL | `quasar2 rescue-cycle`; 1/2 FastWrong rescued on sanity; ΔU not positive |
+| Recoverability v2 (pre-action R*) | IMPLEMENTED, not policy-ready | holdout positives=0 on this fixture; Cycle 6 BLOCKED |
 
 ---
 
@@ -268,6 +269,7 @@ Writes `experiments/results/benchmark.json` and `.csv` unless `--output` is set.
 | `shadow-study` | Sanity shadow transition matrix | `--limit`, `--conditions`, `--shadow-policy`; does not write `experiments/results/benchmark.json` |
 | `policy-compare` | Oracle vs threshold/myopic/SPRT/learned on synthetic states | `--n`, `--seed`; not WDI |
 | `cycle2-audit` | Cycle 2 recoverability/policy path | does not change the legacy loop |
+| `rescue-cycle` | Cycle 4–7A error anatomy, oracles, discriminative arms | aliases: `error-anatomy`, `oracle-evaluate`, `discriminative-experiment`, `recoverability-v2`, `action-value-experiment`, `cycle-report`; `--overwrite`; does not change the legacy loop |
 | `external-validity` | Source audit, schema-faithful NASA/ESA/ALMA transfer, scale, equal-budget, regime | `--smoke` for CI; **not** live TAP dumps; `--overwrite` |
 | `reproduce-paper` | Reconstruct frozen v0.1.1 tables + rerun offline external program | no silent mutable downloads; `--full` for non-smoke |
 

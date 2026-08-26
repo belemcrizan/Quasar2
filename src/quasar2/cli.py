@@ -461,6 +461,41 @@ def command_cycle2_audit(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_rescue_cycle(args: argparse.Namespace) -> int:
+    from quasar2.rescue.runner import run_rescue_cycle
+
+    dest = Path(args.output)
+    if dest.exists() and not args.overwrite:
+        raise FileExistsError(f"Refusing to overwrite {dest}; pass --overwrite")
+    conditions = tuple(item for item in str(args.conditions).split(",") if item)
+    stages = tuple(item for item in str(getattr(args, "stages", "")).split(",") if item)
+    payload = run_rescue_cycle(
+        output=dest,
+        config_path=args.config,
+        seed=int(args.seed),
+        limit=args.limit,
+        conditions=conditions or ("q0", "q1", "q2"),
+        stages=stages or ("anatomy", "discriminative", "recoverability", "actions"),
+    )
+    print(
+        json.dumps(
+            {
+                "run_id": payload.get("run_id"),
+                "n_queries": payload.get("n_queries"),
+                "gates": payload.get("gates"),
+                "oracle_ceiling": payload.get("oracle_ceiling", {}).get("overall"),
+                "report": payload.get("report_path"),
+            },
+            indent=2,
+            default=str,
+        )
+    )
+    gates = payload.get("gates") or {}
+    if gates.get("cycle4_anatomy") == "FAIL":
+        return 2
+    return 0
+
+
 def command_external_validity(args: argparse.Namespace) -> int:
     from quasar2.external.runner import run_external
 
@@ -834,6 +869,65 @@ def build_parser() -> argparse.ArgumentParser:
     repro.add_argument("--overwrite", action="store_true")
     repro.add_argument("--full", action="store_true", help="run the non-smoke external program")
     repro.set_defaults(func=command_reproduce_paper)
+
+    def _add_rescue_flags(sub: argparse.ArgumentParser) -> argparse.ArgumentParser:
+        sub.add_argument("--output", default="experiments/results/cycle4_rescue")
+        sub.add_argument("--config")
+        sub.add_argument("--seed", type=int, default=42)
+        sub.add_argument("--limit", type=int)
+        sub.add_argument("--conditions", default="q0,q1,q2")
+        sub.add_argument("--overwrite", action="store_true")
+        return sub
+
+    anatomy = _add_rescue_flags(
+        subparsers.add_parser("error-anatomy", help="Cycle 4 error anatomy + evidence oracle (sanity fixture)")
+    )
+    anatomy.set_defaults(func=command_rescue_cycle, stages="anatomy,discriminative")
+
+    oracle = _add_rescue_flags(
+        subparsers.add_parser(
+            "oracle-evaluate",
+            help="Cycle 4 oracle interventions (hypothesis/retrieval/evidence/belief)",
+        )
+    )
+    oracle.set_defaults(func=command_rescue_cycle, stages="anatomy,discriminative")
+
+    disc = _add_rescue_flags(
+        subparsers.add_parser(
+            "discriminative-experiment",
+            help="Cycle 5 discriminative acquisition vs Fast (predicted vs oracle modes)",
+        )
+    )
+    disc.set_defaults(func=command_rescue_cycle, stages="anatomy,discriminative")
+
+    recov2 = _add_rescue_flags(
+        subparsers.add_parser(
+            "recoverability-v2",
+            help="Cycle 6 operational R*(s) from pre-action features",
+        )
+    )
+    recov2.set_defaults(func=command_rescue_cycle, stages="anatomy,discriminative,recoverability")
+
+    action_exp = _add_rescue_flags(
+        subparsers.add_parser(
+            "action-value-experiment",
+            help="Cycle 7A ANALYZE / ASK / DEFER controlled experiments",
+        )
+    )
+    action_exp.set_defaults(func=command_rescue_cycle, stages="anatomy,discriminative,actions")
+
+    cycle_report = _add_rescue_flags(
+        subparsers.add_parser("cycle-report", help="write the Cycle 4–7A markdown/JSON report")
+    )
+    cycle_report.set_defaults(func=command_rescue_cycle, stages="anatomy,discriminative,recoverability,actions")
+
+    rescue = _add_rescue_flags(
+        subparsers.add_parser(
+            "rescue-cycle",
+            help="ordered Cycle 4–7A rescue chain (does not change the legacy loop)",
+        )
+    )
+    rescue.set_defaults(func=command_rescue_cycle, stages="anatomy,discriminative,recoverability,actions")
     return parser
 
 

@@ -1,0 +1,165 @@
+{
+  "corpus_version": "data/corpus",
+  "map": {
+    "ai.rag_grounding": [
+      "ai-doc-01-core",
+      "ai-doc-01-disc"
+    ],
+    "ai.prompt_injection": [
+      "ai-doc-02-core",
+      "ai-doc-02-disc"
+    ],
+    "ai.model_hallucination": [
+      "ai-doc-03-core",
+      "ai-doc-03-disc"
+    ],
+    "ai.concept_drift": [
+      "ai-doc-04-core",
+      "ai-doc-04-disc"
+    ],
+    "ai.data_poisoning": [
+      "ai-doc-05-core",
+      "ai-doc-05-disc"
+    ],
+    "ai.adversarial_examples": [
+      "ai-doc-06-core",
+      "ai-doc-06-disc"
+    ],
+    "ai.catastrophic_forgetting": [
+      "ai-doc-07-core",
+      "ai-doc-07-disc"
+    ],
+    "ai.retrieval_reranking": [
+      "ai-doc-08-core",
+      "ai-doc-08-disc"
+    ],
+    "ai.model_quantization": [
+      "ai-doc-09-core",
+      "ai-doc-09-disc"
+    ],
+    "ai.mixture_of_experts": [
+      "ai-doc-10-core",
+      "ai-doc-10-disc"
+    ],
+    "ai.rlhf": [
+      "ai-doc-11-core",
+      "ai-doc-11-disc"
+    ],
+    "ai.tool_calling_agents": [
+      "ai-doc-12-core",
+      "ai-doc-12-disc"
+    ],
+    "ai.multi_agent_coordination": [
+      "ai-doc-13-core",
+      "ai-doc-13-disc"
+    ],
+    "ai.embedding_drift": [
+      "ai-doc-14-core",
+      "ai-doc-14-disc"
+    ],
+    "ai.differential_privacy": [
+      "ai-doc-15-core",
+      "ai-doc-15-disc"
+    ],
+    "ai.federated_learning": [
+      "ai-doc-16-core",
+      "ai-doc-16-disc"
+    ],
+    "ai.knowledge_distillation": [
+      "ai-doc-17-core",
+      "ai-doc-17-disc"
+    ],
+    "ai.llm_evaluation": [
+      "ai-doc-18-core",
+      "ai-doc-18-disc"
+    ],
+    "ai.context_window": [
+      "ai-doc-19-core",
+      "ai-doc-19-disc"
+    ],
+    "ai.llm_routing": [
+      "ai-doc-20-core",
+      "ai-doc-20-disc"
+    ],
+    "astro.exoplanet_transit": [
+      "astro-doc-01-core",
+      "astro-doc-01-disc"
+    ],
+    "astro.stellar_flare": [
+      "astro-doc-02-core",
+      "astro-doc-02-disc"
+    ],
+    "astro.microlensing": [
+      "astro-doc-03-core",
+      "astro-doc-03-disc"
+    ],
+    "astro.pulsar_timing": [
+      "astro-doc-04-core",
+      "astro-doc-04-disc"
+    ],
+    "astro.fast_radio_burst": [
+      "astro-doc-05-core",
+      "astro-doc-05-disc"
+    ],
+    "astro.supernova_light_curve": [
+      "astro-doc-06-core",
+      "astro-doc-06-disc"
+    ],
+    "astro.cepheid_variable": [
+      "astro-doc-07-core",
+      "astro-doc-07-disc"
+    ],
+    "astro.black_hole_accretion": [
+      "astro-doc-08-core",
+      "astro-doc-08-disc"
+    ],
+    "astro.gravitational_wave_chirp": [
+      "astro-doc-09-core",
+      "astro-doc-09-disc"
+    ],
+    "astro.galaxy_redshift": [
+      "astro-doc-10-core",
+      "astro-doc-10-disc"
+    ],
+    "astro.dark_matter_lensing": [
+      "astro-doc-11-core",
+      "astro-doc-11-disc"
+    ],
+    "astro.cosmic_microwave_background": [
+      "astro-doc-12-core",
+      "astro-doc-12-disc"
+    ],
+    "astro.coronal_mass_ejection": [
+      "astro-doc-13-core",
+      "astro-doc-13-disc"
+    ],
+    "astro.asteroid_occultation": [
+      "astro-doc-14-core",
+      "astro-doc-14-disc"
+    ],
+    "astro.tidal_disruption_event": [
+      "astro-doc-15-core",
+      "astro-doc-15-disc"
+    ],
+    "astro.neutron_star_merger": [
+      "astro-doc-16-core",
+      "astro-doc-16-disc"
+    ],
+    "astro.quasar_variability": [
+      "astro-doc-17-core",
+      "astro-doc-17-disc"
+    ],
+    "astro.brown_dwarf_atmosphere": [
+      "astro-doc-18-core",
+      "astro-doc-18-disc"
+    ],
+    "astro.protoplanetary_disk": [
+      "astro-doc-19-core",
+      "astro-doc-19-disc"
+    ],
+    "astro.baryon_acoustic_oscillation": [
+      "astro-doc-20-core",
+      "astro-doc-20-disc"
+    ]
+  }
+}
