@@ -1,0 +1,43 @@
+{
+  "schema_version": "quasar2.v2.config.1",
+  "mode": "v2",
+  "legacy_config": "configs/poc.yaml",
+  "decision": {
+    "policy": "legacy",
+    "v2_shadow": true,
+    "gamma": 0.95,
+    "verify_enabled": false
+  },
+  "voi": {
+    "enabled": true,
+    "estimator": "empirical",
+    "recoverability": "jsd",
+    "lipschitz_norm": "scalar_binary",
+    "lipschitz_constant": 1.0,
+    "divergence_units": "nats",
+    "tv_convention": "half_l1"
+  },
+  "analyze": {
+    "enabled": false,
+    "operator": "consistency"
+  },
+  "stopping": {
+    "method": "bootstrap_ucb",
+    "alpha": 0.05,
+    "correction": "bonferroni",
+    "coverage_scope": "fixed_stage",
+    "delta_positive": 0.0
+  },
+  "risk": {
+    "lambda": 1.0
+  },
+  "cost": {
+    "lambda": 1.0,
+    "unit": "normalized"
+  },
+  "numeric": {
+    "atol": 1e-9,
+    "rtol": 1e-8,
+    "probability_floor": 1e-12
+  }
+}

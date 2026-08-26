@@ -1,0 +1,40 @@
+{
+  "run_id": "p0_v2_foundation",
+  "git_sha": "e06ce86597e6c686e3d3f7db22199e4fafcc2a19",
+  "pytest": {
+    "collected_after": 87,
+    "collected_before": 59,
+    "failed": 0
+  },
+  "legacy_smoke": {
+    "methods": [
+      "hybrid",
+      "full"
+    ],
+    "condition": "q2",
+    "limit": 3,
+    "before_after_decision_metrics_unchanged": true,
+    "hybrid_irr": 1.0,
+    "full_irr": 1.0,
+    "full_ask_fraction": 1.0,
+    "full_avg_calls": 5.666666666666667,
+    "note": "latency_p95 changed across runs; decision metrics matched"
+  },
+  "file_sha256": {
+    "configs/poc.yaml": "5a0749cddc798cc8291fc2a1fed195bcb083de37001c24eb59a2b6da4028d13f",
+    "src/quasar2/pipeline.py": "1d3cadf668ec14d7d666a3f47d95402c1dc535c4be856f78e7c860d0090012ef",
+    "src/quasar2/decision/engine.py": "16638cf2d6acf80d03864ee42c99993dad0a31e42ee79759c41c33393cc15b74",
+    "src/quasar2/models/decision.py": "5ccdfb4ae2b9b67725ad0d85d85c1506a008d048ea45dc9a4c911753e3243a9c"
+  },
+  "theory_check": {
+    "artifact": "artifacts/theorem_checks.json",
+    "summary": {
+      "C1": "PASS_WITHIN_ASSUMPTIONS",
+      "T1": "PASS_WITHIN_ASSUMPTIONS",
+      "T2": "PASS_WITHIN_ASSUMPTIONS",
+      "T3": "PASS_WITHIN_ASSUMPTIONS",
+      "T4": "PASS_WITHIN_ASSUMPTIONS"
+    },
+    "t4_note": "false_stop_rate=0/400 on Gaussian mean=0.15; easy case, not a near-zero stress test"
+  }
+}

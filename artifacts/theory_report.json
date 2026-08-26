@@ -1,0 +1,277 @@
+{
+  "schema_version": "theorem_checks.1",
+  "code_version": "0.2.0",
+  "cards": [
+    {
+      "id": "T1",
+      "status": "theorem",
+      "statement": "For a fixed model, evidence, and target posterior, an admissible variational update that does not decrease ELBO also does not increase KL(q||p*).",
+      "assumptions": [
+        "target posterior fixed",
+        "evidence fixed",
+        "support compatible",
+        "operator is admissible variational or exact I-projection mixture"
+      ],
+      "quantities_observable": [
+        "elbo_before",
+        "elbo_after",
+        "kl_before",
+        "kl_after"
+      ],
+      "oracle_only": [
+        "target posterior p*"
+      ],
+      "proof_or_reference": "docs/THEORY.md#t1; Blei et al. arXiv:1601.00670",
+      "test_harness": "quasar2.theory.harness.check_t1",
+      "numeric_tolerance": {
+        "atol": 1e-09,
+        "rtol": 1e-08
+      },
+      "known_counterexamples": [],
+      "last_validated_run_id": null,
+      "code_version": null,
+      "dataset_hash": null
+    },
+    {
+      "id": "T2",
+      "status": "theorem",
+      "statement": "E|b'-b| = 2 b (1-b) TV(P1,P2); VoI bounds follow from the declared Lipschitz convention.",
+      "assumptions": [
+        "binary hypotheses",
+        "common observation space",
+        "V* Lipschitz in the declared norm",
+        "observation kernels used in the bound match the sampling mechanism"
+      ],
+      "quantities_observable": [
+        "expected_belief_movement",
+        "tv",
+        "jsd",
+        "voi_empirical"
+      ],
+      "oracle_only": [
+        "true kernels",
+        "true VoI"
+      ],
+      "proof_or_reference": "docs/THEORY.md#t2",
+      "test_harness": "quasar2.theory.harness.check_t2",
+      "numeric_tolerance": {
+        "atol": 1e-09,
+        "rtol": 1e-08
+      },
+      "known_counterexamples": [],
+      "last_validated_run_id": null,
+      "code_version": null,
+      "dataset_hash": null
+    },
+    {
+      "id": "T3",
+      "status": "theorem",
+      "statement": "The optimal Bellman operator on a discounted bounded-reward MDP is a gamma-contraction in sup norm; value-iteration error is gamma^k times the initial error.",
+      "assumptions": [
+        "MDP",
+        "bounded rewards",
+        "gamma in [0,1)",
+        "exact Bellman backup"
+      ],
+      "quantities_observable": [
+        "sup_norm_residual",
+        "contraction_ratio"
+      ],
+      "oracle_only": [
+        "V* when compared exactly"
+      ],
+      "proof_or_reference": "docs/THEORY.md#t3",
+      "test_harness": "quasar2.theory.harness.check_t3",
+      "numeric_tolerance": {
+        "atol": 1e-08,
+        "rtol": 1e-07
+      },
+      "known_counterexamples": [],
+      "last_validated_run_id": null,
+      "code_version": null,
+      "dataset_hash": null
+    },
+    {
+      "id": "T4",
+      "status": "proposition",
+      "statement": "Fixed-stage Bonferroni UCB controls P(false stop) at a single look under valid per-action tail inequalities. Sequential looks require a different coverage_scope.",
+      "assumptions": [
+        "fixed stage or declared sequential correction",
+        "valid UCB estimator for the sample class",
+        "m information actions"
+      ],
+      "quantities_observable": [
+        "false_stop_rate",
+        "wilson_upper"
+      ],
+      "oracle_only": [
+        "oracle_best_net_voi"
+      ],
+      "proof_or_reference": "docs/THEORY.md#t4",
+      "test_harness": "quasar2.theory.harness.check_t4",
+      "numeric_tolerance": {
+        "atol": 0.02,
+        "rtol": 0.0
+      },
+      "known_counterexamples": [],
+      "last_validated_run_id": null,
+      "code_version": null,
+      "dataset_hash": null
+    },
+    {
+      "id": "C1",
+      "status": "proposition",
+      "statement": "I(I;Q_clean)-I(I;Q_obs) is a nonnegative information loss only under a Markov degradation chain. Side information can make the difference negative.",
+      "assumptions": [
+        "discrete joint identifiable",
+        "optional Markov degradation"
+      ],
+      "quantities_observable": [
+        "information_difference"
+      ],
+      "oracle_only": [
+        "true joints"
+      ],
+      "proof_or_reference": "docs/THEORY.md#c1",
+      "test_harness": "quasar2.theory.harness.check_c1",
+      "numeric_tolerance": {
+        "atol": 1e-09,
+        "rtol": 1e-08
+      },
+      "known_counterexamples": [],
+      "last_validated_run_id": null,
+      "code_version": null,
+      "dataset_hash": null
+    }
+  ],
+  "checks": [
+    {
+      "card_id": "C1",
+      "execution_state": "PASS_WITHIN_ASSUMPTIONS",
+      "layer": "ANALYTIC",
+      "assumptions_verified": [
+        "discrete joints",
+        "markov vs side-information counterexample"
+      ],
+      "implementation": "information_difference",
+      "atol": 1e-09,
+      "rtol": 1e-08,
+      "seeds": [],
+      "dataset": "synthetic_joints",
+      "notes": "information_loss is withheld when the Markov assumption is false.",
+      "metrics": {
+        "markov_difference": 0.5004024235381878,
+        "side_difference": -0.6931471805599453,
+        "markov_loss": 0.5004024235381878,
+        "side_loss": null
+      }
+    },
+    {
+      "card_id": "T1",
+      "execution_state": "PASS_WITHIN_ASSUMPTIONS",
+      "layer": "NUMERICAL_QUADRATURE",
+      "assumptions_verified": [
+        "target_fixed",
+        "evidence_fixed",
+        "mixture_projection_admissible"
+      ],
+      "implementation": "MixtureProjectionAnalyze",
+      "atol": 1e-09,
+      "rtol": 1e-08,
+      "seeds": [],
+      "dataset": "synthetic_categorical",
+      "notes": "Heuristic ANALYZE operators are not covered by this card.",
+      "metrics": {
+        "kl_before": 0.5371764588348016,
+        "kl_after": 0.19351878085009933,
+        "elbo_before": -0.5371764588348016,
+        "elbo_after": -0.19351878085009933,
+        "evidence_unchanged": true
+      }
+    },
+    {
+      "card_id": "T2",
+      "execution_state": "PASS_WITHIN_ASSUMPTIONS",
+      "layer": "ANALYTIC",
+      "assumptions_verified": [
+        "binary",
+        "finite discrete observations",
+        "declared Lipschitz norms"
+      ],
+      "implementation": "voi_bound_binary",
+      "atol": 1e-09,
+      "rtol": 1e-08,
+      "seeds": [],
+      "dataset": "synthetic_binary_kernels",
+      "notes": "",
+      "metrics": {
+        "n_records": 20,
+        "scalar_vs_l1_factor_two": true,
+        "failures": []
+      }
+    },
+    {
+      "card_id": "T3",
+      "execution_state": "PASS_WITHIN_ASSUMPTIONS",
+      "layer": "NUMERICAL_QUADRATURE",
+      "assumptions_verified": [
+        "tabular MDP",
+        "gamma=0.8",
+        "bounded rewards",
+        "exact backup"
+      ],
+      "implementation": "bellman_backup/value_iteration",
+      "atol": 1e-08,
+      "rtol": 1e-07,
+      "seeds": [],
+      "dataset": "two_state_mdp",
+      "notes": "This validates the implementation, not a real-scale POMDP.",
+      "metrics": {
+        "contraction_ratio": 0.8000000000000002,
+        "gamma": 0.8,
+        "final_values": {
+          "s0": 2.77777773311581,
+          "s1": 2.2222221829589546
+        },
+        "first_residual": 1.0,
+        "bounds_ok": true
+      }
+    },
+    {
+      "card_id": "T4",
+      "execution_state": "PASS_WITHIN_ASSUMPTIONS",
+      "layer": "MONTE_CARLO",
+      "assumptions_verified": [
+        "fixed_stage",
+        "gaussian_samples",
+        "bonferroni_m=3",
+        "normal_ucb_approximate"
+      ],
+      "implementation": "NormalUCB",
+      "atol": 0.03,
+      "rtol": 0.0,
+      "seeds": [
+        0
+      ],
+      "dataset": "synthetic_gaussian_netvoi",
+      "notes": "NormalUCB is approximate. Sequential coverage is NOT_IMPLEMENTED in this check.",
+      "metrics": {
+        "false_stops": 0,
+        "eligible": 200,
+        "false_stop_rate": 0.0,
+        "wilson_upper": 0.018845175328045437,
+        "wilson_lower": 0.0,
+        "alpha": 0.05,
+        "coverage_scope": "fixed_stage",
+        "n_trials": 200
+      }
+    }
+  ],
+  "summary": {
+    "C1": "PASS_WITHIN_ASSUMPTIONS",
+    "T1": "PASS_WITHIN_ASSUMPTIONS",
+    "T2": "PASS_WITHIN_ASSUMPTIONS",
+    "T3": "PASS_WITHIN_ASSUMPTIONS",
+    "T4": "PASS_WITHIN_ASSUMPTIONS"
+  }
+}

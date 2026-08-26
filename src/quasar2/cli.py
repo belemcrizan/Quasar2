@@ -24,6 +24,8 @@ def _config(path: str | None) -> ProjectConfig:
 
 def command_demo(args: argparse.Namespace) -> int:
     pipeline = QuasarPipeline.from_config(_config(args.config))
+    if getattr(args, "v2_shadow", False):
+        pipeline.v2_shadow_enabled = True
     result = pipeline.run(args.query, args.domain, ablation=args.ablation)
     if args.json:
         print(json.dumps(result.to_dict(), indent=2, ensure_ascii=False))
@@ -302,6 +304,64 @@ def command_cern_validate(_args: argparse.Namespace) -> int:
     return command_source_validate(namespace)
 
 
+def command_theory_check(args: argparse.Namespace) -> int:
+    from quasar2.theory.harness import write_theory_checks
+
+    dest = Path(args.output)
+    path = write_theory_checks(dest, t4_trials=args.t4_trials)
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    print(json.dumps(payload["summary"], indent=2))
+    print(f"artifact: {path}")
+    failing = [
+        card_id
+        for card_id, state in payload["summary"].items()
+        if state.startswith("FAIL")
+    ]
+    return 1 if failing else 0
+
+
+def command_theorem_benchmark(args: argparse.Namespace) -> int:
+    return command_theory_check(args)
+
+
+def command_report(args: argparse.Namespace) -> int:
+    from quasar2.theory.harness import run_theory_checks
+
+    payload = run_theory_checks(t4_trials=args.t4_trials)
+    lines = [
+        "# QUASAR2 theory report",
+        "",
+        f"code_version: {payload['code_version']}",
+        "",
+        "## Execution status",
+        "",
+    ]
+    for check in payload["checks"]:
+        lines.append(
+            f"- `{check['card_id']}`: {check['execution_state']} "
+            f"(layer={check['layer']}, atol={check['atol']})"
+        )
+    lines.extend(
+        [
+            "",
+            "No claim is promoted to SUPPORTED by this report.",
+            "See CLAIM_LEDGER.md and docs/THEOREM_STATUS.md.",
+        ]
+    )
+    text = "\n".join(lines) + "\n"
+    if args.output:
+        dest = Path(args.output)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_text(text, encoding="utf-8")
+        json_path = dest.with_suffix(".json")
+        json_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+        print(f"wrote {dest}")
+        print(f"wrote {json_path}")
+    else:
+        print(text)
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="quasar2", description=__doc__)
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
@@ -314,6 +374,11 @@ def build_parser() -> argparse.ArgumentParser:
     demo.add_argument("--config")
     demo.add_argument("--trace", action="store_true")
     demo.add_argument("--json", action="store_true")
+    demo.add_argument(
+        "--v2-shadow",
+        action="store_true",
+        help="compute v2 recommended_action_v2 without changing the executed legacy action",
+    )
     demo.set_defaults(func=command_demo)
 
     benchmark = subparsers.add_parser("benchmark", help="run baselines and ablations")
@@ -425,6 +490,39 @@ def build_parser() -> argparse.ArgumentParser:
 
     cern_val = subparsers.add_parser("cern-validate", help="alias: validate CERN Open Data metadata fixture")
     cern_val.set_defaults(func=command_cern_validate)
+
+    theory = subparsers.add_parser(
+        "theory-check",
+        help="run deterministic/numeric T1–T4 and C1 checks (does not alter legacy policy)",
+    )
+    theory.add_argument("--output", default="artifacts/theorem_checks.json")
+    theory.add_argument("--t4-trials", type=int, default=400)
+    theory.add_argument("--seed", type=int, default=0)
+    theory.add_argument("--max-examples", type=int, default=None)
+    theory.add_argument("--offline", action="store_true")
+    theory.add_argument("--artifact-dir", default="artifacts")
+    theory.add_argument("--fail-fast", action="store_true")
+    theory.add_argument("--dry-run", action="store_true")
+    theory.set_defaults(func=command_theory_check)
+
+    theorem_bench = subparsers.add_parser(
+        "theorem-benchmark",
+        help="alias of theory-check",
+    )
+    theorem_bench.add_argument("--output", default="artifacts/theorem_checks.json")
+    theorem_bench.add_argument("--t4-trials", type=int, default=400)
+    theorem_bench.add_argument("--seed", type=int, default=0)
+    theorem_bench.add_argument("--max-examples", type=int, default=None)
+    theorem_bench.add_argument("--offline", action="store_true")
+    theorem_bench.add_argument("--artifact-dir", default="artifacts")
+    theorem_bench.add_argument("--fail-fast", action="store_true")
+    theorem_bench.add_argument("--dry-run", action="store_true")
+    theorem_bench.set_defaults(func=command_theorem_benchmark)
+
+    report = subparsers.add_parser("report", help="write a markdown/JSON theory status report")
+    report.add_argument("--output", default="artifacts/theory_report.md")
+    report.add_argument("--t4-trials", type=int, default=200)
+    report.set_defaults(func=command_report)
     return parser
 
 

@@ -14,6 +14,7 @@ from typing import Any, Mapping
 from quasar2.belief.updater import BeliefUpdater
 from quasar2.config import ProjectConfig, load_structured
 from quasar2.decision.engine import DecisionEngine
+from quasar2.decision.shadow import build_shadow_telemetry
 from quasar2.decision.utility import UtilityModel
 from quasar2.evidence.scorer import EvidenceScorer
 from quasar2.exploration.discriminator import HypothesisDiscriminator
@@ -51,6 +52,7 @@ class QuasarPipeline:
         deduplicate_queries: bool = True,
         stop_on_zero_novelty: bool = True,
         clarification_templates: Mapping[str, str] | None = None,
+        v2_shadow_enabled: bool = False,
     ) -> None:
         self.signal_extractor = signal_extractor
         self.hypothesis_generator = hypothesis_generator
@@ -67,6 +69,7 @@ class QuasarPipeline:
         self.deduplicate_queries = deduplicate_queries
         self.stop_on_zero_novelty = stop_on_zero_novelty
         self.clarification_templates = dict(clarification_templates or {})
+        self.v2_shadow_enabled = v2_shadow_enabled
 
     @classmethod
     def from_config(cls, config: ProjectConfig, *, retriever: Retriever | None = None) -> "QuasarPipeline":
@@ -123,6 +126,7 @@ class QuasarPipeline:
             deduplicate_queries=bool(exploration.get("deduplicate_queries", True)),
             stop_on_zero_novelty=bool(exploration.get("stop_on_zero_novelty", True)),
             clarification_templates=templates,
+            v2_shadow_enabled=bool(decision.get("v2_shadow", False)),
         )
 
     @staticmethod
@@ -468,6 +472,10 @@ class QuasarPipeline:
             total_belief_variation=total_belief_variation,
             total_observed_entropy_reduction=total_observed_entropy_reduction,
         )
+        elapsed_ms = (time.perf_counter() - started) * 1000.0
+        v2_telemetry = (
+            build_shadow_telemetry(belief, decision) if self.v2_shadow_enabled else None
+        )
         return PipelineResult(
             observation=observation,
             candidates=candidates,
@@ -480,7 +488,7 @@ class QuasarPipeline:
             trace=tuple(trace),
             retrieval_calls=retrieval_calls,
             explore_rounds=explore_rounds,
-            elapsed_ms=(time.perf_counter() - started) * 1000.0,
+            elapsed_ms=elapsed_ms,
             ablation=ablation,
             retrieval_calls_avoided=retrieval_calls_avoided,
             pruned_explorations=pruned_explorations,
@@ -499,4 +507,5 @@ class QuasarPipeline:
             evidence_scoring_ms=evidence_scoring_ms,
             belief_update_ms=belief_update_ms,
             policy_ms=policy_ms,
+            v2_telemetry=v2_telemetry,
         )

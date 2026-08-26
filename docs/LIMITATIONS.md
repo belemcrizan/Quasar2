@@ -17,6 +17,15 @@
 - The complexity gate is a cheap heuristic. FAST vs QUASAR routing is not a sealed C1 result.
 - Milestone A1 rescue/overthinking associations are exploratory and not causal.
 - JWST/CERN fixtures are metadata-only and are not completed domain benchmarks.
+- VoI Lipschitz bounds can be loose even when the binary belief-movement identity holds.
+- Weighted JSD is not assumed to be the best predictor of empirical VoI.
+- The ideal posterior \(b^*\) is unavailable on ordinary WDI queries; the live system uses \(\hat b\).
+- Heuristic ANALYZE does not inherit the T1 variational guarantee.
+- UCB false-stop control is stated for a fixed stage; sequential stopping is unimplemented.
+- Conformal coverage, when used, is marginal under exchangeability, not per-query.
+- Exact POMDP optimality is intractable; T3 checks a tiny tabular MDP.
+- World Bank results do not imply JWST/CERN transfer.
+- Mode `v2_shadow` records `recommended_action_v2` without changing executed legacy actions.
 
 ## Mechanism failure modes
 

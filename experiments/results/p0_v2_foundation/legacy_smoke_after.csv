@@ -1,0 +1,7 @@
+method,intent_id,domain,condition,query,correct_hypothesis,predicted_hypothesis,correct,action,recall_at_10,reciprocal_rank,ndcg_at_10,retrieval_calls,retrieval_calls_avoided,explore_rounds,pruned_explorations,mean_document_novelty,total_belief_variation,observed_entropy_reduction,latency_ms
+hybrid,astro-01,astronomy,q2,The starlight keeps dipping when something crosses the disk,astro.exoplanet_transit,astro.exoplanet_transit,True,ANSWER,0.5,1.0,0.6131471927654584,1,0,0,0,1.0,0.0,0.0,0.44710002839565277
+hybrid,astro-02,astronomy,q2,Fast rise slow decay from a star flash in x rays,astro.stellar_flare,astro.stellar_flare,True,ANSWER,1.0,1.0,1.0,1,0,0,0,1.0,0.0,0.0,0.42539997957646847
+hybrid,astro-03,astronomy,q2,Gravity lens flash with an achromatic symmetric bump,astro.microlensing,astro.microlensing,True,ANSWER,1.0,1.0,1.0,1,0,0,0,1.0,0.0,0.0,0.32679992727935314
+full,astro-01,astronomy,q2,The starlight keeps dipping when something crosses the disk,astro.exoplanet_transit,astro.exoplanet_transit,True,ASK,1.0,1.0,0.8503449055347546,5,2,1,1,0.85,0.12593660302512866,0.016430784441464397,4.315300029702485
+full,astro-02,astronomy,q2,Fast rise slow decay from a star flash in x rays,astro.stellar_flare,astro.stellar_flare,True,ASK,1.0,1.0,1.0,6,2,1,1,0.375,0.28651373970187094,0.2581621348119718,4.020799999125302
+full,astro-03,astronomy,q2,Gravity lens flash with an achromatic symmetric bump,astro.microlensing,astro.microlensing,True,ASK,1.0,0.5,0.6934264036172708,6,2,1,1,0.7916666666666666,0.08158048586030948,0.10054493279945542,3.6186999641358852
