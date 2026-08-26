@@ -15,7 +15,7 @@ Statuses: HYPOTHESIS | SUPPORTED_IN_SCOPE | PARTIALLY_SUPPORTED | UNSUPPORTED | 
 | H8 | EN/PT consistency | UNKNOWN | PT variants in bench | BGE-M3 PT ranked GDP per capita first in smoke only |
 | H9 | Hold-out generalization | UNKNOWN | splits exist | no hold-out report |
 | H10 | Simple baseline matches QUASAR at lower cost | PARTIALLY_SUPPORTED against full policy | BM25 pilot | top-1 cheaper and higher intent exact |
-| C1 | Selective (gated) reasoning is more compute-efficient than always-on QUASAR | INCONCLUSIVE / exploratory | gate experiment | No sealed preregistered margins; do not promote |
+| C1 | Selective (gated) reasoning is more compute-efficient than always-on QUASAR | INCONCLUSIVE / exploratory | gate experiment + A1 decomposition | No sealed preregistered margins; A1 is descriptive rescue/overthinking only |
 
 No claim is upgraded to SUPPORTED_IN_SCOPE without a pre-specified clustered interval.
 

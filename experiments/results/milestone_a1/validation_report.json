@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "n_matched": 3116,
+  "n_unmatched": 0,
+  "duplicate_query_ids": 0,
+  "snapshot_mismatches": 0,
+  "schema_conflicts": 0,
+  "one_sided_missing": 0,
+  "reconciliation_issues": [],
+  "four_way_exhaustive": true,
+  "sealed_test_used_for_fitting": false,
+  "claim_status": "EXPLORATORY"
+}

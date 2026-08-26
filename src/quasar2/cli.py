@@ -229,6 +229,43 @@ def command_gate_experiment(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_a1_decompose(args: argparse.Namespace) -> int:
+    from quasar2.analysis.a1 import run_a1
+
+    payload = run_a1(
+        list(args.run_dir),
+        output_dir=args.output,
+        benchmark_path=args.benchmark,
+        repo_root=Path.cwd(),
+    )
+    print(
+        json.dumps(
+            {
+                "n_matched": payload["metrics"]["n_matched"],
+                "overall": payload["metrics"]["overall"],
+                "blocked": payload["metrics"]["blocked"],
+                "claim_status": payload["metrics"]["claim_status"],
+                "validation": payload["validation"],
+                "output_dir": payload["output_dir"],
+            },
+            indent=2,
+        )
+    )
+    return 0 if payload["validation"]["ok"] or payload["metrics"]["n_matched"] else 1
+
+
+def command_repository_audit(args: argparse.Namespace) -> int:
+    from quasar2.analysis.io_util import write_json
+    from quasar2.audit.repository_state import build_repository_state_manifest
+
+    manifest = build_repository_state_manifest(Path.cwd())
+    dest = Path(args.output)
+    dest.mkdir(parents=True, exist_ok=True)
+    write_json(dest / "repository_state_manifest.json", manifest)
+    print(json.dumps({"test_method_count": manifest["test_method_count"], "output": str(dest)}, indent=2))
+    return 0
+
+
 def command_source_validate(args: argparse.Namespace) -> int:
     from quasar2.sources.fixtures import cern_open_data_source, inspire_hep_source, jwst_mast_source
     from quasar2.sources.registry import builtin_registry
@@ -349,6 +386,27 @@ def build_parser() -> argparse.ArgumentParser:
     gate_exp.add_argument("--output", required=True)
     gate_exp.add_argument("--limit", type=int)
     gate_exp.set_defaults(func=command_gate_experiment)
+
+    a1 = subparsers.add_parser(
+        "a1-decompose",
+        help="Milestone A1: matched FAST vs QUASAR rescue/overthinking decomposition",
+    )
+    a1.add_argument(
+        "--run-dir",
+        action="append",
+        required=True,
+        help="experiment result directory with per_query_results.csv or raw_results.csv",
+    )
+    a1.add_argument("--benchmark", help="WDI benchmark JSON for query text and ground truth")
+    a1.add_argument("--output", required=True)
+    a1.set_defaults(func=command_a1_decompose)
+
+    repo_audit = subparsers.add_parser(
+        "repository-audit",
+        help="write RepositoryStateManifest (structural validation of claimed capabilities)",
+    )
+    repo_audit.add_argument("--output", default="experiments/results/repository_state")
+    repo_audit.set_defaults(func=command_repository_audit)
 
     source_val = subparsers.add_parser(
         "source-validate",

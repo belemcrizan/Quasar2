@@ -1,0 +1,841 @@
+{
+  "schema_version": "a1.0.0",
+  "created_at": "2026-08-26T13:00:29+00:00",
+  "phase": "A1",
+  "claim": "C1",
+  "claim_status": "EXPLORATORY",
+  "n_matched": 3116,
+  "overall": {
+    "n": 3116,
+    "BothCorrectRate": 0.5314505776636713,
+    "OverthinkingRate": 0.11456996148908857,
+    "RescueRate": 0.0,
+    "BothWrongRate": 0.35397946084724,
+    "BeneficialReasoningRate": 0.0,
+    "OverthinkingAmongFastCorrect": 0.17734724292101342,
+    "counts": {
+      "BOTH_CORRECT": 1656,
+      "OVERTHINKING": 357,
+      "RESCUE": 0,
+      "BOTH_WRONG": 1103
+    },
+    "BothCorrect": {
+      "n": 3116.0,
+      "rate": 0.5314505776636713,
+      "ci_low": 0.5137997432605905,
+      "ci_high": 0.5487804878048781
+    },
+    "Overthinking": {
+      "n": 3116.0,
+      "rate": 0.11456996148908857,
+      "ci_low": 0.10301668806161746,
+      "ci_high": 0.1261232349165597
+    },
+    "Rescue": {
+      "n": 3116.0,
+      "rate": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    "BothWrong": {
+      "n": 3116.0,
+      "rate": 0.35397946084724,
+      "ci_low": 0.33825417201540436,
+      "ci_high": 0.3706675224646983
+    }
+  },
+  "rates": {
+    "bm25|wdi-ci-2026-08-26-6ead85fe|calibration": {
+      "n": 10,
+      "BothCorrectRate": 0.8,
+      "OverthinkingRate": 0.0,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.2,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.0,
+      "counts": {
+        "BOTH_CORRECT": 8,
+        "OVERTHINKING": 0,
+        "RESCUE": 0,
+        "BOTH_WRONG": 2
+      },
+      "BothCorrect": {
+        "n": 10.0,
+        "rate": 0.8,
+        "ci_low": 0.5,
+        "ci_high": 1.0
+      },
+      "Overthinking": {
+        "n": 10.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Rescue": {
+        "n": 10.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 10.0,
+        "rate": 0.2,
+        "ci_low": 0.0,
+        "ci_high": 0.5
+      }
+    },
+    "bm25|wdi-ci-2026-08-26-6ead85fe|development": {
+      "n": 20,
+      "BothCorrectRate": 0.75,
+      "OverthinkingRate": 0.0,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.25,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.0,
+      "counts": {
+        "BOTH_CORRECT": 15,
+        "OVERTHINKING": 0,
+        "RESCUE": 0,
+        "BOTH_WRONG": 5
+      },
+      "BothCorrect": {
+        "n": 20.0,
+        "rate": 0.75,
+        "ci_low": 0.5,
+        "ci_high": 0.9
+      },
+      "Overthinking": {
+        "n": 20.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Rescue": {
+        "n": 20.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 20.0,
+        "rate": 0.25,
+        "ci_low": 0.1,
+        "ci_high": 0.5
+      }
+    },
+    "bm25|wdi-ci-2026-08-26-6ead85fe|sealed_test": {
+      "n": 5,
+      "BothCorrectRate": 0.8,
+      "OverthinkingRate": 0.0,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.2,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.0,
+      "counts": {
+        "BOTH_CORRECT": 4,
+        "OVERTHINKING": 0,
+        "RESCUE": 0,
+        "BOTH_WRONG": 1
+      },
+      "BothCorrect": {
+        "n": 5.0,
+        "rate": 0.8,
+        "ci_low": 0.4,
+        "ci_high": 1.0
+      },
+      "Overthinking": {
+        "n": 5.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Rescue": {
+        "n": 5.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 5.0,
+        "rate": 0.2,
+        "ci_low": 0.0,
+        "ci_high": 0.6
+      }
+    },
+    "bm25|wdi-ci-2026-08-26-6ead85fe|validation": {
+      "n": 5,
+      "BothCorrectRate": 0.8,
+      "OverthinkingRate": 0.0,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.2,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.0,
+      "counts": {
+        "BOTH_CORRECT": 4,
+        "OVERTHINKING": 0,
+        "RESCUE": 0,
+        "BOTH_WRONG": 1
+      },
+      "BothCorrect": {
+        "n": 5.0,
+        "rate": 0.8,
+        "ci_low": 0.4,
+        "ci_high": 1.0
+      },
+      "Overthinking": {
+        "n": 5.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Rescue": {
+        "n": 5.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 5.0,
+        "rate": 0.2,
+        "ci_low": 0.0,
+        "ci_high": 0.6
+      }
+    },
+    "bm25|wdi-pilot-2026-08-26-b6ddb672|calibration": {
+      "n": 591,
+      "BothCorrectRate": 0.5109983079526227,
+      "OverthinkingRate": 0.15397631133671744,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.3350253807106599,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.23155216284987276,
+      "counts": {
+        "BOTH_CORRECT": 302,
+        "OVERTHINKING": 91,
+        "RESCUE": 0,
+        "BOTH_WRONG": 198
+      },
+      "BothCorrect": {
+        "n": 591.0,
+        "rate": 0.5109983079526227,
+        "ci_low": 0.4703891708967851,
+        "ci_high": 0.5516074450084603
+      },
+      "Overthinking": {
+        "n": 591.0,
+        "rate": 0.15397631133671744,
+        "ci_low": 0.12351945854483926,
+        "ci_high": 0.18274111675126903
+      },
+      "Rescue": {
+        "n": 591.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 591.0,
+        "rate": 0.3350253807106599,
+        "ci_low": 0.29780033840947545,
+        "ci_high": 0.377326565143824
+      }
+    },
+    "bm25|wdi-pilot-2026-08-26-b6ddb672|development": {
+      "n": 1581,
+      "BothCorrectRate": 0.5224541429475016,
+      "OverthinkingRate": 0.12080961416824794,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.3567362428842505,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.18780727630285152,
+      "counts": {
+        "BOTH_CORRECT": 826,
+        "OVERTHINKING": 191,
+        "RESCUE": 0,
+        "BOTH_WRONG": 564
+      },
+      "BothCorrect": {
+        "n": 1581.0,
+        "rate": 0.5224541429475016,
+        "ci_low": 0.49778621125869704,
+        "ci_high": 0.545224541429475
+      },
+      "Overthinking": {
+        "n": 1581.0,
+        "rate": 0.12080961416824794,
+        "ci_low": 0.10499683744465528,
+        "ci_high": 0.13725490196078433
+      },
+      "Rescue": {
+        "n": 1581.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 1581.0,
+        "rate": 0.3567362428842505,
+        "ci_low": 0.33206831119544594,
+        "ci_high": 0.3801391524351676
+      }
+    },
+    "bm25|wdi-pilot-2026-08-26-b6ddb672|sealed_test": {
+      "n": 310,
+      "BothCorrectRate": 0.5258064516129032,
+      "OverthinkingRate": 0.1064516129032258,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.36774193548387096,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.1683673469387755,
+      "counts": {
+        "BOTH_CORRECT": 163,
+        "OVERTHINKING": 33,
+        "RESCUE": 0,
+        "BOTH_WRONG": 114
+      },
+      "BothCorrect": {
+        "n": 310.0,
+        "rate": 0.5258064516129032,
+        "ci_low": 0.46774193548387094,
+        "ci_high": 0.5838709677419355
+      },
+      "Overthinking": {
+        "n": 310.0,
+        "rate": 0.1064516129032258,
+        "ci_low": 0.07419354838709677,
+        "ci_high": 0.14193548387096774
+      },
+      "Rescue": {
+        "n": 310.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 310.0,
+        "rate": 0.36774193548387096,
+        "ci_low": 0.3161290322580645,
+        "ci_high": 0.4258064516129032
+      }
+    },
+    "bm25|wdi-pilot-2026-08-26-b6ddb672|validation": {
+      "n": 554,
+      "BothCorrectRate": 0.5487364620938628,
+      "OverthinkingRate": 0.07581227436823104,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.37545126353790614,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.12138728323699421,
+      "counts": {
+        "BOTH_CORRECT": 304,
+        "OVERTHINKING": 42,
+        "RESCUE": 0,
+        "BOTH_WRONG": 208
+      },
+      "BothCorrect": {
+        "n": 554.0,
+        "rate": 0.5487364620938628,
+        "ci_low": 0.5072202166064982,
+        "ci_high": 0.5902527075812274
+      },
+      "Overthinking": {
+        "n": 554.0,
+        "rate": 0.07581227436823104,
+        "ci_low": 0.05415162454873646,
+        "ci_high": 0.09927797833935018
+      },
+      "Rescue": {
+        "n": 554.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 554.0,
+        "rate": 0.37545126353790614,
+        "ci_low": 0.33754512635379064,
+        "ci_high": 0.41335740072202165
+      }
+    },
+    "neural|wdi-ci-2026-08-26-6ead85fe|calibration": {
+      "n": 10,
+      "BothCorrectRate": 0.7,
+      "OverthinkingRate": 0.0,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.3,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.0,
+      "counts": {
+        "BOTH_CORRECT": 7,
+        "OVERTHINKING": 0,
+        "RESCUE": 0,
+        "BOTH_WRONG": 3
+      },
+      "BothCorrect": {
+        "n": 10.0,
+        "rate": 0.7,
+        "ci_low": 0.4,
+        "ci_high": 1.0
+      },
+      "Overthinking": {
+        "n": 10.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Rescue": {
+        "n": 10.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 10.0,
+        "rate": 0.3,
+        "ci_low": 0.0,
+        "ci_high": 0.6
+      }
+    },
+    "neural|wdi-ci-2026-08-26-6ead85fe|development": {
+      "n": 20,
+      "BothCorrectRate": 0.75,
+      "OverthinkingRate": 0.0,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.25,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.0,
+      "counts": {
+        "BOTH_CORRECT": 15,
+        "OVERTHINKING": 0,
+        "RESCUE": 0,
+        "BOTH_WRONG": 5
+      },
+      "BothCorrect": {
+        "n": 20.0,
+        "rate": 0.75,
+        "ci_low": 0.55,
+        "ci_high": 0.95
+      },
+      "Overthinking": {
+        "n": 20.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Rescue": {
+        "n": 20.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 20.0,
+        "rate": 0.25,
+        "ci_low": 0.05,
+        "ci_high": 0.45
+      }
+    },
+    "neural|wdi-ci-2026-08-26-6ead85fe|sealed_test": {
+      "n": 5,
+      "BothCorrectRate": 0.8,
+      "OverthinkingRate": 0.0,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.2,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.0,
+      "counts": {
+        "BOTH_CORRECT": 4,
+        "OVERTHINKING": 0,
+        "RESCUE": 0,
+        "BOTH_WRONG": 1
+      },
+      "BothCorrect": {
+        "n": 5.0,
+        "rate": 0.8,
+        "ci_low": 0.4,
+        "ci_high": 1.0
+      },
+      "Overthinking": {
+        "n": 5.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Rescue": {
+        "n": 5.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 5.0,
+        "rate": 0.2,
+        "ci_low": 0.0,
+        "ci_high": 0.6
+      }
+    },
+    "neural|wdi-ci-2026-08-26-6ead85fe|validation": {
+      "n": 5,
+      "BothCorrectRate": 0.8,
+      "OverthinkingRate": 0.0,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.2,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.0,
+      "counts": {
+        "BOTH_CORRECT": 4,
+        "OVERTHINKING": 0,
+        "RESCUE": 0,
+        "BOTH_WRONG": 1
+      },
+      "BothCorrect": {
+        "n": 5.0,
+        "rate": 0.8,
+        "ci_low": 0.4,
+        "ci_high": 1.0
+      },
+      "Overthinking": {
+        "n": 5.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Rescue": {
+        "n": 5.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 5.0,
+        "rate": 0.2,
+        "ci_low": 0.0,
+        "ci_high": 0.6
+      }
+    },
+    "bm25|wdi-ci-2026-08-26-6ead85fe|ALL": {
+      "n": 40,
+      "BothCorrectRate": 0.775,
+      "OverthinkingRate": 0.0,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.225,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.0,
+      "counts": {
+        "BOTH_CORRECT": 31,
+        "OVERTHINKING": 0,
+        "RESCUE": 0,
+        "BOTH_WRONG": 9
+      },
+      "BothCorrect": {
+        "n": 40.0,
+        "rate": 0.775,
+        "ci_low": 0.65,
+        "ci_high": 0.9
+      },
+      "Overthinking": {
+        "n": 40.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Rescue": {
+        "n": 40.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 40.0,
+        "rate": 0.225,
+        "ci_low": 0.1,
+        "ci_high": 0.35
+      },
+      "snapshots": [
+        "wdi-ci-2026-08-26-6ead85fe"
+      ],
+      "pooled_snapshots": false
+    },
+    "bm25|wdi-pilot-2026-08-26-b6ddb672|ALL": {
+      "n": 3036,
+      "BothCorrectRate": 0.5253623188405797,
+      "OverthinkingRate": 0.11758893280632411,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.3570487483530962,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.18288934426229508,
+      "counts": {
+        "BOTH_CORRECT": 1595,
+        "OVERTHINKING": 357,
+        "RESCUE": 0,
+        "BOTH_WRONG": 1084
+      },
+      "BothCorrect": {
+        "n": 3036.0,
+        "rate": 0.5253623188405797,
+        "ci_low": 0.5079051383399209,
+        "ci_high": 0.5438076416337286
+      },
+      "Overthinking": {
+        "n": 3036.0,
+        "rate": 0.11758893280632411,
+        "ci_low": 0.10606060606060606,
+        "ci_high": 0.12911725955204217
+      },
+      "Rescue": {
+        "n": 3036.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 3036.0,
+        "rate": 0.3570487483530962,
+        "ci_low": 0.34057971014492755,
+        "ci_high": 0.37417654808959155
+      },
+      "snapshots": [
+        "wdi-pilot-2026-08-26-b6ddb672"
+      ],
+      "pooled_snapshots": false
+    },
+    "neural|wdi-ci-2026-08-26-6ead85fe|ALL": {
+      "n": 40,
+      "BothCorrectRate": 0.75,
+      "OverthinkingRate": 0.0,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.25,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.0,
+      "counts": {
+        "BOTH_CORRECT": 30,
+        "OVERTHINKING": 0,
+        "RESCUE": 0,
+        "BOTH_WRONG": 10
+      },
+      "BothCorrect": {
+        "n": 40.0,
+        "rate": 0.75,
+        "ci_low": 0.625,
+        "ci_high": 0.875
+      },
+      "Overthinking": {
+        "n": 40.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Rescue": {
+        "n": 40.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 40.0,
+        "rate": 0.25,
+        "ci_low": 0.125,
+        "ci_high": 0.375
+      },
+      "snapshots": [
+        "wdi-ci-2026-08-26-6ead85fe"
+      ],
+      "pooled_snapshots": false
+    },
+    "bm25|ALL": {
+      "n": 3076,
+      "BothCorrectRate": 0.5286085825747724,
+      "OverthinkingRate": 0.11605981794538361,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.35533159947984394,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.1800302571860817,
+      "counts": {
+        "BOTH_CORRECT": 1626,
+        "OVERTHINKING": 357,
+        "RESCUE": 0,
+        "BOTH_WRONG": 1093
+      },
+      "BothCorrect": {
+        "n": 3076.0,
+        "rate": 0.5286085825747724,
+        "ci_low": 0.5110533159947984,
+        "ci_high": 0.5461638491547465
+      },
+      "Overthinking": {
+        "n": 3076.0,
+        "rate": 0.11605981794538361,
+        "ci_low": 0.10403120936280884,
+        "ci_high": 0.1277633289986996
+      },
+      "Rescue": {
+        "n": 3076.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 3076.0,
+        "rate": 0.35533159947984394,
+        "ci_low": 0.33907672301690506,
+        "ci_high": 0.37223667100130037
+      },
+      "snapshots": [
+        "wdi-ci-2026-08-26-6ead85fe",
+        "wdi-pilot-2026-08-26-b6ddb672"
+      ],
+      "pooled_snapshots": true
+    },
+    "neural|ALL": {
+      "n": 40,
+      "BothCorrectRate": 0.75,
+      "OverthinkingRate": 0.0,
+      "RescueRate": 0.0,
+      "BothWrongRate": 0.25,
+      "BeneficialReasoningRate": 0.0,
+      "OverthinkingAmongFastCorrect": 0.0,
+      "counts": {
+        "BOTH_CORRECT": 30,
+        "OVERTHINKING": 0,
+        "RESCUE": 0,
+        "BOTH_WRONG": 10
+      },
+      "BothCorrect": {
+        "n": 40.0,
+        "rate": 0.75,
+        "ci_low": 0.625,
+        "ci_high": 0.875
+      },
+      "Overthinking": {
+        "n": 40.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Rescue": {
+        "n": 40.0,
+        "rate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "BothWrong": {
+        "n": 40.0,
+        "rate": 0.25,
+        "ci_low": 0.125,
+        "ci_high": 0.375
+      },
+      "snapshots": [
+        "wdi-ci-2026-08-26-6ead85fe"
+      ],
+      "pooled_snapshots": false
+    }
+  },
+  "gate_proposal": {
+    "bm25|wdi-ci-2026-08-26-6ead85fe": {
+      "n_calibration": 10,
+      "n_rescue": 0,
+      "n_overthinking": 0,
+      "n_both_correct": 8,
+      "suggested_fast_if": {
+        "ambiguity_score_max": 0.6,
+        "complexity_score_max": 0.5675,
+        "missingness_max": 0.175,
+        "note": "Escalate toward QUASAR when ambiguity/complexity exceed BOTH_CORRECT medians."
+      },
+      "suggested_quasar_if": {
+        "ambiguity_score_min": null,
+        "unknown_score_min": null,
+        "missingness_min": null
+      },
+      "overthinking_profile": {
+        "ambiguity_median": null,
+        "complexity_median": null,
+        "unknown_median": null
+      },
+      "model_family_next": [
+        "logistic_regression",
+        "decision_tree"
+      ],
+      "do_not_fit_on": [
+        "sealed_test"
+      ],
+      "status": "EXPLORATORY_CANDIDATE",
+      "claim": "Not a fitted gate. Calibration-only descriptive thresholds for PHASE A2."
+    },
+    "bm25|wdi-pilot-2026-08-26-b6ddb672": {
+      "n_calibration": 591,
+      "n_rescue": 0,
+      "n_overthinking": 91,
+      "n_both_correct": 302,
+      "suggested_fast_if": {
+        "ambiguity_score_max": 0.6526055,
+        "complexity_score_max": 0.220103,
+        "missingness_max": 0.0,
+        "note": "Escalate toward QUASAR when ambiguity/complexity exceed BOTH_CORRECT medians."
+      },
+      "suggested_quasar_if": {
+        "ambiguity_score_min": null,
+        "unknown_score_min": null,
+        "missingness_min": null
+      },
+      "overthinking_profile": {
+        "ambiguity_median": 0.663941,
+        "complexity_median": 0.244204,
+        "unknown_median": 0.05479452054794521
+      },
+      "model_family_next": [
+        "logistic_regression",
+        "decision_tree"
+      ],
+      "do_not_fit_on": [
+        "sealed_test"
+      ],
+      "status": "EXPLORATORY_CANDIDATE",
+      "claim": "Not a fitted gate. Calibration-only descriptive thresholds for PHASE A2."
+    },
+    "neural|wdi-ci-2026-08-26-6ead85fe": {
+      "n_calibration": 10,
+      "n_rescue": 0,
+      "n_overthinking": 0,
+      "n_both_correct": 7,
+      "suggested_fast_if": {
+        "ambiguity_score_max": 0.6,
+        "complexity_score_max": 0.5675,
+        "missingness_max": 0.0,
+        "note": "Escalate toward QUASAR when ambiguity/complexity exceed BOTH_CORRECT medians."
+      },
+      "suggested_quasar_if": {
+        "ambiguity_score_min": null,
+        "unknown_score_min": null,
+        "missingness_min": null
+      },
+      "overthinking_profile": {
+        "ambiguity_median": null,
+        "complexity_median": null,
+        "unknown_median": null
+      },
+      "model_family_next": [
+        "logistic_regression",
+        "decision_tree"
+      ],
+      "do_not_fit_on": [
+        "sealed_test"
+      ],
+      "status": "EXPLORATORY_CANDIDATE",
+      "claim": "Not a fitted gate. Calibration-only descriptive thresholds for PHASE A2."
+    }
+  },
+  "blocked": {
+    "neural_pilot": "BLOCKED_RESOURCE_LIMIT: neural matched rows are not the 3036-query WDI pilot. CI-scale neural decomposition is recorded separately."
+  },
+  "backends": [
+    "bm25",
+    "neural"
+  ],
+  "run_dirs": [
+    "experiments\\results\\gate_pilot_bm25",
+    "experiments\\results\\v24_r2_ci_bm25_minilm"
+  ],
+  "benchmark_path": "data/wdi/benchmarks/pilot.json",
+  "note": "Feature associations are exploratory. Do not promote C1."
+}

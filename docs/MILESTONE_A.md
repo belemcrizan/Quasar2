@@ -44,6 +44,14 @@ quasar2 wdi-experiment --snapshot data/wdi/snapshots/pilot-live --stage pilot --
 
 Do not overwrite frozen files under `experiments/results/frozen/`.
 
+A1 matched decomposition (does not re-run the pilot):
+
+```text
+quasar2 a1-decompose --run-dir experiments/results/gate_pilot_bm25 --benchmark data/wdi/benchmarks/pilot.json --output experiments/results/milestone_a1
+```
+
+See [Milestone A1](MILESTONE_A1.md).
+
 ## What this cycle does not claim
 
 - JWST/CERN metadata fixtures are **not** completed scientific benchmarks.
