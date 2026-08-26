@@ -12,7 +12,13 @@ from typing import Mapping
 
 from quasar2.decision.ablations import V2_POLICY_ABLATIONS
 from quasar2.math.stopping import StopDecision, stop_if_all_ucb_nonpositive
-from quasar2.math.voi import bound_gap, empirical_binary_voi_zero_one, voi_bound_binary, voi_bound_general
+from quasar2.math.voi import (
+    bound_gap,
+    empirical_binary_voi_zero_one,
+    empirical_decision_flip_probability,
+    voi_bound_binary,
+    voi_bound_general,
+)
 from quasar2.recoverability import ESTIMATORS
 
 
@@ -326,9 +332,319 @@ class RecedingHorizonPolicy(MyopicVoIPolicy):
         return replace(result, policy_name=self.name, notes=note)
 
 
+class QuadrantPolicy:
+    name = "quadrant"
+
+    def recommend(
+        self,
+        *,
+        entropy: float,
+        recoverability: float | None,
+        inference_error: float | None,
+        unknown_mass: float,
+        **_: object,
+    ) -> PolicyRecommendation:
+        from quasar2.decision.shadow import recommended_action_v2_shadow
+
+        action = recommended_action_v2_shadow(
+            entropy=entropy,
+            recoverability=recoverability,
+            inference_error=inference_error,
+            unknown_mass=unknown_mass,
+        )
+        return PolicyRecommendation(
+            policy_name=self.name,
+            selected_action=action,
+            second_best_action=None,
+            action_margin=0.0,
+            estimated_q={action: 0.0},
+            recoverability=recoverability,
+            recoverability_method="quadrant_threshold",
+            raw_voi=None,
+            voi_empirical=None,
+            voi_bound_binary=None,
+            voi_bound_general=None,
+            voi_bound_gap=None,
+            voi_bound_violated=None,
+            net_voi=None,
+            retrieval_cost=0.0,
+            compute_cost=0.0,
+            risk_cost=0.0,
+            stop_decision=action in {"ANSWER", "DEFER"},
+            stop_reason="quadrant_heuristic",
+            best_info_action=None,
+            best_net_voi_ucb=None,
+            notes="Ambiguity x recoverability quadrants. Not a VoI argmax.",
+        )
+
+
+class TabularOraclePolicy:
+    """Oracle one-step 0-1 Q-values when kernels are the true observation model.
+
+    Must not be run on WDI with proxy kernels claimed as oracle.
+    """
+
+    name = "tabular_oracle"
+
+    def __init__(
+        self,
+        *,
+        explore_cost: float = 0.10,
+        ask_cost: float = 0.28,
+        analyze_cost: float = 0.04,
+    ) -> None:
+        self.explore_cost = explore_cost
+        self.ask_cost = ask_cost
+        self.analyze_cost = analyze_cost
+
+    def recommend(
+        self,
+        *,
+        belief: Mapping[str, float],
+        kernels: Mapping[str, Mapping[str, float]] | None,
+        entropy: float,
+        unknown_mass: float,
+        inference_error: float | None,
+        evidence_present: bool,
+        **_: object,
+    ) -> PolicyRecommendation:
+        from quasar2.math.voi import binary_zero_one_value
+
+        pair = _top_pair_kernels(belief, kernels or {})
+        q_answer = max(belief.values()) if belief else 0.0
+        if pair is None or not kernels:
+            q_explore = float("-inf")
+            voi_emp = 0.0
+            drs = 0.0
+        else:
+            left, right = pair
+            b = float(belief.get(left, 0.0))
+            voi_emp = empirical_binary_voi_zero_one(b, kernels[left], kernels[right])
+            drs = empirical_decision_flip_probability(b, kernels[left], kernels[right])
+            q_explore = binary_zero_one_value(b) + voi_emp - self.explore_cost
+            q_answer = binary_zero_one_value(b)
+        voc = 0.0
+        if inference_error is not None and evidence_present:
+            voc = max(0.0, min(inference_error, 1.0)) * 0.5
+        q_analyze = voc - self.analyze_cost
+        q_ask = entropy * (1.0 - drs) + 0.5 * drs - self.ask_cost
+        q_defer = unknown_mass - 0.08
+        estimated_q = {
+            "ANSWER": q_answer,
+            "ANALYZE": q_analyze,
+            "EXPLORE": q_explore,
+            "ASK": q_ask,
+            "DEFER": q_defer,
+        }
+        selected = max(estimated_q, key=lambda name: (estimated_q[name], name))
+        ranked = sorted(estimated_q, key=lambda name: (-estimated_q[name], name))
+        second = ranked[1] if len(ranked) > 1 else None
+        return PolicyRecommendation(
+            policy_name=self.name,
+            selected_action=selected,
+            second_best_action=second,
+            action_margin=estimated_q[ranked[0]] - estimated_q[second] if second else 0.0,
+            estimated_q=estimated_q,
+            recoverability=drs,
+            recoverability_method="decision_recoverability_oracle_kernels",
+            raw_voi=voi_emp if pair is not None else None,
+            voi_empirical=voi_emp if pair is not None else None,
+            voi_bound_binary=None,
+            voi_bound_general=None,
+            voi_bound_gap=None,
+            voi_bound_violated=None,
+            net_voi=estimated_q.get(selected),
+            retrieval_cost=self.explore_cost,
+            compute_cost=self.analyze_cost,
+            risk_cost=unknown_mass,
+            stop_decision=selected in {"ANSWER", "DEFER"},
+            stop_reason="oracle_argmax",
+            best_info_action=max(
+                ("ANALYZE", "EXPLORE", "ASK"),
+                key=lambda name: (estimated_q[name], name),
+            ),
+            best_net_voi_ucb=max(estimated_q[name] for name in ("ANALYZE", "EXPLORE", "ASK")),
+            notes="Oracle one-step Q under true kernels and 0-1 utility. Not WDI-safe.",
+        )
+
+
+class SPRTInspiredPolicy:
+    """Sequential log-likelihood ratio heuristic. Not classical SPRT.
+
+    Classical SPRT assumes i.i.d. observations, two simple hypotheses, and
+    known error targets that yield exact thresholds. This policy uses proxy
+    kernels, a single look by default, and expected LLR of one observation.
+    """
+
+    name = "sprt_inspired"
+
+    def __init__(self, *, alpha: float = 0.05, beta: float = 0.05, explore_cost: float = 0.10) -> None:
+        self.alpha = alpha
+        self.beta = beta
+        self.explore_cost = explore_cost
+
+    def recommend(
+        self,
+        *,
+        belief: Mapping[str, float],
+        kernels: Mapping[str, Mapping[str, float]] | None,
+        entropy: float,
+        unknown_mass: float,
+        inference_error: float | None,
+        evidence_present: bool,
+        llr_accumulated: float = 0.0,
+        **_: object,
+    ) -> PolicyRecommendation:
+        import math
+
+        upper = math.log((1.0 - self.beta) / max(self.alpha, 1e-9))
+        lower = math.log(self.beta / max(1.0 - self.alpha, 1e-9))
+        pair = _top_pair_kernels(belief, kernels or {})
+        expected_llr = 0.0
+        if pair is not None and kernels is not None:
+            left, right = pair
+            p1, p2 = kernels[left], kernels[right]
+            outcomes = sorted(set(p1) | set(p2))
+            b = float(belief.get(left, 0.0))
+            for outcome in outcomes:
+                p1_o = max(1e-12, float(p1.get(outcome, 0.0)))
+                p2_o = max(1e-12, float(p2.get(outcome, 0.0)))
+                m_o = b * p1_o + (1.0 - b) * p2_o
+                if m_o <= 0.0:
+                    continue
+                expected_llr += m_o * math.log(p1_o / p2_o)
+        projected = llr_accumulated + expected_llr
+        if unknown_mass >= 0.45:
+            selected = "DEFER"
+        elif llr_accumulated >= upper or llr_accumulated <= lower:
+            selected = "ANSWER"
+        elif abs(projected) >= abs(upper) * 0.5 and expected_llr != 0.0:
+            selected = "EXPLORE"
+        elif entropy >= 0.5:
+            selected = "ASK"
+        else:
+            selected = "ANSWER"
+        return PolicyRecommendation(
+            policy_name=self.name,
+            selected_action=selected,
+            second_best_action=None,
+            action_margin=abs(projected),
+            estimated_q={selected: projected},
+            recoverability=abs(expected_llr),
+            recoverability_method="expected_llr",
+            raw_voi=abs(expected_llr),
+            voi_empirical=None,
+            voi_bound_binary=None,
+            voi_bound_general=None,
+            voi_bound_gap=None,
+            voi_bound_violated=None,
+            net_voi=abs(expected_llr) - self.explore_cost,
+            retrieval_cost=self.explore_cost,
+            compute_cost=0.0,
+            risk_cost=unknown_mass,
+            stop_decision=selected in {"ANSWER", "DEFER"},
+            stop_reason="sprt_inspired_threshold",
+            best_info_action="EXPLORE" if selected == "EXPLORE" else None,
+            best_net_voi_ucb=abs(expected_llr),
+            notes=(
+                "SPRT-inspired expected LLR on proxy kernels. Not Wald SPRT; "
+                "observations are not assumed i.i.d. or exactly Bernoulli."
+            ),
+        )
+
+
+class LearnedEpistemicPolicy:
+    """Imitation / cost-sensitive linear router. Trained only in synthetic oracle envs."""
+
+    name = "learned_epistemic"
+
+    def __init__(self, weights: dict[str, list[float]] | None = None) -> None:
+        self.weights = weights or {}
+        self.actions = ("ANSWER", "ANALYZE", "EXPLORE", "ASK", "DEFER")
+        self.feature_width = 0
+
+    def fit(self, feature_rows: list[list[float]], oracle_actions: list[str], *, lam: float = 1e-2) -> None:
+        from quasar2.math.linear import ridge_fit
+
+        self.feature_width = len(feature_rows[0]) if feature_rows else 0
+        for action in self.actions:
+            targets = [1.0 if label == action else 0.0 for label in oracle_actions]
+            self.weights[action] = ridge_fit(feature_rows, targets, lam=lam)
+
+    def recommend(
+        self,
+        *,
+        belief: Mapping[str, float],
+        kernels: Mapping[str, Mapping[str, float]] | None,
+        entropy: float,
+        unknown_mass: float,
+        inference_error: float | None,
+        evidence_present: bool,
+        explore_cost: float = 0.10,
+        ask_cost: float = 0.28,
+        **_: object,
+    ) -> PolicyRecommendation:
+        from quasar2.math.linear import dot
+        from quasar2.recoverability import router_features
+
+        kernels = kernels or {}
+        features = router_features(
+            dict(belief),
+            tuple(belief),
+            kernels,
+            entropy=entropy,
+            unknown_mass=unknown_mass,
+            inference_error=inference_error,
+            explore_cost=explore_cost,
+            ask_cost=ask_cost,
+            evidence_present=evidence_present,
+        )
+        if not self.weights:
+            selected = "ANSWER"
+            estimated_q = {action: 0.0 for action in self.actions}
+        else:
+            estimated_q = {}
+            width = None
+            for action, weights in self.weights.items():
+                width = len(weights)
+                vec = features[:width]
+                if len(vec) < width:
+                    vec = vec + [0.0] * (width - len(vec))
+                estimated_q[action] = dot(weights, vec)
+            selected = max(estimated_q, key=lambda name: (estimated_q[name], name))
+        return PolicyRecommendation(
+            policy_name=self.name,
+            selected_action=selected,
+            second_best_action=None,
+            action_margin=0.0,
+            estimated_q=estimated_q,
+            recoverability=None,
+            recoverability_method="learned_features",
+            raw_voi=None,
+            voi_empirical=None,
+            voi_bound_binary=None,
+            voi_bound_general=None,
+            voi_bound_gap=None,
+            voi_bound_violated=None,
+            net_voi=None,
+            retrieval_cost=explore_cost,
+            compute_cost=0.0,
+            risk_cost=unknown_mass,
+            stop_decision=selected in {"ANSWER", "DEFER"},
+            stop_reason="learned_argmax",
+            best_info_action=None,
+            best_net_voi_ucb=None,
+            notes="Linear imitation of oracle actions. No gold-intent features.",
+        )
+
+
 POLICIES = {
     "legacy": LegacyPolicy(),
     "threshold": ThresholdPolicy(),
+    "quadrant": QuadrantPolicy(),
     "myopic_voi": MyopicVoIPolicy(),
     "receding_horizon": RecedingHorizonPolicy(horizon=1),
+    "sprt_inspired": SPRTInspiredPolicy(),
+    "tabular_oracle": TabularOraclePolicy(),
+    "learned_epistemic": LearnedEpistemicPolicy(),
 }

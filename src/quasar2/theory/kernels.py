@@ -55,6 +55,19 @@ def gaussian_pair(*, mean_gap: float = 2.0, bins: int = 9) -> dict[str, dict[str
     return {"H1": dens(-0.5 * mean_gap), "H2": dens(0.5 * mean_gap)}
 
 
+def multimodal_pair() -> dict[str, dict[str, float]]:
+    return {
+        "H1": _normalize({"a": 0.45, "b": 0.05, "c": 0.45, "d": 0.05}),
+        "H2": _normalize({"a": 0.05, "b": 0.45, "c": 0.05, "d": 0.45}),
+    }
+
+
+def misspecified_observation_pair() -> dict[str, dict[str, float]]:
+    """Separated true kernels used when a *different* proxy is supplied to estimators."""
+
+    return bernoulli_pair(0.92)
+
+
 KERNEL_FAMILIES: dict[str, dict[str, dict[str, float]]] = {
     "Bernoulli": bernoulli_pair(),
     "Categorical": categorical_pair(),
@@ -62,4 +75,10 @@ KERNEL_FAMILIES: dict[str, dict[str, dict[str, float]]] = {
     "NearIdentical": near_identical_pair(),
     "Mixture": mixture_pair(),
     "Gaussian": gaussian_pair(),
+    "Multimodal": multimodal_pair(),
+    "MisspecifiedTrue": misspecified_observation_pair(),
+}
+
+PROXY_KERNELS: dict[str, dict[str, dict[str, float]]] = {
+    "MisspecifiedTrue": heavy_overlap_pair(),
 }

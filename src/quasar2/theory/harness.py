@@ -29,8 +29,10 @@ from quasar2.math.divergences import kl_divergence, total_variation
 from quasar2.math.information import information_difference
 from quasar2.math.numerical import DEFAULT_ATOL, DEFAULT_RTOL, within_tolerance
 from quasar2.math.stopping import (
+    BCaBootstrapUCB,
     EmpiricalBernsteinUCB,
     NormalUCB,
+    PercentileBootstrapUCB,
     stop_if_all_ucb_nonpositive,
     wilson_lower,
     wilson_upper,
@@ -157,6 +159,7 @@ def check_t2_grid(*, atol: float = DEFAULT_ATOL, rtol: float = DEFAULT_RTOL) -> 
     violations: list[str] = []
     records: list[dict[str, Any]] = []
     identity_failures: list[str] = []
+    tightness_counts: dict[str, int] = {}
     for family, pair in KERNEL_FAMILIES.items():
         p1, p2 = pair["H1"], pair["H2"]
         for b in priors:
@@ -167,6 +170,8 @@ def check_t2_grid(*, atol: float = DEFAULT_ATOL, rtol: float = DEFAULT_RTOL) -> 
                 identity_failures.append(f"{family}:b={b}")
             if stats["voi_bound_violated"]:
                 violations.append(f"{family}:b={b}")
+            tightness = str(stats["voi_bound_tightness"])
+            tightness_counts[tightness] = tightness_counts.get(tightness, 0) + 1
             records.append(
                 {
                     "family": family,
@@ -179,6 +184,7 @@ def check_t2_grid(*, atol: float = DEFAULT_ATOL, rtol: float = DEFAULT_RTOL) -> 
                     "voi_bound_gap": stats["voi_bound_gap"],
                     "voi_bound_ratio": stats["voi_bound_ratio"],
                     "voi_bound_violated": stats["voi_bound_violated"],
+                    "voi_bound_tightness": tightness,
                     "identity_holds": bound.identity_holds,
                 }
             )
@@ -207,6 +213,7 @@ def check_t2_grid(*, atol: float = DEFAULT_ATOL, rtol: float = DEFAULT_RTOL) -> 
             "n_records": len(records),
             "n_bound_violations": len(violations),
             "n_identity_failures": len(identity_failures),
+            "tightness_counts": tightness_counts,
             "families": sorted(KERNEL_FAMILIES),
             "records": records,
         },
@@ -444,6 +451,92 @@ def check_t4_families(
     )
 
 
+def check_t4_near_zero(
+    *,
+    n_trials: int = 80,
+    n_samples: int = 40,
+    seed: int = 0,
+    alpha: float = 0.05,
+    means: tuple[float, ...] = (-0.05, -0.02, -0.01, 0.0, 0.01, 0.02, 0.05),
+) -> TheoremCheck:
+    """False-stop stress when true NetVoI is near zero. Sequential validity is not claimed."""
+
+    estimators = {
+        "normal_ucb": NormalUCB(),
+        "percentile_bootstrap": PercentileBootstrapUCB(n_bootstrap=80, seed=seed),
+        "bca_bootstrap": BCaBootstrapUCB(n_bootstrap=80, seed=seed),
+        "empirical_bernstein": EmpiricalBernsteinUCB(bound_range=8.0),
+    }
+    breakdown: list[dict[str, Any]] = []
+    for name, estimator in estimators.items():
+        for mean in means:
+            rng = random.Random(seed + int(abs(mean) * 1000) + sum(ord(ch) for ch in name))
+            false_stops = 0
+            eligible = 0
+            stops = 0
+            for _ in range(n_trials):
+                samples_a = [rng.gauss(mean, 1.0) for _ in range(n_samples)]
+                samples_b = [rng.gauss(mean / 2.0 if mean != 0.0 else -0.02, 1.0) for _ in range(n_samples)]
+                samples_c = [rng.gauss(-0.2, 1.0) for _ in range(n_samples)]
+                ucbs = {
+                    "ANALYZE": estimator.upper_bound(samples_a, alpha, 3),
+                    "EXPLORE": estimator.upper_bound(samples_b, alpha, 3),
+                    "ASK": estimator.upper_bound(samples_c, alpha, 3),
+                }
+                estimates = {
+                    "ANALYZE": sum(samples_a) / n_samples,
+                    "EXPLORE": sum(samples_b) / n_samples,
+                    "ASK": sum(samples_c) / n_samples,
+                }
+                decision = stop_if_all_ucb_nonpositive(
+                    ucbs,
+                    estimates,
+                    alpha=alpha,
+                    coverage_scope="fixed_stage",
+                    oracle_best_net_voi=mean,
+                    delta_positive=0.005,
+                )
+                eligible += 1
+                if decision.stop_decision:
+                    stops += 1
+                if decision.false_stop:
+                    false_stops += 1
+            rate = false_stops / max(1, eligible)
+            breakdown.append(
+                {
+                    "estimator": name,
+                    "mean": mean,
+                    "false_stop_rate": rate,
+                    "stop_rate": stops / max(1, eligible),
+                    "wilson_upper": wilson_upper(false_stops, eligible),
+                    "near_zero": abs(mean) <= 0.02,
+                }
+            )
+    hard = [row for row in breakdown if row["near_zero"] and row["estimator"] == "normal_ucb"]
+    return TheoremCheck(
+        card_id="T4_near_zero",
+        execution_state="INCONCLUSIVE",
+        layer="MONTE_CARLO",
+        assumptions_verified=("fixed_stage", "gaussian_samples", "bonferroni_m=3", "near_zero_means"),
+        implementation="NormalUCB/PercentileBootstrapUCB/BCaBootstrapUCB/EmpiricalBernsteinUCB",
+        atol=0.05,
+        rtol=0.0,
+        seeds=(seed,),
+        dataset="synthetic_near_zero_netvoi",
+        notes=(
+            "Easy T4 (mean=0.15) is not this check. Near-zero means are expected to inflate "
+            "false-stop or under-power stopping. Sequential/anytime validity is NOT claimed."
+        ),
+        metrics={
+            "n_trials": n_trials,
+            "n_samples": n_samples,
+            "alpha": alpha,
+            "breakdown": breakdown,
+            "normal_ucb_near_zero": hard,
+        },
+    )
+
+
 def check_c1() -> TheoremCheck:
     # Markov degradation: extra noise independent of I given Q_clean.
     # I in {0,1}, Q_clean copies I, Q_obs flips Q_clean.
@@ -498,6 +591,7 @@ def run_theory_checks(
     seed: int = 0,
     include_grids: bool = True,
     t4_family_trials: int = 80,
+    t4_near_zero_trials: int = 40,
 ) -> dict[str, Any]:
     checks = [
         check_c1(),
@@ -509,6 +603,7 @@ def run_theory_checks(
     if include_grids:
         checks.append(check_t2_grid())
         checks.append(check_t4_families(n_trials=t4_family_trials, seed=seed))
+        checks.append(check_t4_near_zero(n_trials=t4_near_zero_trials, seed=seed))
     return {
         "schema_version": "theorem_checks.1",
         "code_version": __version__,
@@ -524,9 +619,15 @@ def write_theory_checks(
     t4_trials: int = 400,
     seed: int = 0,
     include_grids: bool = True,
+    t4_near_zero_trials: int = 40,
 ) -> Path:
     dest = Path(path)
     dest.parent.mkdir(parents=True, exist_ok=True)
-    payload = run_theory_checks(t4_trials=t4_trials, seed=seed, include_grids=include_grids)
+    payload = run_theory_checks(
+        t4_trials=t4_trials,
+        seed=seed,
+        include_grids=include_grids,
+        t4_near_zero_trials=t4_near_zero_trials,
+    )
     dest.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
     return dest

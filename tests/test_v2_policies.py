@@ -167,6 +167,10 @@ class TheoremGridTests(unittest.TestCase):
         self.assertEqual(check.card_id, "T4_families")
         self.assertIn("breakdown", check.metrics)
 
+    def test_t2_grid_tightness_present(self) -> None:
+        check = check_t2_grid()
+        self.assertIn("tightness_counts", check.metrics)
+
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()

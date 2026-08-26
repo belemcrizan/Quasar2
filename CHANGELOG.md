@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Added a synthetic recoverability-vs-VoI benchmark, Decision Recoverability Score, optional learned recoverability estimator, T2 tightness labels, T4 near-zero stress, tabular oracle / SPRT-inspired / learned shadow policies, and `shadow-study` / `policy-compare` CLIs. The v0.1.1 executed loop is unchanged. Frozen sanity JSON is not overwritten by these commands.
 - Added V2 math utilities, recoverability estimators, ANALYZE operators, theorem harness T1–T4/C1, and optional `--v2-shadow` telemetry. The v0.1.1 loop is unchanged unless shadow mode is enabled, and even then only diagnostics are added.
 - Added MyopicVoIPolicy and ThresholdPolicy as **shadow recommenders**, proxy recoverability from evidence support, `quasar2 phase-diagram`, and a non-overwriting `experiments/runs/` registry. Executed legacy actions are unchanged.
 
