@@ -22,6 +22,14 @@ Statuses: HYPOTHESIS | SUPPORTED_IN_SCOPE | PARTIALLY_SUPPORTED | UNSUPPORTED | 
 | C2-policy-beats-strong-baseline-synthetic-holdout | Empirical myopic beats entropy/ANSWER on holdout regret | NOT_SUPPORTED | cycle2 holdout | cycle2_maturity | empirical mean regret 0.073 vs entropy 0.068 |
 | WDI-CD-R-adds-beyond-U | Recoverability adds info beyond uncertainty on WDI controlled degradation | NOT_SUPPORTED | validation split; sealed_test excluded | cycle2_maturity | snapshot wdi-ci-offline-fixture |
 | C2-ops-positive-deltaU-vs-top1 | Adaptive EXPLORE beats BM25 top-1 under equal budget in OPS sim | NOT_SUPPORTED / TESTED | 12 OPS intents, BM25 paired | cycle2_maturity | mean ΔU_EXPLORE −0.08 (cost); policy utility = force ANSWER 0.52 |
+| H_EXT | Adaptive epistemic action transfers across independent scientific sources | HYPOTHESIS | schema-faithful NASA/ESA/ALMA snapshots | external_validity | Not live TAP dumps |
+| H_DOMAIN | Decision principle transfers astronomy ↔ OPS | HYPOTHESIS | ops_structured clustered states | external_validity | Cycle 2 OPS equal-budget negative retained |
+| H_SCALE | Advantage region remains detectable as corpus/|H| scale | HYPOTHESIS | offline scale sweeps | external_validity | 10^5 TAP not executed |
+| H_BUDGET | Occupies part of utility-cost Pareto frontier under equal budget | HYPOTHESIS | equal-call NEU | external_validity | Neural/HyDE not run |
+| H_REGIME | Advantage predictable from observable regime variables | HYPOTHESIS | development-fit, held-out check | external_validity | Coefficients are not expected to transfer |
+| H_MISMATCH | Observation-model mismatch explains recoverability/policy failure | HYPOTHESIS | channel shifts | external_validity | Connects to Cycle 2 mismatch result |
+| H_REPLICATION | Major findings reproduce on independent compute | NOT_TESTED / protocol ready | Dockerfile + reproduce-paper | external_validity | Cloud NOT_RUN; not archive replication |
+| C3-live-official-dumps | Live NASA/ESA/ALMA TAP dumps used as confirmatory evidence | REFUTED | this cycle | external_validity | Schema-faithful SYN- snapshots only |
 
 No claim is upgraded to SUPPORTED_IN_SCOPE without a pre-specified clustered interval.
 

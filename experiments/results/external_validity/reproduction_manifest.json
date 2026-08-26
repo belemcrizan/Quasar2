@@ -1,0 +1,8 @@
+{
+  "command": "python -m quasar2.cli external-validity --output experiments/results/external_validity --overwrite",
+  "reproduce_paper": "python -m quasar2.cli reproduce-paper --output experiments/results/paper_reproduce --overwrite",
+  "seed": 0,
+  "git_sha": "2170646474483bd8b818740da08fe4301111ab3d",
+  "snapshot_id": "ext-schema-2026-08-26-offline",
+  "live_fetch": false
+}

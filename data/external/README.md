@@ -11,3 +11,5 @@ To attach a private or public corpus:
 4. Keep the v0.1.1 loop frozen; only swap `retrieval.backend`.
 
 Do not mix an external corpus into `data/corpus/` next to the sanity JSONL files.
+
+Cycle 3 official-archive audit: `quasar2 external-validity`. Do not scrape arbitrary astronomy websites. Schema-faithful `SYN-` snapshots are not NASA/ESA catalog rows.

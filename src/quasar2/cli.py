@@ -461,6 +461,43 @@ def command_cycle2_audit(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_external_validity(args: argparse.Namespace) -> int:
+    from quasar2.external.runner import run_external
+
+    dest = Path(args.output)
+    if dest.exists() and not args.overwrite:
+        raise FileExistsError(f"Refusing to overwrite {dest}; pass --overwrite")
+    payload = run_external(
+        dest,
+        seed=int(args.seed),
+        smoke=bool(args.smoke),
+        overwrite=True,
+    )
+    print(
+        json.dumps(
+            {
+                "run_id": payload.get("run_id"),
+                "answers": payload.get("answers"),
+                "leakage_ok": (payload.get("leakage") or {}).get("ok"),
+                "live_official_dump": False,
+                "artifact": str(dest),
+            },
+            indent=2,
+            default=str,
+        )
+    )
+    return 0
+
+
+def command_reproduce_paper(args: argparse.Namespace) -> int:
+    from quasar2.external.runner import run_reproduce_paper
+
+    dest = Path(args.output)
+    payload = run_reproduce_paper(dest, overwrite=bool(args.overwrite), smoke=not bool(args.full))
+    print(json.dumps({"output": str(dest), "answers": payload.get("external_answers"), "mutable_download": False}, indent=2, default=str))
+    return 0
+
+
 def command_gate1_audit(args: argparse.Namespace) -> int:
     from quasar2.eval.gate1 import run_gate1_audit, write_gate1_audit
     from quasar2.reporting.registry import allocate_run_dir, write_manifest
@@ -778,6 +815,25 @@ def build_parser() -> argparse.ArgumentParser:
     cycle2.add_argument("--skip-ops", action="store_true")
     cycle2.add_argument("--skip-gate1-reproduce", action="store_true")
     cycle2.set_defaults(func=command_cycle2_audit)
+
+    ext = subparsers.add_parser(
+        "external-validity",
+        help="source audit, schema-faithful NASA/ESA/ALMA transfer, scale, budget, regime (does not change the legacy loop)",
+    )
+    ext.add_argument("--output", default="experiments/results/external_validity")
+    ext.add_argument("--seed", type=int, default=0)
+    ext.add_argument("--overwrite", action="store_true")
+    ext.add_argument("--smoke", action="store_true", help="smaller N for CI")
+    ext.set_defaults(func=command_external_validity)
+
+    repro = subparsers.add_parser(
+        "reproduce-paper",
+        help="reconstruct frozen tables and rerun the offline external program (no silent mutable downloads)",
+    )
+    repro.add_argument("--output", default="experiments/results/paper_reproduce")
+    repro.add_argument("--overwrite", action="store_true")
+    repro.add_argument("--full", action="store_true", help="run the non-smoke external program")
+    repro.set_defaults(func=command_reproduce_paper)
     return parser
 
 

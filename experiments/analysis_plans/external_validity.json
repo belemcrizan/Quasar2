@@ -1,0 +1,34 @@
+{
+  "cycle_id": "C3",
+  "schema_version": "external.1",
+  "label": "REGISTERED_BEFORE_CONFIRMATORY_EXTERNAL_TESTS",
+  "frozen": {
+    "v0.1.1": "experiments/results/frozen/v0.1.1/",
+    "gate1": "FAIL",
+    "gate1_artifact": "experiments/results/gate1_cycle1/gate1.json",
+    "do_not_retune_failed_registered_experiments": true
+  },
+  "policy_stage": "SHADOW",
+  "hypotheses": {
+    "H_EXT": "Adaptive epistemic action transfers across independent scientific sources.",
+    "H_DOMAIN": "Decision-theoretic acquisition principles transfer across astronomy and OPS.",
+    "H_SCALE": "The advantage region remains detectable as corpus and hypothesis spaces scale.",
+    "H_BUDGET": "QUASAR2 occupies part of the utility-cost Pareto frontier in ambiguity/risk regimes.",
+    "H_REGIME": "QUASAR2 advantage can be predicted from observable regime variables.",
+    "H_MISMATCH": "Observation-model mismatch explains a substantial portion of recoverability and policy failure.",
+    "H_REPLICATION": "Major findings reproduce across independent compute environments."
+  },
+  "status_at_registration": "HYPOTHESIS",
+  "splits": {
+    "development": ["astronomy_sanity", "cycle2_synthetic_dev"],
+    "external_zero_shot": ["nasa_exo_schema", "esa_gaia_schema", "obs_alma_schema"],
+    "cross_domain": ["ops_runbook"],
+    "adaptation_allowed_only_after_zero_shot": true
+  },
+  "forbidden": [
+    "tune independently on every external source before primary transfer",
+    "treat oracle retrieval as a deployable competitor",
+    "claim external replication from seed reruns only",
+    "pseudo-replicate degradations of the same object as independent N"
+  ]
+}

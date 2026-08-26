@@ -262,6 +262,9 @@ Grava `experiments/results/benchmark.json` e `.csv`, salvo `--output`.
 | `theorem-benchmark` | Alias de `theory-check` | mesmas flags |
 | `report` | Relatório markdown/JSON/CSV de teoria | `--output` padrão `artifacts/theory_report.md`; `--t4-trials` padrão 200 |
 | `phase-diagram` | Grades 2D da ação shadow | `--output` padrão `experiments/runs`; `--register` aloca um run id |
+| `cycle2-audit` | Caminho Cycle 2 (recuperabilidade / política) | não altera o laço legado |
+| `external-validity` | Auditoria de fontes NASA/ESA/observatório, transferência, escala, orçamento igual, regime | `--smoke` no CI; **não** é dump TAP ao vivo |
+| `reproduce-paper` | Reconstrói tabelas congeladas e o programa offline | sem download mutável silencioso |
 
 Não existe o comando `wdi-build-queries`. O JSON de queries sai de `dataset-build`.
 
@@ -389,6 +392,17 @@ quasar2 wdi-experiment --snapshot data/wdi/snapshots/pilot-live --stage pilot --
 ### JWST / CERN / INSPIRE
 
 Fixtures **somente de metadados** e validadores tipados. Os manifestos marcam `scientific_benchmark_complete: false`. São **andaimes** de transferência de domínio, não benches concluídos.
+
+### Validade externa (Ciclo 3)
+
+O próximo passo científico é **transferência, escala, orçamento igual e descoberta de regime**, não mais teoria interna. Protocolo: [docs/EXTERNAL_VALIDITY.md](docs/EXTERNAL_VALIDITY.md).
+
+O ciclo audita arquivos oficiais NASA/ESA/observatório (sem scraping arbitrário), seleciona Exoplanet Archive, Gaia e ALMA pela estrutura epistêmica, e avalia transferência **zero-shot** em snapshots fiéis ao esquema (`SYN-`, **não** dumps TAP). O Gate 1 continua FAIL. A política experimental continua shadow.
+
+```bash
+quasar2 external-validity --overwrite
+quasar2 reproduce-paper --overwrite
+```
 
 ---
 

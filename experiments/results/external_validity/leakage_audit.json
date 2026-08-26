@@ -1,0 +1,32 @@
+{
+  "states": {
+    "n_states": 683,
+    "n_issues": 0,
+    "issues": [],
+    "ok": true,
+    "oracle_only_fields": [
+      "gold_hypothesis",
+      "hidden_evidence",
+      "true_kernel",
+      "oracle_q",
+      "r_star",
+      "future_observation",
+      "answer_key",
+      "manually_curated_discriminator_not_in_query"
+    ],
+    "forbidden_feature_tokens": [
+      "gold",
+      "correct_hypothesis",
+      "future",
+      "oracle_q",
+      "delta_u",
+      "voi_oracle",
+      "r_star",
+      "true_kernel",
+      "family",
+      "mismatch_mu_true"
+    ],
+    "deployment_view_used": true
+  },
+  "docs": []
+}
