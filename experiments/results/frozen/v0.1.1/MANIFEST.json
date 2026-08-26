@@ -1,0 +1,47 @@
+{
+  "freeze_id": "v0.1.1-sanity-benchmark",
+  "purpose": "Preserve the checked-in astronomy/AI sanity-table artifacts before any V2.1 scientific-behavior change.",
+  "status": "FROZEN_COPY",
+  "source_commit": "c99eba2a305c3f8efdbb62eb1d9e98c189ccf288",
+  "package_version_at_freeze": "0.2.0",
+  "loop_identity": "v0.1.1 inference loop (frozen treatment inside package 0.2.0)",
+  "dataset": "astronomy/AI 80-document sanity fixture; 40 intents x q0/q1/q2 = 120 observations",
+  "seed": 42,
+  "schema_version": "1.1",
+  "poc_status": "mechanism test; not evidence of general superiority",
+  "files": [
+    {
+      "path": "experiments/results/benchmark.json",
+      "copy": "experiments/results/frozen/v0.1.1/benchmark.json",
+      "sha256": "78084ace9907e300f923c65109debe242e7d53a88d670148dc93c982f29c8c83",
+      "bytes": 851082
+    },
+    {
+      "path": "experiments/results/benchmark.csv",
+      "copy": "experiments/results/frozen/v0.1.1/benchmark.csv",
+      "sha256": "040cf58ad6e2539ec0b4f405dddec5db3cb5a7ef5ecef2a024697db2c01de5d2",
+      "bytes": 235218
+    }
+  ],
+  "paired_comparisons_copied_from_json": {
+    "full_minus_hybrid_intent_recovery": {
+      "difference": -0.008333333333333333,
+      "ci_low": -0.041666666666666664,
+      "ci_high": 0.016666666666666666,
+      "pairs": 120.0
+    },
+    "full_minus_noHyp_intent_recovery": {
+      "difference": 0.016666666666666666,
+      "ci_low": 0.0,
+      "ci_high": 0.041666666666666664,
+      "pairs": 120.0
+    },
+    "full_minus_noExplore_correct_arr": {
+      "difference": 0.05,
+      "ci_low": 0.016666666666666666,
+      "ci_high": 0.09166666666666666,
+      "pairs": 120.0
+    }
+  },
+  "claim_boundary": "These numbers characterize the synthetic sanity fixture. They do not demonstrate V2 hypotheses H1–H6, WDI performance, or general superiority."
+}

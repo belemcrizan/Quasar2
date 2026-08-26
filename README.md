@@ -15,6 +15,8 @@ Research proof of concept · v0.2.0 · loop frozen at v0.1.1 · Crizan Belém Ri
 
 Portuguese overview: [README.pt-BR.md](README.pt-BR.md).
 
+V2.1 status (research program, not a result): **M0 audit complete**. The v0.1.1 loop and sanity table are frozen. See [V2 repository audit](docs/V2_REPOSITORY_AUDIT.md). No V2.1 scientific hypothesis is treated as demonstrated.
+
 ## The falsifiable question
 
 Let an observed query \(Q_{obs}\) be a degraded view of a latent intent \(I\).
