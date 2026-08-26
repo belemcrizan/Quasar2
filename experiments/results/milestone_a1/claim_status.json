@@ -1,0 +1,10 @@
+{
+  "C1": {
+    "status": "INCONCLUSIVE",
+    "analysis": "A1_EXPLORATORY",
+    "text": "Selective reasoning can outperform universal reasoning on risk x compute utility.",
+    "note": "A1 explains rescue/overthinking. It does not confirm C1.",
+    "n_matched": 3116,
+    "sealed": false
+  }
+}

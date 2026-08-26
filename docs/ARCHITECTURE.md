@@ -42,6 +42,9 @@ sequenceDiagram
 | `belief` | Fuse relative novel support | Replace with Bayesian or learned calibrated updater |
 | `decision` | Gate answers and account for action utilities | Domain-specific costs and calibration |
 | `gate` | Cheap deterministic FAST / QUASAR / DEFER_EARLY route (Milestone A) | Thresholds are a feature flag, not a sealed result |
+| `analysis` | Matched FAST vs QUASAR four-way decomposition (Milestone A1) | Exploratory; no sealed-test fitting |
+| `failures` | First-class failure taxonomy including OVERTHINKING/RESCUE | Labels are descriptive |
+| `audit` | RepositoryStateManifest structural validation | Does not rewrite historical claims |
 | `sources` | Typed SourceRegistry + offline JWST/CERN/INSPIRE metadata fixtures | Live APIs remain opt-in |
 | `exploration` | Contrast top hypotheses and issue follow-up search | Expected-value or active-learning planner |
 | `telemetry` | Serialize every state transition | Event sink, observability platform, or experiment store |

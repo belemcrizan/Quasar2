@@ -1,0 +1,13 @@
+{
+  "run_kind": "milestone_a1",
+  "created_at": "2026-08-26T13:00:29+00:00",
+  "n_matched": 3116,
+  "n_unmatched": 0,
+  "backends": [
+    "bm25",
+    "neural"
+  ],
+  "per_query_sha256_canonical": "4113d739bd8029fc1678b667009d4ec3fe6311b960aed520304a2fe5c8e37ff0",
+  "claim_status": "EXPLORATORY",
+  "sealed_test_used_for_fitting": false
+}

@@ -19,7 +19,7 @@ V2.1 status (research program, not a result): **M0 audit complete**. The v0.1.1 
 
 V2.4 status: developmental WDI + neural path is implemented through a 3036-instance BM25 pilot. See [V2.4 external validation](docs/V2_4_EXTERNAL_VALIDATION_REPORT.md). Simple top-1 BM25 currently beats the V2.4 policy on intent exact in that table.
 
-Milestone A (selective compute) adds a deterministic complexity gate and `quasar2 gate-experiment`. C1 is exploratory until a sealed matched WDI run exists. See [Milestone A](docs/MILESTONE_A.md) and [source registry](docs/SOURCE_REGISTRY.md).
+Milestone A (selective compute) adds a deterministic complexity gate and `quasar2 gate-experiment`. Milestone A1 adds matched FAST vs QUASAR rescue/overthinking decomposition (`quasar2 a1-decompose`). C1 is exploratory until a sealed matched WDI run exists. See [Milestone A](docs/MILESTONE_A.md), [Milestone A1](docs/MILESTONE_A1.md), and [source registry](docs/SOURCE_REGISTRY.md).
 
 ## The falsifiable question
 

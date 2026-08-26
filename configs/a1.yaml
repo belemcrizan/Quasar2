@@ -1,0 +1,16 @@
+schema_version: "a1.0.0"
+phase: A1
+claim: C1
+claim_status: EXPLORATORY
+note: >
+  Decomposition of existing matched FAST_ONLY vs QUASAR_ALWAYS artifacts.
+  Feature ranking uses calibration+development. Threshold proposals use
+  calibration only. sealed_test is never used for fitting.
+default_runs:
+  - experiments/results/gate_pilot_bm25
+  - experiments/results/v24_r2_ci_bm25_minilm
+default_benchmark: data/wdi/benchmarks/pilot.json
+output: experiments/results/milestone_a1
+analysis_splits: [calibration, development]
+proposal_splits: [calibration]
+sealed_splits: [sealed_test]

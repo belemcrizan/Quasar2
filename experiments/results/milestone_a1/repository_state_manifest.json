@@ -1,0 +1,205 @@
+{
+  "schema_version": "repository_state.1",
+  "created_at": "2026-08-26T13:00:29+00:00",
+  "last_verified_commit": "982d6d2f7930bba56219e89303348c790ca0f356",
+  "validation_levels_run": [
+    "STRUCTURAL_VALIDATION"
+  ],
+  "test_method_count": 59,
+  "wdi_observation_total": 15120,
+  "capabilities": [
+    {
+      "capability_id": "latent_intent_core",
+      "claimed_status": "present",
+      "verified_status": "VERIFIED_PRESENT",
+      "implementation_files": [
+        "src/quasar2/pipeline.py",
+        "src/quasar2/decision/__init__.py"
+      ],
+      "test_files": [
+        "tests/test_pipeline.py",
+        "tests/test_components.py"
+      ],
+      "CLI_or_API_entrypoint": "quasar2 demo",
+      "artifact_paths": [
+        "experiments/results/frozen/v0.1.1/"
+      ],
+      "last_verified_commit": "982d6d2f7930bba56219e89303348c790ca0f356",
+      "validation_command": "python -m unittest tests.test_pipeline",
+      "notes": "v0.1.1 loop remains the frozen sanity core."
+    },
+    {
+      "capability_id": "bm25_retrieval",
+      "claimed_status": "present",
+      "verified_status": "VERIFIED_PRESENT",
+      "implementation_files": [
+        "src/quasar2/retrieval/bm25.py"
+      ],
+      "test_files": [
+        "tests/test_components.py"
+      ],
+      "CLI_or_API_entrypoint": "quasar2 benchmark",
+      "artifact_paths": [
+        "experiments/results/v24_r3_pilot_bm25/"
+      ],
+      "last_verified_commit": "982d6d2f7930bba56219e89303348c790ca0f356",
+      "validation_command": "python -m unittest tests.test_components",
+      "notes": ""
+    },
+    {
+      "capability_id": "dense_hash_debug",
+      "claimed_status": "present",
+      "verified_status": "VERIFIED_PRESENT",
+      "implementation_files": [
+        "src/quasar2/retrieval/dense.py"
+      ],
+      "test_files": [
+        "tests/test_v24_wdi.py"
+      ],
+      "CLI_or_API_entrypoint": "quasar2 wdi-experiment --backends dense_hash",
+      "artifact_paths": [
+        "experiments/results/frozen/v24_r0_baseline.json"
+      ],
+      "last_verified_commit": "982d6d2f7930bba56219e89303348c790ca0f356",
+      "validation_command": "python -m unittest tests.test_v24_wdi.WdiOfflineIntegrationTests.test_crossed_smoke_and_hashing_not_neural",
+      "notes": "Hashing is not a neural substitute."
+    },
+    {
+      "capability_id": "optional_neural_retrieval",
+      "claimed_status": "present",
+      "verified_status": "PARTIAL",
+      "implementation_files": [
+        "src/quasar2/retrieval/neural.py",
+        "src/quasar2/retrieval/factory.py"
+      ],
+      "test_files": [
+        "tests/test_v24_wdi.py"
+      ],
+      "CLI_or_API_entrypoint": "quasar2 neural-doctor; quasar2 wdi-experiment --backends neural",
+      "artifact_paths": [
+        "experiments/results/v24_r2_ci_bm25_minilm/"
+      ],
+      "last_verified_commit": "982d6d2f7930bba56219e89303348c790ca0f356",
+      "validation_command": "quasar2 neural-doctor",
+      "notes": "CI neural n=40 exists. Matched 3036-query neural FAST/QUASAR pilot is absent."
+    },
+    {
+      "capability_id": "wdi_pilot_3036",
+      "claimed_status": "3036-query WDI pilot",
+      "verified_status": "VERIFIED_PRESENT",
+      "implementation_files": [
+        "src/quasar2/benchmarks/wdi_bench.py"
+      ],
+      "test_files": [
+        "tests/test_v24_wdi.py"
+      ],
+      "CLI_or_API_entrypoint": "quasar2 wdi-experiment --stage pilot",
+      "artifact_paths": [
+        "data/wdi/benchmarks/pilot.json",
+        "experiments/results/v24_r3_pilot_bm25/",
+        "experiments/results/gate_pilot_bm25/"
+      ],
+      "last_verified_commit": "982d6d2f7930bba56219e89303348c790ca0f356",
+      "validation_command": "python -c \"import json; print(json.load(open('data/wdi/benchmarks/pilot.json'))['n_instances'])\"",
+      "notes": "pilot.json n_instances=3036; n_canonical=600."
+    },
+    {
+      "capability_id": "wdi_observations_15120",
+      "claimed_status": "approximately 15,120 normalized WDI observations",
+      "verified_status": "VERIFIED_PRESENT",
+      "implementation_files": [
+        "src/quasar2/wdi/normalize.py",
+        "src/quasar2/wdi/snapshot.py"
+      ],
+      "test_files": [
+        "tests/test_v24_wdi.py"
+      ],
+      "CLI_or_API_entrypoint": "quasar2 wdi-validate",
+      "artifact_paths": [
+        "data/wdi/snapshots/pilot-live/validation_report.json"
+      ],
+      "last_verified_commit": "982d6d2f7930bba56219e89303348c790ca0f356",
+      "validation_command": "quasar2 wdi-validate --snapshot data/wdi/snapshots/pilot-live",
+      "notes": "observed=12889 not_available=2231 total=15120. Claim of ~15120 matches observed+not_available."
+    },
+    {
+      "capability_id": "complexity_gate",
+      "claimed_status": "present",
+      "verified_status": "VERIFIED_PRESENT",
+      "implementation_files": [
+        "src/quasar2/gate/complexity.py"
+      ],
+      "test_files": [
+        "tests/test_milestone_a.py"
+      ],
+      "CLI_or_API_entrypoint": "quasar2 gate-experiment",
+      "artifact_paths": [
+        "experiments/results/gate_pilot_bm25/",
+        "experiments/results/gate_ci_offline/"
+      ],
+      "last_verified_commit": "982d6d2f7930bba56219e89303348c790ca0f356",
+      "validation_command": "python -m unittest tests.test_milestone_a",
+      "notes": "C1 remains INCONCLUSIVE / exploratory."
+    },
+    {
+      "capability_id": "source_registry_jwst_cern_inspire",
+      "claimed_status": "fixture infrastructure present",
+      "verified_status": "VERIFIED_PRESENT",
+      "implementation_files": [
+        "src/quasar2/sources/registry.py",
+        "src/quasar2/sources/fixtures.py"
+      ],
+      "test_files": [
+        "tests/test_milestone_a.py"
+      ],
+      "CLI_or_API_entrypoint": "quasar2 source-validate / jwst-validate / cern-validate",
+      "artifact_paths": [
+        "data/sources/fixtures/jwst_mast/snapshot_manifest.json",
+        "data/sources/fixtures/cern_opendata/snapshot_manifest.json",
+        "data/sources/fixtures/inspire/snapshot_manifest.json"
+      ],
+      "last_verified_commit": "982d6d2f7930bba56219e89303348c790ca0f356",
+      "validation_command": "quasar2 jwst-validate",
+      "notes": "Metadata fixtures only. Not completed scientific benchmarks."
+    },
+    {
+      "capability_id": "passing_tests_50plus",
+      "claimed_status": "50+ passing tests",
+      "verified_status": "VERIFIED_PRESENT",
+      "implementation_files": [
+        "tests/"
+      ],
+      "test_files": [
+        "tests/test_pipeline.py",
+        "tests/test_components.py",
+        "tests/test_v02.py",
+        "tests/test_v24_wdi.py",
+        "tests/test_milestone_a.py"
+      ],
+      "CLI_or_API_entrypoint": "python -m unittest discover -s tests",
+      "artifact_paths": [],
+      "last_verified_commit": "982d6d2f7930bba56219e89303348c790ca0f356",
+      "validation_command": "python -m unittest discover -s tests -v",
+      "notes": "Collected def test_* count from tests/: 59. Execution_validation is a separate CI step."
+    },
+    {
+      "capability_id": "h_unknown_docs_conflict",
+      "claimed_status": "H_unknown/open-set concepts present in CURRENT PROJECT STATE",
+      "verified_status": "CONFLICTING_EVIDENCE",
+      "implementation_files": [
+        "src/quasar2/v24/pipeline.py"
+      ],
+      "test_files": [
+        "tests/test_v24_wdi.py"
+      ],
+      "CLI_or_API_entrypoint": "n/a",
+      "artifact_paths": [
+        "docs/LIMITATIONS.md"
+      ],
+      "last_verified_commit": "982d6d2f7930bba56219e89303348c790ca0f356",
+      "validation_command": "python -m unittest tests.test_v24_wdi",
+      "notes": "docs/LIMITATIONS.md still says the current decision space has no explicit UNKNOWN_HYPOTHESIS; v24 pipeline emits H_unknown. Historical limitation text preserved."
+    }
+  ],
+  "preservation_note": "Inaccurate historical claims are marked, not deleted."
+}

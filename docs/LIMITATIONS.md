@@ -15,6 +15,7 @@
 - The current benchmark has one frozen fixture, not 30+ perturbation seeds.
 - The astronomy/AI table is a sanity test; v0.2 ops still is not an external IR collection.
 - The complexity gate is a cheap heuristic. FAST vs QUASAR routing is not a sealed C1 result.
+- Milestone A1 rescue/overthinking associations are exploratory and not causal.
 - JWST/CERN fixtures are metadata-only and are not completed domain benchmarks.
 
 ## Mechanism failure modes
