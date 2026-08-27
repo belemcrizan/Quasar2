@@ -59,7 +59,7 @@ That could be an exoplanet transit, disk accretion, or another catalog interpret
 - a production safety controller or a cloud product;
 - a full knowledge **graph** (the optional extra `quasar2[graph]` is empty; there is no graph backend in `src/`);
 - conformal prediction (a telemetry field exists; no conformal procedure is implemented);
-- FAISS, a public PyPI release workflow, or a REST/UI frontend.
+- FAISS, a public PyPI release workflow, or a claim that NASA/ESA/ALMA TAP dumps are confirmatory.
 
 ---
 
@@ -164,6 +164,9 @@ These are **motivating applications**, not deployments or customer validations.
 | Cloud runner / HTTP API / UI | NOT_FOUND | — |
 | Discriminative / falsification EXPLORE (rescue path) | EXPERIMENTAL | `quasar2 rescue-cycle`; 1/2 FastWrong rescued on sanity; ΔU not positive |
 | Recoverability v2 (pre-action R*) | IMPLEMENTED, not policy-ready | holdout positives=0 on this fixture; Cycle 6 BLOCKED |
+| Research Cockpit + stdlib API | IMPLEMENTED | `quasar2 serve` / `quasar2 dashboard`; artifacts only; optional `quasar2[app]` FastAPI/Streamlit |
+| Docker Compose API | IMPLEMENTED | `docker compose up --build`; non-root; healthcheck `/health` |
+| Cloud deployment | NOT_RUN | [blueprint](docs/CLOUD_BLUEPRINT.md) only; no credentials in-repo |
 
 ---
 
@@ -269,8 +272,12 @@ Writes `experiments/results/benchmark.json` and `.csv` unless `--output` is set.
 | `shadow-study` | Sanity shadow transition matrix | `--limit`, `--conditions`, `--shadow-policy`; does not write `experiments/results/benchmark.json` |
 | `policy-compare` | Oracle vs threshold/myopic/SPRT/learned on synthetic states | `--n`, `--seed`; not WDI |
 | `cycle2-audit` | Cycle 2 recoverability/policy path | does not change the legacy loop |
-| `rescue-cycle` | Cycle 4–7A error anatomy, oracles, discriminative arms | aliases: `error-anatomy`, `oracle-evaluate`, `discriminative-experiment`, `recoverability-v2`, `action-value-experiment`, `cycle-report`; `--overwrite`; does not change the legacy loop |
-| `external-validity` | Source audit, schema-faithful NASA/ESA/ALMA transfer, scale, equal-budget, regime | `--smoke` for CI; **not** live TAP dumps; `--overwrite` |
+| `rescue-cycle` | Cycle 4–7A error anatomy, oracles, discriminative arms | aliases: `error-anatomy`, `oracle-evaluate`, `discriminative-experiment`, `recoverability-v2`, `action-value-experiment`, `cycle-report`, `rescue-experiment`; `--overwrite`; does not change the legacy loop |
+| `policy-evaluate` | Execute experimental gated actions | does not promote Cycle 6; fails if selected≠executed |
+| `serve` / `dashboard` | API + Research Cockpit | stdlib; `--streamlit` needs extra |
+| `compare-runs` | Artifact A vs B | no improvement claim when CI includes 0 |
+| `load-test` | Local HTTP probe | `--concurrency 1\|10`; not a cloud SLO |
+| `external-validity` | Source audit, schema-faithful NASA/ESA/ALMA transfer, scale, equal-budget, regime | `--smoke` for CI; **not** live TAP dumps; `--overwrite`; aliases `external-validate`, `external-benchmark` |
 | `reproduce-paper` | Reconstruct frozen v0.1.1 tables + rerun offline external program | no silent mutable downloads; `--full` for non-smoke |
 
 There is no `wdi-build-queries` command. Query JSON is produced by `dataset-build`.
@@ -327,7 +334,7 @@ quasar2/
 └── tests/
 ```
 
-Library use: `QuasarPipeline.from_config(...)` then `.run(query, domain)`. There is no HTTP server in this repository.
+Library use: `QuasarPipeline.from_config(...)` then `.run(query, domain)`. HTTP: `quasar2 serve` (stdlib) exposes `/health`, `/v1/decide`, and the Research Cockpit at `/`. Oracle fields are not returned on runtime endpoints.
 
 Safeguards in the POC loop: gold intent is not passed in; evidence pairs `(hypothesis_id, document_id)` are unique; exploration queries are hashed; zero-novel rounds stop further EXPLORE; traces keep unfavorable outcomes.
 

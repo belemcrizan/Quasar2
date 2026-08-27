@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Cycle 4–7A plus observability: canonical `trace.runtime|evaluation|oracle` split, experimental action contract (`policy-evaluate` fails if selected≠executed), stdlib Research Cockpit/API (`quasar2 serve`), Docker non-root image, local load probe. Frozen v0.1.1 unchanged. Cycle 6 policy remains BLOCKED (NetRescueRate and ΔU not positive). Neural CrossEncoder full protocol remains NOT_RUN without extras. NASA/ESA/ALMA remain SCHEMA_FAITHFUL, not confirmatory TAP dumps.
+
 - Cycle 4–7A rescue chain (`quasar2 rescue-cycle` and aliases): Evidence Oracle, causal-order error anatomy, predicted vs oracle discriminative acquisition, recoverability-v2 pre-action features, ANALYZE/ASK/DEFER diagnostics. Frozen v0.1.1 loop unchanged. On the 120-query sanity fixture FastWrong=2/120, OracleRescueCeiling=2/2, falsification Rescue=1/2, NetRescueRate=0 and ΔU<0 so Cycle 6 policy is BLOCKED. Historical WDI A1 Rescue=0 is preserved (n_matched=3116, not the ~400 cited in some notes).
 
 - Cycle 3 external-validity program (`quasar2 external-validity`, `quasar2 reproduce-paper`): official NASA/ESA/observatory source audit, schema-faithful snapshots (not live TAP dumps), clustered transfer/scale/equal-budget/regime maps, Dockerfile. Frozen v0.1.1, Gate 1 FAIL, and Cycle 2 negative results are unchanged. No claim promoted to SUPPORTED_IN_SCOPE.

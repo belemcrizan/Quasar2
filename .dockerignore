@@ -1,5 +1,11 @@
-__pycache__/
-*.pyc
 .venv/
 .pytest_cache/
 experiments/results/paper_reproduce/
+.git
+*.pyc
+__pycache__/
+.cursor
+.vscode
+.env
+.env.*
+*.pem

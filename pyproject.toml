@@ -23,7 +23,7 @@ dependencies = []
 dev = ["pytest>=8.0", "ruff>=0.5"]
 neural = ["sentence-transformers>=3.0", "numpy>=1.24", "torch>=2.6"]
 dense = ["sentence-transformers>=3.0", "numpy>=1.24", "torch>=2.6"]
-graph = []
+app = ["fastapi>=0.110", "uvicorn>=0.27", "streamlit>=1.32", "plotly>=5.18"]
 benchmark = ["pytest>=8.0"]
 all = ["sentence-transformers>=3.0", "numpy>=1.24", "torch>=2.6", "pytest>=8.0"]
 

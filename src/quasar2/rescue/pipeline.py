@@ -31,6 +31,7 @@ Arm = Literal[
     "pairwise_contrastive",
     "falsification",
     "contradiction",
+    "support",
     "eig_approx",
     "discriminative_rerank",
 ]
@@ -266,6 +267,7 @@ class RescuePipeline:
                 "discriminative_rerank",
                 "eig_approx",
                 "contradiction",
+                "support",
                 "falsification",
                 "hypothesis_conditioned",
             }:
@@ -344,6 +346,8 @@ def _select_queries(arm: str, queries: dict[str, str], observation: Observation)
         return [queries.get("falsification") or observation.normalized_query]
     if arm == "contradiction":
         return [queries.get("falsification") or observation.normalized_query]
+    if arm == "support":
+        return [queries.get("pairwise_plus") or queries.get("hypothesis") or observation.normalized_query]
     if arm in {"pairwise_contrastive", "discriminative_rerank", "eig_approx"}:
         return [queries[key] for key in ("pairwise_plus", "contrast", "falsification") if key in queries] or [
             observation.normalized_query

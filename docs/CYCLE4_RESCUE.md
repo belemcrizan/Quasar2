@@ -50,6 +50,8 @@ This document does not replace `REPORT.md`. Numbers below match that run.
 
 OracleRescueCeiling = 2/2 (Wilson CI [0.34, 1.00]). Ceiling is high; the live pairwise disc arm still rescued **zero**. The single non-oracle rescue is **falsification retrieval**, not the frozen Full loop.
 
+Inspect artifacts in the Research Cockpit: `python -m quasar2.cli serve` then open `/`. Traces are written to `traces.jsonl` with `runtime` / `evaluation` / `oracle` namespaces. Experimental `policy-evaluate` executes selected actions on the rescue pipeline only; Cycle 6 remains BLOCKED.
+
 ## Claims allowed vs forbidden
 
 Allowed: the chain *can* break at hypothesis generation or at retrieval; falsification queries can rescue one catalog error; extra always-on acquisition has negative mean ΔU on this easy fixture; WDI A1 Rescue remains 0 in the historical table.
