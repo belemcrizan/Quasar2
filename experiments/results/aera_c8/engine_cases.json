@@ -1,0 +1,1564 @@
+{
+  "rows": [
+    {
+      "intent_id": "astro-01",
+      "query": "Why does a star dim at the same interval when a planet crosses it?",
+      "domain": "astronomy",
+      "fast_predicted": "astro.exoplanet_transit",
+      "selected_action": "ANALYZE",
+      "executed_action": "ANALYZE",
+      "quotes": [
+        {
+          "name": "ANSWER",
+          "expected_gain": 0.048680215693155504,
+          "cost": 0.0,
+          "risk": 0.23782994607671112,
+          "latency": 0.01,
+          "model_uncertainty": 0.3878299460767111,
+          "robust_net": -0.34975274715202176,
+          "eligible": true,
+          "maturity": "ACTIVE",
+          "reason": "commit"
+        },
+        {
+          "name": "BM25",
+          "expected_gain": 0.15221116548909513,
+          "cost": 0.1,
+          "risk": 0.05,
+          "latency": 0.02,
+          "model_uncertainty": 0.3878299460767111,
+          "robust_net": -0.15889185127937103,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "lexical channel"
+        },
+        {
+          "name": "DENSE",
+          "expected_gain": 0.171237561175232,
+          "cost": 0.2,
+          "risk": 0.08,
+          "latency": 0.04,
+          "model_uncertainty": 0.3878299460767111,
+          "robust_net": -0.27086545559323416,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hashing dense"
+        },
+        {
+          "name": "HYBRID",
+          "expected_gain": 0.1902639568613689,
+          "cost": 0.18,
+          "risk": 0.07,
+          "latency": 0.03,
+          "model_uncertainty": 0.3878299460767111,
+          "robust_net": -0.22133905990709724,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hybrid channel"
+        },
+        {
+          "name": "RERANK",
+          "expected_gain": 0.2092903525475058,
+          "cost": 0.22,
+          "risk": 0.08,
+          "latency": 0.05,
+          "model_uncertainty": 0.3878299460767111,
+          "robust_net": -0.2533126642209603,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "discriminative rerank"
+        },
+        {
+          "name": "DISCRIMINATIVE",
+          "expected_gain": 0.29867742938739117,
+          "cost": 0.25,
+          "risk": 0.1,
+          "latency": 0.06,
+          "model_uncertainty": 0.3878299460767111,
+          "robust_net": -0.21442558738107498,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "falsification queries"
+        },
+        {
+          "name": "ANALYZE",
+          "expected_gain": 0.05707918705841067,
+          "cost": 0.02,
+          "risk": 0.02,
+          "latency": 0.01,
+          "model_uncertainty": 0.3878299460767111,
+          "robust_net": -0.14352382971005548,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "internal recompute"
+        },
+        {
+          "name": "ASK",
+          "expected_gain": 0.39955430940887465,
+          "cost": 0.28,
+          "risk": 0.05,
+          "latency": 2.0,
+          "model_uncertainty": 0.3878299460767111,
+          "robust_net": -0.1905487073595915,
+          "eligible": true,
+          "maturity": "SHADOW",
+          "reason": "specific clarification"
+        },
+        {
+          "name": "VERIFY",
+          "expected_gain": 0.1569805623274276,
+          "cost": 0.12,
+          "risk": 0.04,
+          "latency": 0.08,
+          "model_uncertainty": 0.3878299460767111,
+          "robust_net": -0.16712245444103854,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "independent structured source"
+        },
+        {
+          "name": "DEFER",
+          "expected_gain": 0.0,
+          "cost": 0.05,
+          "risk": 0.05,
+          "latency": 0.0,
+          "model_uncertainty": 0.3878299460767111,
+          "robust_net": null,
+          "eligible": false,
+          "maturity": "ELIGIBLE",
+          "reason": "open-set abstention"
+        }
+      ],
+      "twin": {
+        "action": "ANALYZE",
+        "expected_u": -0.012485760504151813,
+        "sigma": 0.3878299460767111,
+        "misspecification": 0.35,
+        "calibrated": false,
+        "outcomes": {
+          "rescue": 0.019044937919852914,
+          "no_change": 0.9008770978287065,
+          "overthink": 0.05004872765715036,
+          "abstain": 0.030029236594290215
+        }
+      },
+      "plan": {
+        "best_plan": [
+          "ANSWER"
+        ],
+        "best_value": -0.035,
+        "best_cost": 0.0,
+        "greedy_action": "ANALYZE",
+        "greedy_value": -0.03248576050415181,
+        "multi_step_beats_one_step": false,
+        "equal_budget": true,
+        "horizon": 2
+      },
+      "ask": {
+        "type": "discriminant_attribute",
+        "question": "Did you observe flat bottom / orbital period / transit depth rather than millimeter continuum / disk gap / snow line?",
+        "voi_proxy": 0.45,
+        "cost": 0.28,
+        "net": 0.16999999999999998
+      },
+      "verify": {
+        "claim": "transit.flat_bottom",
+        "source_id": "sanity_structured_facts_v1",
+        "method": "structured_lookup",
+        "result": "CONFIRMED",
+        "confidence": 0.8,
+        "independence": 1.0,
+        "cost": 0.12,
+        "retrieval_calls": 0,
+        "decision_changed": false
+      },
+      "provenance_adjustment": {
+        "base": 1.0,
+        "adjusted": 1.0,
+        "redundant": false,
+        "superseded": false,
+        "decision_relevant": false
+      },
+      "evaluation": {
+        "four_way_class": "BOTH_CORRECT",
+        "fast_correct": true,
+        "deliberative_correct": true,
+        "delta_u": -0.02,
+        "eroi": {
+          "status": "DEFINED",
+          "eroi": -1.0,
+          "delta_u": -0.02,
+          "delta_c": 0.02
+        },
+        "primary_failure": "NONE"
+      },
+      "oracle_used": true,
+      "policy_changes_execution": true
+    },
+    {
+      "intent_id": "astro-02",
+      "query": "Why does a star brighten suddenly and then cool more slowly?",
+      "domain": "astronomy",
+      "fast_predicted": "astro.brown_dwarf_atmosphere",
+      "selected_action": "ANALYZE",
+      "executed_action": "ANALYZE",
+      "quotes": [
+        {
+          "name": "ANSWER",
+          "expected_gain": 0.062201301065013315,
+          "cost": 0.0,
+          "risk": 0.23444967473374667,
+          "latency": 0.01,
+          "model_uncertainty": 0.3844496747337467,
+          "robust_net": -0.33219876176945423,
+          "eligible": true,
+          "maturity": "ACTIVE",
+          "reason": "commit"
+        },
+        {
+          "name": "BM25",
+          "expected_gain": 0.15004779182959788,
+          "cost": 0.1,
+          "risk": 0.05,
+          "latency": 0.02,
+          "model_uncertainty": 0.3844496747337467,
+          "robust_net": -0.16040259627112302,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "lexical channel"
+        },
+        {
+          "name": "DENSE",
+          "expected_gain": 0.1688037658082976,
+          "cost": 0.2,
+          "risk": 0.08,
+          "latency": 0.04,
+          "model_uncertainty": 0.3844496747337467,
+          "robust_net": -0.2726466222924233,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hashing dense"
+        },
+        {
+          "name": "HYBRID",
+          "expected_gain": 0.18755973978699736,
+          "cost": 0.18,
+          "risk": 0.07,
+          "latency": 0.03,
+          "model_uncertainty": 0.3844496747337467,
+          "robust_net": -0.22339064831372352,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hybrid channel"
+        },
+        {
+          "name": "RERANK",
+          "expected_gain": 0.20631571376569707,
+          "cost": 0.22,
+          "risk": 0.08,
+          "latency": 0.05,
+          "model_uncertainty": 0.3844496747337467,
+          "robust_net": -0.25563467433502385,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "discriminative rerank"
+        },
+        {
+          "name": "DISCRIMINATIVE",
+          "expected_gain": 0.2873532206287569,
+          "cost": 0.25,
+          "risk": 0.1,
+          "latency": 0.06,
+          "model_uncertainty": 0.3844496747337467,
+          "robust_net": -0.225097167471964,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "falsification queries"
+        },
+        {
+          "name": "ANALYZE",
+          "expected_gain": 0.0562679219360992,
+          "cost": 0.02,
+          "risk": 0.02,
+          "latency": 0.01,
+          "model_uncertainty": 0.3844496747337467,
+          "robust_net": -0.14368246616462169,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "internal recompute"
+        },
+        {
+          "name": "ASK",
+          "expected_gain": 0.3938754535526944,
+          "cost": 0.28,
+          "risk": 0.05,
+          "latency": 2.0,
+          "model_uncertainty": 0.3844496747337467,
+          "robust_net": -0.19557493454802655,
+          "eligible": true,
+          "maturity": "SHADOW",
+          "reason": "specific clarification"
+        },
+        {
+          "name": "VERIFY",
+          "expected_gain": 0.1532062376259907,
+          "cost": 0.12,
+          "risk": 0.04,
+          "latency": 0.08,
+          "model_uncertainty": 0.3844496747337467,
+          "robust_net": -0.17024415047473018,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "independent structured source"
+        },
+        {
+          "name": "DEFER",
+          "expected_gain": 0.0,
+          "cost": 0.05,
+          "risk": 0.05,
+          "latency": 0.0,
+          "model_uncertainty": 0.3844496747337467,
+          "robust_net": null,
+          "eligible": false,
+          "maturity": "ELIGIBLE",
+          "reason": "open-set abstention"
+        }
+      ],
+      "twin": {
+        "action": "ANALYZE",
+        "expected_u": -0.01275989966851708,
+        "sigma": 0.3844496747337467,
+        "misspecification": 0.35,
+        "calibrated": false,
+        "outcomes": {
+          "rescue": 0.01877933596129833,
+          "no_change": 0.901121017994726,
+          "overthink": 0.05006227877748478,
+          "abstain": 0.030037367266490866
+        }
+      },
+      "plan": {
+        "best_plan": [
+          "ANSWER"
+        ],
+        "best_value": -0.035,
+        "best_cost": 0.0,
+        "greedy_action": "ANALYZE",
+        "greedy_value": -0.032759899668517084,
+        "multi_step_beats_one_step": false,
+        "equal_budget": true,
+        "horizon": 2
+      },
+      "ask": {
+        "type": "discriminant_attribute",
+        "question": "Did you observe methane absorption / infrared colors / rotation modulation rather than regular pulsation / standard candle / days long period?",
+        "voi_proxy": 0.45,
+        "cost": 0.28,
+        "net": 0.16999999999999998
+      },
+      "verify": {
+        "claim": "brown_dwarf_atmosphere.observed",
+        "source_id": "sanity_structured_facts_v1",
+        "method": "structured_lookup",
+        "result": "INCONCLUSIVE",
+        "confidence": 0.16000000000000003,
+        "independence": 1.0,
+        "cost": 0.12,
+        "retrieval_calls": 0,
+        "decision_changed": false
+      },
+      "provenance_adjustment": {
+        "base": 1.0,
+        "adjusted": 1.0,
+        "redundant": false,
+        "superseded": false,
+        "decision_relevant": false
+      },
+      "evaluation": {
+        "four_way_class": "BOTH_WRONG",
+        "fast_correct": false,
+        "deliberative_correct": false,
+        "delta_u": -0.02,
+        "eroi": {
+          "status": "DEFINED",
+          "eroi": -1.0,
+          "delta_u": -0.02,
+          "delta_c": 0.02
+        },
+        "primary_failure": "INDETERMINATE"
+      },
+      "oracle_used": true,
+      "policy_changes_execution": true
+    },
+    {
+      "intent_id": "astro-03",
+      "query": "A foreground object makes a distant star brighten symmetrically only once",
+      "domain": "astronomy",
+      "fast_predicted": "astro.cepheid_variable",
+      "selected_action": "ANALYZE",
+      "executed_action": "ANALYZE",
+      "quotes": [
+        {
+          "name": "ANSWER",
+          "expected_gain": 0.019795879220749324,
+          "cost": 0.0,
+          "risk": 0.24505103019481267,
+          "latency": 0.01,
+          "model_uncertainty": 0.3950510301948127,
+          "robust_net": -0.38727148008855905,
+          "eligible": true,
+          "maturity": "ACTIVE",
+          "reason": "commit"
+        },
+        {
+          "name": "BM25",
+          "expected_gain": 0.1568326593246801,
+          "cost": 0.1,
+          "risk": 0.05,
+          "latency": 0.02,
+          "model_uncertainty": 0.3950510301948127,
+          "robust_net": -0.1556836697898156,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "lexical channel"
+        },
+        {
+          "name": "DENSE",
+          "expected_gain": 0.1764367417402651,
+          "cost": 0.2,
+          "risk": 0.08,
+          "latency": 0.04,
+          "model_uncertainty": 0.3950510301948127,
+          "robust_net": -0.2670795873742306,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hashing dense"
+        },
+        {
+          "name": "HYBRID",
+          "expected_gain": 0.19604082415585014,
+          "cost": 0.18,
+          "risk": 0.07,
+          "latency": 0.03,
+          "model_uncertainty": 0.3950510301948127,
+          "robust_net": -0.21697550495864554,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hybrid channel"
+        },
+        {
+          "name": "RERANK",
+          "expected_gain": 0.21564490657143515,
+          "cost": 0.22,
+          "risk": 0.08,
+          "latency": 0.05,
+          "model_uncertainty": 0.3950510301948127,
+          "robust_net": -0.24837142254306055,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "discriminative rerank"
+        },
+        {
+          "name": "DISCRIMINATIVE",
+          "expected_gain": 0.33590212658511126,
+          "cost": 0.25,
+          "risk": 0.1,
+          "latency": 0.06,
+          "model_uncertainty": 0.3950510301948127,
+          "robust_net": -0.17861420252938442,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "falsification queries"
+        },
+        {
+          "name": "ANALYZE",
+          "expected_gain": 0.05881224724675504,
+          "cost": 0.02,
+          "risk": 0.02,
+          "latency": 0.01,
+          "model_uncertainty": 0.3950510301948127,
+          "robust_net": -0.14320408186774064,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "internal recompute"
+        },
+        {
+          "name": "ASK",
+          "expected_gain": 0.41168573072728526,
+          "cost": 0.28,
+          "risk": 0.05,
+          "latency": 2.0,
+          "model_uncertainty": 0.3950510301948127,
+          "robust_net": -0.17983059838721047,
+          "eligible": true,
+          "maturity": "SHADOW",
+          "reason": "specific clarification"
+        },
+        {
+          "name": "VERIFY",
+          "expected_gain": 0.17134294758834165,
+          "cost": 0.12,
+          "risk": 0.04,
+          "latency": 0.08,
+          "model_uncertainty": 0.3950510301948127,
+          "robust_net": -0.15417338152615404,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "independent structured source"
+        },
+        {
+          "name": "DEFER",
+          "expected_gain": 0.0,
+          "cost": 0.05,
+          "risk": 0.05,
+          "latency": 0.0,
+          "model_uncertainty": 0.3950510301948127,
+          "robust_net": null,
+          "eligible": false,
+          "maturity": "ELIGIBLE",
+          "reason": "open-set abstention"
+        }
+      ],
+      "twin": {
+        "action": "ANALYZE",
+        "expected_u": -0.011900629252801774,
+        "sigma": 0.3950510301948127,
+        "misspecification": 0.35,
+        "calibrated": false,
+        "outcomes": {
+          "rescue": 0.019611847090711083,
+          "no_change": 0.9003564669575101,
+          "overthink": 0.05001980371986168,
+          "abstain": 0.030011882231917003
+        }
+      },
+      "plan": {
+        "best_plan": [
+          "ANSWER"
+        ],
+        "best_value": -0.035,
+        "best_cost": 0.0,
+        "greedy_action": "DISCRIMINATIVE",
+        "greedy_value": -0.020119724393075133,
+        "multi_step_beats_one_step": false,
+        "equal_budget": true,
+        "horizon": 2
+      },
+      "ask": {
+        "type": "discriminant_attribute",
+        "question": "Did you observe regular pulsation / standard candle / days long period rather than symmetric brightening / achromatic amplification / einstein timescale?",
+        "voi_proxy": 0.45,
+        "cost": 0.28,
+        "net": 0.16999999999999998
+      },
+      "verify": {
+        "claim": "cepheid_variable.period_stable",
+        "source_id": "sanity_structured_facts_v1",
+        "method": "structured_lookup",
+        "result": "CONFIRMED",
+        "confidence": 0.8,
+        "independence": 1.0,
+        "cost": 0.12,
+        "retrieval_calls": 0,
+        "decision_changed": false
+      },
+      "provenance_adjustment": {
+        "base": 1.0,
+        "adjusted": 1.0,
+        "redundant": false,
+        "superseded": false,
+        "decision_relevant": false
+      },
+      "evaluation": {
+        "four_way_class": "BOTH_WRONG",
+        "fast_correct": false,
+        "deliberative_correct": false,
+        "delta_u": -0.02,
+        "eroi": {
+          "status": "DEFINED",
+          "eroi": -1.0,
+          "delta_u": -0.02,
+          "delta_c": 0.02
+        },
+        "primary_failure": "INDETERMINATE"
+      },
+      "oracle_used": true,
+      "policy_changes_execution": true
+    },
+    {
+      "intent_id": "astro-04",
+      "query": "The radio pulsar clock has pulses arriving off schedule",
+      "domain": "astronomy",
+      "fast_predicted": "astro.pulsar_timing",
+      "selected_action": "ANSWER",
+      "executed_action": "ANSWER",
+      "quotes": [
+        {
+          "name": "ANSWER",
+          "expected_gain": 0.8677032539601245,
+          "cost": 0.0,
+          "risk": 0.033074186509968885,
+          "latency": 0.01,
+          "model_uncertainty": 0.18307418650996887,
+          "robust_net": 0.703250028008584,
+          "eligible": true,
+          "maturity": "ACTIVE",
+          "reason": "commit"
+        },
+        {
+          "name": "BM25",
+          "expected_gain": 0.021167479366380085,
+          "cost": 0.1,
+          "risk": 0.05,
+          "latency": 0.02,
+          "model_uncertainty": 0.18307418650996887,
+          "robust_net": -0.26071156007519164,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "lexical channel"
+        },
+        {
+          "name": "DENSE",
+          "expected_gain": 0.023813414287177596,
+          "cost": 0.2,
+          "risk": 0.08,
+          "latency": 0.04,
+          "model_uncertainty": 0.18307418650996887,
+          "robust_net": -0.38906562515439413,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hashing dense"
+        },
+        {
+          "name": "HYBRID",
+          "expected_gain": 0.02645934920797511,
+          "cost": 0.18,
+          "risk": 0.07,
+          "latency": 0.03,
+          "model_uncertainty": 0.18307418650996887,
+          "robust_net": -0.3559196902335966,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hybrid channel"
+        },
+        {
+          "name": "RERANK",
+          "expected_gain": 0.02910528412877262,
+          "cost": 0.22,
+          "risk": 0.08,
+          "latency": 0.05,
+          "model_uncertainty": 0.18307418650996887,
+          "robust_net": -0.4042737553127991,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "discriminative rerank"
+        },
+        {
+          "name": "DISCRIMINATIVE",
+          "expected_gain": 0.004282310350797789,
+          "cost": 0.25,
+          "risk": 0.1,
+          "latency": 0.06,
+          "model_uncertainty": 0.18307418650996887,
+          "robust_net": -0.47959672909077394,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "falsification queries"
+        },
+        {
+          "name": "ANALYZE",
+          "expected_gain": 0.007937804762392532,
+          "cost": 0.02,
+          "risk": 0.02,
+          "latency": 0.01,
+          "model_uncertainty": 0.18307418650996887,
+          "robust_net": -0.16344123467917918,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "internal recompute"
+        },
+        {
+          "name": "ASK",
+          "expected_gain": 0.05556463333674772,
+          "cost": 0.28,
+          "risk": 0.05,
+          "latency": 2.0,
+          "model_uncertainty": 0.18307418650996887,
+          "robust_net": -0.5053144061048239,
+          "eligible": true,
+          "maturity": "SHADOW",
+          "reason": "specific clarification"
+        },
+        {
+          "name": "VERIFY",
+          "expected_gain": 0.016184488579587056,
+          "cost": 0.12,
+          "risk": 0.04,
+          "latency": 0.08,
+          "model_uncertainty": 0.18307418650996887,
+          "robust_net": -0.27869455086198464,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "independent structured source"
+        },
+        {
+          "name": "DEFER",
+          "expected_gain": 0.0,
+          "cost": 0.05,
+          "risk": 0.05,
+          "latency": 0.0,
+          "model_uncertainty": 0.18307418650996887,
+          "robust_net": null,
+          "eligible": false,
+          "maturity": "ELIGIBLE",
+          "reason": "open-set abstention"
+        }
+      ],
+      "twin": {
+        "action": "ANSWER",
+        "expected_u": -0.035,
+        "sigma": 0.18307418650996887,
+        "misspecification": 0.35,
+        "calibrated": false,
+        "outcomes": {
+          "rescue": 0.0,
+          "no_change": 0.85,
+          "overthink": 0.05,
+          "abstain": 0.1
+        }
+      },
+      "plan": {
+        "best_plan": [
+          "ANSWER"
+        ],
+        "best_value": -0.035,
+        "best_cost": 0.0,
+        "greedy_action": "ANSWER",
+        "greedy_value": -0.035,
+        "multi_step_beats_one_step": false,
+        "equal_budget": true,
+        "horizon": 2
+      },
+      "ask": {
+        "type": "discriminant_attribute",
+        "question": "Did you observe dispersion measure / spin period / timing residual rather than high dispersion measure / frequency sweep / millisecond duration?",
+        "voi_proxy": 0.45,
+        "cost": 0.28,
+        "net": 0.16999999999999998
+      },
+      "verify": {
+        "claim": "pulsar_timing.observed",
+        "source_id": "sanity_structured_facts_v1",
+        "method": "structured_lookup",
+        "result": "INCONCLUSIVE",
+        "confidence": 0.16000000000000003,
+        "independence": 1.0,
+        "cost": 0.12,
+        "retrieval_calls": 0,
+        "decision_changed": false
+      },
+      "provenance_adjustment": {
+        "base": 1.0,
+        "adjusted": 1.0,
+        "redundant": false,
+        "superseded": false,
+        "decision_relevant": false
+      },
+      "evaluation": {
+        "four_way_class": "BOTH_CORRECT",
+        "fast_correct": true,
+        "deliberative_correct": true,
+        "delta_u": 0.0,
+        "eroi": {
+          "status": "UNDEFINED_ZERO_COST",
+          "eroi": null,
+          "delta_u": 0.0,
+          "delta_c": 0.0
+        },
+        "primary_failure": "NONE"
+      },
+      "oracle_used": true,
+      "policy_changes_execution": false
+    },
+    {
+      "intent_id": "astro-05",
+      "query": "A millisecond radio flash arrives with a frequency sweep",
+      "domain": "astronomy",
+      "fast_predicted": "astro.fast_radio_burst",
+      "selected_action": "ANSWER",
+      "executed_action": "ANSWER",
+      "quotes": [
+        {
+          "name": "ANSWER",
+          "expected_gain": 0.902626732546493,
+          "cost": 0.0,
+          "risk": 0.02434331686337677,
+          "latency": 0.01,
+          "model_uncertainty": 0.17434331686337676,
+          "robust_net": 0.7476845176493854,
+          "eligible": true,
+          "maturity": "ACTIVE",
+          "reason": "commit"
+        },
+        {
+          "name": "BM25",
+          "expected_gain": 0.015579722792561134,
+          "cost": 0.1,
+          "risk": 0.05,
+          "latency": 0.02,
+          "model_uncertainty": 0.17434331686337676,
+          "robust_net": -0.2655191752411698,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "lexical channel"
+        },
+        {
+          "name": "DENSE",
+          "expected_gain": 0.017527188141631272,
+          "cost": 0.2,
+          "risk": 0.08,
+          "latency": 0.04,
+          "model_uncertainty": 0.17434331686337676,
+          "robust_net": -0.39457170989209966,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hashing dense"
+        },
+        {
+          "name": "HYBRID",
+          "expected_gain": 0.01947465349070142,
+          "cost": 0.18,
+          "risk": 0.07,
+          "latency": 0.03,
+          "model_uncertainty": 0.17434331686337676,
+          "robust_net": -0.3621242445430295,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hybrid channel"
+        },
+        {
+          "name": "RERANK",
+          "expected_gain": 0.021422118839771558,
+          "cost": 0.22,
+          "risk": 0.08,
+          "latency": 0.05,
+          "model_uncertainty": 0.17434331686337676,
+          "robust_net": -0.4111767791939594,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "discriminative rerank"
+        },
+        {
+          "name": "DISCRIMINATIVE",
+          "expected_gain": 0.0011111915810197905,
+          "cost": 0.25,
+          "risk": 0.1,
+          "latency": 0.06,
+          "model_uncertainty": 0.17434331686337676,
+          "robust_net": -0.4819877064527111,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "falsification queries"
+        },
+        {
+          "name": "ANALYZE",
+          "expected_gain": 0.0058423960472104245,
+          "cost": 0.02,
+          "risk": 0.02,
+          "latency": 0.01,
+          "model_uncertainty": 0.17434331686337676,
+          "robust_net": -0.1647565019865205,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "internal recompute"
+        },
+        {
+          "name": "ASK",
+          "expected_gain": 0.04089677233047297,
+          "cost": 0.28,
+          "risk": 0.05,
+          "latency": 2.0,
+          "model_uncertainty": 0.17434331686337676,
+          "robust_net": -0.519202125703258,
+          "eligible": true,
+          "maturity": "SHADOW",
+          "reason": "specific clarification"
+        },
+        {
+          "name": "VERIFY",
+          "expected_gain": 0.0057058349282073356,
+          "cost": 0.12,
+          "risk": 0.04,
+          "latency": 0.08,
+          "model_uncertainty": 0.17434331686337676,
+          "robust_net": -0.2883930631055236,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "independent structured source"
+        },
+        {
+          "name": "DEFER",
+          "expected_gain": 0.0,
+          "cost": 0.05,
+          "risk": 0.05,
+          "latency": 0.0,
+          "model_uncertainty": 0.17434331686337676,
+          "robust_net": null,
+          "eligible": false,
+          "maturity": "ELIGIBLE",
+          "reason": "open-set abstention"
+        }
+      ],
+      "twin": {
+        "action": "ANSWER",
+        "expected_u": -0.035,
+        "sigma": 0.17434331686337676,
+        "misspecification": 0.35,
+        "calibrated": false,
+        "outcomes": {
+          "rescue": 0.0,
+          "no_change": 0.85,
+          "overthink": 0.05,
+          "abstain": 0.1
+        }
+      },
+      "plan": {
+        "best_plan": [
+          "ANSWER"
+        ],
+        "best_value": -0.035,
+        "best_cost": 0.0,
+        "greedy_action": "ANSWER",
+        "greedy_value": -0.035,
+        "multi_step_beats_one_step": false,
+        "equal_budget": true,
+        "horizon": 2
+      },
+      "ask": {
+        "type": "discriminant_attribute",
+        "question": "Did you observe high dispersion measure / frequency sweep / millisecond duration rather than dispersion measure / spin period / timing residual?",
+        "voi_proxy": 0.45,
+        "cost": 0.28,
+        "net": 0.16999999999999998
+      },
+      "verify": {
+        "claim": "fast_radio_burst.observed",
+        "source_id": "sanity_structured_facts_v1",
+        "method": "structured_lookup",
+        "result": "INCONCLUSIVE",
+        "confidence": 0.16000000000000003,
+        "independence": 1.0,
+        "cost": 0.12,
+        "retrieval_calls": 0,
+        "decision_changed": false
+      },
+      "provenance_adjustment": {
+        "base": 1.0,
+        "adjusted": 1.0,
+        "redundant": false,
+        "superseded": false,
+        "decision_relevant": false
+      },
+      "evaluation": {
+        "four_way_class": "BOTH_CORRECT",
+        "fast_correct": true,
+        "deliberative_correct": true,
+        "delta_u": 0.0,
+        "eroi": {
+          "status": "UNDEFINED_ZERO_COST",
+          "eroi": null,
+          "delta_u": 0.0,
+          "delta_c": 0.0
+        },
+        "primary_failure": "NONE"
+      },
+      "oracle_used": true,
+      "policy_changes_execution": false
+    },
+    {
+      "intent_id": "astro-06",
+      "query": "An exploding star peaks and fades over several weeks",
+      "domain": "astronomy",
+      "fast_predicted": "astro.supernova_light_curve",
+      "selected_action": "ANALYZE",
+      "executed_action": "ANALYZE",
+      "quotes": [
+        {
+          "name": "ANSWER",
+          "expected_gain": 0.15020763913815294,
+          "cost": 0.0,
+          "risk": 0.21244809021546177,
+          "latency": 0.01,
+          "model_uncertainty": 0.36244809021546176,
+          "robust_net": -0.2180826056025177,
+          "eligible": true,
+          "maturity": "ACTIVE",
+          "reason": "commit"
+        },
+        {
+          "name": "BM25",
+          "expected_gain": 0.13596677773789553,
+          "cost": 0.1,
+          "risk": 0.05,
+          "latency": 0.02,
+          "model_uncertainty": 0.36244809021546176,
+          "robust_net": -0.17037537678731335,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "lexical channel"
+        },
+        {
+          "name": "DENSE",
+          "expected_gain": 0.15296262495513246,
+          "cost": 0.2,
+          "risk": 0.08,
+          "latency": 0.04,
+          "model_uncertainty": 0.36244809021546176,
+          "robust_net": -0.28437952957007645,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hashing dense"
+        },
+        {
+          "name": "HYBRID",
+          "expected_gain": 0.16995847217236942,
+          "cost": 0.18,
+          "risk": 0.07,
+          "latency": 0.03,
+          "model_uncertainty": 0.36244809021546176,
+          "robust_net": -0.23688368235283944,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hybrid channel"
+        },
+        {
+          "name": "RERANK",
+          "expected_gain": 0.18695431938960635,
+          "cost": 0.22,
+          "risk": 0.08,
+          "latency": 0.05,
+          "model_uncertainty": 0.36244809021546176,
+          "robust_net": -0.2708878351356025,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "discriminative rerank"
+        },
+        {
+          "name": "DISCRIMINATIVE",
+          "expected_gain": 0.24801707981254456,
+          "cost": 0.25,
+          "risk": 0.1,
+          "latency": 0.06,
+          "model_uncertainty": 0.36244809021546176,
+          "robust_net": -0.2603250747126643,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "falsification queries"
+        },
+        {
+          "name": "ANALYZE",
+          "expected_gain": 0.05098754165171082,
+          "cost": 0.02,
+          "risk": 0.02,
+          "latency": 0.01,
+          "model_uncertainty": 0.36244809021546176,
+          "robust_net": -0.14485461287349805,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "internal recompute"
+        },
+        {
+          "name": "ASK",
+          "expected_gain": 0.35691279156197575,
+          "cost": 0.28,
+          "risk": 0.05,
+          "latency": 2.0,
+          "model_uncertainty": 0.36244809021546176,
+          "robust_net": -0.22842936296323313,
+          "eligible": true,
+          "maturity": "SHADOW",
+          "reason": "specific clarification"
+        },
+        {
+          "name": "VERIFY",
+          "expected_gain": 0.14592804738854634,
+          "cost": 0.12,
+          "risk": 0.04,
+          "latency": 0.08,
+          "model_uncertainty": 0.36244809021546176,
+          "robust_net": -0.1734141071366625,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "independent structured source"
+        },
+        {
+          "name": "DEFER",
+          "expected_gain": 0.0,
+          "cost": 0.05,
+          "risk": 0.05,
+          "latency": 0.0,
+          "model_uncertainty": 0.36244809021546176,
+          "robust_net": null,
+          "eligible": false,
+          "maturity": "ELIGIBLE",
+          "reason": "open-set abstention"
+        }
+      ],
+      "twin": {
+        "action": "ANALYZE",
+        "expected_u": -0.014547856767153335,
+        "sigma": 0.36244809021546176,
+        "misspecification": 0.35,
+        "calibrated": false,
+        "outcomes": {
+          "rescue": 0.017047059187533097,
+          "no_change": 0.9027118844196125,
+          "overthink": 0.05015066024553402,
+          "abstain": 0.03009039614732041
+        }
+      },
+      "plan": {
+        "best_plan": [
+          "ANSWER"
+        ],
+        "best_value": -0.035,
+        "best_cost": 0.0,
+        "greedy_action": "ANALYZE",
+        "greedy_value": -0.034547856767153336,
+        "multi_step_beats_one_step": false,
+        "equal_budget": true,
+        "horizon": 2
+      },
+      "ask": {
+        "type": "discriminant_attribute",
+        "question": "Did you observe regular pulsation / standard candle / days long period rather than nickel decay / multiweek fade / spectral ejecta?",
+        "voi_proxy": 0.45,
+        "cost": 0.28,
+        "net": 0.16999999999999998
+      },
+      "verify": {
+        "claim": "supernova_light_curve.observed",
+        "source_id": "sanity_structured_facts_v1",
+        "method": "structured_lookup",
+        "result": "INCONCLUSIVE",
+        "confidence": 0.16000000000000003,
+        "independence": 1.0,
+        "cost": 0.12,
+        "retrieval_calls": 0,
+        "decision_changed": false
+      },
+      "provenance_adjustment": {
+        "base": 1.0,
+        "adjusted": 1.0,
+        "redundant": false,
+        "superseded": false,
+        "decision_relevant": false
+      },
+      "evaluation": {
+        "four_way_class": "BOTH_CORRECT",
+        "fast_correct": true,
+        "deliberative_correct": true,
+        "delta_u": -0.02,
+        "eroi": {
+          "status": "DEFINED",
+          "eroi": -1.0,
+          "delta_u": -0.02,
+          "delta_c": 0.02
+        },
+        "primary_failure": "NONE"
+      },
+      "oracle_used": true,
+      "policy_changes_execution": true
+    },
+    {
+      "intent_id": "astro-07",
+      "query": "How can a regularly pulsating variable star act as a standard candle?",
+      "domain": "astronomy",
+      "fast_predicted": "astro.cepheid_variable",
+      "selected_action": "ANSWER",
+      "executed_action": "ANSWER",
+      "quotes": [
+        {
+          "name": "ANSWER",
+          "expected_gain": 0.8751271094906656,
+          "cost": 0.0,
+          "risk": 0.03121822262733358,
+          "latency": 0.01,
+          "model_uncertainty": 0.18121822262733359,
+          "robust_net": 0.7126988758102798,
+          "eligible": true,
+          "maturity": "ACTIVE",
+          "reason": "commit"
+        },
+        {
+          "name": "BM25",
+          "expected_gain": 0.019979662481493493,
+          "cost": 0.1,
+          "risk": 0.05,
+          "latency": 0.02,
+          "model_uncertainty": 0.18121822262733359,
+          "robust_net": -0.26173034857155897,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "lexical channel"
+        },
+        {
+          "name": "DENSE",
+          "expected_gain": 0.022477120291680176,
+          "cost": 0.2,
+          "risk": 0.08,
+          "latency": 0.04,
+          "model_uncertainty": 0.18121822262733359,
+          "robust_net": -0.3902328907613723,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hashing dense"
+        },
+        {
+          "name": "HYBRID",
+          "expected_gain": 0.024974578101866866,
+          "cost": 0.18,
+          "risk": 0.07,
+          "latency": 0.03,
+          "model_uncertainty": 0.18121822262733359,
+          "robust_net": -0.3572354329511856,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hybrid channel"
+        },
+        {
+          "name": "RERANK",
+          "expected_gain": 0.027472035912053553,
+          "cost": 0.22,
+          "risk": 0.08,
+          "latency": 0.05,
+          "model_uncertainty": 0.18121822262733359,
+          "robust_net": -0.4057379751409989,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "discriminative rerank"
+        },
+        {
+          "name": "DISCRIMINATIVE",
+          "expected_gain": 0.0018717962103351837,
+          "cost": 0.25,
+          "risk": 0.1,
+          "latency": 0.06,
+          "model_uncertainty": 0.18121822262733359,
+          "robust_net": -0.48183821484271727,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "falsification queries"
+        },
+        {
+          "name": "ANALYZE",
+          "expected_gain": 0.007492373430560059,
+          "cost": 0.02,
+          "risk": 0.02,
+          "latency": 0.01,
+          "model_uncertainty": 0.18121822262733359,
+          "robust_net": -0.1637176376224924,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "internal recompute"
+        },
+        {
+          "name": "ASK",
+          "expected_gain": 0.052446614013920416,
+          "cost": 0.28,
+          "risk": 0.05,
+          "latency": 2.0,
+          "model_uncertainty": 0.18121822262733359,
+          "robust_net": -0.508263397039132,
+          "eligible": true,
+          "maturity": "SHADOW",
+          "reason": "specific clarification"
+        },
+        {
+          "name": "VERIFY",
+          "expected_gain": 0.007494806129258559,
+          "cost": 0.12,
+          "risk": 0.04,
+          "latency": 0.08,
+          "model_uncertainty": 0.18121822262733359,
+          "robust_net": -0.2872152049237939,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "independent structured source"
+        },
+        {
+          "name": "DEFER",
+          "expected_gain": 0.0,
+          "cost": 0.05,
+          "risk": 0.05,
+          "latency": 0.0,
+          "model_uncertainty": 0.18121822262733359,
+          "robust_net": null,
+          "eligible": false,
+          "maturity": "ELIGIBLE",
+          "reason": "open-set abstention"
+        }
+      ],
+      "twin": {
+        "action": "ANSWER",
+        "expected_u": -0.035,
+        "sigma": 0.18121822262733359,
+        "misspecification": 0.35,
+        "calibrated": false,
+        "outcomes": {
+          "rescue": 0.0,
+          "no_change": 0.85,
+          "overthink": 0.05,
+          "abstain": 0.1
+        }
+      },
+      "plan": {
+        "best_plan": [
+          "ANSWER"
+        ],
+        "best_value": -0.035,
+        "best_cost": 0.0,
+        "greedy_action": "ANSWER",
+        "greedy_value": -0.035,
+        "multi_step_beats_one_step": false,
+        "equal_budget": true,
+        "horizon": 2
+      },
+      "ask": {
+        "type": "discriminant_attribute",
+        "question": "Did you observe regular pulsation / standard candle / days long period rather than seconds long disappearance / shadow chord / narrow ground track?",
+        "voi_proxy": 0.45,
+        "cost": 0.28,
+        "net": 0.16999999999999998
+      },
+      "verify": {
+        "claim": "cepheid_variable.period_stable",
+        "source_id": "sanity_structured_facts_v1",
+        "method": "structured_lookup",
+        "result": "CONFIRMED",
+        "confidence": 0.8,
+        "independence": 1.0,
+        "cost": 0.12,
+        "retrieval_calls": 0,
+        "decision_changed": false
+      },
+      "provenance_adjustment": {
+        "base": 1.0,
+        "adjusted": 1.0,
+        "redundant": false,
+        "superseded": false,
+        "decision_relevant": false
+      },
+      "evaluation": {
+        "four_way_class": "BOTH_CORRECT",
+        "fast_correct": true,
+        "deliberative_correct": true,
+        "delta_u": 0.0,
+        "eroi": {
+          "status": "UNDEFINED_ZERO_COST",
+          "eroi": null,
+          "delta_u": 0.0,
+          "delta_c": 0.0
+        },
+        "primary_failure": "NONE"
+      },
+      "oracle_used": true,
+      "policy_changes_execution": false
+    },
+    {
+      "intent_id": "astro-08",
+      "query": "A feeding black hole has a hot disk that flickers in X rays",
+      "domain": "astronomy",
+      "fast_predicted": "astro.black_hole_accretion",
+      "selected_action": "ANSWER",
+      "executed_action": "ANSWER",
+      "quotes": [
+        {
+          "name": "ANSWER",
+          "expected_gain": 0.858325081557501,
+          "cost": 0.0,
+          "risk": 0.03541872961062474,
+          "latency": 0.01,
+          "model_uncertainty": 0.18541872961062472,
+          "robust_net": 0.6913113256242719,
+          "eligible": true,
+          "maturity": "ACTIVE",
+          "reason": "commit"
+        },
+        {
+          "name": "BM25",
+          "expected_gain": 0.022667986950799836,
+          "cost": 0.1,
+          "risk": 0.05,
+          "latency": 0.02,
+          "model_uncertainty": 0.18541872961062472,
+          "robust_net": -0.25942703937180467,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "lexical channel"
+        },
+        {
+          "name": "DENSE",
+          "expected_gain": 0.025501485319649814,
+          "cost": 0.2,
+          "risk": 0.08,
+          "latency": 0.04,
+          "model_uncertainty": 0.18541872961062472,
+          "robust_net": -0.3875935410029547,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hashing dense"
+        },
+        {
+          "name": "HYBRID",
+          "expected_gain": 0.028334983688499793,
+          "cost": 0.18,
+          "risk": 0.07,
+          "latency": 0.03,
+          "model_uncertainty": 0.18541872961062472,
+          "robust_net": -0.3542600426341047,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "hybrid channel"
+        },
+        {
+          "name": "RERANK",
+          "expected_gain": 0.03116848205734977,
+          "cost": 0.22,
+          "risk": 0.08,
+          "latency": 0.05,
+          "model_uncertainty": 0.18541872961062472,
+          "robust_net": -0.40242654426525476,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "discriminative rerank"
+        },
+        {
+          "name": "DISCRIMINATIVE",
+          "expected_gain": 0.003149809327376244,
+          "cost": 0.25,
+          "risk": 0.1,
+          "latency": 0.06,
+          "model_uncertainty": 0.18541872961062472,
+          "robust_net": -0.4809452169952283,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "falsification queries"
+        },
+        {
+          "name": "ANALYZE",
+          "expected_gain": 0.008500495106549938,
+          "cost": 0.02,
+          "risk": 0.02,
+          "latency": 0.01,
+          "model_uncertainty": 0.18541872961062472,
+          "robust_net": -0.16309453121605455,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "internal recompute"
+        },
+        {
+          "name": "ASK",
+          "expected_gain": 0.05950346574584956,
+          "cost": 0.28,
+          "risk": 0.05,
+          "latency": 2.0,
+          "model_uncertainty": 0.18541872961062472,
+          "robust_net": -0.501591560576755,
+          "eligible": true,
+          "maturity": "SHADOW",
+          "reason": "specific clarification"
+        },
+        {
+          "name": "VERIFY",
+          "expected_gain": 0.011116326594726944,
+          "cost": 0.12,
+          "risk": 0.04,
+          "latency": 0.08,
+          "model_uncertainty": 0.18541872961062472,
+          "robust_net": -0.28397869972787754,
+          "eligible": true,
+          "maturity": "ELIGIBLE",
+          "reason": "independent structured source"
+        },
+        {
+          "name": "DEFER",
+          "expected_gain": 0.0,
+          "cost": 0.05,
+          "risk": 0.05,
+          "latency": 0.0,
+          "model_uncertainty": 0.18541872961062472,
+          "robust_net": null,
+          "eligible": false,
+          "maturity": "ELIGIBLE",
+          "reason": "open-set abstention"
+        }
+      ],
+      "twin": {
+        "action": "ANSWER",
+        "expected_u": -0.035,
+        "sigma": 0.18541872961062472,
+        "misspecification": 0.35,
+        "calibrated": false,
+        "outcomes": {
+          "rescue": 0.0,
+          "no_change": 0.85,
+          "overthink": 0.05,
+          "abstain": 0.1
+        }
+      },
+      "plan": {
+        "best_plan": [
+          "ANSWER"
+        ],
+        "best_value": -0.035,
+        "best_cost": 0.0,
+        "greedy_action": "ANSWER",
+        "greedy_value": -0.035,
+        "multi_step_beats_one_step": false,
+        "equal_budget": true,
+        "horizon": 2
+      },
+      "ask": {
+        "type": "discriminant_attribute",
+        "question": "Did you observe quasi periodic oscillation / iron line / disk temperature rather than fallback rate / months long nuclear transient / stellar debris?",
+        "voi_proxy": 0.45,
+        "cost": 0.28,
+        "net": 0.16999999999999998
+      },
+      "verify": {
+        "claim": "black_hole_accretion.observed",
+        "source_id": "sanity_structured_facts_v1",
+        "method": "structured_lookup",
+        "result": "INCONCLUSIVE",
+        "confidence": 0.16000000000000003,
+        "independence": 1.0,
+        "cost": 0.12,
+        "retrieval_calls": 0,
+        "decision_changed": false
+      },
+      "provenance_adjustment": {
+        "base": 1.0,
+        "adjusted": 1.0,
+        "redundant": false,
+        "superseded": false,
+        "decision_relevant": false
+      },
+      "evaluation": {
+        "four_way_class": "BOTH_CORRECT",
+        "fast_correct": true,
+        "deliberative_correct": true,
+        "delta_u": 0.0,
+        "eroi": {
+          "status": "UNDEFINED_ZERO_COST",
+          "eroi": null,
+          "delta_u": 0.0,
+          "delta_c": 0.0
+        },
+        "primary_failure": "NONE"
+      },
+      "oracle_used": true,
+      "policy_changes_execution": false
+    }
+  ]
+}

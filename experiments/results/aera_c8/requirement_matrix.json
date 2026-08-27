@@ -1,0 +1,202 @@
+[
+  {
+    "requirement": "Counterfactual Rescue Engine",
+    "implementation": "src/quasar2/aera/engine.py + src/quasar2/rescue/",
+    "test": "tests/test_aera.py",
+    "experiment": "quasar2 aera-evaluate; historical quasar2 rescue-cycle",
+    "artifact": "experiments/results/aera_c8 + cycle4_rescue",
+    "gate": "marketplace_executes / R3 historical",
+    "evidence": "Cycle 4: FastWrong 2/120, falsification Rescue 1/2, NetRescueRate=0",
+    "status": "IMPLEMENTED_AND_VALIDATED"
+  },
+  {
+    "requirement": "Decision-directed retrieval arms",
+    "implementation": "src/quasar2/rescue/pipeline.py scoring.py queries.py",
+    "test": "tests/test_rescue_cycle.py",
+    "experiment": "rescue-cycle discriminative arms",
+    "artifact": "experiments/results/cycle4_rescue",
+    "gate": "cycle5_non_oracle_rescue PASS; net utility FAIL",
+    "evidence": "Falsification rescued astro-03:q1; pairwise disc Rescue=0",
+    "status": "IMPLEMENTED_AND_VALIDATED"
+  },
+  {
+    "requirement": "Epistemic action marketplace",
+    "implementation": "src/quasar2/aera/marketplace.py",
+    "test": "tests/test_aera.py::MarketplaceTests",
+    "experiment": "aera-evaluate engine cases",
+    "artifact": "experiments/results/aera_c8/engine_cases.json",
+    "gate": "marketplace_executes",
+    "evidence": "selected==executed; VERIFY independent source",
+    "status": "IMPLEMENTED_NOT_YET_CONFIRMED"
+  },
+  {
+    "requirement": "ANALYZE without retrieval",
+    "implementation": "src/quasar2/rescue/actions.py",
+    "test": "tests/test_observability.py::test_verify_disabled_and_not_analyze",
+    "experiment": "rescue-cycle actions stage",
+    "artifact": "cycle4_rescue/analyze.json",
+    "gate": "cycle7a TESTED",
+    "evidence": "0 prediction changes on diagnostic sample",
+    "status": "IMPLEMENTED_AND_VALIDATED"
+  },
+  {
+    "requirement": "ASK specific questions",
+    "implementation": "src/quasar2/aera/ask.py",
+    "test": "tests/test_aera.py",
+    "experiment": "aera-evaluate",
+    "artifact": "engine_cases.json ask field",
+    "gate": "none for product promotion",
+    "evidence": "Question from discriminators; interaction cost increases with history",
+    "status": "EXPERIMENTAL"
+  },
+  {
+    "requirement": "VERIFY independent source",
+    "implementation": "src/quasar2/aera/verify.py",
+    "test": "tests/test_aera.py",
+    "experiment": "aera-evaluate",
+    "artifact": "aera_c8",
+    "gate": "verify_independent",
+    "evidence": "structured lookup, retrieval_calls=0; product ActionCatalog still DISABLES VERIFY",
+    "status": "IMPLEMENTED_NOT_YET_CONFIRMED"
+  },
+  {
+    "requirement": "DEFER/open-set",
+    "implementation": "rescue/actions.py defer_should_fire",
+    "test": "test_rescue_cycle / test_aera",
+    "experiment": "open_set_query_pack",
+    "artifact": "cycle4_rescue/defer.json",
+    "gate": "cycle7a TESTED",
+    "evidence": "Open-set pack can fire DEFER; not an AUROC-OOD confirmatory suite",
+    "status": "EXPERIMENTAL"
+  },
+  {
+    "requirement": "Recoverability 3.0 per action",
+    "implementation": "src/quasar2/aera/rescueability.py",
+    "test": "tests/test_aera.py",
+    "experiment": "synthetic fit in aera-evaluate",
+    "artifact": "run_manifest recoverability_v3",
+    "gate": "in-sample only",
+    "evidence": "Holdout AUROC undefined when positives=0 historically",
+    "status": "EXPERIMENTAL"
+  },
+  {
+    "requirement": "Digital twin / simulation-before-action",
+    "implementation": "src/quasar2/aera/twin.py",
+    "test": "tests/test_aera.py",
+    "experiment": "aera-evaluate",
+    "artifact": "engine twin field",
+    "gate": "calibrated=false without historical frequencies",
+    "evidence": "Heuristic P(o|s,a); MAE gate exists",
+    "status": "EXPERIMENTAL"
+  },
+  {
+    "requirement": "Multi-step planner d=2",
+    "implementation": "src/quasar2/aera/planner.py",
+    "test": "tests/test_aera.py",
+    "experiment": "planner-evaluate / aera-evaluate",
+    "artifact": "run_manifest planner",
+    "gate": "planner_vs_onestep",
+    "evidence": "Synthetic twin values only; not confirmatory \u0394NEU",
+    "status": "EXPERIMENTAL"
+  },
+  {
+    "requirement": "Provenance graph changes scores",
+    "implementation": "src/quasar2/aera/provenance.py",
+    "test": "tests/test_aera.py",
+    "experiment": "unit + engine",
+    "artifact": "engine provenance_adjustment",
+    "gate": "decision_relevant on duplicates",
+    "evidence": "Duplicate/supersede downweight; not a knowledge graph product",
+    "status": "IMPLEMENTED_AND_VALIDATED"
+  },
+  {
+    "requirement": "Epistemic memory isolation",
+    "implementation": "src/quasar2/aera/memory.py",
+    "test": "tests/test_aera.py",
+    "experiment": "aera-evaluate",
+    "artifact": "run_manifest memory",
+    "gate": "no train/eval key overlap",
+    "evidence": "TTL + split isolation; gain is simulated",
+    "status": "EXPERIMENTAL"
+  },
+  {
+    "requirement": "Offline bandit IPS/DR",
+    "implementation": "src/quasar2/aera/bandit.py",
+    "test": "tests/test_aera.py",
+    "experiment": "bandit-replay",
+    "artifact": "aera_c8 bandit",
+    "gate": "online DISABLED",
+    "evidence": "Toy logged data; not production IPS",
+    "status": "SHADOW"
+  },
+  {
+    "requirement": "Fleet global budget",
+    "implementation": "src/quasar2/aera/fleet.py",
+    "test": "tests/test_aera.py",
+    "experiment": "fleet-simulate",
+    "artifact": "aera_c8 fleet",
+    "gate": "fleet_budget_cap",
+    "evidence": "Simulated 4 agents; spend <= cap",
+    "status": "IMPLEMENTED_AND_VALIDATED"
+  },
+  {
+    "requirement": "EROI / MVC / equal-budget",
+    "implementation": "src/quasar2/aera/economy.py",
+    "test": "tests/test_aera.py",
+    "experiment": "aera-evaluate",
+    "artifact": "run_manifest",
+    "gate": "EROI undefined if \u0394C<=0",
+    "evidence": "Historical \u0394U negative on sanity fixture; EROI reports that honestly",
+    "status": "IMPLEMENTED_AND_VALIDATED"
+  },
+  {
+    "requirement": "Scientific discovery mode",
+    "implementation": "src/quasar2/aera/discovery.py",
+    "test": "tests/test_aera.py",
+    "experiment": "aera-evaluate",
+    "artifact": "discovery block",
+    "gate": "differs_from_relevance",
+    "evidence": "Replay only; no real lab control",
+    "status": "EXPERIMENTAL"
+  },
+  {
+    "requirement": "NASA/ESA/ALMA official pipelines",
+    "implementation": "src/quasar2/external/",
+    "test": "tests/test_external.py",
+    "experiment": "external-validity",
+    "artifact": "schema-faithful snapshots",
+    "gate": "C3-live-official-dumps REFUTED",
+    "evidence": "SYN- ids, not TAP dumps",
+    "status": "REFUTED_IN_TESTED_REGIME"
+  },
+  {
+    "requirement": "OPS application + cockpit/API/Docker",
+    "implementation": "observability/, Dockerfile, datasets/ops_runbook.py",
+    "test": "tests/test_observability.py",
+    "experiment": "serve / load-test",
+    "artifact": "cockpit HTML + OpenAPI",
+    "gate": "gate_e_observability PASS on rescue traces",
+    "evidence": "stdlib server; FastAPI optional extra",
+    "status": "IMPLEMENTED_NOT_YET_CONFIRMED"
+  },
+  {
+    "requirement": "Security sanitization",
+    "implementation": "src/quasar2/aera/security.py",
+    "test": "tests/test_aera.py",
+    "experiment": "unit",
+    "artifact": "aera_c8 security",
+    "gate": "ssrf_default",
+    "evidence": "file:// and loopback blocked; not a pentest report",
+    "status": "IMPLEMENTED_AND_VALIDATED"
+  },
+  {
+    "requirement": "Learned online policy / multi-agent",
+    "implementation": "\u2014",
+    "test": "\u2014",
+    "experiment": "\u2014",
+    "artifact": "\u2014",
+    "gate": "blocked until action values confirmatory",
+    "evidence": "Cycle 5 net utility FAIL; Cycle 6 BLOCKED",
+    "status": "NOT_STARTED_WITH_REASON"
+  }
+]

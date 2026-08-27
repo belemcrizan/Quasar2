@@ -20,6 +20,11 @@ OPENAPI = {
         "/health": {"get": {"summary": "liveness"}},
         "/ready": {"get": {"summary": "readiness"}},
         "/v1/decide": {"post": {"summary": "deployment-valid decision"}},
+        "/v1/decision": {"post": {"summary": "alias of /v1/decide"}},
+        "/v1/plan": {"post": {"summary": "horizon-2 plan from entropy/margin; no gold"}},
+        "/v1/verify": {"post": {"summary": "independent structured VERIFY; zero retrieval"}},
+        "/v1/fleet": {"get": {"summary": "simulated fleet allocation"}},
+        "/v1/evidence/{trace_id}": {"get": {"summary": "runtime evidence ids only"}},
         "/v1/runs": {"get": {"summary": "list runs"}, "post": {"summary": "record a client run id"}},
         "/v1/runs/{run_id}": {"get": {"summary": "run manifest without forcing oracle"}},
         "/v1/traces/{trace_id}": {"get": {"summary": "runtime trace"}},
@@ -55,7 +60,7 @@ def handle(method: str, path: str, body: bytes, request_id: str) -> tuple[int, d
             return 200, {**headers_base, "Content-Type": "text/html; charset=utf-8"}, html.encode("utf-8")
         elif method == "GET" and route in {"/docs", "/v1/openapi.json", "/openapi.json"}:
             status, headers, payload = _json(OPENAPI)
-        elif method == "POST" and route == "/v1/decide":
+        elif method == "POST" and route in {"/v1/decide", "/v1/decision"}:
             data = json.loads(body.decode("utf-8") or "{}")
             query = str(data.get("query") or "")
             domain = str(data.get("domain") or "astronomy")
@@ -108,6 +113,61 @@ def handle(method: str, path: str, body: bytes, request_id: str) -> tuple[int, d
             status, headers, payload = _json({"datasets": datasets_catalog()})
         elif method == "GET" and route == "/v1/actions":
             status, headers, payload = _json({"actions": action_registry()})
+        elif method == "POST" and route == "/v1/plan":
+            data = json.loads(body.decode("utf-8") or "{}")
+            from quasar2.aera.planner import plan_horizon2
+
+            plan = plan_horizon2(
+                entropy=float(data.get("entropy") or 0.5),
+                margin=float(data.get("margin") or 0.2),
+                actions=("ANSWER", "BM25", "DISCRIMINATIVE", "ANALYZE", "VERIFY", "DEFER"),
+                remaining_budget=float(data.get("budget") or 0.4),
+                costs={
+                    "ANSWER": 0.0,
+                    "BM25": 0.10,
+                    "DISCRIMINATIVE": 0.25,
+                    "ANALYZE": 0.02,
+                    "VERIFY": 0.12,
+                    "DEFER": 0.05,
+                },
+            )
+            slim = {k: v for k, v in plan.items() if k not in {"first", "second"}}
+            status, headers, payload = _json(slim)
+        elif method == "POST" and route == "/v1/verify":
+            data = json.loads(body.decode("utf-8") or "{}")
+            from quasar2.aera.verify import verify_claim
+            from dataclasses import asdict
+
+            result = verify_claim(str(data.get("claim") or ""), predicted_id=str(data.get("predicted_id") or ""))
+            status, headers, payload = _json(asdict(result))
+        elif method == "GET" and route == "/v1/fleet":
+            from quasar2.aera.fleet import AgentBid, allocate
+
+            demo = allocate(
+                (
+                    AgentBid("demo-1", 0.6, 0.1, 1.0, 0.2, "t0"),
+                    AgentBid("demo-2", 0.3, 0.2, 0.5, 0.2, "t1"),
+                ),
+                global_budget=0.4,
+            )
+            status, headers, payload = _json({"simulation": True, **demo})
+        elif method == "GET" and route.startswith("/v1/evidence/"):
+            trace_id = route.split("/")[-1]
+            loaded = load_run(default_rescue_dir())
+            traces = loaded.get("traces") or []
+            found = next((item for item in traces if item.get("trace_id") == trace_id), None)
+            if not found:
+                status, headers, payload = _json({"error": "not found"}, 404)
+            else:
+                runtime = ((found.get("trace") or {}).get("runtime") or {})
+                status, headers, payload = _json(
+                    {
+                        "trace_id": trace_id,
+                        "document_ids": (runtime.get("retrieval") or {}).get("document_ids")
+                        or runtime.get("document_ids")
+                        or [],
+                    }
+                )
         else:
             status, headers, payload = _json({"error": "not found"}, 404)
     except json.JSONDecodeError:

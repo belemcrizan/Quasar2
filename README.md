@@ -155,7 +155,8 @@ These are **motivating applications**, not deployments or customer validations.
 | Complexity gate + A1 decomposition | EXPERIMENTAL / INCONCLUSIVE | `gate-experiment`, `a1-decompose`; claim C1 not sealed |
 | V2 math, VoI bounds, theory harness | IMPLEMENTED (synthetic checks) | `quasar2 theory-check`; claims not SUPPORTED |
 | Recoverability estimators | IMPLEMENTED, not in default policy | `src/quasar2/recoverability.py`; shadow uses proxy kernels |
-| VERIFY as selected action | PARTIALLY_IMPLEMENTED | label exists; default policy omits it |
+| VERIFY as selected action | PARTIALLY_IMPLEMENTED | product catalog DISABLES VERIFY; experimental IndependentSource in `aera.verify` (0 retrieval) |
+| AERA marketplace / fleet / EROI | EXPERIMENTAL | `docs/AERA.md`; Cycle 6 policy BLOCKED; historical ΔU<0 |
 | Knowledge graph | NOT_FOUND | empty extra `graph = []` |
 | Conformal prediction | PARTIALLY_IMPLEMENTED | highest-mass heuristic + split-conformal helper; no live calibration split |
 | Sequential / anytime UCB stopping in production policy | NOT_FOUND | fixed-stage estimators + T4 harness only |
@@ -274,6 +275,11 @@ Writes `experiments/results/benchmark.json` and `.csv` unless `--output` is set.
 | `cycle2-audit` | Cycle 2 recoverability/policy path | does not change the legacy loop |
 | `rescue-cycle` | Cycle 4–7A error anatomy, oracles, discriminative arms | aliases: `error-anatomy`, `oracle-evaluate`, `discriminative-experiment`, `recoverability-v2`, `action-value-experiment`, `cycle-report`, `rescue-experiment`; `--overwrite`; does not change the legacy loop |
 | `policy-evaluate` | Execute experimental gated actions | does not promote Cycle 6; fails if selected≠executed |
+| `aera-evaluate` | Cycle 8 marketplace / VERIFY / fleet / planner smoke | `--overwrite`; does not overwrite Cycle 4 or v0.1.1 |
+| `planner-evaluate` | Horizon-2 vs greedy on the heuristic twin | not confirmatory ΔNEU |
+| `bandit-replay` | Offline IPS/DR | online exploration disabled |
+| `fleet-simulate` | Global-budget allocators | spend must stay within cap |
+| `audit` | Repository state + requirement matrix | alias of `repository-audit` plus AERA matrix |
 | `serve` / `dashboard` | API + Research Cockpit | stdlib; `--streamlit` needs extra |
 | `compare-runs` | Artifact A vs B | no improvement claim when CI includes 0 |
 | `load-test` | Local HTTP probe | `--concurrency 1\|10`; not a cloud SLO |
