@@ -90,6 +90,11 @@ def render_cockpit(run_dir: Path | None = None) -> str:
         f"→ {_esc(row.get('disc_predicted'))} failure={_esc(row.get('primary_failure'))}</li>"
         for row in buckets.get("RESCUE", [])[:20]
     ) or "<li>No Rescue rows in this artifact.</li>"
+    action_market = (
+        "<table><tr><th>Action</th><th>Maturity</th><th>Contract</th></tr>"
+        + action_rows
+        + "</table>"
+    )
     body = f"""
     <header>
       <h1>QUASAR2 Research Cockpit</h1>
@@ -99,6 +104,8 @@ def render_cockpit(run_dir: Path | None = None) -> str:
     <nav>
       <a href="#overview">Overview</a>
       <a href="#rescue">Rescue Lab</a>
+      <a href="#market">Epistemic Market</a>
+      <a href="#fleet">Fleet</a>
       <a href="#claims">Claims</a>
       <a href="#policy">Policy</a>
       <a href="#external">External</a>
@@ -121,9 +128,14 @@ def render_cockpit(run_dir: Path | None = None) -> str:
     <section id="external"><h2>External validity maturity</h2>
       <table><tr><th>Dataset</th><th>Class</th><th>Role</th></tr>{dataset_rows}</table>
     </section>
-    <section id="finops"><h2>FinOps</h2>
+    <section id="finops"><h2>Fleet &amp; FinOps</h2>
       <p>Utility uses pre-registered abstract costs (wrong_answer=1.4, explore=0.10, ask=0.28).
-      No live currency conversion table is attached; monetary claims are unavailable.</p>
+      No live currency conversion table is attached; monetary claims are unavailable.
+      EROI is undefined when ΔC≤0. Fleet numbers come from <code>quasar2 fleet-simulate</code> and are simulations.</p>
+    </section>
+    <section id="market"><h2>Epistemic Market</h2>
+      <p>Quotes are computed at request time. Product VERIFY stays DISABLED_BY_GATE unless an independent verifier is attached on the experimental AERA path.</p>
+      {action_market}
     </section>
     """
     return _page(body)

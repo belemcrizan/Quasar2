@@ -1,0 +1,59 @@
+{
+  "cycle_id": "C8-AERA",
+  "schema_version": "aera.1",
+  "label": "EXPLORATORY_MECHANISM_WITH_HISTORICAL_CONFIRMATORY_LOCKED",
+  "frozen_defaults": {
+    "legacy_loop": "v0.1.1",
+    "package_version": "0.2.0",
+    "gate1": "FAIL",
+    "cycle6_policy": "BLOCKED",
+    "note": "Do not retune Gate 1, overwrite frozen v0.1.1 / A1 / cycle2 / cycle4_rescue artifacts, or promote product policy."
+  },
+  "primary_question": "Can QUASAR allocate retrieval, compute, questions, verification, and abstention as competing economic actions without using gold at runtime?",
+  "hypotheses": {
+    "H_market": "An action marketplace with robust Q changes the executed channel relative to always-ANSWER on some states.",
+    "H_verify": "VERIFY can be implemented as an independent structured lookup that is not ANALYZE and not EXPLORE.",
+    "H_plan": "Horizon-2 planning beats greedy one-step under equal budget on the heuristic twin (exploratory).",
+    "H_fleet": "Global-budget allocators never exceed the cap in simulation.",
+    "H_neu": "NOT tested as confirmatory in this cycle; Cycle 5 ΔU FAIL remains the lock."
+  },
+  "primary_metrics": [
+    "selected_action == executed_action",
+    "VERIFY.retrieval_calls == 0",
+    "ANALYZE evidence set frozen",
+    "fleet spend <= global_budget",
+    "EROI defined iff delta_c > 0"
+  ],
+  "secondary_metrics": [
+    "engine Rescue/Overthinking on q1 smoke (not confirmatory N)",
+    "planner multi_step_beats_one_step on twin",
+    "discovery differs_from_relevance"
+  ],
+  "utility_model": {
+    "u_correct": 1.0,
+    "wrong_answer_cost": 1.4,
+    "exploration_cost": 0.10,
+    "ask_cost": 0.28,
+    "defer_cost": 0.05,
+    "verify_cost": 0.12,
+    "analyze_cost": 0.02
+  },
+  "confirmatory_locked": {
+    "dataset": "sanity 120-query configs/poc.yaml from Cycle 4",
+    "artifact": "experiments/results/cycle4_rescue",
+    "do_not_overwrite": true
+  },
+  "exploratory_dataset": "first --limit intents, condition q1 only",
+  "splits": {
+    "rule": "intent_id grouped; Cycle 4 recoverability split frozen; AERA smoke is not a new confirmatory split"
+  },
+  "seeds": [42],
+  "stop_conditions": [
+    "If marketplace selected!=executed: FAIL cycle",
+    "If VERIFY retrieves: FAIL cycle",
+    "If fleet exceeds cap: FAIL cycle",
+    "Do not promote Cycle 6 if historical NetRescueRate<=0 or DeltaU<=0"
+  ],
+  "multiple_comparisons": "No new confirmatory arm tournament in this cycle. Historical Holm plan in cycle4_rescue.json remains.",
+  "exploratory_vs_confirmatory": "AERA smoke, planner twin, fleet, bandit IPS, discovery replay are EXPLORATORY. Cycle 4 Rescue/ΔU remain the confirmatory numbers."
+}

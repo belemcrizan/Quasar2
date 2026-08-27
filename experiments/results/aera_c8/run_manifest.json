@@ -1,0 +1,433 @@
+{
+  "schema_version": "aera.1",
+  "cycle_id": "C8-AERA",
+  "package_version": "0.2.0",
+  "python": "3.13.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "git_sha": "37e18c92e02595e0124a4ad4a2b55a5175311663",
+  "seed": 42,
+  "n_engine_cases": 8,
+  "engine_rescue_count": 0,
+  "engine_overthinking_count": 0,
+  "engine_mean_delta_u": -0.01,
+  "engine_note": "Smoke on 8 intents (q1 only). Not a replacement for the 120-query Cycle 4 confirmatory table.",
+  "cycle4_preserved": {
+    "available": true,
+    "n_queries": 120,
+    "gates": {
+      "cycle4_anatomy": "PASS",
+      "cycle5_non_oracle_rescue": "PASS",
+      "cycle5_net_utility": "FAIL",
+      "cycle6_policy": "BLOCKED",
+      "cycle7a_analyze_ask_defer": "TESTED",
+      "leakage_contract": "PASS"
+    },
+    "best_predicted_arm": "falsification",
+    "non_oracle_rescue_count": 1,
+    "oracle_ceiling": {
+      "k": 2,
+      "n": 2,
+      "rate": 1.0,
+      "ci_low": 0.34237195288961925,
+      "ci_high": 1.0
+    },
+    "confirmatory_metrics": {
+      "legacy_full": {
+        "Rescue": 0,
+        "Overthinking": 1,
+        "NetRescueRate": -0.008333333333333333,
+        "DeltaU": -0.09583333333333334
+      },
+      "disc_predicted": {
+        "Rescue": 0,
+        "Overthinking": 0,
+        "NetRescueRate": 0.0,
+        "DeltaU": -0.1634166666666667
+      },
+      "relevance": {
+        "Rescue": 0,
+        "Overthinking": 1,
+        "NetRescueRate": -0.008333333333333333,
+        "DeltaU": -0.03341666666666664
+      },
+      "bm25": {
+        "Rescue": 0,
+        "Overthinking": 2,
+        "NetRescueRate": -0.016666666666666666,
+        "DeltaU": -0.026916666666666644
+      },
+      "dense": {
+        "Rescue": 0,
+        "Overthinking": 0,
+        "NetRescueRate": 0.0,
+        "DeltaU": -0.04849999999999998
+      },
+      "falsification": {
+        "Rescue": 1,
+        "Overthinking": 1,
+        "NetRescueRate": 0.0,
+        "DeltaU": -0.03991666666666664
+      },
+      "no_disc_update": {
+        "Rescue": 0,
+        "Overthinking": 0,
+        "NetRescueRate": 0.0,
+        "DeltaU": -0.18841666666666673
+      }
+    },
+    "source": "C:\\Users\\belem\\OneDrive\\\u00c1rea de Trabalho\\VERITAS\\Quasar2\\experiments\\results\\cycle4_rescue",
+    "note": "Historical Cycle 4 artifact reused; not overwritten."
+  },
+  "fleet": {
+    "methods": {
+      "equal": {
+        "method": "equal",
+        "global_budget": 0.55,
+        "cap": 0.5225,
+        "spend": 0.05,
+        "within_cap": true,
+        "allocated": [
+          {
+            "agent_id": "a4",
+            "spend": 0.05,
+            "method": "equal"
+          }
+        ],
+        "starved": [
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "reserve_left": 0.5,
+        "fairness": 0.0,
+        "tenants": {
+          "t0": 0.0,
+          "t1": 0.05
+        }
+      },
+      "priority": {
+        "method": "priority",
+        "global_budget": 0.55,
+        "cap": 0.5225,
+        "spend": 0.4,
+        "within_cap": true,
+        "allocated": [
+          {
+            "agent_id": "a1",
+            "spend": 0.2,
+            "method": "priority"
+          },
+          {
+            "agent_id": "a2",
+            "spend": 0.15,
+            "method": "priority"
+          },
+          {
+            "agent_id": "a4",
+            "spend": 0.05,
+            "method": "priority"
+          }
+        ],
+        "starved": [
+          "a3"
+        ],
+        "reserve_left": 0.14999999999999997,
+        "fairness": 1.0,
+        "tenants": {
+          "t0": 0.2,
+          "t1": 0.2
+        }
+      },
+      "greedy_voi": {
+        "method": "greedy_voi",
+        "global_budget": 0.55,
+        "cap": 0.5225,
+        "spend": 0.4,
+        "within_cap": true,
+        "allocated": [
+          {
+            "agent_id": "a1",
+            "spend": 0.2,
+            "method": "greedy_voi"
+          },
+          {
+            "agent_id": "a2",
+            "spend": 0.15,
+            "method": "greedy_voi"
+          },
+          {
+            "agent_id": "a4",
+            "spend": 0.05,
+            "method": "greedy_voi"
+          }
+        ],
+        "starved": [
+          "a3"
+        ],
+        "reserve_left": 0.14999999999999997,
+        "fairness": 1.0,
+        "tenants": {
+          "t0": 0.2,
+          "t1": 0.2
+        }
+      },
+      "knapsack": {
+        "method": "knapsack",
+        "global_budget": 0.55,
+        "cap": 0.5225,
+        "spend": 0.4,
+        "within_cap": true,
+        "allocated": [
+          {
+            "agent_id": "a1",
+            "spend": 0.2,
+            "method": "knapsack"
+          },
+          {
+            "agent_id": "a2",
+            "spend": 0.15,
+            "method": "knapsack"
+          },
+          {
+            "agent_id": "a4",
+            "spend": 0.05,
+            "method": "knapsack"
+          }
+        ],
+        "starved": [
+          "a3"
+        ],
+        "reserve_left": 0.14999999999999997,
+        "fairness": 1.0,
+        "tenants": {
+          "t0": 0.2,
+          "t1": 0.2
+        }
+      },
+      "auction": {
+        "method": "auction",
+        "global_budget": 0.55,
+        "cap": 0.5225,
+        "spend": 0.4,
+        "within_cap": true,
+        "allocated": [
+          {
+            "agent_id": "a1",
+            "spend": 0.2,
+            "bid": 0.86,
+            "method": "auction"
+          },
+          {
+            "agent_id": "a2",
+            "spend": 0.15,
+            "bid": 0.12,
+            "method": "auction"
+          },
+          {
+            "agent_id": "a4",
+            "spend": 0.05,
+            "bid": 0.0,
+            "method": "auction"
+          }
+        ],
+        "starved": [
+          "a3"
+        ],
+        "reserve_left": 0.14999999999999997,
+        "fairness": 1.0,
+        "tenants": {
+          "t0": 0.2,
+          "t1": 0.2
+        }
+      }
+    },
+    "all_within_cap": true
+  },
+  "bandit": {
+    "ips_disc": {
+      "status": "IPS",
+      "n": 1,
+      "value": 2.5
+    },
+    "dr": {
+      "status": "DR",
+      "value": 0.55,
+      "n": 4
+    },
+    "guardrails": {
+      "online_exploration": "DISABLED",
+      "consequential_decisions": "SHADOW_ONLY",
+      "rollback": "restore last logged policy snapshot",
+      "drift": "not estimated in this package; flag UNKNOWN"
+    }
+  },
+  "memory": {
+    "contaminates_eval": false,
+    "gain": {
+      "with_memory": 0.115,
+      "without_memory": 0.1,
+      "delta": 0.015,
+      "helps": true
+    }
+  },
+  "recoverability_v3": {
+    "DISCRIMINATIVE": {
+      "status": "FIT_IN_SAMPLE_ONLY",
+      "n": 20,
+      "positives": 10,
+      "weights": [
+        2.7529733465573583,
+        -1.172415131360047,
+        0.05352408523526147,
+        -0.29484237137060576,
+        0.0,
+        -0.14742118568530288,
+        -0.07371059284265144,
+        -0.29484237137060576,
+        0.0,
+        -0.29484237137060576
+      ],
+      "bias": -0.29484237137060576,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "brier": 0.1292984307302965,
+      "note": "In-sample diagnostics. Confirmatory AUROC requires a held-out intent split."
+    }
+  },
+  "regime": {
+    "rules": {
+      "OPEN_SET_DEFER": "unknown_mass >= 0.4",
+      "HIGH_UNCERTAINTY_ACQUIRE": "entropy >= 0.75 and margin <= 0.15",
+      "FAST_ANSWER": "entropy <= 0.35 and margin >= 0.25",
+      "BORDERLINE": "otherwise"
+    },
+    "counts": {
+      "FAST_ANSWER": {
+        "n": 4,
+        "delta_u_pos": 0
+      },
+      "BORDERLINE": {
+        "n": 13,
+        "delta_u_pos": 7
+      },
+      "HIGH_UNCERTAINTY_ACQUIRE": {
+        "n": 3,
+        "delta_u_pos": 3
+      }
+    },
+    "note": "Rules frozen before looking at a new holdout. Slice-discovered regimes stay exploratory."
+  },
+  "discovery": {
+    "chosen": "O_cheap",
+    "score": 2.0,
+    "differs_from_relevance": true,
+    "relevance_choice": "O_rel",
+    "ranking": [
+      {
+        "id": "O_cheap",
+        "score": 2.0,
+        "discrimination": 0.4,
+        "relevance": 0.4,
+        "cost": 0.2
+      },
+      {
+        "id": "O_disc",
+        "score": 0.7272727272727273,
+        "discrimination": 0.8,
+        "relevance": 0.3,
+        "cost": 1.1
+      },
+      {
+        "id": "O_rel",
+        "score": 0.2,
+        "discrimination": 0.2,
+        "relevance": 0.9,
+        "cost": 1.0
+      }
+    ],
+    "mode": "replay_simulation"
+  },
+  "planner": {
+    "best_plan": [
+      "ANSWER"
+    ],
+    "best_value": -0.035,
+    "best_cost": 0.0,
+    "greedy_action": "ANSWER",
+    "greedy_value": -0.035,
+    "multi_step_beats_one_step": false,
+    "equal_budget": true,
+    "horizon": 2
+  },
+  "mvc": [
+    {
+      "k": 0,
+      "mvc": 0.15000000000000002,
+      "mc": 0.1,
+      "stop": false
+    },
+    {
+      "k": 1,
+      "mvc": 0.029999999999999916,
+      "mc": 0.1,
+      "stop": true
+    },
+    {
+      "k": 2,
+      "mvc": -0.010000000000000009,
+      "mc": 0.14999999999999997,
+      "stop": true
+    }
+  ],
+  "equal_budget_synthetic": {
+    "equal_budget": true,
+    "budgets": {
+      "fast": 4.0,
+      "always_disc": 4.0,
+      "aera": 4.0
+    },
+    "winner": "fast",
+    "ranking": [
+      [
+        "fast",
+        0.7
+      ],
+      [
+        "aera",
+        0.66
+      ],
+      [
+        "always_disc",
+        0.62
+      ]
+    ],
+    "note": "SYNTHETIC equal-call illustration. Confirmatory equal-budget remains Cycle 4/5 artifact."
+  },
+  "eroi_example": {
+    "status": "DEFINED",
+    "eroi": -0.19999999999999998,
+    "delta_u": -0.04,
+    "delta_c": 0.2
+  },
+  "security": {
+    "file_url_blocked": true,
+    "loopback_blocked": true,
+    "threats_on_clean": []
+  },
+  "gates": {
+    "R0_ceiling_known": "PASS",
+    "R3_non_oracle_rescue_historical": "PASS",
+    "R4_net_rescue_historical": "FAIL",
+    "R5_delta_u_historical": "FAIL",
+    "marketplace_executes": "PASS",
+    "verify_independent": "PASS",
+    "analyze_no_retrieval": "PASS",
+    "fleet_budget_cap": "PASS",
+    "planner_vs_onestep": "REFUTED_IN_TESTED_REGIME",
+    "ssrf_default": "PASS",
+    "cycle6_product_policy": "BLOCKED_BY_GATE",
+    "external_official_dumps": "REFUTED_IN_TESTED_REGIME",
+    "neural_cross_encoder_full": "NOT_STARTED_WITH_REASON"
+  },
+  "reproduction_command": "python -m quasar2.cli aera-evaluate --output experiments/results/aera_c8 --overwrite --limit 8 --seed 42"
+}

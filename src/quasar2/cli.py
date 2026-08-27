@@ -259,13 +259,115 @@ def command_a1_decompose(args: argparse.Namespace) -> int:
 def command_repository_audit(args: argparse.Namespace) -> int:
     from quasar2.analysis.io_util import write_json
     from quasar2.audit.repository_state import build_repository_state_manifest
+    from quasar2.aera.matrices import write_matrices
 
     manifest = build_repository_state_manifest(Path.cwd())
     dest = Path(args.output)
     dest.mkdir(parents=True, exist_ok=True)
     write_json(dest / "repository_state_manifest.json", manifest)
-    print(json.dumps({"test_method_count": manifest["test_method_count"], "output": str(dest)}, indent=2))
+    matrix = write_matrices(dest)
+    print(
+        json.dumps(
+            {
+                "test_method_count": manifest["test_method_count"],
+                "output": str(dest),
+                "requirement_matrix": str(matrix),
+            },
+            indent=2,
+        )
+    )
     return 0
+
+
+def command_aera_evaluate(args: argparse.Namespace) -> int:
+    from quasar2.aera.runner import run_aera_cycle
+
+    dest = Path(args.output)
+    payload = run_aera_cycle(
+        output=dest,
+        config_path=args.config,
+        seed=int(args.seed),
+        limit=int(args.limit),
+        overwrite=bool(args.overwrite),
+    )
+    print(
+        json.dumps(
+            {
+                "n": payload.get("n_engine_cases"),
+                "gates": payload.get("gates"),
+                "report": payload.get("report_path"),
+            },
+            indent=2,
+            default=str,
+        )
+    )
+    return 0 if payload.get("gates", {}).get("marketplace_executes") == "PASS" else 2
+
+
+def command_planner_evaluate(args: argparse.Namespace) -> int:
+    from quasar2.aera.planner import plan_horizon2
+
+    payload = plan_horizon2(
+        entropy=float(args.entropy),
+        margin=float(args.margin),
+        actions=("ANSWER", "BM25", "DISCRIMINATIVE", "ANALYZE", "VERIFY", "DEFER"),
+        remaining_budget=float(args.budget),
+        costs={"ANSWER": 0.0, "BM25": 0.10, "DISCRIMINATIVE": 0.25, "ANALYZE": 0.02, "VERIFY": 0.12, "DEFER": 0.05},
+    )
+    slim = {k: v for k, v in payload.items() if k not in {"first", "second"}}
+    dest = Path(args.output)
+    dest.mkdir(parents=True, exist_ok=True)
+    (dest / "planner.json").write_text(json.dumps(slim, indent=2, default=str), encoding="utf-8")
+    print(json.dumps(slim, indent=2, default=str))
+    return 0
+
+
+def command_bandit_replay(args: argparse.Namespace) -> int:
+    from quasar2.aera.bandit import doubly_robust, guardrails, ips_value
+
+    logged = [
+        {"action": "BM25", "reward": 0.2, "propensity": 0.4},
+        {"action": "DISCRIMINATIVE", "reward": 0.5, "propensity": 0.2},
+        {"action": "ANSWER", "reward": 0.1, "propensity": 0.4},
+    ]
+    payload = {
+        "ips": ips_value(logged, args.action),
+        "dr": doubly_robust(
+            logged,
+            q_hat={"DISCRIMINATIVE": 0.3, "BM25": 0.1, "ANSWER": 0.05},
+            target_action=args.action,
+        ),
+        "guardrails": guardrails(),
+        "note": "Toy logged bandit. Not a production IPS study.",
+    }
+    dest = Path(args.output)
+    dest.mkdir(parents=True, exist_ok=True)
+    (dest / "bandit_replay.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    print(json.dumps(payload, indent=2))
+    return 0
+
+
+def command_fleet_simulate(args: argparse.Namespace) -> int:
+    from quasar2.aera.fleet import AgentBid, compare_allocators
+
+    n = int(args.agents)
+    bids = [
+        AgentBid(
+            f"a{i}",
+            voi=0.2 + (i % 7) * 0.1,
+            risk=0.05 * (i % 5),
+            priority=0.3 + (i % 4) * 0.2,
+            cost=0.05 + (i % 6) * 0.04,
+            tenant=f"t{i % 3}",
+        )
+        for i in range(n)
+    ]
+    payload = compare_allocators(bids, global_budget=float(args.budget))
+    dest = Path(args.output)
+    dest.mkdir(parents=True, exist_ok=True)
+    (dest / "fleet.json").write_text(json.dumps(payload, indent=2, default=str), encoding="utf-8")
+    print(json.dumps({"all_within_cap": payload["all_within_cap"], "n": n, "budget": args.budget}, indent=2))
+    return 0 if payload["all_within_cap"] else 2
 
 
 def command_source_validate(args: argparse.Namespace) -> int:
@@ -764,6 +866,10 @@ def build_parser() -> argparse.ArgumentParser:
     a1.add_argument("--output", required=True)
     a1.set_defaults(func=command_a1_decompose)
 
+    audit = subparsers.add_parser("audit", help="repository state + AERA requirement matrix")
+    audit.add_argument("--output", default="experiments/results/repository_audit")
+    audit.set_defaults(func=command_repository_audit)
+
     repo_audit = subparsers.add_parser(
         "repository-audit",
         help="write RepositoryStateManifest (structural validation of claimed capabilities)",
@@ -991,6 +1097,35 @@ def build_parser() -> argparse.ArgumentParser:
     policy_eval.add_argument("--config")
     policy_eval.add_argument("--output", default="experiments/results/policy_evaluate")
     policy_eval.set_defaults(func=command_policy_evaluate)
+
+    aera = subparsers.add_parser(
+        "aera-evaluate",
+        help="AERA marketplace/planner/fleet/VERIFY smoke (does not overwrite Cycle 4 or v0.1.1)",
+    )
+    aera.add_argument("--output", default="experiments/results/aera_c8")
+    aera.add_argument("--config")
+    aera.add_argument("--seed", type=int, default=42)
+    aera.add_argument("--limit", type=int, default=8)
+    aera.add_argument("--overwrite", action="store_true")
+    aera.set_defaults(func=command_aera_evaluate)
+
+    planner = subparsers.add_parser("planner-evaluate", help="receding-horizon d=2 vs greedy under equal budget")
+    planner.add_argument("--output", default="experiments/results/planner_eval")
+    planner.add_argument("--entropy", type=float, default=0.8)
+    planner.add_argument("--margin", type=float, default=0.1)
+    planner.add_argument("--budget", type=float, default=0.4)
+    planner.set_defaults(func=command_planner_evaluate)
+
+    bandit = subparsers.add_parser("bandit-replay", help="offline IPS/DR on toy logged actions; online exploration disabled")
+    bandit.add_argument("--output", default="experiments/results/bandit_replay")
+    bandit.add_argument("--action", default="DISCRIMINATIVE")
+    bandit.set_defaults(func=command_bandit_replay)
+
+    fleet_cmd = subparsers.add_parser("fleet-simulate", help="global-budget fleet allocator simulation")
+    fleet_cmd.add_argument("--output", default="experiments/results/fleet_sim")
+    fleet_cmd.add_argument("--agents", type=int, default=12)
+    fleet_cmd.add_argument("--budget", type=float, default=1.0)
+    fleet_cmd.set_defaults(func=command_fleet_simulate)
 
     serve = subparsers.add_parser("serve", help="stdlib HTTP API + Research Cockpit (no extra deps)")
     serve.add_argument("--host", default="127.0.0.1")

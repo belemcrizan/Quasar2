@@ -36,6 +36,11 @@ The historical V2.4 ledger remains at [docs/CLAIM_LEDGER.md](docs/CLAIM_LEDGER.m
 | C4-oracle-ceiling-known | OracleRescueCeiling is identified on sanity FastWrong. | TESTED | 2/2 FastWrong have gold discriminative docs (Wilson [0.34, 1.00]) | `experiments/results/cycle4_rescue` | n=2 errors; catalog gold map not human adjudication |
 | C5-falsification-rescue | Deployment-valid falsification retrieval can rescue a Fast error without gold queries. | PARTIALLY_SUPPORTED | Rescue 1/2 FastWrong on falsification arm; pairwise disc Rescue=0 | same run, `astro-03:q1` | Easy fixture; N_FastWrong=2 |
 | C5-net-explore-utility | Always-on discriminative EXPLORE has positive net utility on the sanity fixture. | NOT_SUPPORTED | Best arm NetRescueRate=0; ΔU=−0.040 (cluster bootstrap mean negative) | same run | Extra calls tax the 118 FastCorrect cases |
+| C-aera-marketplace | Experimental marketplace executes the selected action with robust Q. | TESTED | rescue pipeline, not v0.1.1 | `tests/test_aera.py`, `aera-evaluate` | Not ΔNEU; product policy frozen |
+| C-aera-verify-independent | VERIFY can query a structured source with zero retrieval and is not ANALYZE. | TESTED | IndependentSource fixture | `src/quasar2/aera/verify.py` | Product ActionCatalog still DISABLES VERIFY |
+| C-aera-fleet-cap | Simulated fleet spend never exceeds global budget. | TESTED | 4–N synthetic agents | `fleet-simulate` | Not production FinOps |
+| C-aera-eroi | EROI is defined only for ΔC>0; dominance otherwise. | TESTED | unit + historical ΔU<0 | `economy.py` | Does not make Cycle 5 ΔU positive |
+| C-aera-planner-twin | Horizon-2 can beat greedy on the heuristic twin. | UNKNOWN | synthetic twin | `planner-evaluate` | Not confirmatory; twin uncalibrated without frequencies |
 | C6-policy-neu | Gated policy ΔNEU>0 vs equal-budget baseline. | BLOCKED | Cycle 5 net-utility gate FAIL; v0.1.1 policy not changed | — | Do not promote |
 | C-obs-trace-split | Runtime traces omit oracle namespaces. | TESTED | `trace.runtime` leakage tests; `/v1/decide` | tests/test_observability.py | Not a Rescue claim |
 | C-policy-execute | Selected experimental action is the executed action. | TESTED | `execute_selected` integration | tests/test_observability.py | Experimental loop only; product loop frozen |

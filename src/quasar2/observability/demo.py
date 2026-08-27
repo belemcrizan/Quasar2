@@ -88,7 +88,7 @@ def classify_demo_cases() -> dict[str, dict[str, Any]]:
     }
     out["verify"] = {
         "status": "not_demonstrated",
-        "note": "VERIFY remains DISABLED_BY_GATE: no independent verifier is wired.",
+        "note": "Product ActionCatalog VERIFY is DISABLED_BY_GATE. Experimental IndependentSource exists in aera.verify (zero retrieval). Not a Rescue demonstration.",
     }
     out["defer"] = {
         "status": "demonstrated" if (defer_n or 0) > 0 else "not_demonstrated",
