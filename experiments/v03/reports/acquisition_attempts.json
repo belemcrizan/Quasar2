@@ -1,0 +1,20 @@
+[
+  {
+    "dataset": "scifact",
+    "status": "NOT_RUN",
+    "reason": "Acquisition failed after 1 attempts (URLError)"
+  },
+  {
+    "dataset": "nfcorpus",
+    "status": "NOT_RUN",
+    "reason": "Acquisition failed after 1 attempts (URLError)"
+  },
+  {
+    "dataset": "nasa-exoplanet",
+    "status": "COMPLETE"
+  },
+  {
+    "dataset": "inspire",
+    "status": "COMPLETE"
+  }
+]

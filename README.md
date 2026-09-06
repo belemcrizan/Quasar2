@@ -623,3 +623,13 @@ Follow [docs/EXTENDING.md](docs/EXTENDING.md): do not tune catalogs on held-out 
 There is no DOI. Cite the repository and the frozen run ids you actually used.
 
 MIT License — [LICENSE](LICENSE). World Bank WDI attribution is in each snapshot `LICENSE_AND_ATTRIBUTION.md`. JWST/CERN fixture attribution is in their manifests.
+
+### Experimental v03 evidence program
+
+The [v03 evidence guide](docs/V03_EVIDENCE_PROGRAM.md) adds explicit utility and
+pre-action R* estimation, leakage audits, exact retrieval-budget comparisons,
+clustered uncertainty, bounded external acquisition and immutable offline runs.
+NASA/INSPIRE snapshots are real but their queries are generated; BEIR and human
+confirmation remain unavailable. See the [delivery audit](docs/V03_FINAL_AUDIT.md)
+and [adversarial review](docs/V03_REVIEWER_2.md). This does **not** change the package
+version or establish the proposed v0.3 scientific claims.

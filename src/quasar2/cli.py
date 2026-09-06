@@ -1170,6 +1170,8 @@ def build_parser() -> argparse.ArgumentParser:
     ext_bench.add_argument("--overwrite", action="store_true")
     ext_bench.add_argument("--smoke", action="store_true")
     ext_bench.set_defaults(func=command_external_validity)
+    from quasar2.v03.cli import add_commands
+    add_commands(subparsers)
     return parser
 
 

@@ -1,0 +1,2271 @@
+{
+  "upstream_git_sha": "66ebbe4505d9ed88ca6b0fd4956b16428bfb9bdd",
+  "local_git_sha": "7380b8efa60c90e29f5815e0d3db643861633b44",
+  "python": "3.12.13",
+  "package_version": "0.2.0",
+  "tests_baseline": 251,
+  "frozen_local_sha256": {
+    "data/benchmarks/quasar_bench_manifest.json": "156def6e1434a205ebcb0143afad2564f7179eb318bc3cf34e63ce0510214e2e",
+    "data/corpus/ai.jsonl": "ba278a32fa0410e364e6f0bdae13a40c99a1f49ec1fda194a7eac13826f931d5",
+    "data/corpus/astronomy.jsonl": "eeaed643def07f4d350f6812e9a76b1c9af71497d06594eb19674bc1689a3550",
+    "data/external/README.md": "dfe4fac7ae9472faf670f07209253ba69efcfcc3930ab16312c4017ef16b6f6c",
+    "data/hypotheses_catalog/ai.json": "6cb332e2dcf366d47209f3d5e8c06d465b2c4f0db661022a9dcbee321438b9b2",
+    "data/hypotheses_catalog/astronomy.json": "18c9ced0bb26928a8bd8317d5806f89f477a73e41cae89363c21cb7456eeaba4",
+    "data/intents/intents.json": "e2a8e7fa7760cb718e96c63baefcf6b87ee64b002bcbda66016d5f9305b88c5a",
+    "data/ops/corpus/ops.jsonl": "b429f39ec82ca5a27d6352641f97828cfb604a5e5fbf82e41bc04980732be886",
+    "data/ops/hypotheses_catalog/ops.json": "11e2f4c7166933abeb9b60c90546bd501acddb07bdea8acd2dbe0b53e4ec9132",
+    "data/ops/intents.json": "639252d4806917d62d0ceebaae7a8f42d7d0ab657d3d02b055d3c1178b01afac",
+    "data/sources/fixtures/cern_opendata/snapshot_manifest.json": "c9dbd01532ef97db99b53a4b731c88d323577fd372e8ba544a13a1ad26eaf6cf",
+    "data/sources/fixtures/inspire/snapshot_manifest.json": "58462851ad9b7ce4a5cb6eec78eb17aa4bfe9e069c68d7b158bf3f3d9bbbbc2f",
+    "data/sources/fixtures/jwst_mast/snapshot_manifest.json": "794fed63285b283af2fbf12676ec523d372396260ec5c69816fe71221c6e4cfb",
+    "data/wdi/snapshots/ci-live/LICENSE_AND_ATTRIBUTION.md": "7f907370cd5f63c6e74d08eedcb901d6258f5fd738fed5b34eadca56013aee07",
+    "data/wdi/snapshots/ci-live/normalized/entities.jsonl": "18135cf8281e85a99379d1753e55acf77cd259c42f1d3edfd32fac5dd5a8c682",
+    "data/wdi/snapshots/ci-live/normalized/indicators.jsonl": "b19867cc55426959dfee68dd68865aa101213c2a1fbc2f96c02da3b0059bad69",
+    "data/wdi/snapshots/ci-live/normalized/observations.jsonl": "a5606f7505b18a8acac41c03ace304fc720edf4898d63fb4d3305166cfe97957",
+    "data/wdi/snapshots/ci-live/raw/countries_or_entities/countries.json": "e03fda2c2a41bc79ff0d592520c1e0bfb9fd92e9fc0dd446851176ab70b5fcf1",
+    "data/wdi/snapshots/ci-live/raw/indicators/EG.ELC.ACCS.ZS.json": "1ed1d128247951698b471326f18b2dc6e764243b7f0d47fe4ebc3cefe6e529aa",
+    "data/wdi/snapshots/ci-live/raw/indicators/EN.GHG.CO2.PC.CE.AR5.json": "fcd574d0a959fd76db3ee764a932d7e13b1072cd36a139ea715005c1b53b75d7",
+    "data/wdi/snapshots/ci-live/raw/indicators/FP.CPI.TOTL.ZG.json": "b4de0d81b68cfd30c8efe1938045b3391092c51d1c9561ca212dc2a5b1faba37",
+    "data/wdi/snapshots/ci-live/raw/indicators/IT.NET.USER.ZS.json": "e5df2ba8d79bf98a6f164541fcc65718da8dc867c7da6daf7912c8fc2673ef95",
+    "data/wdi/snapshots/ci-live/raw/indicators/NY.GDP.MKTP.CD.json": "d4c7fbb7e51aec5b3771d0bf1f68a7720555f7a5b804a0ef536a3bea71908748",
+    "data/wdi/snapshots/ci-live/raw/indicators/NY.GDP.PCAP.CD.json": "bb04f0fd6a0fd0c6b81411bcfb67738f28059481d46c6359d9f6ab94238b5761",
+    "data/wdi/snapshots/ci-live/raw/indicators/SE.ADT.LITR.ZS.json": "84d37b15c89535a1ca3b800f163061f1a439ef61ce66e3923f777a92d2529f11",
+    "data/wdi/snapshots/ci-live/raw/indicators/SH.XPD.CHEX.GD.ZS.json": "d5e37b88027fd281ce9fbdf3068b5502864e3c848a336c4aec6f65b1a721d0a4",
+    "data/wdi/snapshots/ci-live/raw/indicators/SI.POV.DDAY.json": "52ffb8184bf9030a987027fdeaa7aa89006e85c1e12074a5de4439345a7349e7",
+    "data/wdi/snapshots/ci-live/raw/indicators/SL.UEM.TOTL.ZS.json": "76c4fcd0d9e1f7302411cb031eff49347055e6c8f9ff707120183ab6636d2b96",
+    "data/wdi/snapshots/ci-live/raw/indicators/SP.DYN.LE00.IN.json": "3e36780d44ddf7be6fdc5dab0836a2526f23f5461ca8a179133720ac1527d9d4",
+    "data/wdi/snapshots/ci-live/raw/indicators/SP.POP.TOTL.json": "ca6ab2d05f31e8773eb1ede4834578d935d2797c4226fa4f7ce901c3cb10bfdc",
+    "data/wdi/snapshots/ci-live/raw/metadata/requests.json": "e866be3fe6147c3757ddb40696f44871c9b2039222e8af5816520c6dbcefd862",
+    "data/wdi/snapshots/ci-live/raw/observations/EG.ELC.ACCS.ZS.json": "1e4cc8d96248d69577dd21b9cc968668095c8fa5440f3be83b6d583f47ec526b",
+    "data/wdi/snapshots/ci-live/raw/observations/EN.GHG.CO2.PC.CE.AR5.json": "0d3e02919457f17b7d054ec89f02ba2cb2727ecbe419eca42e47f620ab894e5f",
+    "data/wdi/snapshots/ci-live/raw/observations/FP.CPI.TOTL.ZG.json": "3ddd8ecfe8e028d3b14fc9c10195dc623d8c3a266a6796a4336182de55a80ff5",
+    "data/wdi/snapshots/ci-live/raw/observations/IT.NET.USER.ZS.json": "4e80f58b4028fd4197b2ae5400081b35f5680a7012f9701801fd254a2d039113",
+    "data/wdi/snapshots/ci-live/raw/observations/NY.GDP.MKTP.CD.json": "e2b22c602aad4dd6169dc4fb8006eca4e2b213560febb26d7b3c3a069a6465cc",
+    "data/wdi/snapshots/ci-live/raw/observations/SH.XPD.CHEX.GD.ZS.json": "4991184c79054a1bc5bea3a86e27faf8d654cf942254fd6084361860b5e9e268",
+    "data/wdi/snapshots/ci-live/raw/observations/SL.UEM.TOTL.ZS.json": "a9130377e14b40de288cc1978a7fd75169533acf043678dcd97ac031cefbf98b",
+    "data/wdi/snapshots/ci-live/raw/observations/SP.POP.TOTL.json": "57f7109aa36846bfed8f0f88ad7342b4b0e1c165052e548fcac95774e47d9ece",
+    "data/wdi/snapshots/ci-live/snapshot_manifest.json": "42cd1c90fb15e75b7cc8440c823b656e8cf35a1ad80b1d83b819390a5fddb0c6",
+    "data/wdi/snapshots/ci-live/validation_report.json": "647cb6409f118b40b8d4e72a1d4e1df151f1054bb96b3579a9b0fa1f378373db",
+    "data/wdi/snapshots/ci-offline/LICENSE_AND_ATTRIBUTION.md": "99abc8d76864ed0284eaae05eaae5988614e39749579e180c97ffb2093a11a94",
+    "data/wdi/snapshots/ci-offline/normalized/entities.jsonl": "5957cfb0e5071b737b3683850081258db0acb805d3f562fc444c2a90bd8cb02e",
+    "data/wdi/snapshots/ci-offline/normalized/indicators.jsonl": "31c20253daac4a97b3ef9335242e8c0c7699a623a35eb57a7542ecb7b1ac9af8",
+    "data/wdi/snapshots/ci-offline/normalized/observations.jsonl": "984ff624b860fb1fe0ff65c2a6722a205509a46a11bc45d0a6d0cb0a5a87b18e",
+    "data/wdi/snapshots/ci-offline/snapshot_manifest.json": "d5853a70434ab7558fe468b333e83d0cd82aed8414a9b37c00fd50f0d587e61f",
+    "data/wdi/snapshots/ci-offline/validation_report.json": "656b5eeb10b2eb85ee575b851cd5eef8ed6ca3b8cc63d614c86e444df1a2f311",
+    "data/wdi/snapshots/pilot-live/LICENSE_AND_ATTRIBUTION.md": "551bc5ef9cd4843979ded7c3c7b671a18125c36144113a34835025a3ade6a423",
+    "data/wdi/snapshots/pilot-live/normalized/entities.jsonl": "d518fc555abb525cf3dc50469aedfffff0139e7209690b01832a438a9db5bf30",
+    "data/wdi/snapshots/pilot-live/normalized/indicators.jsonl": "9a84020963ce6d0199a4c8f3b056832db46136150e773d2154522be16e16dfa6",
+    "data/wdi/snapshots/pilot-live/raw/countries_or_entities/countries.json": "4a6b673e575c843c7cd8d8439ec55d961f1ee3386066b6c6fe7b3f1f0f3cf7e5",
+    "data/wdi/snapshots/pilot-live/raw/indicators/EG.ELC.ACCS.ZS.json": "c0edeedacec5320ab1e651f0996a557bdd6c1efcc726e8aa2eece469e88dec7f",
+    "data/wdi/snapshots/pilot-live/raw/indicators/EG.FEC.RNEW.ZS.json": "e471eb2577578ee7fb854008b83260aefb2995aa9faedf69e7d5a8e95f90c8c9",
+    "data/wdi/snapshots/pilot-live/raw/indicators/EN.GHG.CO2.MT.CE.AR5.json": "842e3e67dc4642f423586ca0331fe17d090b2565a54bafd3e03a383e0f0c547c",
+    "data/wdi/snapshots/pilot-live/raw/indicators/EN.GHG.CO2.PC.CE.AR5.json": "f142c403d921f44d59f9831845551a762785fe8aea97c7a51a47c29682848361",
+    "data/wdi/snapshots/pilot-live/raw/indicators/FP.CPI.TOTL.ZG.json": "f7eb5fc7d5b5ec55245c0d3242837c943882b59461bf05e8e1a9294a36d54a5d",
+    "data/wdi/snapshots/pilot-live/raw/indicators/FS.AST.DOMS.GD.ZS.json": "22627d5422a169468c2d575428fb9b6530be79c098d859187efb9653910e5847",
+    "data/wdi/snapshots/pilot-live/raw/indicators/GC.DOD.TOTL.GD.ZS.json": "53daaac21a3728072f7d121fcdea1b4e586124a29fbaf9100168574184ff197b",
+    "data/wdi/snapshots/pilot-live/raw/indicators/IQ.CPA.PUBS.XQ.json": "45f7965c9c1601d6f1b1b8b764fe76ea509ced408f4b7abc1e16d8aa231f6a12",
+    "data/wdi/snapshots/pilot-live/raw/indicators/IT.CEL.SETS.P2.json": "4fec1fab84201037157dc4778fec2ca06dd5bdf004a3d980f308b26db40e5dc2",
+    "data/wdi/snapshots/pilot-live/raw/indicators/IT.NET.BBND.P2.json": "23761b61ffca6e2c666f9f50e347be113825968fd36ee554dee2e52decfa6ba8",
+    "data/wdi/snapshots/pilot-live/raw/indicators/IT.NET.USER.ZS.json": "1f179e718c6f06c30bbc70e4af72ae3e084bc49ad1d8d69ff5412c7e57c93823",
+    "data/wdi/snapshots/pilot-live/raw/indicators/NE.TRD.GNFS.ZS.json": "bdb3f83f6b94f379aba68e99713be172140190f00c0e10912df7678a22fff091",
+    "data/wdi/snapshots/pilot-live/raw/indicators/NY.GDP.MKTP.CD.json": "ea1f1daee34b6c15213fcc2a0a83ee7ac4ab5535afc3cf84c32771ad1c6fd6b0",
+    "data/wdi/snapshots/pilot-live/raw/indicators/NY.GDP.PCAP.CD.json": "ebe5a8de691759df8f7022094487c6d6560b2e31640ed3c7486ca14329338c07",
+    "data/wdi/snapshots/pilot-live/raw/indicators/NY.GDP.PCAP.PP.CD.json": "6c3bb18cff21baf138fbab2badb5398ff90bebb6918049a3527dbfb75cd9c1aa",
+    "data/wdi/snapshots/pilot-live/raw/indicators/NY.GNP.PCAP.CD.json": "941905887c8b7d1964e416fe971e60b3885bb066e48a7c3c1f1ae6842c7483ad",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SE.ADT.LITR.ZS.json": "7a35fd43fedf238a4f7224915e0f1876380938eaaadf7e54b93f0b4a3d4d628b",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SE.PRM.NENR.json": "ff4d76f7ff9cb24eab206f2886d0e14bdfa32fe16d45bdbcce2f8c415a60539a",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SE.SEC.NENR.json": "1aea92ee94c39287ef0b1eccdd7aead7c410d5ebf5575028417cb936c82aa7bd",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SG.GEN.PARL.ZS.json": "84c45aa07d5fa8c609315c0e6d04e2924c56940bab9501332708161c6c6c2e5d",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SH.DYN.MORT.json": "2a0f431f301b58cc6204096f4262fe85f39323ccbbdbd3f5fbfa9d5de2682ea5",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SH.XPD.CHEX.GD.ZS.json": "5ec2b9b72e280ddef70642bd430b251eb1cd7d05825ea51e8dde5eed9e2de598",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SI.POV.DDAY.json": "4d9c60c2a4167dcf28c7530af14aa8f1c229e02dc6086209692ca23d4ae0b39d",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SL.TLF.CACT.FE.ZS.json": "5870d155df971fc7bdbe483a3229c8e1adde4603196bfd73e9e23c6e072387cc",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SL.UEM.TOTL.ZS.json": "465d3cc012b51041d2617543d57f7b632eeb5bf98aefe3f7fa582d3cb88b4dbd",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SP.DYN.LE00.IN.json": "048197a1a6433921823aa30c2866fb7b3348f4a5d1b82a14fdea52eda2efd491",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SP.DYN.TFRT.IN.json": "617a9dad6a60145b679c8fe4dd2c62d15f18132fc262274a400926d8f1cfa2c4",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SP.POP.GROW.json": "caf6b5cac3668579cb7357f57eb153e44501fc33314cda2d89e6d1162cef1da5",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SP.POP.TOTL.json": "4a208c17f34f6b71d22c14c46a9d9ee5a070f726ddc9b05fd152b5c5b0bf5b6f",
+    "data/wdi/snapshots/pilot-live/raw/indicators/SP.URB.TOTL.IN.ZS.json": "787049f8b90f9c402c13b65439637de659753d26af890296f74b1212f7d969ee",
+    "data/wdi/snapshots/pilot-live/raw/metadata/requests.json": "b188b6847ff6160398f6c6b452ef2e8fc367f539660bcf23505e5624fa2c8eae",
+    "data/wdi/snapshots/pilot-live/snapshot_manifest.json": "4cfa888fabbfbd1c99db90dd16788fa0dd59e2ae58b4a8986590cc368b137a98",
+    "data/wdi/snapshots/pilot-live/validation_report.json": "afdced3885cea16cbe6743d477bb3b489f7dcf593b5965dd1eb3bffc625c59b0",
+    "experiments/analysis_plans/aera_c8.json": "559deeafbc0c0b4088f2de7adef61568b32faeb8b164ab056e61aa11a6f5b15d",
+    "experiments/analysis_plans/cycle2.json": "a27ecc1414871c86777197e0226d8c41c8c4acd3171bd4ca75fe8b0d0ba41487",
+    "experiments/analysis_plans/cycle4_rescue.json": "570741a6ebba2524aaf8067763d6073d05ffc11ff0d7917ebc64edb49a35eb00",
+    "experiments/analysis_plans/estimand_registry.json": "1b38262635e18613aac26a9a497874959fdf0ec05e8bc2b3b72377c809ae2b66",
+    "experiments/analysis_plans/external_validity.json": "da64145891c4b70d8773f201bb600efc4247b4f404d0bb14dd5ee8d8ae4b4e7b",
+    "experiments/analysis_plans/gate1.json": "d6866417b633d22760fa866de449d9cbffd2806c550a8ebccec1be5b1c5a4a5c",
+    "experiments/analysis_plans/gr_recoverability.json": "af046ecb30c7323971483f63ec6c0c0692bc76ea58c6d9501054c8284e63eb54",
+    "experiments/analysis_plans/wdi_controlled_degradation.json": "b1fcc7bc8773007e32cd72a0266eb8eac00e503e1d634f1d2afa30a8eac2d4e2"
+  },
+  "inventory": [
+    {
+      "path": "src/quasar2/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/aera/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/aera/ask.py",
+      "classes": [],
+      "functions": [
+        "interaction_cost",
+        "candidate_questions",
+        "select_ask"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/bandit.py",
+      "classes": [],
+      "functions": [
+        "inverse_propensity",
+        "ips_value",
+        "doubly_robust",
+        "guardrails"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/discovery.py",
+      "classes": [],
+      "functions": [
+        "select_observation"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/economy.py",
+      "classes": [],
+      "functions": [
+        "eroi",
+        "marginal_value_of_compute",
+        "equal_budget_table",
+        "cost_per_event"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/engine.py",
+      "classes": [],
+      "functions": [
+        "_u",
+        "run_engine"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/fleet.py",
+      "classes": [
+        "AgentBid"
+      ],
+      "functions": [
+        "robust_bid",
+        "allocate",
+        "compare_allocators"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/marketplace.py",
+      "classes": [
+        "MarketQuote"
+      ],
+      "functions": [
+        "robust_q",
+        "quote_actions",
+        "select_quote",
+        "execute_market_action",
+        "slo_table"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/matrices.py",
+      "classes": [],
+      "functions": [
+        "requirement_rows",
+        "write_matrices"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/memory.py",
+      "classes": [
+        "MemoryRecord",
+        "EpistemicMemory"
+      ],
+      "functions": [
+        "memory_gain"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/planner.py",
+      "classes": [],
+      "functions": [
+        "greedy_one_step",
+        "plan_horizon2"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/provenance.py",
+      "classes": [
+        "ProvenanceGraph"
+      ],
+      "functions": [
+        "adjusted_evidence_score"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/regime.py",
+      "classes": [],
+      "functions": [
+        "regime_label",
+        "fit_rules"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/rescueability.py",
+      "classes": [],
+      "functions": [
+        "features_v3",
+        "vector",
+        "fit_action_models",
+        "estimate_r"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/runner.py",
+      "classes": [],
+      "functions": [
+        "_load_cycle4",
+        "run_aera_cycle",
+        "_render"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/security.py",
+      "classes": [],
+      "functions": [
+        "redact_text",
+        "sanitize_ask",
+        "allow_url",
+        "sanitize_document_text",
+        "threat_findings"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/twin.py",
+      "classes": [
+        "TwinEstimate"
+      ],
+      "functions": [
+        "simulate_outcomes",
+        "predicted_versus_realized"
+      ]
+    },
+    {
+      "path": "src/quasar2/aera/verify.py",
+      "classes": [
+        "IndependentSource",
+        "VerifyResult"
+      ],
+      "functions": [
+        "verify_claim",
+        "claim_for_hypothesis"
+      ]
+    },
+    {
+      "path": "src/quasar2/analysis/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/analysis/a1.py",
+      "classes": [],
+      "functions": [
+        "_candidate_features",
+        "_report_markdown",
+        "run_a1"
+      ]
+    },
+    {
+      "path": "src/quasar2/analysis/decomposition.py",
+      "classes": [],
+      "functions": [
+        "_prediction",
+        "_ground_truth",
+        "_missingness",
+        "_gate_features",
+        "decompose_pair",
+        "_rate_ci",
+        "summarize_rows",
+        "reconcile_intent_exact",
+        "_cohens_d",
+        "feature_associations",
+        "propose_backend_gate",
+        "split_manifest",
+        "rates_by_backend_and_split"
+      ]
+    },
+    {
+      "path": "src/quasar2/analysis/io_util.py",
+      "classes": [],
+      "functions": [
+        "write_json",
+        "write_text",
+        "write_csv",
+        "parse_bool",
+        "parse_float"
+      ]
+    },
+    {
+      "path": "src/quasar2/analysis/matching.py",
+      "classes": [],
+      "functions": [
+        "load_json",
+        "load_records_csv",
+        "load_run_directory",
+        "load_benchmark",
+        "_index_policy",
+        "match_fast_quasar",
+        "as_correct",
+        "numeric_feature",
+        "iter_backends"
+      ]
+    },
+    {
+      "path": "src/quasar2/analysis/operators.py",
+      "classes": [
+        "ComputationalState",
+        "AnalyzeResult",
+        "AnalyzeOperator",
+        "NoOpAnalyze",
+        "ConsistencyAnalyze",
+        "ContradictionPropagationAnalyze",
+        "EvidenceReweightingAnalyze",
+        "SourceReliabilityAnalyze",
+        "MixtureProjectionAnalyze",
+        "VariationalAnalyze"
+      ],
+      "functions": [
+        "_changed_top1"
+      ]
+    },
+    {
+      "path": "src/quasar2/audit/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/audit/repository_state.py",
+      "classes": [],
+      "functions": [
+        "_git_commit",
+        "_exists",
+        "_capability",
+        "build_repository_state_manifest"
+      ]
+    },
+    {
+      "path": "src/quasar2/baselines.py",
+      "classes": [
+        "BaselineResult",
+        "DirectRetrievalBaseline",
+        "RewriteHybridBaseline",
+        "MultiQueryBaseline"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/belief/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/belief/types.py",
+      "classes": [
+        "EstimatedBelief",
+        "IdealBelief",
+        "BeliefDiagnostics",
+        "BeliefSnapshot"
+      ],
+      "functions": [
+        "diagnose"
+      ]
+    },
+    {
+      "path": "src/quasar2/belief/updater.py",
+      "classes": [
+        "BeliefUpdater"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/benchmark.py",
+      "classes": [
+        "Intent",
+        "BenchmarkRecord",
+        "BenchmarkRunner"
+      ],
+      "functions": [
+        "load_intents",
+        "retrieval_metrics",
+        "_percentile",
+        "summarize",
+        "paired_bootstrap_difference",
+        "write_results",
+        "format_summary_table"
+      ]
+    },
+    {
+      "path": "src/quasar2/benchmarks/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/benchmarks/wdi_bench.py",
+      "classes": [
+        "BenchInstance"
+      ],
+      "functions": [
+        "_split_for",
+        "_observation",
+        "build_benchmark",
+        "write_benchmark"
+      ]
+    },
+    {
+      "path": "src/quasar2/cli.py",
+      "classes": [],
+      "functions": [
+        "_config",
+        "command_demo",
+        "command_benchmark",
+        "command_experiment",
+        "command_materialize",
+        "command_validate",
+        "command_wdi_sync",
+        "command_wdi_validate",
+        "command_wdi_build_corpus",
+        "command_neural_doctor",
+        "command_dataset_build",
+        "command_wdi_experiment",
+        "command_gate_experiment",
+        "command_a1_decompose",
+        "command_repository_audit",
+        "command_aera_evaluate",
+        "command_planner_evaluate",
+        "command_bandit_replay",
+        "command_fleet_simulate",
+        "command_source_validate",
+        "command_jwst_validate",
+        "command_cern_validate",
+        "command_theory_check",
+        "command_theorem_benchmark",
+        "command_report",
+        "command_phase_diagram",
+        "command_recoverability_bench",
+        "command_cycle2_audit",
+        "command_rescue_cycle",
+        "command_external_validity",
+        "command_reproduce_paper",
+        "command_gate1_audit",
+        "command_shadow_study",
+        "command_policy_compare",
+        "command_policy_evaluate",
+        "command_serve",
+        "command_dashboard",
+        "command_compare_runs",
+        "command_load_test",
+        "build_parser",
+        "main"
+      ]
+    },
+    {
+      "path": "src/quasar2/config.py",
+      "classes": [
+        "ProjectConfig"
+      ],
+      "functions": [
+        "load_structured",
+        "deep_merge",
+        "discover_project_root"
+      ]
+    },
+    {
+      "path": "src/quasar2/cycle2/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/cycle2/action_value.py",
+      "classes": [],
+      "functions": [
+        "answer_value",
+        "posterior_answer_value",
+        "ask_response_kernels",
+        "estimate_action_values",
+        "q_net_map",
+        "select_action",
+        "tau_explore_from_q"
+      ]
+    },
+    {
+      "path": "src/quasar2/cycle2/failure.py",
+      "classes": [],
+      "functions": [
+        "classify_policy_error",
+        "regret_decomposition"
+      ]
+    },
+    {
+      "path": "src/quasar2/cycle2/gate1_lock.py",
+      "classes": [],
+      "functions": [
+        "frozen_gate1_path",
+        "lock_gate1"
+      ]
+    },
+    {
+      "path": "src/quasar2/cycle2/maturity.py",
+      "classes": [],
+      "functions": [
+        "_ceiling",
+        "score_recoverability",
+        "score_policy",
+        "score_synthetic",
+        "score_deployment",
+        "assign_maturity"
+      ]
+    },
+    {
+      "path": "src/quasar2/cycle2/metrics.py",
+      "classes": [],
+      "functions": [
+        "ece",
+        "precision_at_k",
+        "recall_at_k",
+        "topk_uplift",
+        "prevalence",
+        "incremental_models",
+        "interaction_fit"
+      ]
+    },
+    {
+      "path": "src/quasar2/cycle2/observation.py",
+      "classes": [],
+      "functions": [
+        "_normalize",
+        "mix_distribution",
+        "mix_kernels",
+        "invert_kernels",
+        "mismatch_severity",
+        "corrupt_kernels",
+        "finite_entropy"
+      ]
+    },
+    {
+      "path": "src/quasar2/cycle2/ops_sim.py",
+      "classes": [],
+      "functions": [
+        "_root",
+        "load_ops_bundle",
+        "_hyp_ids",
+        "_belief_from_hits",
+        "_utility",
+        "_ask_reply",
+        "simulate_ops",
+        "run_ops_matrix"
+      ]
+    },
+    {
+      "path": "src/quasar2/cycle2/policies.py",
+      "classes": [
+        "ImmediateAnswerPolicy",
+        "EntropyOnlyPolicy",
+        "RandomBudgetPolicy",
+        "EmpiricalMyopicPolicy",
+        "ConservativeLCBPolicy",
+        "OraclePolicy"
+      ],
+      "functions": [
+        "leakage_features",
+        "threshold_recommend",
+        "fit_learned",
+        "learned_recommend",
+        "evaluate_against_oracle"
+      ]
+    },
+    {
+      "path": "src/quasar2/cycle2/recoverability_state.py",
+      "classes": [],
+      "functions": [
+        "_top_pair",
+        "belief_margin",
+        "component_scores",
+        "estimate_recoverability_state",
+        "deployment_observable_vector",
+        "uncertainty_only"
+      ]
+    },
+    {
+      "path": "src/quasar2/cycle2/report.py",
+      "classes": [],
+      "functions": [
+        "_j",
+        "write_report"
+      ]
+    },
+    {
+      "path": "src/quasar2/cycle2/runner.py",
+      "classes": [],
+      "functions": [
+        "_hash_file",
+        "_git_sha",
+        "_plan_hashes",
+        "_summarize_mismatch",
+        "_policy_on_row",
+        "_regret_stats",
+        "run_cycle2"
+      ]
+    },
+    {
+      "path": "src/quasar2/cycle2/synthetic.py",
+      "classes": [],
+      "functions": [
+        "_belief",
+        "generate_family_states",
+        "generate_mismatch_curve",
+        "generate_corruption_rows",
+        "cost_surface",
+        "split_manifest"
+      ]
+    },
+    {
+      "path": "src/quasar2/cycle2/types.py",
+      "classes": [
+        "RecoverabilityEstimate",
+        "ActionValueEstimate"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/cycle2/wdi_experiment.py",
+      "classes": [],
+      "functions": [
+        "plan_path",
+        "plan_hash",
+        "_utility",
+        "run_wdi_controlled_degradation"
+      ]
+    },
+    {
+      "path": "src/quasar2/datasets/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/datasets/ops_runbook.py",
+      "classes": [],
+      "functions": [
+        "_doc",
+        "documents",
+        "catalog_payload",
+        "intents_payload",
+        "write_fixture"
+      ]
+    },
+    {
+      "path": "src/quasar2/decision/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/decision/ablations.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/decision/conformal.py",
+      "classes": [
+        "PredictionSet"
+      ],
+      "functions": [
+        "highest_mass_set",
+        "split_conformal_set"
+      ]
+    },
+    {
+      "path": "src/quasar2/decision/discriminative.py",
+      "classes": [
+        "DiscriminativeEvidenceScorer",
+        "LikelihoodRatioProxyScorer",
+        "HypothesisScoreDifferenceScorer",
+        "RelevanceScorer"
+      ],
+      "functions": [
+        "_smoothed_llr",
+        "compare_relevance_vs_discrimination"
+      ]
+    },
+    {
+      "path": "src/quasar2/decision/engine.py",
+      "classes": [
+        "DecisionEngine"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/decision/gap.py",
+      "classes": [
+        "PolicyGapDecomposition"
+      ],
+      "functions": [
+        "decompose_from_scenarios"
+      ]
+    },
+    {
+      "path": "src/quasar2/decision/kernels.py",
+      "classes": [],
+      "functions": [
+        "bernoulli_support_kernels"
+      ]
+    },
+    {
+      "path": "src/quasar2/decision/policies.py",
+      "classes": [
+        "PolicyRecommendation",
+        "LegacyPolicy",
+        "ThresholdPolicy",
+        "MyopicVoIPolicy",
+        "RecedingHorizonPolicy",
+        "QuadrantPolicy",
+        "TabularOraclePolicy",
+        "SPRTInspiredPolicy",
+        "LearnedEpistemicPolicy"
+      ],
+      "functions": [
+        "_top_pair_kernels"
+      ]
+    },
+    {
+      "path": "src/quasar2/decision/shadow.py",
+      "classes": [],
+      "functions": [
+        "recommended_action_v2_shadow",
+        "build_shadow_telemetry"
+      ]
+    },
+    {
+      "path": "src/quasar2/decision/utility.py",
+      "classes": [
+        "UtilityModel"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/degradation.py",
+      "classes": [
+        "DegradedQuery",
+        "QueryDegrader"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/eval/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/eval/evidence_trace.py",
+      "classes": [],
+      "functions": [
+        "_summary_value",
+        "trace_section2_metrics"
+      ]
+    },
+    {
+      "path": "src/quasar2/eval/gate1.py",
+      "classes": [],
+      "functions": [
+        "_plan_path",
+        "load_analysis_plan",
+        "analysis_plan_hash",
+        "classify_delta",
+        "realized_utility",
+        "_predictor_map",
+        "_score_state",
+        "_fit_learned",
+        "_row_metrics",
+        "_median",
+        "_incremental",
+        "leakage_audit",
+        "_quadrant",
+        "_seed_stability",
+        "_gate_decision",
+        "synthesize_gate1_rows",
+        "analyze_synthetic",
+        "_supports_from_result",
+        "run_fixture_availability",
+        "_maturity",
+        "_claims",
+        "_public_row",
+        "build_report_markdown",
+        "run_gate1_audit",
+        "write_gate1_audit"
+      ]
+    },
+    {
+      "path": "src/quasar2/eval/oracle_env.py",
+      "classes": [],
+      "functions": [
+        "learned_features",
+        "_binary_entropy",
+        "sample_states",
+        "_recommend",
+        "oracle_q",
+        "compare_policies",
+        "counterfactual_dataset"
+      ]
+    },
+    {
+      "path": "src/quasar2/eval/recoverability_bench.py",
+      "classes": [],
+      "functions": [
+        "_kernels_for_estimate",
+        "_records",
+        "_method_metrics",
+        "math_inf",
+        "run_recoverability_benchmark",
+        "write_recoverability_benchmark"
+      ]
+    },
+    {
+      "path": "src/quasar2/eval/shadow_study.py",
+      "classes": [],
+      "functions": [
+        "classify_divergence",
+        "run_shadow_study",
+        "write_shadow_study"
+      ]
+    },
+    {
+      "path": "src/quasar2/eval/stress_regimes.py",
+      "classes": [],
+      "functions": [
+        "_entropy_bits",
+        "kernels_named",
+        "generate_regime_states",
+        "split_counts"
+      ]
+    },
+    {
+      "path": "src/quasar2/evidence/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/evidence/contracts.py",
+      "classes": [
+        "SearchRequest",
+        "FetchRequest",
+        "SourceMetadata",
+        "ProvenanceRecord",
+        "ValidationReport",
+        "NeutralEvidenceItem",
+        "EvidenceSource"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/evidence/envelope.py",
+      "classes": [
+        "UncertaintyBundle",
+        "EvidenceEnvelope"
+      ],
+      "functions": [
+        "envelope_from_neutral"
+      ]
+    },
+    {
+      "path": "src/quasar2/evidence/scorer.py",
+      "classes": [
+        "EvidenceWeights",
+        "EvidenceScorer"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/experiment.py",
+      "classes": [
+        "ExperimentRecord",
+        "RegimeExperiment"
+      ],
+      "functions": [
+        "_loop_backend",
+        "_baseline_backend",
+        "summarize_experiment",
+        "crossover_table",
+        "interpretation_retrieval_tradeoff",
+        "format_experiment_table"
+      ]
+    },
+    {
+      "path": "src/quasar2/exploration/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/exploration/discriminator.py",
+      "classes": [
+        "DiscriminationPlan",
+        "HypothesisDiscriminator"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/exploration/explorer.py",
+      "classes": [
+        "Explorer"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/external/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/external/adversary.py",
+      "classes": [],
+      "functions": [
+        "_base",
+        "adversarial_suite",
+        "ops_structured_states"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/benchmark.py",
+      "classes": [],
+      "functions": [
+        "_uid",
+        "degrade_query",
+        "true_kernels",
+        "proxy_kernels",
+        "document_for",
+        "distractor_documents",
+        "records_for_source",
+        "expand_states",
+        "_prior_belief",
+        "corpus_for_records",
+        "freeze_state_for_policy",
+        "assign_splits"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/budget.py",
+      "classes": [],
+      "functions": [
+        "composite_cost",
+        "match_call_budget",
+        "utility_vs_budget",
+        "pareto_frontier",
+        "neu_surface",
+        "equal_budget_report"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/evaluate.py",
+      "classes": [],
+      "functions": [
+        "_neu",
+        "_top_from_hits",
+        "retrieve_predict",
+        "_recall",
+        "decide",
+        "evaluate_states",
+        "summarize_rows",
+        "paired_delta",
+        "retrieval_table",
+        "query_expansion_baseline"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/leakage.py",
+      "classes": [],
+      "functions": [
+        "audit_state",
+        "audit_corpus_documents",
+        "audit_batch",
+        "strip_for_index"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/power.py",
+      "classes": [],
+      "functions": [
+        "design_effect",
+        "n_for_ci_width",
+        "n_for_min_effect",
+        "default_justification"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/provenance.py",
+      "classes": [],
+      "functions": [
+        "deployment_view",
+        "card_template"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/regime.py",
+      "classes": [],
+      "functions": [
+        "per_state_delta",
+        "_x",
+        "fit_interpretable",
+        "simple_rule",
+        "discover_regime",
+        "by_ambiguity"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/replicate.py",
+      "classes": [],
+      "functions": [
+        "git_sha",
+        "environment_lock",
+        "reconstruct_frozen_sanity",
+        "reconstruct_cycle2",
+        "cloud_replication_stub",
+        "paper_tables"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/report.py",
+      "classes": [],
+      "functions": [
+        "_j",
+        "write_report"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/runner.py",
+      "classes": [],
+      "functions": [
+        "_hash_file",
+        "_neural_status",
+        "_data_cards",
+        "_claims",
+        "_answers",
+        "run_external",
+        "run_reproduce_paper"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/scale.py",
+      "classes": [],
+      "functions": [
+        "_state_with_h",
+        "hypothesis_scale",
+        "open_set_scale",
+        "ambiguity_scale",
+        "_band",
+        "corpus_scale",
+        "query_scale_justification"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/snapshots.py",
+      "classes": [],
+      "functions": [
+        "_hid",
+        "nasa_exo_records",
+        "esa_gaia_records",
+        "obs_alma_records",
+        "jwst_fixture_overlay",
+        "_nasa_query",
+        "_nasa_hidden",
+        "_nasa_amb",
+        "_gaia_query",
+        "_gaia_hidden",
+        "_gaia_amb",
+        "_alma_query",
+        "_alma_hidden",
+        "_alma_amb",
+        "snapshot_manifest"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/source_audit.py",
+      "classes": [],
+      "functions": [
+        "_row",
+        "audit_table",
+        "selected_sources",
+        "rejected_sources",
+        "counts"
+      ]
+    },
+    {
+      "path": "src/quasar2/external/taxonomy.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/external/transfer.py",
+      "classes": [],
+      "functions": [
+        "_subset",
+        "shift_metrics",
+        "transfer_matrix",
+        "adaptation_ladder"
+      ]
+    },
+    {
+      "path": "src/quasar2/failures/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/failures/taxonomy.py",
+      "classes": [
+        "FourWayOutcome"
+      ],
+      "functions": [
+        "four_way_class",
+        "secondary_failure_labels",
+        "primary_failure_class"
+      ]
+    },
+    {
+      "path": "src/quasar2/gate/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/gate/complexity.py",
+      "classes": [
+        "GateConfig",
+        "RetrievalSignals",
+        "GateDecision"
+      ],
+      "functions": [
+        "_normalize_scores",
+        "_entropy",
+        "_token_count",
+        "evaluate_gate"
+      ]
+    },
+    {
+      "path": "src/quasar2/hypotheses/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/hypotheses/base.py",
+      "classes": [
+        "HypothesisGenerator"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/hypotheses/catalog.py",
+      "classes": [
+        "HypothesisCatalog",
+        "CatalogHypothesisGenerator"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/hypotheses/dynamic.py",
+      "classes": [
+        "DynamicHypothesisBackend",
+        "DynamicHypothesisGenerator"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/math/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/math/association.py",
+      "classes": [],
+      "functions": [
+        "_finite_pairs",
+        "pearson",
+        "_ranks",
+        "spearman",
+        "r_squared",
+        "brier",
+        "auroc",
+        "auprc",
+        "reliability_bins"
+      ]
+    },
+    {
+      "path": "src/quasar2/math/bellman.py",
+      "classes": [
+        "TabularMDP"
+      ],
+      "functions": [
+        "bellman_backup",
+        "sup_norm",
+        "contraction_constant",
+        "value_iteration",
+        "residual_error_bound",
+        "exact_error_bound"
+      ]
+    },
+    {
+      "path": "src/quasar2/math/bootstrap.py",
+      "classes": [],
+      "functions": [
+        "_percentile",
+        "_validate_rows",
+        "cluster_indices",
+        "cluster_bootstrap_stat",
+        "cluster_bootstrap_mean",
+        "cluster_bootstrap_mean_difference",
+        "cluster_bootstrap_spearman",
+        "cluster_bootstrap_spearman_difference"
+      ]
+    },
+    {
+      "path": "src/quasar2/math/conventions.py",
+      "classes": [
+        "DivergenceUnits",
+        "LipschitzNorm",
+        "TVConvention",
+        "MeasureConventions"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/math/divergences.py",
+      "classes": [],
+      "functions": [
+        "_log",
+        "entropy",
+        "kl_divergence",
+        "total_variation",
+        "l1_distance",
+        "symmetric_kl",
+        "mixture",
+        "weighted_jsd",
+        "prior_dispersion_binary",
+        "gini_simpson",
+        "pinsker_tv_from_kl"
+      ]
+    },
+    {
+      "path": "src/quasar2/math/information.py",
+      "classes": [
+        "InformationDifferenceResult"
+      ],
+      "functions": [
+        "_marginals",
+        "mutual_information_from_joint",
+        "mutual_information_from_samples",
+        "information_difference",
+        "surprisal"
+      ]
+    },
+    {
+      "path": "src/quasar2/math/linear.py",
+      "classes": [],
+      "functions": [
+        "ridge_fit",
+        "_solve",
+        "dot"
+      ]
+    },
+    {
+      "path": "src/quasar2/math/numerical.py",
+      "classes": [],
+      "functions": [
+        "within_tolerance",
+        "normalize_mass",
+        "aligned_vectors"
+      ]
+    },
+    {
+      "path": "src/quasar2/math/stopping.py",
+      "classes": [
+        "NetVoIConfidenceEstimator",
+        "NormalUCB",
+        "EmpiricalBernsteinUCB",
+        "PercentileBootstrapUCB",
+        "BCaBootstrapUCB",
+        "BootstrapUCB",
+        "StopDecision"
+      ],
+      "functions": [
+        "_mean",
+        "_variance",
+        "_normal_cdf",
+        "_normal_ppf",
+        "stop_if_all_ucb_nonpositive",
+        "wilson_upper",
+        "wilson_lower"
+      ]
+    },
+    {
+      "path": "src/quasar2/math/voi.py",
+      "classes": [
+        "BinaryVoIBound",
+        "GeneralVoIBound"
+      ],
+      "functions": [
+        "expected_binary_belief_movement",
+        "binary_identity_rhs",
+        "voi_bound_binary",
+        "voi_bound_general",
+        "classify_bound_tightness",
+        "bound_gap",
+        "binary_zero_one_value",
+        "empirical_binary_voi_zero_one",
+        "empirical_decision_flip_probability",
+        "binary_zero_one_q_explore"
+      ]
+    },
+    {
+      "path": "src/quasar2/models/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/models/belief.py",
+      "classes": [
+        "BeliefState"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/models/decision.py",
+      "classes": [
+        "Action",
+        "Decision"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/models/evidence.py",
+      "classes": [
+        "EvidenceItem",
+        "EvidenceBundle"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/models/generative.py",
+      "classes": [
+        "LatentIntent",
+        "ExpressedIntent",
+        "ObservedQuery",
+        "DegradationProfile",
+        "ObservationModel"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/models/hypothesis.py",
+      "classes": [
+        "Hypothesis",
+        "HypothesisCandidate"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/models/observation.py",
+      "classes": [
+        "Observation"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/models/telemetry.py",
+      "classes": [
+        "DecisionTelemetry",
+        "TraceEvent",
+        "PipelineResult"
+      ],
+      "functions": [
+        "_jsonable"
+      ]
+    },
+    {
+      "path": "src/quasar2/observability/__init__.py",
+      "classes": [],
+      "functions": [
+        "project_root",
+        "default_rescue_dir",
+        "load_json",
+        "load_jsonl",
+        "load_run",
+        "list_runs",
+        "four_way_from_anatomy",
+        "claims_table",
+        "datasets_catalog"
+      ]
+    },
+    {
+      "path": "src/quasar2/observability/demo.py",
+      "classes": [],
+      "functions": [
+        "classify_demo_cases",
+        "decide_runtime"
+      ]
+    },
+    {
+      "path": "src/quasar2/observability/fastapi_app.py",
+      "classes": [],
+      "functions": [
+        "create_app"
+      ]
+    },
+    {
+      "path": "src/quasar2/observability/html.py",
+      "classes": [],
+      "functions": [
+        "_esc",
+        "_metric",
+        "render_cockpit",
+        "_page",
+        "render_demo_page"
+      ]
+    },
+    {
+      "path": "src/quasar2/observability/http.py",
+      "classes": [
+        "InvalidRequest",
+        "QuasarHandler"
+      ],
+      "functions": [
+        "_reject_constant",
+        "_object_body",
+        "_number",
+        "_json",
+        "handle",
+        "serve"
+      ]
+    },
+    {
+      "path": "src/quasar2/observability/loadtest.py",
+      "classes": [],
+      "functions": [
+        "_timed",
+        "run_load_test"
+      ]
+    },
+    {
+      "path": "src/quasar2/observability/streamlit_app.py",
+      "classes": [],
+      "functions": [
+        "main"
+      ]
+    },
+    {
+      "path": "src/quasar2/pipeline.py",
+      "classes": [
+        "QuasarPipeline"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/recoverability.py",
+      "classes": [
+        "RecoverabilityResult",
+        "RecoverabilityEstimator",
+        "TVRecoverability",
+        "KLRecoverability",
+        "SymmetricKLRecoverability",
+        "JSDRecoverability",
+        "MutualInformationRecoverability",
+        "EmpiricalDiscriminationRecoverability",
+        "DecisionRecoverability",
+        "BeliefMarginRecoverability",
+        "EntropyRecoverability",
+        "RetrieverScoreMarginRecoverability",
+        "EmbeddingSeparationRecoverability",
+        "LearnedRecoverabilityEstimator"
+      ],
+      "functions": [
+        "deployment_features",
+        "router_features",
+        "_top_pair"
+      ]
+    },
+    {
+      "path": "src/quasar2/regimes.py",
+      "classes": [
+        "RegimeCell",
+        "RegimeObservation",
+        "FactorialDegrader"
+      ],
+      "functions": [
+        "sample_design",
+        "competitor_terms_for"
+      ]
+    },
+    {
+      "path": "src/quasar2/reporting/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/reporting/phase_diagram.py",
+      "classes": [],
+      "functions": [
+        "intensity_grid",
+        "_cell_ambiguity_recoverability",
+        "_cell_inference_cost",
+        "_cell_risk_ambiguity",
+        "_cell_interaction_recoverability",
+        "build_diagram",
+        "ascii_heatmap",
+        "markdown_table",
+        "html_report",
+        "write_diagrams"
+      ]
+    },
+    {
+      "path": "src/quasar2/reporting/registry.py",
+      "classes": [
+        "RunManifest"
+      ],
+      "functions": [
+        "_git_sha",
+        "hash_mapping",
+        "allocate_run_dir",
+        "write_manifest"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/rescue/actions.py",
+      "classes": [],
+      "functions": [
+        "analyze_only",
+        "ask_simulator",
+        "defer_should_fire",
+        "open_set_query_pack"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/belief.py",
+      "classes": [
+        "DiscriminativeBeliefUpdater"
+      ],
+      "functions": [
+        "odds"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/compare.py",
+      "classes": [],
+      "functions": [
+        "_load",
+        "_ci_excludes_zero",
+        "compare_run_dirs"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/evidence_oracle.py",
+      "classes": [
+        "EvidenceOracleRecord"
+      ],
+      "functions": [
+        "gold_documents_for",
+        "is_discriminative_document",
+        "sufficient_evidence",
+        "evaluate_case"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/leakage.py",
+      "classes": [
+        "LeakageError",
+        "SealedGold"
+      ],
+      "functions": [
+        "assert_no_gold_fields",
+        "scan_mapping_for_gold"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/metrics.py",
+      "classes": [],
+      "functions": [
+        "wilson_interval",
+        "realized_utility",
+        "four_way_counts",
+        "rescue_metrics"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/neural_protocol.py",
+      "classes": [],
+      "functions": [
+        "reranker_status",
+        "maybe_rerank"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/pipeline.py",
+      "classes": [
+        "RescueRun",
+        "OracleHitInjector",
+        "RescuePipeline"
+      ],
+      "functions": [
+        "inject_hypothesis",
+        "_select_queries",
+        "_oracle_evidence_bundles"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/policy.py",
+      "classes": [
+        "ActionEstimate",
+        "ActionCatalog"
+      ],
+      "functions": [
+        "estimate_action_table",
+        "select_action",
+        "map_executed_label",
+        "execute_selected",
+        "gated_policy_action",
+        "evaluate_gated_policy",
+        "action_registry"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/queries.py",
+      "classes": [],
+      "functions": [
+        "_ranked_ids",
+        "build_discriminative_queries"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/recoverability.py",
+      "classes": [],
+      "functions": [
+        "outcome_label",
+        "preaction_features",
+        "_sigmoid",
+        "fit_logreg",
+        "predict_logreg",
+        "auroc",
+        "auprc",
+        "brier",
+        "threshold_predict",
+        "median"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/report.py",
+      "classes": [],
+      "functions": [
+        "write_jsonl",
+        "write_json",
+        "render_report"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/runner.py",
+      "classes": [],
+      "functions": [
+        "_sha256",
+        "_git_sha",
+        "_correct",
+        "_build_rescue_pipeline",
+        "_rows_for_arm",
+        "run_rescue_cycle"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/scoring.py",
+      "classes": [],
+      "functions": [
+        "lexical_support",
+        "discrimination",
+        "novelty",
+        "composite_score",
+        "rerank_hits",
+        "approx_eig_score"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/taxonomy.py",
+      "classes": [],
+      "functions": [
+        "classify_primary"
+      ]
+    },
+    {
+      "path": "src/quasar2/rescue/trace.py",
+      "classes": [],
+      "functions": [
+        "new_trace_id",
+        "build_trace",
+        "runtime_only",
+        "compact_runtime_from_run"
+      ]
+    },
+    {
+      "path": "src/quasar2/retrieval/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/retrieval/base.py",
+      "classes": [
+        "Document",
+        "SearchHit",
+        "Retriever"
+      ],
+      "functions": [
+        "validate_top_k",
+        "validate_documents",
+        "load_corpus",
+        "filter_domain"
+      ]
+    },
+    {
+      "path": "src/quasar2/retrieval/bm25.py",
+      "classes": [
+        "BM25Retriever"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/retrieval/dense.py",
+      "classes": [
+        "HashingDenseRetriever"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/retrieval/factory.py",
+      "classes": [],
+      "functions": [
+        "build_retriever",
+        "backend_for_method"
+      ]
+    },
+    {
+      "path": "src/quasar2/retrieval/hybrid.py",
+      "classes": [
+        "HybridRetriever"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/retrieval/neural.py",
+      "classes": [
+        "NeuralManifest",
+        "NeuralDenseRetriever",
+        "CrossEncoderReranker"
+      ],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/signals/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/signals/extractor.py",
+      "classes": [
+        "SignalExtractor"
+      ],
+      "functions": [
+        "normalize_text",
+        "tokenize"
+      ]
+    },
+    {
+      "path": "src/quasar2/sources/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/sources/fixtures.py",
+      "classes": [
+        "FrozenMetadataSource"
+      ],
+      "functions": [
+        "_eligible",
+        "jwst_mast_source",
+        "cern_open_data_source",
+        "inspire_hep_source",
+        "write_source_fixture"
+      ]
+    },
+    {
+      "path": "src/quasar2/sources/registry.py",
+      "classes": [
+        "SourceDescriptor",
+        "SourceAdapter",
+        "SourceRegistry"
+      ],
+      "functions": [
+        "default_descriptors",
+        "builtin_registry"
+      ]
+    },
+    {
+      "path": "src/quasar2/theory/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/theory/cards.py",
+      "classes": [
+        "TheoremCard",
+        "TheoremCheck"
+      ],
+      "functions": [
+        "default_cards"
+      ]
+    },
+    {
+      "path": "src/quasar2/theory/harness.py",
+      "classes": [],
+      "functions": [
+        "check_t1",
+        "_binary_kernels",
+        "check_t2",
+        "check_t2_grid",
+        "_two_state_mdp",
+        "check_t3",
+        "check_t4",
+        "_sample_family",
+        "check_t4_families",
+        "check_t4_near_zero",
+        "check_c1",
+        "run_theory_checks",
+        "write_theory_checks"
+      ]
+    },
+    {
+      "path": "src/quasar2/theory/kernels.py",
+      "classes": [],
+      "functions": [
+        "_normalize",
+        "bernoulli_pair",
+        "categorical_pair",
+        "heavy_overlap_pair",
+        "near_identical_pair",
+        "mixture_pair",
+        "gaussian_pair",
+        "multimodal_pair",
+        "misspecified_observation_pair"
+      ]
+    },
+    {
+      "path": "src/quasar2/v24/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/v24/actions.py",
+      "classes": [
+        "EpistemicAction"
+      ],
+      "functions": [
+        "public_action_label"
+      ]
+    },
+    {
+      "path": "src/quasar2/v24/analyze.py",
+      "classes": [],
+      "functions": [
+        "analysis_config_hash",
+        "analyze"
+      ]
+    },
+    {
+      "path": "src/quasar2/v24/artifacts.py",
+      "classes": [],
+      "functions": [
+        "percentile",
+        "paired_mean_ci",
+        "environment_text",
+        "write_cycle_artifacts",
+        "latency_summary_from_records"
+      ]
+    },
+    {
+      "path": "src/quasar2/v24/experiment.py",
+      "classes": [],
+      "functions": [
+        "_user_from_truth",
+        "_task_type",
+        "run_wdi_experiment",
+        "_summarize",
+        "_index_by_query",
+        "_paired_comparisons",
+        "_claim_status"
+      ]
+    },
+    {
+      "path": "src/quasar2/v24/pipeline.py",
+      "classes": [
+        "V24Result",
+        "V24Pipeline"
+      ],
+      "functions": [
+        "canonicalize_policy",
+        "compute_proxy",
+        "_slots_filled",
+        "_top"
+      ]
+    },
+    {
+      "path": "src/quasar2/v24/policy.py",
+      "classes": [
+        "PolicyConfig"
+      ],
+      "functions": [
+        "legal_actions",
+        "_risk",
+        "utilities",
+        "decide"
+      ]
+    },
+    {
+      "path": "src/quasar2/v24/state.py",
+      "classes": [
+        "BudgetState",
+        "HypothesisView",
+        "PolicyState"
+      ],
+      "functions": [
+        "_reject_hidden",
+        "_validate_budget"
+      ]
+    },
+    {
+      "path": "src/quasar2/wdi/__init__.py",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "src/quasar2/wdi/catalog.py",
+      "classes": [
+        "IndicatorSpec",
+        "EntitySpec"
+      ],
+      "functions": [
+        "indicators_for_stage",
+        "entities_for_stage"
+      ]
+    },
+    {
+      "path": "src/quasar2/wdi/client.py",
+      "classes": [
+        "HttpResponse",
+        "WorldBankClient"
+      ],
+      "functions": [
+        "_split_wb_payload"
+      ]
+    },
+    {
+      "path": "src/quasar2/wdi/evaluator.py",
+      "classes": [
+        "EvaluationResult"
+      ],
+      "functions": [
+        "_finite_number",
+        "_close",
+        "evaluate_answer"
+      ]
+    },
+    {
+      "path": "src/quasar2/wdi/fixture.py",
+      "classes": [],
+      "functions": [
+        "write_offline_ci_snapshot"
+      ]
+    },
+    {
+      "path": "src/quasar2/wdi/normalize.py",
+      "classes": [],
+      "functions": [
+        "canonical_text_bytes",
+        "sha256_bytes",
+        "sha256_canonical_text",
+        "sha256_json",
+        "normalize_entity",
+        "normalize_indicator",
+        "normalize_observation",
+        "latest_available",
+        "resolve_period"
+      ]
+    },
+    {
+      "path": "src/quasar2/wdi/snapshot.py",
+      "classes": [],
+      "functions": [
+        "utc_now",
+        "write_json",
+        "write_jsonl",
+        "_json_default",
+        "load_jsonl",
+        "snapshot_paths",
+        "sync_slice",
+        "_store_raw",
+        "load_snapshot"
+      ]
+    },
+    {
+      "path": "src/quasar2/wdi/source.py",
+      "classes": [
+        "WDIEvidenceSource"
+      ],
+      "functions": [
+        "_indicator_unit",
+        "indicator_document",
+        "entity_document",
+        "assert_evidence_source"
+      ]
+    },
+    {
+      "path": "src/quasar2/wdi/taxonomy.py",
+      "classes": [
+        "EntityType",
+        "ObservationStatus",
+        "DeferReason"
+      ],
+      "functions": [
+        "classify_entity"
+      ]
+    }
+  ],
+  "hydration_exclusions": [
+    {
+      "path": "data/wdi/benchmarks/ci.json",
+      "local_blob": "2301dd9515eff0fbc10494d685e075292a92308c",
+      "upstream_blob": "b87a21d8c0017673a03754942da506bed2a09ac6",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/ci-live/raw/observations/NY.GDP.PCAP.CD.json",
+      "local_blob": "1b37056474f6da2d7465ea41ec55fec7646266fe",
+      "upstream_blob": "521942e87c4a7ed5cf889d926d098d4fcbe0de9b",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/ci-live/raw/observations/SE.ADT.LITR.ZS.json",
+      "local_blob": "acc3fe395e5f21010bfe69345a843d205e035043",
+      "upstream_blob": "ef095b1115f191860a0b169415b0cb16541c950e",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/ci-live/raw/observations/SI.POV.DDAY.json",
+      "local_blob": "509173029050a33bb030616c41fcc5c88b320e03",
+      "upstream_blob": "b317c2a9e0f4cab66bd126fc1e8768cbf0239dd6",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/ci-live/raw/observations/SP.DYN.LE00.IN.json",
+      "local_blob": "eac07aff769e382e15b46fa4480994f94acfaf36",
+      "upstream_blob": "82eb0103e0db18099fb05da2b70cafea0c2e1a66",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/EG.ELC.ACCS.ZS.json",
+      "local_blob": "930daa8b31e4676ed2c7097a2e74bd0ecad97b90",
+      "upstream_blob": "a9c91991912808b142cc068a93d99ba6022499ca",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/EG.FEC.RNEW.ZS.json",
+      "local_blob": "eff7901c84002e59216ca999803c5cbfff1674b7",
+      "upstream_blob": "829d782192065f613f824f98790a5d1755061482",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/EN.GHG.CO2.MT.CE.AR5.json",
+      "local_blob": "951eaab933acc6374dbac34749d2664f447a0c7f",
+      "upstream_blob": "ba93452e6a210fd0f6c6376c9a41fd7d21ad2434",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/EN.GHG.CO2.PC.CE.AR5.json",
+      "local_blob": "76f8504b5ab0ae04c400bf59c3c6778d6bc3001c",
+      "upstream_blob": "8ed3cd8ee3374458e41b2e88988a78c291c2f8c9",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/FP.CPI.TOTL.ZG.json",
+      "local_blob": "e0bfa2d0a0a303a0e5e5ee34ef5b78c4b5d8340b",
+      "upstream_blob": "48a952ebf2df4c170367424e8b0827d572d4a602",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/FS.AST.DOMS.GD.ZS.json",
+      "local_blob": "1d756024beb276d5804960701fc246274655307b",
+      "upstream_blob": "c72800f9e554c11c6c982f89c64c0f37be7480c1",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/GC.DOD.TOTL.GD.ZS.json",
+      "local_blob": "d75eebdd590b56b7918915d8f9d70ca5f8d10daa",
+      "upstream_blob": "3d6cbd8bf9faf1d57a4ee8bd8f057bc3e3bb6b0a",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/IQ.CPA.PUBS.XQ.json",
+      "local_blob": "4553fc79d1bfe57c4fecee56fe0e5c031cab8449",
+      "upstream_blob": "1e19a0237253b64228e872934ed9dd4c52326ff2",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/IT.CEL.SETS.P2.json",
+      "local_blob": "011ed1fdc0ef82d3b9d22d4654899303ef70e4ab",
+      "upstream_blob": "10f53d8896b56f5219b8952ebe410c44ff68fed1",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/IT.NET.BBND.P2.json",
+      "local_blob": "0bd73ca8cf4573b7ad9e9dd0ca4a9cd17f24e0d6",
+      "upstream_blob": "6140a17fcba26cecffd16fe8fe1477dfbd529b12",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/IT.NET.USER.ZS.json",
+      "local_blob": "9f46879efceae5d7f3eac0a1698ecc04beca548a",
+      "upstream_blob": "59eec2b91ebd3f11848275bbda950c58beed863c",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/NE.TRD.GNFS.ZS.json",
+      "local_blob": "e8c4bc166be34efe86e844785d91cb54fadf2631",
+      "upstream_blob": "516b909d426c110a51359d13082c653350edfad2",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/NY.GDP.MKTP.CD.json",
+      "local_blob": "22814d7d20882bf8e93accc0d2c8bb63b569f26f",
+      "upstream_blob": "9c531ef47262b131ecc6399301feab48bec387db",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/NY.GDP.PCAP.CD.json",
+      "local_blob": "85cea815042b6a389ab0a816db5f873bad6003f1",
+      "upstream_blob": "35daffea21042df7045e9d565ee032cfe99bdc83",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/NY.GDP.PCAP.PP.CD.json",
+      "local_blob": "5e6521a57127715f27f622455961e4125202852d",
+      "upstream_blob": "d5958a88fd614af41c9ce30b27921a10cb1338bb",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/NY.GNP.PCAP.CD.json",
+      "local_blob": "4f041837b602f734c18d7bc923775c164b247267",
+      "upstream_blob": "574ed4277efb410f8d11418b4cca2f91152e3736",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SE.ADT.LITR.ZS.json",
+      "local_blob": "b5134831e6cfbd84229c9a4ca5a5c302354892c2",
+      "upstream_blob": "ce4bdf37a2ca50c3c30066de25e9f3ab883d9599",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SE.PRM.NENR.json",
+      "local_blob": "7f1816afa8865d3d532b0726c4ccf1a4fb03926b",
+      "upstream_blob": "0c5331bf5415818debda629cdaa89430608c5a32",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SE.SEC.NENR.json",
+      "local_blob": "02f9532e260786923d1490f83fbed4355131a393",
+      "upstream_blob": "10f78391f8755fb90da1ad2e423ce4842ec4d168",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SG.GEN.PARL.ZS.json",
+      "local_blob": "0732a8c38b70604cd6c2990868b74a3c35bff4e7",
+      "upstream_blob": "0cdabfcd1a37dcb5f0667a8ff02351daaca4cc1c",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SH.DYN.MORT.json",
+      "local_blob": "f38adfde2b9eb4dd2d059d5a9bf93ff0e220560f",
+      "upstream_blob": "17348b2e7e878c892fca82b9254d14f9d959ba36",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SH.XPD.CHEX.GD.ZS.json",
+      "local_blob": "8a753d34bcaf1c83a377ab1521c37052a7b3f654",
+      "upstream_blob": "316e2f743886d448013bb971c7235bb385fe1c7e",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SI.POV.DDAY.json",
+      "local_blob": "287670828780704b6b3a06f38b1e6ddebee6194a",
+      "upstream_blob": "839eccb2fc471885eda14ff8601d619a0188a358",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SL.TLF.CACT.FE.ZS.json",
+      "local_blob": "226700d48b97d3f88be8f421e237309ca943fcaa",
+      "upstream_blob": "db52e5a974e32e92a01e788b65a987a4e35e64ad",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SL.UEM.TOTL.ZS.json",
+      "local_blob": "4b04631dbc249b437afdd77b611820e828c4bc29",
+      "upstream_blob": "065b882e2c611c5f2d6a5135e5421f736282b585",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SP.DYN.LE00.IN.json",
+      "local_blob": "157396d366f35573579c7b5e5dfef83c4c9c041b",
+      "upstream_blob": "2c29f8ab4597845a6c8d59f8f9513601ef934ae0",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SP.DYN.TFRT.IN.json",
+      "local_blob": "4f3f56e7a4db3e6129be4204093d12ad37291810",
+      "upstream_blob": "ad1983b4b2ff3304190877a7da38071f50566d42",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SP.POP.GROW.json",
+      "local_blob": "028f695e5ea07ad60bc84fbf97b0f2fccc28dd05",
+      "upstream_blob": "17ad98f205db5b5d3d1deeff42c9cb357059f40d",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SP.POP.TOTL.json",
+      "local_blob": "6a63dda44576c201217903aa3248a1e8826b4ea3",
+      "upstream_blob": "1eac70d58d0ca9840070269cd2b6d1a8fdbba0e8",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "data/wdi/snapshots/pilot-live/raw/observations/SP.URB.TOTL.IN.ZS.json",
+      "local_blob": "1ebab923cc508fe8caedf4d18a5817dcab3925d5",
+      "upstream_blob": "675e0e37fd93dd82cd795d0c9d1a87be42345029",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    },
+    {
+      "path": "experiments/results/gate1_cycle1/gate1.json",
+      "local_blob": "cb58531da454f0fdb922e0baa631792cf1ad5a02",
+      "upstream_blob": "727a9879abb779dc7e9d98f661a66b1fda067bf6",
+      "reason": "Local hydration does not match authoritative upstream bytes; excluded from local freeze checks"
+    }
+  ]
+}
