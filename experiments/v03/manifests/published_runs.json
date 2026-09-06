@@ -1,0 +1,23 @@
+{
+  "control": {
+    "archive": "artifacts/v03/control-run.tar.gz",
+    "archive_sha256": "f14ec2ad09028ff9f65906509ff77c59b623bf781f2707e1524b501d0c63a18e",
+    "manifest_sha256": "8170b3916ec6d31dece9a5e53c85f8b26bc20fcb8e7c7374a6846e22dcef3542",
+    "dataset": "experiments/v03/datasets/control.json.gz",
+    "dataset_sha256": "556286aa9bec72b83aa4aa3b321bf88119079c0182f8e4195453f26c818a941c"
+  },
+  "nasa": {
+    "archive": "artifacts/v03/nasa-run.tar.gz",
+    "archive_sha256": "f631f2a4553617c2a0eb5fe9542fe3f42d1be669d22e4b027f19c5c29d434435",
+    "manifest_sha256": "fb1662e674dfe6a4e8622fbd3d34d565616b996624a4e1b8bdb77779f1b6bfd0",
+    "dataset": "experiments/v03/datasets/nasa.json.gz",
+    "dataset_sha256": "1a9136bddb15cc5ee328810b35fc42f3fdfede10804e98abe61e7f65e37ed471"
+  },
+  "inspire": {
+    "archive": "artifacts/v03/inspire-run.tar.gz",
+    "archive_sha256": "29fe18b9624d57eaf8bd86edeb68ce2dae7894288954271c7004e15494ed6002",
+    "manifest_sha256": "d64d0126fb9c25dde2d76d23d3e5deb5bfecfdf2256084d1a013b66a04d73a29",
+    "dataset": "experiments/v03/datasets/inspire.json.gz",
+    "dataset_sha256": "b04579e6c15c2e5f73451d48bf8fc53290e7384a356c8dbb9960024997c437d0"
+  }
+}
