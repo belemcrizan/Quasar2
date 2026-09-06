@@ -8,6 +8,7 @@ heuristic set size and leaves coverage None unless calibration scores are given.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import math
 from typing import Mapping, Sequence
 
 
@@ -76,9 +77,13 @@ def split_conformal_set(
             nonconformity_score=None,
             coverage_guaranteed=False,
         )
+    if any(not math.isfinite(score) for score in (*calibration_scores, *candidate_scores.values())):
+        raise ValueError("Nonconformity scores must be finite")
     ordered = sorted(calibration_scores)
-    rank = min(n, max(1, int(((n + 1) * (1.0 - alpha)))))
-    qhat = ordered[rank - 1]
+    # Finite-sample split-conformal order statistic (Angelopoulos & Bates,
+    # https://arxiv.org/abs/2107.07511). Rank n+1 requires the +infinity atom.
+    rank = math.ceil((n + 1) * (1.0 - alpha))
+    qhat = ordered[rank - 1] if rank <= n else math.inf
     members = tuple(
         name
         for name, score in sorted(candidate_scores.items(), key=lambda item: (item[1], item[0]))

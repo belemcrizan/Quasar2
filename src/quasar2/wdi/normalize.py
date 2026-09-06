@@ -4,9 +4,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 from typing import Any
 
-from quasar2.wdi.taxonomy import EntityType, ObservationStatus, classify_entity
+from quasar2.wdi.taxonomy import ObservationStatus, classify_entity
 
 
 def canonical_text_bytes(payload: bytes) -> bytes:
@@ -28,7 +29,9 @@ def sha256_canonical_text(payload: bytes) -> str:
 
 
 def sha256_json(value: Any) -> str:
-    encoded = json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    encoded = json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode(
+        "utf-8"
+    )
     return hashlib.sha256(encoded).hexdigest()
 
 
@@ -80,8 +83,11 @@ def normalize_observation(raw: dict[str, Any]) -> dict[str, Any]:
     else:
         try:
             numeric = float(raw_value)
+            if isinstance(raw_value, bool) or not math.isfinite(numeric):
+                raise ValueError("Observation must be a finite number")
             status = ObservationStatus.OBSERVED.value
-        except (TypeError, ValueError):
+        except (TypeError, ValueError, OverflowError):
+            numeric = None
             status = ObservationStatus.MALFORMED_SOURCE_RECORD.value
     return {
         "indicator_id": indicator_id,
@@ -96,7 +102,9 @@ def normalize_observation(raw: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def latest_available(observations: list[dict[str, Any]], *, indicator_id: str, entity_code: str) -> dict[str, Any] | None:
+def latest_available(
+    observations: list[dict[str, Any]], *, indicator_id: str, entity_code: str
+) -> dict[str, Any] | None:
     candidates = [
         item
         for item in observations

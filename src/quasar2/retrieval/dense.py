@@ -13,7 +13,13 @@ import hashlib
 import math
 from typing import Iterable, Sequence
 
-from quasar2.retrieval.base import Document, SearchHit, filter_domain
+from quasar2.retrieval.base import (
+    Document,
+    SearchHit,
+    filter_domain,
+    validate_documents,
+    validate_top_k,
+)
 from quasar2.signals.extractor import tokenize
 
 
@@ -22,16 +28,17 @@ SparseVector = dict[int, float]
 
 class HashingDenseRetriever:
     def __init__(self, documents: Sequence[Document], *, dimensions: int = 384) -> None:
-        if dimensions < 32:
+        if isinstance(dimensions, bool) or not isinstance(dimensions, int) or dimensions < 32:
             raise ValueError("dimensions must be at least 32")
-        self.documents = tuple(documents)
+        self.documents = validate_documents(documents)
         self.dimensions = dimensions
         self.vectors = tuple(self._vectorize(document.searchable_text) for document in documents)
 
     def _bucket(self, feature: str) -> tuple[int, float]:
         digest = hashlib.blake2b(feature.encode("utf-8"), digest_size=8).digest()
         value = int.from_bytes(digest, "big")
-        return value % self.dimensions, -1.0 if value & 1 else 1.0
+        # Use disjoint hash bits: bucket parity must not determine the sign.
+        return (value >> 1) % self.dimensions, -1.0 if value & 1 else 1.0
 
     @staticmethod
     def _features(text: str) -> Iterable[tuple[str, float]]:
@@ -40,7 +47,7 @@ class HashingDenseRetriever:
             yield f"w:{word}", 1.0
             padded = f"^{word}$"
             for index in range(max(0, len(padded) - 2)):
-                yield f"c:{padded[index:index + 3]}", 0.22
+                yield f"c:{padded[index : index + 3]}", 0.22
         for left, right in zip(words, words[1:]):
             yield f"b:{left}_{right}", 0.35
 
@@ -59,6 +66,9 @@ class HashingDenseRetriever:
         return sum(value * right.get(index, 0.0) for index, value in left.items())
 
     def search(self, query: str, *, top_k: int, domain: str | None = None) -> tuple[SearchHit, ...]:
+        validate_top_k(top_k)
+        if top_k == 0:
+            return ()
         query_vector = self._vectorize(query)
         scores = [
             (max(0.0, self._cosine(query_vector, self.vectors[index])), index)
@@ -75,4 +85,3 @@ class HashingDenseRetriever:
             )
             for rank, (score, index) in enumerate(scores[:top_k], start=1)
         )
-

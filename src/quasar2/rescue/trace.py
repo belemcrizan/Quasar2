@@ -39,11 +39,15 @@ def build_trace(
 
 
 def runtime_only(trace: Mapping[str, Any]) -> dict[str, Any]:
+    runtime = dict((trace.get("trace") or {}).get("runtime") or {})
+    leaks = scan_mapping_for_gold(runtime)
+    if leaks:
+        raise LeakageError(f"runtime namespace contains gold fields: {leaks}")
     return {
         "schema_version": trace.get("schema_version", SCHEMA_VERSION),
         "trace_id": trace.get("trace_id"),
         "run_id": trace.get("run_id"),
-        "trace": {"runtime": dict((trace.get("trace") or {}).get("runtime") or {})},
+        "trace": {"runtime": runtime},
     }
 
 
@@ -74,7 +78,17 @@ def compact_runtime_from_run(
         "mode": mode,
         "hypotheses_top": belief_top,
         "belief": {"entropy": entropy, "margin": margin, "top": belief_top},
-        "candidate_actions": ["ANSWER", "BM25", "DENSE", "HYBRID", "DISCRIMINATIVE", "ANALYZE", "ASK", "DEFER", "VERIFY"],
+        "candidate_actions": [
+            "ANSWER",
+            "BM25",
+            "DENSE",
+            "HYBRID",
+            "DISCRIMINATIVE",
+            "ANALYZE",
+            "ASK",
+            "DEFER",
+            "VERIFY",
+        ],
         "selected_action": selected_action,
         "executed_action": executed_action,
         "action_match": selected_action == executed_action,
@@ -82,5 +96,9 @@ def compact_runtime_from_run(
         "retrieved_document_ids": list(document_ids),
         "decision": {"predicted_id": predicted_id, "action": action},
         "costs": dict(costs or {}),
-        "calls": {"retrieval": retrieval_calls, "seed": seed_calls, "explore_rounds": explore_rounds},
+        "calls": {
+            "retrieval": retrieval_calls,
+            "seed": seed_calls,
+            "explore_rounds": explore_rounds,
+        },
     }

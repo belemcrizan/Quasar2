@@ -28,22 +28,22 @@ def build_retriever(
     settings = dict(retrieval or {})
     name = backend.strip().lower()
     if name not in ALL_BACKENDS:
-        raise ValueError(f"Unknown retrieval backend {backend!r}; choose from {sorted(ALL_BACKENDS)}")
-    sparse = BM25Retriever(documents)
-    hashing = HashingDenseRetriever(
-        documents, dimensions=int(settings.get("dense_dimensions", 384))
-    )
-    if name in {"bm25"}:
-        return sparse
-    if name in {"dense", "dense_hash"}:
-        return hashing
+        raise ValueError(
+            f"Unknown retrieval backend {backend!r}; choose from {sorted(ALL_BACKENDS)}"
+        )
+    if name == "bm25":
+        return BM25Retriever(documents)
+    if name in {"dense", "dense_hash", "hybrid"}:
+        hashing = HashingDenseRetriever(documents, dimensions=settings.get("dense_dimensions", 384))
+        if name != "hybrid":
+            return hashing
     if name == "hybrid":
         return HybridRetriever(
-            sparse,
+            BM25Retriever(documents),
             hashing,
             sparse_weight=float(settings.get("bm25_weight", 0.6)),
             dense_weight=float(settings.get("dense_weight", 0.4)),
-            rrf_k=int(settings.get("rrf_k", 20)),
+            rrf_k=settings.get("rrf_k", 20),
         )
     from quasar2.retrieval.neural import NeuralDenseRetriever
 
@@ -56,23 +56,27 @@ def build_retriever(
         profile = "minilm"
     neural = NeuralDenseRetriever(
         documents,
-        model_name=str(settings.get("neural_model") or {
-            "e5": "intfloat/multilingual-e5-base",
-            "bge-m3": "BAAI/bge-m3",
-            "hybrid_bge": "BAAI/bge-m3",
-        }.get(name, "sentence-transformers/all-MiniLM-L6-v2")),
+        model_name=str(
+            settings.get("neural_model")
+            or {
+                "e5": "intfloat/multilingual-e5-base",
+                "bge-m3": "BAAI/bge-m3",
+                "hybrid_bge": "BAAI/bge-m3",
+            }.get(name, "sentence-transformers/all-MiniLM-L6-v2")
+        ),
         device=str(settings.get("neural_device", "cpu")),
         profile=profile,
         cache_dir=settings.get("neural_cache_dir"),
+        revision=settings.get("neural_revision"),
     )
     if name in {"neural", "e5", "bge-m3"}:
         return neural
     return HybridRetriever(
-        sparse,
+        BM25Retriever(documents),
         neural,
         sparse_weight=float(settings.get("bm25_weight", 0.6)),
         dense_weight=float(settings.get("dense_weight", 0.4)),
-        rrf_k=int(settings.get("rrf_k", 20)),
+        rrf_k=settings.get("rrf_k", 20),
     )
 
 
@@ -81,7 +85,17 @@ def backend_for_method(method: str) -> str | None:
 
     if method.startswith("full+"):
         return method.split("+", 1)[1]
-    if method in {"bm25", "dense", "dense_hash", "hybrid", "neural", "hybrid_neural", "e5", "bge-m3", "hybrid_bge"}:
+    if method in {
+        "bm25",
+        "dense",
+        "dense_hash",
+        "hybrid",
+        "neural",
+        "hybrid_neural",
+        "e5",
+        "bge-m3",
+        "hybrid_bge",
+    }:
         return "dense_hash" if method == "dense" else method
     if method in {"rewrite_hybrid", "rewrite", "multi_query"}:
         return "hybrid"

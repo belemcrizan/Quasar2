@@ -1,5 +1,7 @@
 # QUASAR2
 
+**Atualização de engenharia:** [Correções, evidências de validação e mudanças de compatibilidade](docs/engineering-hardening.md) (em inglês).
+
 **English:** [README.md](README.md)
 
 Protótipo de pesquisa · pacote **v0.2.0** · laço de decisão padrão congelado na **v0.1.1** · [Licença MIT](LICENSE) · Crizan Belém Ribeiro

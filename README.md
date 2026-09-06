@@ -1,5 +1,7 @@
 # QUASAR2
 
+**Engineering update:** [Correctness fixes, validation evidence and compatibility changes](docs/engineering-hardening.md).
+
 **Português:** [README.pt-BR.md](README.pt-BR.md)
 
 Research prototype · package **v0.2.0** · default decision loop frozen at **v0.1.1** · [MIT License](LICENSE) · Crizan Belém Ribeiro
