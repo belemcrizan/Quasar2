@@ -15,12 +15,25 @@ from quasar2.evidence.contracts import (
 )
 from quasar2.retrieval.base import Document
 from quasar2.retrieval.bm25 import BM25Retriever
+from quasar2.wdi.catalog import indicators_for_stage
 from quasar2.wdi.normalize import resolve_period, sha256_json
 from quasar2.wdi.snapshot import load_snapshot
 from quasar2.wdi.taxonomy import ObservationStatus
 
 
+_CATALOG_UNITS = {spec.indicator_id: spec.unit for spec in indicators_for_stage("pilot")}
+
+
+def _indicator_unit(row: dict) -> tuple[str, str]:
+    explicit = str(row.get("unit") or "").strip()
+    if explicit:
+        return explicit, "snapshot"
+    known = _CATALOG_UNITS.get(row["indicator_id"], "")
+    return known, "indicator_catalog" if known else "unavailable"
+
+
 def indicator_document(row: dict) -> Document:
+    unit, unit_source = _indicator_unit(row)
     text = " ".join(
         part
         for part in (
@@ -41,7 +54,8 @@ def indicator_document(row: dict) -> Document:
         metadata={
             "kind": "INDICATOR_METADATA",
             "indicator_id": row["indicator_id"],
-            "unit": str(row.get("unit") or ""),
+            "unit": unit,
+            "unit_source": unit_source,
         },
     )
 
@@ -110,7 +124,9 @@ class WDIEvidenceSource:
         errors = []
         if self.manifest.get("status") != "COMPLETE":
             errors.append("snapshot is not COMPLETE")
-        return ValidationReport(ok=not errors, errors=tuple(errors), details=self.manifest.get("row_counts", {}))
+        return ValidationReport(
+            ok=not errors, errors=tuple(errors), details=self.manifest.get("row_counts", {})
+        )
 
     def search(self, request: SearchRequest) -> list[NeutralEvidenceItem]:
         hits = self._retriever.search(request.query, top_k=request.top_k, domain="wdi")
@@ -158,7 +174,11 @@ class WDIEvidenceSource:
                 requested=request.period,
             )
             payload["entity_type"] = self.entities[request.entity_code]["entity_type"]
-            payload["unit"] = request.unit or self.indicators[request.indicator_id].get("unit") or ""
+            unit, unit_source = _indicator_unit(self.indicators[request.indicator_id])
+            if request.unit and unit and request.unit != unit:
+                raise ValueError(f"Unit conversion is not supported: {unit} to {request.unit}")
+            payload["unit"] = unit
+            payload["unit_source"] = unit_source
         return [
             NeutralEvidenceItem(
                 evidence_id=f"obs:{request.indicator_id}:{request.entity_code}:{request.period}",

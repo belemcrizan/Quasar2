@@ -21,6 +21,13 @@ def _percentile(values: Sequence[float], percentile: float) -> float:
     return ordered[low] + (ordered[high] - ordered[low]) * (position - low)
 
 
+def _validate_rows(clusters: Sequence[str], *series: Sequence[float]) -> None:
+    if any(len(values) != len(clusters) for values in series):
+        raise ValueError("Every series must have one value per cluster label")
+    if any(not math.isfinite(value) for values in series for value in values):
+        raise ValueError("Bootstrap inputs must be finite")
+
+
 def cluster_indices(clusters: Sequence[str]) -> dict[str, list[int]]:
     grouped: dict[str, list[int]] = {}
     for index, cluster in enumerate(clusters):
@@ -35,11 +42,22 @@ def cluster_bootstrap_stat(
     samples: int,
     seed: int,
 ) -> dict[str, float | int | None]:
+    if isinstance(samples, bool) or not isinstance(samples, int) or samples < 0:
+        raise ValueError("samples must be a non-negative integer")
     grouped = cluster_indices(clusters)
     keys = list(grouped)
     if not keys:
-        return {"point": None, "ci_low": None, "ci_high": None, "n_clusters": 0, "samples": samples}
+        return {
+            "point": None,
+            "ci_low": None,
+            "ci_high": None,
+            "n_clusters": 0,
+            "samples": samples,
+            "n_successful_draws": 0,
+        }
     observed = stat(list(range(len(clusters))))
+    if observed is not None and not math.isfinite(observed):
+        observed = None
     rng = random.Random(seed)
     draws: list[float] = []
     for _ in range(samples):
@@ -48,7 +66,7 @@ def cluster_bootstrap_stat(
         for key in chosen:
             indices.extend(grouped[key])
         value = stat(indices)
-        if value is not None and not math.isnan(value):
+        if value is not None and math.isfinite(value):
             draws.append(float(value))
     if not draws:
         return {
@@ -57,6 +75,7 @@ def cluster_bootstrap_stat(
             "ci_high": None,
             "n_clusters": len(keys),
             "samples": samples,
+            "n_successful_draws": 0,
         }
     return {
         "point": observed,
@@ -76,6 +95,7 @@ def cluster_bootstrap_mean(
     seed: int = 0,
 ) -> dict[str, float | int | None]:
     stored = [float(value) for value in values]
+    _validate_rows(clusters, stored)
 
     def stat(indices: list[int]) -> float | None:
         if not indices:
@@ -95,6 +115,7 @@ def cluster_bootstrap_mean_difference(
 ) -> dict[str, float | int | None]:
     stored_left = [float(value) for value in left]
     stored_right = [float(value) for value in right]
+    _validate_rows(clusters, stored_left, stored_right)
 
     def stat(indices: list[int]) -> float | None:
         if not indices:
@@ -116,6 +137,7 @@ def cluster_bootstrap_spearman(
 ) -> dict[str, float | int | None]:
     xs = [float(value) for value in x]
     ys = [float(value) for value in y]
+    _validate_rows(clusters, xs, ys)
 
     def stat(indices: list[int]) -> float | None:
         return spearman([xs[i] for i in indices], [ys[i] for i in indices])
@@ -135,6 +157,7 @@ def cluster_bootstrap_spearman_difference(
     a = [float(value) for value in x_a]
     b = [float(value) for value in x_b]
     ys = [float(value) for value in y]
+    _validate_rows(clusters, a, b, ys)
 
     def stat(indices: list[int]) -> float | None:
         left = spearman([a[i] for i in indices], [ys[i] for i in indices])

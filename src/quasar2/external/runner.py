@@ -8,7 +8,7 @@ import platform
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Mapping
 
 from quasar2 import __version__
 from quasar2.config import discover_project_root

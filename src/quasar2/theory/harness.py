@@ -11,7 +11,7 @@ import json
 import math
 from pathlib import Path
 import random
-from typing import Any
+from typing import Any, Mapping
 
 from quasar2 import __version__
 from quasar2.analysis.operators import MixtureProjectionAnalyze, ComputationalState

@@ -11,18 +11,18 @@ from dataclasses import dataclass
 from typing import Mapping, Sequence
 
 from quasar2.math.conventions import DivergenceUnits
-from quasar2.math.divergences import entropy, weighted_jsd
+from quasar2.math.divergences import weighted_jsd
 from quasar2.math.numerical import normalize_mass
 
 
 JointCount = Mapping[tuple[str, str], float]
 
 
-def _marginals(joint: JointCount) -> tuple[dict[str, float], dict[str, float], dict[tuple[str, str], float]]:
-    total = sum(joint.values())
-    if total <= 0.0:
-        raise ValueError("joint must have positive mass")
-    normalized = {key: value / total for key, value in joint.items()}
+def _marginals(
+    joint: JointCount,
+) -> tuple[dict[str, float], dict[str, float], dict[tuple[str, str], float]]:
+    # Keep zero-mass states out of conditional normalization.
+    normalized = {key: value for key, value in normalize_mass(joint).items() if value > 0}
     p_x: dict[str, float] = {}
     p_y: dict[str, float] = {}
     for (x, y), mass in normalized.items():

@@ -39,8 +39,24 @@ class SearchHit:
 
 
 class Retriever(Protocol):
-    def search(self, query: str, *, top_k: int, domain: str | None = None) -> tuple[SearchHit, ...]:
-        ...
+    def search(
+        self, query: str, *, top_k: int, domain: str | None = None
+    ) -> tuple[SearchHit, ...]: ...
+
+
+def validate_top_k(top_k: int) -> None:
+    if isinstance(top_k, bool) or not isinstance(top_k, int) or top_k < 0:
+        raise ValueError("top_k must be a non-negative integer")
+
+
+def validate_documents(documents: Sequence[Document]) -> tuple[Document, ...]:
+    stored = tuple(documents)
+    if not stored:
+        raise ValueError("Retrieval requires at least one document")
+    ids = [document.document_id for document in stored]
+    if len(ids) != len(set(ids)):
+        raise ValueError("Document IDs must be unique")
+    return stored
 
 
 def load_corpus(directory: str | Path) -> tuple[Document, ...]:
@@ -73,5 +89,8 @@ def load_corpus(directory: str | Path) -> tuple[Document, ...]:
 
 
 def filter_domain(documents: Sequence[Document], domain: str | None) -> list[int]:
-    return [index for index, document in enumerate(documents) if domain is None or document.domain == domain]
-
+    return [
+        index
+        for index, document in enumerate(documents)
+        if domain is None or document.domain == domain
+    ]

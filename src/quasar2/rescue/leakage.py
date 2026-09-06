@@ -46,9 +46,16 @@ def assert_no_gold_fields(record: Mapping[str, Any], *, context: str) -> None:
 
 def scan_mapping_for_gold(record: Mapping[str, Any]) -> tuple[str, ...]:
     found: list[str] = []
-    for key, value in record.items():
-        if key in FORBIDDEN_DEPLOYMENT_FIELDS:
-            found.append(str(key))
+    pending: list[Any] = [record]
+    seen: set[int] = set()
+    while pending:
+        value = pending.pop()
+        if not isinstance(value, (Mapping, list, tuple)) or id(value) in seen:
+            continue
+        seen.add(id(value))
         if isinstance(value, Mapping):
-            found.extend(scan_mapping_for_gold(value))
+            found.extend(str(key) for key in value if key in FORBIDDEN_DEPLOYMENT_FIELDS)
+            pending.extend(value.values())
+        else:
+            pending.extend(value)
     return tuple(dict.fromkeys(found))
